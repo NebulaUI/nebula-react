@@ -1,0 +1,20 @@
+
+# Requires EditorConfig JetBrains Plugin - http://github.com/editorconfig/editorconfig-jetbrains
+root = true
+
+# Use bracketed regexp to target specific file types or file locations
+[*.{js,json}]
+indent_style = space
+indent_size = tab
+tab_width = 2
+
+end_of_line = lf
+charset = utf-8
+
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# Markdown files
+[*.md]
+# Trailing whitespaces are significant in Markdown.
+trim_trailing_whitespace = false

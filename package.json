@@ -8,14 +8,17 @@
   "license": "MIT",
   "scripts": {
     "clean": "rimraf lib coverage",
-    "build:js": "babel src/ -d lib/",
-    "watch:js": "babel -w src/ -d lib/",
-    "watch": "yarn watch:js && yarn watch:css",
-    "build": "yarn clean && yarn build:js && yarn build:css",
+    "build:js": "babel src/ -d lib/ --ignore '__tests__'",
+    "build:css": "node-sass src/scss/main.scss lib/css/main.css",
+    "watch": "yarn watch:js",
+    "build": "npm run clean && yarn build:js && yarn build:css",
+    "lint": "eslint . --ext .js,.jsx",
     "unit": "jest",
+    "unit:coverage": "jest --coverage",
     "unit:ci": "jest --maxWorkers=4",
-    "coverage": "jest --coverage",
-    "prepublish": "yarn clean && yarn buld"
+    "test": "yarn lint && yarn unit",
+    "test:ci": "yarn lint && yarn unit:ci",
+    "prepublish": "yarn build"
   },
   "files": [
     "src",
@@ -31,15 +34,17 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "enzyme": "^2.9.1",
-    "eslint": "^4.3.0",
+    "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.1.0",
     "jest": "^20.0.4",
     "node-sass": "^4.5.3",
     "react": "^15.6.1",
     "react-addons-test-utils": "^15.6.0",
     "react-dom": "^15.6.1",
+    "react-test-renderer": "^15.6.1",
     "rimraf": "^2.6.1"
   },
   "peerDependencies": {
@@ -54,6 +59,9 @@
     "moduleDirectories": [
       "node_modules",
       "src"
+    ],
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}"
     ],
     "coveragePathIgnorePatterns": [
       "/node_modules"
