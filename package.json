@@ -2,10 +2,25 @@
   "name": "nebula-react",
   "version": "0.1.0",
   "description": "React Components for Nebula CSS",
-  "main": "index.js",
+  "main": "lib/index.js",
   "repository": "git@github.com:rbrtsmith/nebula-react.git",
   "author": "Robert Smith <rbrtsmith84@googlemail.com>",
   "license": "MIT",
+  "scripts": {
+    "clean": "rimraf lib coverage",
+    "build:js": "babel src/ -d lib/",
+    "watch:js": "babel -w src/ -d lib/",
+    "watch": "yarn watch:js && yarn watch:css",
+    "build": "yarn clean && yarn build:js && yarn build:css",
+    "unit": "jest",
+    "unit:ci": "jest --maxWorkers=4",
+    "coverage": "jest --coverage",
+    "prepublish": "yarn clean && yarn buld"
+  },
+  "files": [
+    "src",
+    "lib"
+  ],
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
@@ -31,5 +46,17 @@
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
+  },
+  "jest": {
+    "rootDir": "./src",
+    "resetMocks": true,
+    "resetModules": true,
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules"
+    ]
   }
 }
