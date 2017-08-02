@@ -3339,6 +3339,23 @@ ncname@1.0.x:
   dependencies:
     xml-char-classes "^1.0.0"
 
+nebula-components@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/nebula-components/-/nebula-components-0.1.0.tgz#b06463589db549810e5cbbca908db6337854ea04"
+  dependencies:
+    nebula-css "^2.5.0"
+
+nebula-css@^2.5.0, nebula-css@^2.6.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/nebula-css/-/nebula-css-2.6.0.tgz#8dbde3c8c8a1a038bd134ffa6beba03bec814e19"
+
+nebula-react@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/nebula-react/-/nebula-react-0.1.0.tgz#f2c75015d7dfa991918cf8ca1b720c1a44449bad"
+  dependencies:
+    nebula-components "^0.1.0"
+    nebula-css "^2.6.0"
+
 negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"

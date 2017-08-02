@@ -12,9 +12,10 @@ const common = {
   },
   module: {
     rules: [
-      { test: /\.jsx?$/, use: 'babel-loader' },
+      { test: /\.jsx?$/, exclude: /node_modules/, use: 'babel-loader' },
       {
         test: /\.s?css$/,
+        exclude: /node_modules/,
         use: [{
           loader: 'style-loader',
         }, {

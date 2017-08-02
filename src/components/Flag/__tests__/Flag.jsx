@@ -15,7 +15,7 @@ describe('<Flag />', () => {
 
   it('renders with a breakpoint', () => {
     const $ = shallow(<Flag breakpoint="md" />)
-    expect($.prop('className')).toBe('o-flag o-flag@md')
+    expect($.prop('className')).toBe('o-flag@md')
   })
 
   it('renders with a gutter', () => {

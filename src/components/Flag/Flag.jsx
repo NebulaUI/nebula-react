@@ -6,8 +6,7 @@ import classNames from '../../utils/classNames'
 const Flag = ({ breakpoint, gutter, reverse, children, className }) => (
   <div
     className={classNames(
-      'o-flag',
-      breakpoint ? `o-flag@${breakpoint}` : null,
+      breakpoint ? `o-flag@${breakpoint}` : 'o-flag',
       gutter ? `o-flag--gutter-${gutter}` : null,
       { 'o-flag--reverse': reverse },
       className
