@@ -18,7 +18,8 @@
     "unit:ci": "jest --maxWorkers=4",
     "test": "yarn lint && yarn unit",
     "test:ci": "yarn lint && yarn unit:ci",
-    "prepublish": "yarn build"
+    "prepublish": "yarn build",
+    "deploy": "yarn test && gh-pages -d demo"
   },
   "files": [
     "src",
@@ -39,6 +40,7 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.1.0",
+    "gh-pages": "^1.0.0",
     "jest": "^20.0.4",
     "node-sass": "^4.5.3",
     "react": "^15.6.1",
