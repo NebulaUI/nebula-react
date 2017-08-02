@@ -2,8 +2,8 @@ import React, { Component, createElement as E } from 'react'
 import T from 'prop-types'
 import classNames from '../../utils/classNames'
 
-import TabsList from './TabsList'
-import TabsPanels from './TabsPanels'
+import List from './TabList'
+import Panels from './Panels'
 
 class TabsWrapper extends Component {
   constructor() {
@@ -21,15 +21,18 @@ class TabsWrapper extends Component {
   }
 
   render() {
-    const { activeIndex } = this.state
-    const { node } = this.props
-    const children = React.Children.map(this.props.children, (child) => {
-      if (child.type === TabsList) {
+    const {
+      activateTab,
+      state: { activeIndex },
+      props: { node, className, children }
+    } = this
+    const enhancedChildren = React.Children.map(children, (child) => {
+      if (child.type === List) {
         return React.cloneElement(child, {
           activeIndex,
-          activateTab: this.activateTab
+          activateTab
         })
-      } else if (child.type === TabsPanels) {
+      } else if (child.type === Panels) {
         return React.cloneElement(child, {
           activeIndex
         })
@@ -39,8 +42,8 @@ class TabsWrapper extends Component {
     })
     return E(
       node || 'div',
-      { className: classNames('c-tabs', this.props.className) },
-      children
+      { className: classNames('c-tabs', className) },
+      enhancedChildren
     )
   }
 }

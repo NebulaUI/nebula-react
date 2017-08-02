@@ -1,30 +1,30 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import FlagComponent from '../FlagComponent'
+import { Flag } from '../'
 
-describe('<FlagComponent />', () => {
+describe('<Flag.Component />', () => {
   it('renders the children', () => {
     const $ = shallow(
-      <FlagComponent>
+      <Flag.Component>
         <div className="test" />
-      </FlagComponent>
+      </Flag.Component>
     )
     expect($.contains(<div className="test" />)).toBe(true)
   })
 
   it('renders without wrapping whitespace', () => {
-    const $ = shallow(<FlagComponent nowrap />)
+    const $ = shallow(<Flag.Component nowrap />)
     expect($.prop('className')).toBe('o-flag__component o-flag__component--nowrap')
   })
 
-  it('passes down the className', () => {
-    const $ = shallow(<FlagComponent className="test" />)
+  it('takes a defined className', () => {
+    const $ = shallow(<Flag.Component className="test" />)
     expect($.prop('className')).toBe('o-flag__component test')
   })
 
   it('renders a defined node type', () => {
-    const $ = shallow(<FlagComponent node="article" />)
+    const $ = shallow(<Flag.Component node="article" />)
     expect($.type()).toBe('article')
   })
 })

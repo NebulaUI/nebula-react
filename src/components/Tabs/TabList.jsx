@@ -2,7 +2,7 @@ import React from 'react'
 import T from 'prop-types'
 import classNames from '../../utils/classNames'
 
-const TabsList = ({ children, activateTab, activeIndex, className }) => {
+const TabList = ({ children, activateTab, activeIndex, className }) => {
   const enhancedChildren = React.Children.map(children, (child, index) =>
     React.cloneElement(child, {
       index,
@@ -18,11 +18,11 @@ const TabsList = ({ children, activateTab, activeIndex, className }) => {
   )
 }
 
-TabsList.propTypes = {
+TabList.propTypes = {
   className: T.string,
   children: T.node,
   activateTab: T.func,
   activeIndex: T.number
 }
 
-export default TabsList
+export default TabList

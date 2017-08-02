@@ -1,25 +1,25 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import FlagBody from '../FlagBody'
+import { Flag } from '../'
 
-describe('<FlagBody />', () => {
+describe('<Flag.Body />', () => {
   it('renders the children', () => {
     const $ = shallow(
-      <FlagBody>
+      <Flag.Body>
         <div className="test" />
-      </FlagBody>
+      </Flag.Body>
     )
     expect($.contains(<div className="test" />)).toBe(true)
   })
 
-  it('passes down the className', () => {
-    const $ = shallow(<FlagBody className="test" />)
+  it('takes a defined className', () => {
+    const $ = shallow(<Flag.Body className="test" />)
     expect($.prop('className')).toBe('o-flag__body test')
   })
 
   it('renders a defined node type', () => {
-    const $ = shallow(<FlagBody node="article" />)
+    const $ = shallow(<Flag.Body node="article" />)
     expect($.type()).toBe('article')
   })
 })
