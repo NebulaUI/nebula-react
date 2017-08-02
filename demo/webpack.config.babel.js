@@ -30,8 +30,8 @@ const common = {
           loader: 'sass-loader',
           options: {
             includePaths: [
-              path.resolve(__dirname, '../node_modules/nebula-css'),
-              path.resolve(__dirname, '../'),
+              path.resolve(__dirname, 'node_modules/nebula-css'),
+              path.resolve(__dirname, 'node_modules/nebula-components'),
             ],
           },
         }],
