@@ -28,6 +28,16 @@ describe('<FlagWrapper />', () => {
     expect($.prop('className')).toBe('o-flag o-flag--reverse')
   })
 
+  it('renders content vertically aligned to the top', () => {
+    const $ = shallow(<Flag.Wrapper align="top" />)
+    expect($.prop('className')).toBe('o-flag o-flag--top')
+  })
+
+  it('renders content vertically aligned to the bottom', () => {
+    const $ = shallow(<Flag.Wrapper align="bottom" />)
+    expect($.prop('className')).toBe('o-flag o-flag--bottom')
+  })
+
   it('takes a defined className', () => {
     const $ = shallow(<Flag.Wrapper className="test" />)
     expect($.prop('className')).toBe('o-flag test')
