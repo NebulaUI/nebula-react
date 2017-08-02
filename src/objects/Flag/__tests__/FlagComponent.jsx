@@ -15,12 +15,12 @@ describe('<Flag.Component />', () => {
 
   it('renders without wrapping whitespace', () => {
     const $ = shallow(<Flag.Component nowrap />)
-    expect($.prop('className')).toBe('o-flag__component o-flag__component--nowrap')
+    expect($.hasClass('o-flag__component o-flag__component--nowrap')).toBe(true)
   })
 
   it('takes a defined className', () => {
     const $ = shallow(<Flag.Component className="test" />)
-    expect($.prop('className')).toBe('o-flag__component test')
+    expect($.hasClass('o-flag__component test')).toBe(true)
   })
 
   it('renders a defined node type', () => {

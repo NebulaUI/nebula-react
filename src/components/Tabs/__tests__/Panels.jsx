@@ -19,6 +19,6 @@ describe('<Tabs.Panels />', () => {
 
   it('passes in an optional className', () => {
     const $ = shallow(<Tabs.Panels className="test" />)
-    expect($.prop('className')).toBe('c-tabs__panels test')
+    expect($.hasClass('c-tabs__panels test')).toBe(true)
   })
 })

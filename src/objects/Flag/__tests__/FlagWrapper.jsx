@@ -15,32 +15,32 @@ describe('<FlagWrapper />', () => {
 
   it('renders with a breakpoint', () => {
     const $ = shallow(<Flag.Wrapper breakpoint="md" />)
-    expect($.prop('className')).toBe('o-flag@md')
+    expect($.hasClass('o-flag@md')).toBe(true)
   })
 
   it('renders with a gutter', () => {
     const $ = shallow(<Flag.Wrapper gutter="md" />)
-    expect($.prop('className')).toBe('o-flag o-flag--gutter-md')
+    expect($.hasClass('o-flag o-flag--gutter-md')).toBe(true)
   })
 
   it('renders reverse', () => {
     const $ = shallow(<Flag.Wrapper reverse />)
-    expect($.prop('className')).toBe('o-flag o-flag--reverse')
+    expect($.hasClass('o-flag o-flag--reverse')).toBe(true)
   })
 
   it('renders content vertically aligned to the top', () => {
     const $ = shallow(<Flag.Wrapper align="top" />)
-    expect($.prop('className')).toBe('o-flag o-flag--top')
+    expect($.hasClass('o-flag o-flag--top')).toBe(true)
   })
 
   it('renders content vertically aligned to the bottom', () => {
     const $ = shallow(<Flag.Wrapper align="bottom" />)
-    expect($.prop('className')).toBe('o-flag o-flag--bottom')
+    expect($.hasClass('o-flag o-flag--bottom')).toBe(true)
   })
 
   it('takes a defined className', () => {
     const $ = shallow(<Flag.Wrapper className="test" />)
-    expect($.prop('className')).toBe('o-flag test')
+    expect($.hasClass('o-flag test')).toBe(true)
   })
 
   it('renders a defined node type', () => {

@@ -15,12 +15,12 @@ describe('<Tabs.Tab />', () => {
 
   it('takes a className', () => {
     const $ = shallow(<Tabs.Tab className="test" />)
-    expect($.prop('className')).toBe('c-tabs__tab test')
+    expect($.hasClass('c-tabs__tab test')).toBe(true)
   })
 
   it('displays active state', () => {
     const $ = shallow(<Tabs.Tab isActive />)
-    expect($.prop('className')).toBe('c-tabs__tab is-active')
+    expect($.hasClass('c-tabs__tab is-active')).toBe(true)
   })
 
   it('can be disabled', () => {

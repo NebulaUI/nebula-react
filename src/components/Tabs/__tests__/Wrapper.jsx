@@ -6,7 +6,7 @@ import { Tabs } from '../'
 describe('<Tabs.Wrapper />', () => {
   it('passes in an optional className', () => {
     const $ = shallow(<Tabs.Wrapper className="test" />)
-    expect($.prop('className')).toBe('c-tabs test')
+    expect($.hasClass('c-tabs test')).toBe(true)
   })
 
   it('renders a defined node type', () => {

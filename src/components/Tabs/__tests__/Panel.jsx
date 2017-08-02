@@ -15,7 +15,7 @@ describe('<Tabs.Panel />', () => {
 
   it('takes a className', () => {
     const $ = shallow(<Tabs.Panel className="test" />)
-    expect($.prop('className')).toBe('c-tabs__panel test')
+    expect($.hasClass('c-tabs__panel test')).toBe(true)
   })
 
   it('renders a defined node type', () => {

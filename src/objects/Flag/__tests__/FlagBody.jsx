@@ -15,7 +15,7 @@ describe('<Flag.Body />', () => {
 
   it('takes a defined className', () => {
     const $ = shallow(<Flag.Body className="test" />)
-    expect($.prop('className')).toBe('o-flag__body test')
+    expect($.hasClass('o-flag__body test')).toBe(true)
   })
 
   it('renders a defined node type', () => {
