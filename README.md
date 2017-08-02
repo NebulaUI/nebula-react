@@ -1,4 +1,4 @@
-# nebula-react
+# nebula-react ![Travis-ci](https://travis-ci.org/rbrtsmith/nebula-react.svg?branch=master)
 
 React Components for the Nebula Sass framework
 
