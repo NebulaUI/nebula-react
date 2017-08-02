@@ -6,18 +6,27 @@ describe('classNames', () => {
   })
 
   it('handles conditional strings', () => {
-    const bool1 = true
-    const actual1 = classNames('it', bool1 ? 'is-active' : 'is-disabled')
+    const truthy = true
+    const actual1 = classNames('it', truthy ? 'is-active' : 'is-disabled')
     expect(actual1).toBe('it is-active')
 
-    const bool2 = false
-    const actual2 = classNames('it', bool2 ? 'is-active' : 'is-disabled')
+    const falsy = false
+    const actual2 = classNames('it', falsy ? 'is-active' : 'is-disabled')
     expect(actual2).toBe('it is-disabled')
   })
 
   it('handles conditional objects', () => {
-    const bool = true
-    const actual = classNames('it', { 'is-active': bool })
-    expect(actual).toBe('it is-active')
+    const truthy = true
+    const actual1 = classNames('it', { 'is-active': truthy })
+    expect(actual1).toBe('it is-active')
+
+    const falsy = false
+    const actual2 = classNames('it', { 'is-active': falsy })
+    expect(actual2).toBe('it')
+  })
+
+  it('handles undefined values', () => {
+    const actual1 = classNames('it', undefined)
+    expect(actual1).toBe('it')
   })
 })

@@ -7,8 +7,8 @@ const Flag = ({ breakpoint, gutter, reverse, children, className }) => (
   <div
     className={classNames(
       'o-flag',
-      breakpoint ? `o-flag@${breakpoint}` : '',
-      { 'o-flag--gutter-md': gutter },
+      breakpoint ? `o-flag@${breakpoint}` : null,
+      gutter ? `o-flag--gutter-${gutter}` : null,
       { 'o-flag--reverse': reverse },
       className
     )}
@@ -19,7 +19,7 @@ const Flag = ({ breakpoint, gutter, reverse, children, className }) => (
 
 Flag.propTypes = {
   breakpoint: T.string,
-  gutter: T.bool,
+  gutter: T.string,
   reverse: T.bool,
   children: T.node,
   className: T.string
