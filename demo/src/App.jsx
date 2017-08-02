@@ -1,15 +1,15 @@
 import React from 'react'
 
-import { Flag, FlagBody, FlagComponent, SiteWrap } from 'nebula-react'
+import { Flag, SiteWrap } from 'nebula-react'
 
 const App = () => (
   <div>
     <SiteWrap padding className="u-hard">
       it works! welcome to nebula react!
-      <Flag node="article" breakpoint="md">
-        <FlagBody>The body</FlagBody>
-        <FlagComponent nowrap>The component</FlagComponent>
-      </Flag>
+      <Flag.Wrapper node="article" breakpoint="md">
+        <Flag.Body>The body</Flag.Body>
+        <Flag.Component nowrap>The component</Flag.Component>
+      </Flag.Wrapper>
     </SiteWrap>
   </div>
 )

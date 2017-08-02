@@ -23,4 +23,4 @@ SiteWrap.propTypes = {
   children: T.node
 }
 
-export default SiteWrap
+export { SiteWrap }

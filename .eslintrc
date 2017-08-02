@@ -11,7 +11,8 @@
     "import/named": "error",
     "import/default": "error",
     "react/require-default-props": "off",
-    "react/prefer-stateless-function": ["error", { "ignorePureComponents": true }]
+    "react/prefer-stateless-function": ["error", { "ignorePureComponents": true }],
+    "import/prefer-default-export": "off"
   },
   "settings": {
     "import/parser": "babel-eslint"

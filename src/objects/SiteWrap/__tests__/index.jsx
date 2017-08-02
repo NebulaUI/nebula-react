@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import SiteWrap from '../SiteWrap'
+import { SiteWrap } from '../'
 
 describe('<SiteWrap />', () => {
   it('renders with the correct classname', () => {

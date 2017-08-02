@@ -3,7 +3,7 @@ import T from 'prop-types'
 
 import classNames from '../../utils/classNames/index'
 
-const Flag = ({ node, breakpoint, gutter, reverse, children, className }) =>
+const FlagWrapper = ({ node, breakpoint, gutter, reverse, children, className }) =>
   E(
     node || 'div',
     {
@@ -17,7 +17,7 @@ const Flag = ({ node, breakpoint, gutter, reverse, children, className }) =>
     children
   )
 
-Flag.propTypes = {
+FlagWrapper.propTypes = {
   node: T.string,
   breakpoint: T.string,
   gutter: T.string,
@@ -26,4 +26,4 @@ Flag.propTypes = {
   className: T.string
 }
 
-export default Flag
+export default FlagWrapper
