@@ -1,14 +1,33 @@
-const buildStrFromObj = obj => (
-  Object.values(obj)[0] ? Object.keys(obj)[0] : ''
-)
+const isObject = val => typeof val === 'object'
 
-const buildStr = (str, segment) =>
-  `${str} ${typeof segment === 'object'
-    ? buildStrFromObj(segment)
-    : segment}`.trim()
+const fromString = (str, segment) => `${str} ${segment}`
 
-const reducer = (acc, arg) => (arg ? buildStr(acc, arg) : acc)
+const fromObject = (str, segment) => {
+  const head = Object.values(segment)[0]
 
-const classNames = (...args) => args.reduce(reducer)
+  if (!head) {
+    return str
+  }
+
+  return `${str} ${Object.keys(segment)[0]}`
+}
+
+const appendClassName = (str, segment) => {
+  if (isObject(segment)) {
+    return fromObject(str, segment)
+  }
+
+  return fromString(str, segment)
+}
+
+const toClassName = (existingClassName, nextClassName) => {
+  if (!nextClassName) {
+    return existingClassName
+  }
+
+  return appendClassName(existingClassName, nextClassName)
+}
+
+const classNames = (...args) => args.reduce(toClassName)
 
 export default classNames

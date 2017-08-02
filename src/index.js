@@ -1,9 +1,11 @@
-import Flag from './components/Flag/Flag'
-import FlagBody from './components/Flag/FlagBody'
-import FlagComponent from './components/Flag/FlagComponent'
+import Flag from './objects/Flag/Flag'
+import FlagBody from './objects/Flag/FlagBody'
+import FlagComponent from './objects/Flag/FlagComponent'
+import SiteWrap from './objects/SiteWrap/SiteWrap'
 
 export {
   Flag,
   FlagBody,
-  FlagComponent
+  FlagComponent,
+  SiteWrap
 }

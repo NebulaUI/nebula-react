@@ -32,4 +32,9 @@ describe('<Flag />', () => {
     const $ = shallow(<Flag className="test" />)
     expect($.prop('className')).toBe('o-flag test')
   })
+
+  it('renders a defined node type', () => {
+    const $ = shallow(<Flag node="article" />)
+    expect($.type()).toBe('article')
+  })
 })

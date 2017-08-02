@@ -10,6 +10,7 @@
     "clean": "rimraf lib coverage",
     "build:js": "babel src/ -d lib/ --ignore '__tests__'",
     "build:css": "node-sass --include-path ./node_modules/nebula-css --include-path ./node_modules/nebula-components src/scss/main.scss lib/css/main.css",
+    "watch:js": "babel -w src/ -d lib/ --ignore '__tests__'",
     "watch": "yarn watch:js",
     "build": "npm run clean && yarn build:js && yarn build:css",
     "lint": "eslint . --ext .js,.jsx",

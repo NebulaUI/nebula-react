@@ -22,4 +22,9 @@ describe('<FlagComponent />', () => {
     const $ = shallow(<FlagComponent className="test" />)
     expect($.prop('className')).toBe('o-flag__component test')
   })
+
+  it('renders a defined node type', () => {
+    const $ = shallow(<FlagComponent node="article" />)
+    expect($.type()).toBe('article')
+  })
 })
