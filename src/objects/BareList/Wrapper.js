@@ -4,7 +4,7 @@ import T from 'prop-types'
 import classNames from '../../utils/classNames'
 import buildClassName from '../../utils/buildClassName'
 
-const Wrapper = ({ node, spacing, className, children }) =>
+const BareListWrapper = ({ node, spacing, className, children }) =>
   E(
     node || 'ul',
     {
@@ -19,7 +19,7 @@ const Wrapper = ({ node, spacing, className, children }) =>
     children
   )
 
-Wrapper.propTypes = {
+BareListWrapper.propTypes = {
   node: T.string,
   spacing: T.oneOfType([
     T.string,
@@ -29,4 +29,4 @@ Wrapper.propTypes = {
   children: T.node
 }
 
-export default Wrapper
+export default BareListWrapper

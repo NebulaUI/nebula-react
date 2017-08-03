@@ -2,7 +2,7 @@ import React from 'react'
 import T from 'prop-types'
 import classNames from '../../utils/classNames'
 
-const Panels = ({ activeIndex, children, className }) => {
+const TabPanels = ({ activeIndex, children, className }) => {
   const filteredChildren = React.Children.map(children, (child, index) => (
     index === activeIndex ? child : null))
   return (
@@ -12,10 +12,10 @@ const Panels = ({ activeIndex, children, className }) => {
   )
 }
 
-Panels.propTypes = {
+TabPanels.propTypes = {
   className: T.string,
   children: T.node,
   activeIndex: T.number
 }
 
-export default Panels
+export default TabPanels
