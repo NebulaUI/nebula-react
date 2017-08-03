@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { SiteWrap, Section, Tabs, BareList, InlineList } from 'nebula-react'
+import { SiteWrap, Section, Tabs, BareList, InlineList, MatrixList } from 'nebula-react'
 
 const App = () => (
   <div>
@@ -8,21 +8,28 @@ const App = () => (
       <SiteWrap padding>
         <Tabs.Wrapper>
           <Tabs.TabList>
-            <Tabs.Tab>Tab 1</Tabs.Tab>
-            <Tabs.Tab>Tab 2</Tabs.Tab>
+            <Tabs.Tab>Bare list</Tabs.Tab>
+            <Tabs.Tab>Inline list</Tabs.Tab>
+            <Tabs.Tab>Matrix list</Tabs.Tab>
           </Tabs.TabList>
           <Tabs.Panels>
-            <Tabs.Panel>
-              <InlineList.Wrapper spacing="md">
-                <InlineList.Item>Help</InlineList.Item>
-                <InlineList.Item>Me</InlineList.Item>
-              </InlineList.Wrapper>
-            </Tabs.Panel>
             <Tabs.Panel>
               <BareList.Wrapper spacing="md">
                 <BareList.Item>Help</BareList.Item>
                 <BareList.Item>Me</BareList.Item>
               </BareList.Wrapper>
+            </Tabs.Panel>
+            <Tabs.Panel>
+              <InlineList.Wrapper spacing="md@md">
+                <InlineList.Item>Help</InlineList.Item>
+                <InlineList.Item>Me</InlineList.Item>
+              </InlineList.Wrapper>
+            </Tabs.Panel>
+            <Tabs.Panel>
+              <MatrixList.Wrapper spacing="md">
+                <MatrixList.Item>Help</MatrixList.Item>
+                <MatrixList.Item>Me</MatrixList.Item>
+              </MatrixList.Wrapper>
             </Tabs.Panel>
           </Tabs.Panels>
         </Tabs.Wrapper>

@@ -2,6 +2,7 @@ import { BareList } from './objects/BareList/'
 import { Flag } from './objects/Flag'
 import { Grid } from './objects/Grid/'
 import { InlineList } from './objects/InlineList/'
+import { MatrixList } from './objects/MatrixList/'
 import { Section } from './objects/Section/'
 import { SiteWrap } from './objects/SiteWrap/'
 import { Tabs } from './components/Tabs/'
@@ -11,6 +12,7 @@ export {
   Flag,
   Grid,
   InlineList,
+  MatrixList,
   Section,
   SiteWrap,
   Tabs
