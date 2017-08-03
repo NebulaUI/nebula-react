@@ -17,7 +17,7 @@ describe('<Section />', () => {
 
   it('renders children', () => {
     const $ = shallow(
-      <Section>
+      <Section size="t">
         <div className="child" />
       </Section>
     )
@@ -25,12 +25,17 @@ describe('<Section />', () => {
   })
 
   it('renders a defined node type', () => {
-    const $ = shallow(<Section node="article" />)
+    const $ = shallow(<Section size="t" node="article" />)
     expect($.type()).toBe('article')
   })
 
   it('renders a div by default', () => {
-    const $ = shallow(<Section />)
+    const $ = shallow(<Section size="t" />)
     expect($.type()).toBe('section')
+  })
+
+  it('renders the user defined className', () => {
+    const $ = shallow(<Section size="t" className="test" />)
+    expect($.hasClass('test')).toBe(true)
   })
 })

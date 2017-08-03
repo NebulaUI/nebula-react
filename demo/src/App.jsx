@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Flag, SiteWrap, Section, Tabs } from 'nebula-react'
+import { SiteWrap, Section, Tabs, BareList } from 'nebula-react'
 
 const App = () => (
   <div>
@@ -16,7 +16,10 @@ const App = () => (
               Tab 1 content
             </Tabs.Panel>
             <Tabs.Panel>
-              Tab 2 content
+              <BareList.Wrapper spacing="md">
+                <BareList.Item>Help</BareList.Item>
+                <BareList.Item>Me</BareList.Item>
+              </BareList.Wrapper>
             </Tabs.Panel>
           </Tabs.Panels>
         </Tabs.Wrapper>

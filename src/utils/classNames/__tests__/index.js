@@ -29,4 +29,9 @@ describe('classNames', () => {
     const actual1 = classNames('it', undefined)
     expect(actual1).toBe('it')
   })
+
+  it('handles null values', () => {
+    const actual1 = classNames('it', null)
+    expect(actual1).toBe('it')
+  })
 })

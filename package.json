@@ -20,7 +20,7 @@
     "test": "yarn lint && yarn unit",
     "test:ci": "yarn lint && yarn unit:ci",
     "prepublish": "yarn build",
-    "deploy": "yarn test && gh-pages -d demo"
+    "deploy": "yarn test && yarn build && gh-pages -d demo"
   },
   "files": [
     "src",

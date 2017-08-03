@@ -4,27 +4,29 @@ import T from 'prop-types'
 import classNames from '../../utils/classNames'
 import buildClassName from '../../utils/buildClassName'
 
-const Section = ({ node, size, className, children }) =>
+const Wrapper = ({ node, spacing, className, children }) =>
   E(
-    node || 'section',
+    node || 'ul',
     {
       className: classNames(
-        buildClassName('o-section-', size),
+        'o-bare-list',
+        spacing
+          ? buildClassName('o-bare-list--spaced-', spacing)
+          : null,
         className
       )
     },
     children
   )
 
-Section.propTypes = {
+Wrapper.propTypes = {
   node: T.string,
-  size: T.oneOfType([
+  spacing: T.oneOfType([
     T.string,
     T.array
-  ]).isRequired,
+  ]),
   className: T.string,
   children: T.node
 }
 
-export { Section }
-
+export default Wrapper
