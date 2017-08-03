@@ -10,7 +10,7 @@ describe('<Section />', () => {
   })
 
   it('takes a list of sizes', () => {
-    const sizes = ['sm', 'md@sm',]
+    const sizes = ['sm', 'md@sm']
     const $ = shallow(<Section size={sizes} />)
     expect($.hasClass('o-section-sm o-section-md@sm')).toBe(true)
   })
