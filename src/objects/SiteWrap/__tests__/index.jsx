@@ -32,4 +32,9 @@ describe('<SiteWrap />', () => {
     const $ = shallow(<SiteWrap node="article" />)
     expect($.type()).toBe('article')
   })
+
+  it('renders a div by default', () => {
+    const $ = shallow(<SiteWrap />)
+    expect($.type()).toBe('div')
+  })
 })

@@ -23,10 +23,16 @@ describe('<Grid.Wrapper />', () => {
     expect($.type()).toBe('article')
   })
 
-  it('takes a gutter size', () => {
+  it('renders a div by default', () => {
+    const $ = shallow(<Grid.Wrapper />)
+    expect($.type()).toBe('div')
+  })
+
+  it('takes a single gutter size', () => {
     const $ = shallow(<Grid.Wrapper gutter="md" />)
     expect($.hasClass('o-grid o-grid--gutter-md')).toBe(true)
   })
+
 
   it('takes an array of gutter sizes', () => {
     const $ = shallow(<Grid.Wrapper gutter={['md@sm', 'lg@md']} />)

@@ -2,7 +2,7 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import classNames from '../../utils/classNames'
-import buildGutterClassName from './utils/buildGutterClassName'
+import buildClassName from '../../utils/buildClassName'
 
 const GridWrapper = ({
   node,
@@ -19,7 +19,9 @@ const GridWrapper = ({
     {
       className: classNames(
         'o-grid',
-        gutter ? buildGutterClassName(gutter) : null,
+        gutter
+          ? buildClassName('o-grid--gutter-', gutter)
+          : null,
         { 'o-grid--matrix': matrix },
         { 'o-grid--equal-height': equalHeight },
         { 'o-grid--reverse': reverse },

@@ -1,7 +1,9 @@
 import Wrapper from './GridWrapper'
+import Item from './GridItem'
 
 const Grid = {
-  Wrapper
+  Wrapper,
+  Item
 }
 
 export { Grid }

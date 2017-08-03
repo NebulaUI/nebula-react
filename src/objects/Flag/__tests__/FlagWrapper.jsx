@@ -47,4 +47,9 @@ describe('<FlagWrapper />', () => {
     const $ = shallow(<Flag.Wrapper node="article" />)
     expect($.type()).toBe('article')
   })
+
+  it('renders a div by default', () => {
+    const $ = shallow(<Flag.Wrapper />)
+    expect($.type()).toBe('div')
+  })
 })

@@ -22,4 +22,9 @@ describe('<Tabs.Panel />', () => {
     const $ = shallow(<Tabs.Panel node="article" />)
     expect($.type()).toBe('article')
   })
+
+  it('renders a div by default', () => {
+    const $ = shallow(<Tabs.Panel />)
+    expect($.type()).toBe('div')
+  })
 })

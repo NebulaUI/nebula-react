@@ -27,4 +27,9 @@ describe('<Flag.Component />', () => {
     const $ = shallow(<Flag.Component node="article" />)
     expect($.type()).toBe('article')
   })
+
+  it('renders a div by default', () => {
+    const $ = shallow(<Flag.Component />)
+    expect($.type()).toBe('div')
+  })
 })

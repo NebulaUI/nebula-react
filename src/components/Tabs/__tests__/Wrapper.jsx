@@ -14,6 +14,11 @@ describe('<Tabs.Wrapper />', () => {
     expect($.type()).toBe('article')
   })
 
+  it('renders a div by default', () => {
+    const $ = shallow(<Tabs.Wrapper />)
+    expect($.type()).toBe('div')
+  })
+
   it('renders children', () => {
     const $ = shallow(
       <Tabs.Wrapper>
