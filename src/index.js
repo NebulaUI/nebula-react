@@ -5,6 +5,8 @@ import { InlineList } from './objects/InlineList/'
 import { MatrixList } from './objects/MatrixList/'
 import { Section } from './objects/Section/'
 import { SiteWrap } from './objects/SiteWrap/'
+import { UniformedList } from './objects/UniformedList/'
+
 import { Tabs } from './components/Tabs/'
 
 export {
@@ -15,5 +17,6 @@ export {
   MatrixList,
   Section,
   SiteWrap,
-  Tabs
+  Tabs,
+  UniformedList
 }

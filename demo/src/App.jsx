@@ -1,16 +1,19 @@
 import React from 'react'
 
-import { SiteWrap, Section, Tabs, BareList, InlineList, MatrixList } from 'nebula-react'
+import { SiteWrap, Section, Tabs, BareList, InlineList, MatrixList, UniformedList } from 'nebula-react'
 
 const App = () => (
   <div>
     <Section size="md">
       <SiteWrap padding>
+        <h1>Nebula React</h1>
+        <h2>Lists</h2>
         <Tabs.Wrapper>
           <Tabs.TabList>
             <Tabs.Tab>Bare list</Tabs.Tab>
             <Tabs.Tab>Inline list</Tabs.Tab>
             <Tabs.Tab>Matrix list</Tabs.Tab>
+            <Tabs.Tab>Uniformed list</Tabs.Tab>
           </Tabs.TabList>
           <Tabs.Panels>
             <Tabs.Panel>
@@ -30,6 +33,12 @@ const App = () => (
                 <MatrixList.Item>Help</MatrixList.Item>
                 <MatrixList.Item>Me</MatrixList.Item>
               </MatrixList.Wrapper>
+            </Tabs.Panel>
+            <Tabs.Panel>
+              <UniformedList.Wrapper breakpoint="md">
+                <UniformedList.Item>Help</UniformedList.Item>
+                <UniformedList.Item>Me</UniformedList.Item>
+              </UniformedList.Wrapper>
             </Tabs.Panel>
           </Tabs.Panels>
         </Tabs.Wrapper>
