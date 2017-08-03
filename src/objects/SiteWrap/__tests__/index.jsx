@@ -6,17 +6,17 @@ import { SiteWrap } from '../'
 describe('<SiteWrap />', () => {
   it('renders with the correct classname', () => {
     const $ = shallow(<SiteWrap />)
-    expect($.prop('className')).toBe('o-site-wrap')
+    expect($.hasClass('o-site-wrap')).toBe(true)
   })
 
   it('renders with padding', () => {
     const $ = shallow(<SiteWrap padding />)
-    expect($.prop('className')).toBe('o-site-wrap o-site-wrap--padding')
+    expect($.hasClass('o-site-wrap o-site-wrap--padding')).toBe(true)
   })
 
   it('renders the user defined className', () => {
     const $ = shallow(<SiteWrap className="test" />)
-    expect($.prop('className')).toBe('o-site-wrap test')
+    expect($.hasClass('o-site-wrap test')).toBe(true)
   })
 
   it('renders children', () => {
