@@ -7,6 +7,7 @@ import { Section } from './objects/Section/'
 import { SiteWrap } from './objects/SiteWrap/'
 import { UniformedList } from './objects/UniformedList/'
 
+import { Navbar } from './components/Navbar/'
 import { Tabs } from './components/Tabs/'
 
 export {
@@ -15,6 +16,7 @@ export {
   Grid,
   InlineList,
   MatrixList,
+  Navbar,
   Section,
   SiteWrap,
   Tabs,

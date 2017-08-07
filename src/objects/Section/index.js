@@ -27,4 +27,3 @@ Section.propTypes = {
 }
 
 export { Section }
-

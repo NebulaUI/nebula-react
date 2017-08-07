@@ -1,6 +1,14 @@
 import React from 'react'
 
-import { SiteWrap, Section, Tabs, BareList, InlineList, MatrixList, UniformedList } from 'nebula-react'
+import {
+  SiteWrap,
+  Section,
+  Tabs,
+  BareList,
+  InlineList,
+  MatrixList,
+  UniformedList
+} from 'nebula-react'
 
 const App = () => (
   <div>
