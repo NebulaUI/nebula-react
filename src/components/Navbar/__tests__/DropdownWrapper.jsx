@@ -42,6 +42,6 @@ describe('<Navbar.Dropdown.Wrapper />', () => {
   })
 
   it('closes the dropdown when clicked outside', () => {
-    addEventListener.mockImplementation(() => )
+    // addEventListener.mockImplementation(() => )
   })
 })
