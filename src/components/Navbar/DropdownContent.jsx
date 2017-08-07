@@ -10,7 +10,7 @@ const NavbarDropdownContent = ({ children, className }) => (
 
 NavbarDropdownContent.propTypes = {
   className: T.string,
-  children: T.node.isRequired,
+  children: T.node.isRequired
 }
 
 export default NavbarDropdownContent

@@ -14,7 +14,7 @@ const NavbarDropdownToggle = ({ handleToggle, children, className }) => (
 NavbarDropdownToggle.propTypes = {
   handleToggle: T.func,
   className: T.string,
-  children: T.node.isRequired,
+  children: T.node.isRequired
 }
 
 export default NavbarDropdownToggle
