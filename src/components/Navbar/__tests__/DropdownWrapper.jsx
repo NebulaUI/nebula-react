@@ -2,7 +2,6 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { Navbar } from '../'
-import { addEventListener, removeEventListener } from '../../../utils/window'
 
 jest.mock('../../../utils/window')
 
@@ -41,7 +40,7 @@ describe('<Navbar.Dropdown.Wrapper />', () => {
     expect($.hasClass('c-navbar__item is-open')).toBe(false)
   })
 
-  it('closes the dropdown when clicked outside', () => {
-    // addEventListener.mockImplementation(() => )
+
+  it.skip('closes the dropdown when clicked outside', () => {
   })
 })

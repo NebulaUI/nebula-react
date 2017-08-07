@@ -10,7 +10,7 @@ const NavbarNav = ({ children, className }) => (
 
 NavbarNav.propTypes = {
   children: T.node.isRequired,
-  className: T.string,
+  className: T.string
 }
 
 export default NavbarNav
