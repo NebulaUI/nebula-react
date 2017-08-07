@@ -15,11 +15,11 @@ class NavbarDropdown extends Component {
   }
 
   componentDidMount() {
-    addEventListener('mousedown', this.handleClickOutside)
+    addEventListener('click', this.handleClickOutside)
   }
 
   componentWillUnmount() {
-    removeEventListener('mousedown', this.handleClickOutside)
+    removeEventListener('click', this.handleClickOutside)
   }
 
   handleToggle = () => {
@@ -28,8 +28,8 @@ class NavbarDropdown extends Component {
     })
   }
 
-  handleClickOutside = (e) => {
-    if (!this.wrapperRef.contains(e.target)) {
+  handleClickOutside = ({ target }) => {
+    if (!this.wrapperRef.contains(target)) {
       this.setState({
         isOpen: false
       })
