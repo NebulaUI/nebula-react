@@ -1,10 +1,10 @@
-const addEventListener = (e, cb) =>
+const addEListener = (e, cb) =>
   window.addEventListener(e, cb)
 
-const removeEventListener = (e, cb) =>
+const removeEListener = (e, cb) =>
   window.removeEventListener(e, cb)
 
 export {
-  addEventListener,
-  removeEventListener
+  addEListener,
+  removeEListener
 }
