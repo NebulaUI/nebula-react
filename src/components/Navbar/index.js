@@ -8,8 +8,9 @@ import Nav from './Nav'
 import Overlay from './Overlay'
 import ToggleWrapper from './ToggleWrapper'
 import Bars from './Bars'
-import Inner from './Inner'
+import Wrap from './Wrap'
 import Wrapper from './Wrapper'
+import Inner from './Inner'
 
 const Navbar = {
   Item,
@@ -17,8 +18,9 @@ const Navbar = {
   Logo,
   Nav,
   Overlay,
-  Inner,
+  Wrap,
   Wrapper,
+  Inner,
   Toggle: {
     Wrapper: ToggleWrapper,
     Bars
