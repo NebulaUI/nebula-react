@@ -7,7 +7,7 @@ const TextArea = ({ className }) => (
 )
 
 TextArea.propTypes = {
-  className: T.string,
+  className: T.string
 }
 
 export default TextArea

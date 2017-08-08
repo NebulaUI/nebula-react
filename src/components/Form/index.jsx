@@ -5,7 +5,7 @@ import TextArea from './TextArea'
 const Form = {
   Label,
   TextInput,
-  TextArea,
+  TextArea
 }
 
 export { Form }

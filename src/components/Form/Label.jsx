@@ -7,7 +7,7 @@ const Label = ({ className }) => (
 )
 
 Label.propTypes = {
-  className: T.string,
+  className: T.string
 }
 
 export default Label

@@ -7,7 +7,7 @@ const TextInput = ({ className }) => (
 )
 
 TextInput.propTypes = {
-  className: T.string,
+  className: T.string
 }
 
 export default TextInput
