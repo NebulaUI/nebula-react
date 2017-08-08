@@ -56,6 +56,7 @@ describe('<Navbar.Dropdown.Wrapper />', () => {
     expect($.hasClass('c-navbar__item is-open')).toBe(true)
   })
 
+
   it('adds a click handler to the window when mounted and removes it when it unmounts', () => {
     const mockAddEventListener = jest.fn()
     const mockRemoveEventListener = jest.fn()
