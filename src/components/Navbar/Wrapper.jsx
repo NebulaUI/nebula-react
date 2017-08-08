@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import T from 'prop-types'
-import classNames from '../../utils/classNames'
+import { classNames, removeFalsy } from '../../utils/'
 
 import Overlay from './Overlay'
 import Inner from './Inner'
@@ -22,7 +22,7 @@ class NavbarWrapper extends Component {
 
   render() {
     const { handleToggle, state: { isOpen }, props: { children, className, ...rest } } = this
-    const enhancedChildren = React.Children.map(children, (child) => {
+    const enhancedChildren = React.Children.map(removeFalsy(children), (child) => {
       if (child.type === Overlay || child.type === Inner) {
         return React.cloneElement(child, {
           handleToggle

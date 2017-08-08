@@ -1,7 +1,7 @@
 import { createElement as E } from 'react'
 import T from 'prop-types'
 
-import classNames from '../../utils/classNames/index'
+import { classNames } from '../../utils/'
 
 const FlagBody = ({ node, children, className, ...rest }) =>
   E(

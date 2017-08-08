@@ -1,8 +1,7 @@
 import { createElement as E } from 'react'
 import T from 'prop-types'
 
-import classNames from '../../utils/classNames'
-import buildClassName from '../../utils/buildClassName'
+import { classNames, buildClassName } from '../../utils/'
 
 const Section = ({ node, size = 'md', className, children, ...rest }) =>
   E(

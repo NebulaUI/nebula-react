@@ -1,9 +1,9 @@
 import React from 'react'
 import T from 'prop-types'
-import classNames from '../../utils/classNames'
+import { classNames, removeFalsy } from '../../utils'
 
 const TabList = ({ children, activateTab, activeIndex, className, ...rest }) => {
-  const enhancedChildren = React.Children.map(children, (child, index) =>
+  const enhancedChildren = React.Children.map(removeFalsy(children), (child, index) =>
     React.cloneElement(child, {
       index,
       activateTab,

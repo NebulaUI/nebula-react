@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import T from 'prop-types'
-import classNames from '../../utils/classNames'
+import { classNames } from '../../utils/'
 
 class NavbarLink extends Component {
   handleClick = (e) => {

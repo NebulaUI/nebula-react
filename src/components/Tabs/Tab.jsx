@@ -1,6 +1,6 @@
 import React from 'react'
 import T from 'prop-types'
-import classNames from '../../utils/classNames'
+import { classNames } from '../../utils'
 
 const Tab = ({ children, index, activateTab, isActive, className, ...rest }) => {
   const handleClick = () => { activateTab(index) }
