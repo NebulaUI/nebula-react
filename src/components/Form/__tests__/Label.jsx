@@ -5,11 +5,27 @@ import { Form } from '../'
 
 describe('<Form.Label />', () => {
   it('renders with appropriate classNames', () => {
-    const $ = shallow(<Form.Label className="test" />)
+    const $ = shallow(<Form.Label className="test" htmlFor="t" />)
     expect($.hasClass('c-label test')).toBe(true)
   })
+
   it('renders with a htmlFor prop', () => {
-    const $ = shallow(<Form.Label className="test" htmlFor="text-input-1" />)
-    expect($.prop('htmlFor')).toBe('text-input-1')
+    const $ = shallow(<Form.Label className="test" htmlFor="test" />)
+    expect($.prop('htmlFor')).toBe('test')
+  })
+
+  it('takes attributes', () => {
+    const $ = shallow(<Form.TextInput placeholder="test" id="foo" htmlFor="t" />)
+    expect($.prop('placeholder')).toBe('test')
+    expect($.prop('id')).toBe('foo')
+  })
+
+  it('renders children', () => {
+    const $ = shallow(
+      <Form.Label htmlFor="t">
+        test
+      </Form.Label>
+    )
+    expect($.contains('test')).toBe(true)
   })
 })

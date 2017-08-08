@@ -7,12 +7,14 @@ import { Section } from './objects/Section/'
 import { SiteWrap } from './objects/SiteWrap/'
 import { UniformedList } from './objects/UniformedList/'
 
+import { Form } from './components/Form'
 import { Navbar } from './components/Navbar/'
 import { Tabs } from './components/Tabs/'
 
 export {
   BareList,
   Flag,
+  Form,
   Grid,
   InlineList,
   MatrixList,

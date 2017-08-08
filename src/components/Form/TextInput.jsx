@@ -1,9 +1,9 @@
 import React from 'react'
 import T from 'prop-types'
-import classNames from '../../utils/classNames'
+import { classNames } from '../../utils/'
 
-const TextInput = ({ className }) => (
-  <input type="text" id="text-input-1" placeholder="Nebula" className={classNames('c-text-input', className)} />
+const TextInput = ({ className, ...rest }) => (
+  <input className={classNames('c-text-input', className)} {...rest} />
 )
 
 TextInput.propTypes = {
