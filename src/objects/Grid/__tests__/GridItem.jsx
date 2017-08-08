@@ -18,6 +18,18 @@ describe('<Grid.Item />', () => {
     expect($.hasClass('o-grid__item test')).toBe(true)
   })
 
+  it('renders with attributes', () => {
+    const $ = shallow(
+      <Grid.Item style={{ position: 'relative' }} ariaHidden="true">
+        _
+      </Grid.Item>
+    )
+    expect($.prop('style')).toEqual({
+      position: 'relative'
+    })
+    expect($.prop('ariaHidden')).toBe('true')
+  })
+
   it('renders a defined node type', () => {
     const $ = shallow(<Grid.Item node="article" />)
     expect($.type()).toBe('article')

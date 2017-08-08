@@ -4,7 +4,7 @@ import classNames from '../../utils/classNames'
 
 import ToggleWrapper from './ToggleWrapper'
 
-const NavbarInner = ({ handleToggle, children, className }) => {
+const NavbarInner = ({ handleToggle, children, className, ...rest }) => {
   const enhancedChildren = React.Children.map(children, (child) => {
     if (child.type === ToggleWrapper) {
       return React.cloneElement(child, {
@@ -14,7 +14,7 @@ const NavbarInner = ({ handleToggle, children, className }) => {
     return child
   })
   return (
-    <nav className={classNames('c-navbar__wrap', className)}>
+    <nav className={classNames('c-navbar__wrap', className)} {...rest}>
       {enhancedChildren}
     </nav>
   )

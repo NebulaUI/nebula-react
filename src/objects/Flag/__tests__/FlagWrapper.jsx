@@ -43,6 +43,18 @@ describe('<FlagWrapper />', () => {
     expect($.hasClass('o-flag test')).toBe(true)
   })
 
+  it('renders with attributes', () => {
+    const $ = shallow(
+      <Flag.Wrapper style={{ position: 'relative' }} ariaHidden="true">
+        _
+      </Flag.Wrapper>
+    )
+    expect($.prop('style')).toEqual({
+      position: 'relative'
+    })
+    expect($.prop('ariaHidden')).toBe('true')
+  })
+
   it('renders a defined node type', () => {
     const $ = shallow(<Flag.Wrapper node="article" />)
     expect($.type()).toBe('article')

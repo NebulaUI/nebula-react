@@ -18,14 +18,21 @@ describe('<Tabs.Tab />', () => {
     expect($.hasClass('c-tabs__tab test')).toBe(true)
   })
 
+  it('renders with attributes', () => {
+    const $ = shallow(
+      <Tabs.Tab style={{ position: 'relative' }} ariaHidden="true">
+        _
+      </Tabs.Tab>
+    )
+    expect($.prop('style')).toEqual({
+      position: 'relative'
+    })
+    expect($.prop('ariaHidden')).toBe('true')
+  })
+
   it('displays active state', () => {
     const $ = shallow(<Tabs.Tab isActive />)
     expect($.hasClass('c-tabs__tab is-active')).toBe(true)
-  })
-
-  it('can be disabled', () => {
-    const $ = shallow(<Tabs.Tab disabled />)
-    expect($.prop('disabled')).toBe(true)
   })
 
   it('calls the callback when clicked, passing the index', () => {

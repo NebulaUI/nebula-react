@@ -4,7 +4,7 @@ import T from 'prop-types'
 import classNames from '../../utils/classNames'
 import buildClassName from '../../utils/buildClassName'
 
-const MatrixListWrapper = ({ node, spacing, className, children }) =>
+const MatrixListWrapper = ({ node, spacing, className, children, ...rest }) =>
   E(
     node || 'ul',
     {
@@ -14,7 +14,8 @@ const MatrixListWrapper = ({ node, spacing, className, children }) =>
           ? buildClassName('o-matrix-list-', spacing)
           : null,
         className
-      )
+      ),
+      ...rest
     },
     children
   )

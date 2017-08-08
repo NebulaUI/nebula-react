@@ -28,13 +28,20 @@ describe('<UniformedList.Wrapper />', () => {
     expect($.type()).toBe('ul')
   })
 
-  it('renders with the default className', () => {
-    const $ = shallow(<UniformedList.Wrapper />)
-    expect($.hasClass('o-uniformed-list')).toBe(true)
-  })
-
   it('renders the user defined className', () => {
     const $ = shallow(<UniformedList.Wrapper className="test" />)
     expect($.hasClass('o-uniformed-list test')).toBe(true)
+  })
+
+  it('renders with attributes', () => {
+    const $ = shallow(
+      <UniformedList.Wrapper style={{ position: 'relative' }} ariaHidden="true">
+        _
+      </UniformedList.Wrapper>
+    )
+    expect($.prop('style')).toEqual({
+      position: 'relative'
+    })
+    expect($.prop('ariaHidden')).toBe('true')
   })
 })

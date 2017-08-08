@@ -10,6 +10,18 @@ describe('<Tabs.TabList />', () => {
     expect($.find('.c-tabs__list')).toHaveLength(1)
   })
 
+  it('renders with attributes', () => {
+    const $ = shallow(
+      <Tabs.TabList style={{ position: 'relative' }} ariaHidden="true">
+        _
+      </Tabs.TabList>
+    )
+    expect($.prop('style')).toEqual({
+      position: 'relative'
+    })
+    expect($.prop('ariaHidden')).toBe('true')
+  })
+
   it('renders tabs passing the index and callback', () => {
     const activateTab = jest.fn()
     const $ = shallow(

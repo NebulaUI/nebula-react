@@ -2,10 +2,10 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 import classNames from '../../utils/classNames'
 
-const TabPanel = ({ node, children, className }) =>
+const TabPanel = ({ node, children, className, ...rest }) =>
   E(
     node || 'div',
-    { className: classNames('c-tabs__panel', className) },
+    { className: classNames('c-tabs__panel', className), ...rest },
     children
   )
 

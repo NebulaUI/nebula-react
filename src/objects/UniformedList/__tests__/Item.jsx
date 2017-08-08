@@ -23,13 +23,20 @@ describe('<UniformedList.Item />', () => {
     expect($.type()).toBe('li')
   })
 
-  it('renders with the default className', () => {
-    const $ = shallow(<UniformedList.Item />)
-    expect($.hasClass('o-uniformed-list__item')).toBe(true)
-  })
-
   it('renders the user defined className', () => {
     const $ = shallow(<UniformedList.Item className="test" />)
     expect($.hasClass('o-uniformed-list__item test')).toBe(true)
+  })
+
+  it('renders with attributes', () => {
+    const $ = shallow(
+      <UniformedList.Item style={{ position: 'relative' }} ariaHidden="true">
+        _
+      </UniformedList.Item>
+    )
+    expect($.prop('style')).toEqual({
+      position: 'relative'
+    })
+    expect($.prop('ariaHidden')).toBe('true')
   })
 })

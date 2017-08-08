@@ -3,10 +3,10 @@ import T from 'prop-types'
 
 import classNames from '../../utils/classNames'
 
-const InlineListItem = ({ node, className, children }) =>
+const InlineListItem = ({ node, className, children, ...rest }) =>
   E(
     node || 'li',
-    { className: classNames('o-inline-list__item', className) },
+    { className: classNames('o-inline-list__item', className), ...rest },
     children
   )
 

@@ -37,7 +37,7 @@ class NavbarDropdown extends Component {
   }
 
   render() {
-    const { handleToggle, state: { isOpen }, props: { children, className } } = this
+    const { handleToggle, state: { isOpen }, props: { children, className, ...rest } } = this
     const enhancedChildren = React.Children.map(children, (child) => {
       if (child.type === DropdownToggle) {
         return React.cloneElement(child, {
@@ -50,6 +50,7 @@ class NavbarDropdown extends Component {
       <li
         className={classNames('c-navbar__item', className, { 'is-open': isOpen })}
         ref={(node) => { this.wrapperRef = node }}
+        {...rest}
       >
         {enhancedChildren}
       </li>

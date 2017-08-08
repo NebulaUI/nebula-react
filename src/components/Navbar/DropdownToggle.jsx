@@ -2,10 +2,11 @@ import React from 'react'
 import T from 'prop-types'
 import classNames from '../../utils/classNames'
 
-const NavbarDropdownToggle = ({ handleToggle, children, className }) => (
+const NavbarDropdownToggle = ({ handleToggle, children, className, ...rest }) => (
   <button
     className={classNames('c-navbar__dropdown-toggle', className)}
     onClick={handleToggle}
+    {...rest}
   >
     {children}
   </button>

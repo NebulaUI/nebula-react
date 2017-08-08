@@ -2,8 +2,8 @@ import React from 'react'
 import T from 'prop-types'
 import classNames from '../../utils/classNames'
 
-const NavbarNav = ({ children, className }) => (
-  <ul className={classNames('c-navbar__nav', className)}>
+const NavbarNav = ({ children, className, ...rest }) => (
+  <ul className={classNames('c-navbar__nav', className)} {...rest}>
     {children}
   </ul>
 )

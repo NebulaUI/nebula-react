@@ -21,6 +21,18 @@ describe('<Navbar.Dropdown.Wrapper />', () => {
     expect($.hasClass('c-navbar__item test')).toBe(true)
   })
 
+  it('renders with attributes', () => {
+    const $ = shallow(
+      <Navbar.Dropdown.Wrapper style={{ position: 'relative' }} ariaHidden="true">
+        _
+      </Navbar.Dropdown.Wrapper>
+    )
+    expect($.prop('style')).toEqual({
+      position: 'relative'
+    })
+    expect($.prop('ariaHidden')).toBe('true')
+  })
+
   it('renders closed on the initial render', () => {
     const $ = shallow(<Navbar.Dropdown.Wrapper>_</Navbar.Dropdown.Wrapper>)
     expect($.hasClass('c-navbar__item is-open')).toBe(false)

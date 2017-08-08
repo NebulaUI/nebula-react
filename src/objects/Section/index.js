@@ -4,14 +4,15 @@ import T from 'prop-types'
 import classNames from '../../utils/classNames'
 import buildClassName from '../../utils/buildClassName'
 
-const Section = ({ node, size, className, children }) =>
+const Section = ({ node, size, className, children, ...rest }) =>
   E(
     node || 'section',
     {
       className: classNames(
         buildClassName('o-section-', size),
         className
-      )
+      ),
+      ...rest
     },
     children
   )

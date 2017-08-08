@@ -24,7 +24,7 @@ class TabsWrapper extends Component {
     const {
       activateTab,
       state: { activeIndex },
-      props: { node, className, children }
+      props: { node, className, children, ...rest }
     } = this
     const enhancedChildren = React.Children.map(children, (child) => {
       if (child.type === List) {
@@ -42,7 +42,7 @@ class TabsWrapper extends Component {
     })
     return E(
       node || 'div',
-      { className: classNames('c-tabs', className) },
+      { className: classNames('c-tabs', className), ...rest },
       enhancedChildren
     )
   }

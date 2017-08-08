@@ -3,7 +3,7 @@ import T from 'prop-types'
 
 import classNames from '../../utils/classNames'
 
-const SiteWrap = ({ node, padding, className, children }) =>
+const SiteWrap = ({ node, padding, className, children, ...rest }) =>
   E(
     node || 'div',
     {
@@ -11,7 +11,8 @@ const SiteWrap = ({ node, padding, className, children }) =>
         'o-site-wrap',
         { 'o-site-wrap--padding': padding },
         className,
-      )
+      ),
+      ...rest
     },
     children
   )

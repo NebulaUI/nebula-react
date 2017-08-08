@@ -38,4 +38,16 @@ describe('<Section />', () => {
     const $ = shallow(<Section size="t" className="test" />)
     expect($.hasClass('test')).toBe(true)
   })
+
+  it('renders with attributes', () => {
+    const $ = shallow(
+      <Section size="t" style={{ position: 'relative' }} ariaHidden="true">
+        _
+      </Section>
+    )
+    expect($.prop('style')).toEqual({
+      position: 'relative'
+    })
+    expect($.prop('ariaHidden')).toBe('true')
+  })
 })

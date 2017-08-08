@@ -2,7 +2,7 @@ import React from 'react'
 import T from 'prop-types'
 import classNames from '../../utils/classNames'
 
-const TabList = ({ children, activateTab, activeIndex, className }) => {
+const TabList = ({ children, activateTab, activeIndex, className, ...rest }) => {
   const enhancedChildren = React.Children.map(children, (child, index) =>
     React.cloneElement(child, {
       index,
@@ -10,7 +10,7 @@ const TabList = ({ children, activateTab, activeIndex, className }) => {
       isActive: index === activeIndex
     }))
   return (
-    <div className="c-tabs__list-wrapper">
+    <div className="c-tabs__list-wrapper" {...rest}>
       <div className={classNames('c-tabs__list', className)}>
         {enhancedChildren}
       </div>

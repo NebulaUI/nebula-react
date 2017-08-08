@@ -4,7 +4,7 @@ import T from 'prop-types'
 import classNames from '../../utils/classNames'
 import buildClassName from '../../utils/buildClassName'
 
-const BareListWrapper = ({ node, spacing, className, children }) =>
+const BareListWrapper = ({ node, spacing, className, children, ...rest }) =>
   E(
     node || 'ul',
     {
@@ -14,7 +14,8 @@ const BareListWrapper = ({ node, spacing, className, children }) =>
           ? buildClassName('o-bare-list--spaced-', spacing)
           : null,
         className
-      )
+      ),
+      ...rest
     },
     children
   )

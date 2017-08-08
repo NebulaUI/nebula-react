@@ -19,6 +19,18 @@ describe('<Navbar.Dropdown.Toggle />', () => {
     expect($.hasClass('c-navbar__dropdown-toggle test')).toBe(true)
   })
 
+  it('renders with attributes', () => {
+    const $ = shallow(
+      <Navbar.Dropdown.Toggle style={{ position: 'relative' }} ariaHidden="true">
+        _
+      </Navbar.Dropdown.Toggle>
+    )
+    expect($.prop('style')).toEqual({
+      position: 'relative'
+    })
+    expect($.prop('ariaHidden')).toBe('true')
+  })
+
   it('takes handleToggle prop that is called when clicked', () => {
     const mockCallback = jest.fn()
     const $ = shallow(

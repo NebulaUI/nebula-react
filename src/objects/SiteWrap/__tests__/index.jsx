@@ -4,11 +4,6 @@ import { shallow } from 'enzyme'
 import { SiteWrap } from '../'
 
 describe('<SiteWrap />', () => {
-  it('renders with the correct classname', () => {
-    const $ = shallow(<SiteWrap />)
-    expect($.hasClass('o-site-wrap')).toBe(true)
-  })
-
   it('renders with padding', () => {
     const $ = shallow(<SiteWrap padding />)
     expect($.hasClass('o-site-wrap o-site-wrap--padding')).toBe(true)
@@ -17,6 +12,18 @@ describe('<SiteWrap />', () => {
   it('renders the user defined className', () => {
     const $ = shallow(<SiteWrap className="test" />)
     expect($.hasClass('o-site-wrap test')).toBe(true)
+  })
+
+  it('renders with attributes', () => {
+    const $ = shallow(
+      <SiteWrap style={{ position: 'relative' }} ariaHidden="true">
+        _
+      </SiteWrap>
+    )
+    expect($.prop('style')).toEqual({
+      position: 'relative'
+    })
+    expect($.prop('ariaHidden')).toBe('true')
   })
 
   it('renders children', () => {

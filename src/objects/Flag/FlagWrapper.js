@@ -3,7 +3,16 @@ import T from 'prop-types'
 
 import classNames from '../../utils/classNames/index'
 
-const FlagWrapper = ({ node, breakpoint, gutter, reverse, align, children, className }) =>
+const FlagWrapper = ({
+ node,
+ breakpoint,
+ gutter,
+ reverse,
+ align,
+ children,
+ className,
+  ...rest
+}) =>
   E(
     node || 'div',
     {
@@ -13,7 +22,8 @@ const FlagWrapper = ({ node, breakpoint, gutter, reverse, align, children, class
         align ? `o-flag--${align}` : null,
         { 'o-flag--reverse': reverse },
         className
-      )
+      ),
+      ...rest
     },
     children
   )

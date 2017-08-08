@@ -23,13 +23,20 @@ describe('<MatrixList.Item />', () => {
     expect($.type()).toBe('li')
   })
 
-  it('renders with the default className', () => {
-    const $ = shallow(<MatrixList.Item />)
-    expect($.hasClass('o-matrix-list__item')).toBe(true)
-  })
-
   it('renders the user defined className', () => {
     const $ = shallow(<MatrixList.Item className="test" />)
     expect($.hasClass('o-matrix-list__item test')).toBe(true)
+  })
+
+  it('renders with attributes', () => {
+    const $ = shallow(
+      <MatrixList.Item style={{ position: 'relative' }} ariaHidden="true">
+        _
+      </MatrixList.Item>
+    )
+    expect($.prop('style')).toEqual({
+      position: 'relative'
+    })
+    expect($.prop('ariaHidden')).toBe('true')
   })
 })

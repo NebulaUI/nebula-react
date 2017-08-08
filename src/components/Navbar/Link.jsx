@@ -8,13 +8,13 @@ class NavbarLink extends Component {
   }
 
   render() {
-    const { to, className, callback, children } = this.props
+    const { to, className, callback, children, ...rest } = this.props
     const onClickProps = callback
       ? {
         onClick: this.handleClick
       } : {}
     return (
-      <a href={to} className={classNames('c-navbar__link', className)} {...onClickProps}>
+      <a href={to} className={classNames('c-navbar__link', className)} {...onClickProps} {...rest}>
         {children}
       </a>
     )
