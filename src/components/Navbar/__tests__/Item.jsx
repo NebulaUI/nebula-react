@@ -17,4 +17,16 @@ describe('<Navbar.Item />', () => {
     const $ = shallow(<Navbar.Item className="test">_</Navbar.Item>)
     expect($.hasClass('c-navbar__item test')).toBe(true)
   })
+
+  it('renders with attributes', () => {
+    const $ = shallow(
+      <Navbar.Item style={{ position: 'relative' }} ariaHidden="true">
+        _
+      </Navbar.Item>
+    )
+    expect($.prop('style')).toEqual({
+      position: 'relative'
+    })
+    expect($.prop('ariaHidden')).toBe('true')
+  })
 })

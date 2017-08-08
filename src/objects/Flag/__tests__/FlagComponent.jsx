@@ -23,6 +23,18 @@ describe('<Flag.Component />', () => {
     expect($.hasClass('o-flag__component test')).toBe(true)
   })
 
+  it('renders with attributes', () => {
+    const $ = shallow(
+      <Flag.Component style={{ position: 'relative' }} ariaHidden="true">
+        _
+      </Flag.Component>
+    )
+    expect($.prop('style')).toEqual({
+      position: 'relative'
+    })
+    expect($.prop('ariaHidden')).toBe('true')
+  })
+
   it('renders a defined node type', () => {
     const $ = shallow(<Flag.Component node="article" />)
     expect($.type()).toBe('article')

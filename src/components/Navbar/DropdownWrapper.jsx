@@ -15,11 +15,11 @@ class NavbarDropdown extends Component {
   }
 
   componentDidMount() {
-    addEventListener('mousedown', this.handleClickOutside)
+    addEventListener('click', this.handleClickOutside)
   }
 
   componentWillUnmount() {
-    removeEventListener('mousedown', this.handleClickOutside)
+    removeEventListener('click', this.handleClickOutside)
   }
 
   handleToggle = () => {
@@ -28,8 +28,8 @@ class NavbarDropdown extends Component {
     })
   }
 
-  handleClickOutside = (e) => {
-    if (!this.wrapperRef.contains(e.target)) {
+  handleClickOutside = ({ target }) => {
+    if (!this.wrapperRef.contains(target)) {
       this.setState({
         isOpen: false
       })
@@ -37,7 +37,7 @@ class NavbarDropdown extends Component {
   }
 
   render() {
-    const { handleToggle, state: { isOpen }, props: { children, className } } = this
+    const { handleToggle, state: { isOpen }, props: { children, className, ...rest } } = this
     const enhancedChildren = React.Children.map(children, (child) => {
       if (child.type === DropdownToggle) {
         return React.cloneElement(child, {
@@ -50,6 +50,7 @@ class NavbarDropdown extends Component {
       <li
         className={classNames('c-navbar__item', className, { 'is-open': isOpen })}
         ref={(node) => { this.wrapperRef = node }}
+        {...rest}
       >
         {enhancedChildren}
       </li>

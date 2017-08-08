@@ -17,7 +17,7 @@
     "lint": "eslint . --ext .js,.jsx",
     "unit": "jest",
     "unit:coverage": "jest --coverage",
-    "unit:ci": "jest --maxWorkers=4",
+    "unit:ci": "jest --maxWorkers=4 --coverage",
     "test": "yarn lint && yarn unit",
     "test:ci": "yarn lint && yarn unit:ci",
     "prepublish": "yarn build",
@@ -28,6 +28,7 @@
     "lib"
   ],
   "dependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "nebula-components": "^0.1.0",
     "nebula-css": "^2.6.0"
   },
@@ -42,6 +43,7 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "concurrently": "^3.5.0",
+    "coveralls": "^2.13.1",
     "enzyme": "^2.9.1",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.1.0",
@@ -75,7 +77,8 @@
     ],
     "coveragePathIgnorePatterns": [
       "/node_modules",
-      "<rootDir>/index.js"
+      "<rootDir>/index.js",
+      "<rootDir>/utils/window.js"
     ]
   }
 }

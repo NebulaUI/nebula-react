@@ -32,4 +32,16 @@ describe('<BareList.Item />', () => {
     const $ = shallow(<BareList.Item className="test" />)
     expect($.hasClass('o-bare-list__item test')).toBe(true)
   })
+
+  it('renders with attributes', () => {
+    const $ = shallow(
+      <BareList.Item style={{ position: 'relative' }} ariaHidden="true">
+        _
+      </BareList.Item>
+    )
+    expect($.prop('style')).toEqual({
+      position: 'relative'
+    })
+    expect($.prop('ariaHidden')).toBe('true')
+  })
 })

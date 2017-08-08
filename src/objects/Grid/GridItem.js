@@ -10,7 +10,8 @@ const GridItem = ({
   push,
   pull,
   className,
-  children
+  children,
+  ...rest
 }) =>
   E(
     node || 'div',
@@ -27,7 +28,8 @@ const GridItem = ({
           ? buildClassName('u-pull-', pull)
           : null,
         className
-      )
+      ),
+      ...rest
     },
     children
   )

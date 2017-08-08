@@ -28,6 +28,19 @@ describe('<InlineList.Item />', () => {
     expect($.hasClass('o-inline-list__item')).toBe(true)
   })
 
+  it('renders with attributes', () => {
+    const $ = shallow(
+      <InlineList.Item style={{ position: 'relative' }} ariaHidden="true">
+        _
+      </InlineList.Item>
+    )
+    expect($.prop('style')).toEqual({
+      position: 'relative'
+    })
+    expect($.prop('ariaHidden')).toBe('true')
+  })
+
+
   it('renders the user defined className', () => {
     const $ = shallow(<InlineList.Item className="test" />)
     expect($.hasClass('o-inline-list__item test')).toBe(true)

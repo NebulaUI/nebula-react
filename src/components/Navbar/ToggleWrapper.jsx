@@ -8,7 +8,7 @@ class NavbarToggleWrapper extends Component {
   }
 
   render() {
-    const { handleToggle, className, callback, children } = this.props
+    const { handleToggle, className, callback, children, ...rest } = this.props
     const onClickProps = callback
       ? {
         onClick: this.handleClick
@@ -16,7 +16,7 @@ class NavbarToggleWrapper extends Component {
         onClick: handleToggle
       }
     return (
-      <button className={classNames('c-navbar__toggle', className)} {...onClickProps}>
+      <button className={classNames('c-navbar__toggle', className)} {...onClickProps} {...rest}>
         {children}
       </button>
     )

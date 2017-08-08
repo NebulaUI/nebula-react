@@ -21,7 +21,7 @@ class NavbarWrapper extends Component {
   }
 
   render() {
-    const { handleToggle, state: { isOpen }, props: { children, className } } = this
+    const { handleToggle, state: { isOpen }, props: { children, className, ...rest } } = this
     const enhancedChildren = React.Children.map(children, (child) => {
       if (child.type === Overlay || child.type === Inner) {
         return React.cloneElement(child, {
@@ -31,7 +31,7 @@ class NavbarWrapper extends Component {
       return child
     })
     return (
-      <div className={classNames('c-navbar', className, { 'is-open': isOpen })}>
+      <div className={classNames('c-navbar', className, { 'is-open': isOpen })} {...rest}>
         {enhancedChildren}
       </div>
     )

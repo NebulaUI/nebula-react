@@ -18,6 +18,18 @@ describe('<Navbar.Logo />', () => {
     expect($.hasClass('c-navbar__logo test')).toBe(true)
   })
 
+  it('renders with attributes', () => {
+    const $ = shallow(
+      <Navbar.Logo to="/" style={{ position: 'relative' }} ariaHidden="true">
+        _
+      </Navbar.Logo>
+    )
+    expect($.prop('style')).toEqual({
+      position: 'relative'
+    })
+    expect($.prop('ariaHidden')).toBe('true')
+  })
+
   it('takes a "to" prop that renders as a href attribute', () => {
     const $ = shallow(<Navbar.Logo to="/test">Test</Navbar.Logo>)
     expect($.prop('href')).toBe('/test')

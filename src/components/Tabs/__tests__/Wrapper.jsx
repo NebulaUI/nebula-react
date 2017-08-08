@@ -9,6 +9,18 @@ describe('<Tabs.Wrapper />', () => {
     expect($.hasClass('c-tabs test')).toBe(true)
   })
 
+  it('renders with attributes', () => {
+    const $ = shallow(
+      <Tabs.Wrapper style={{ position: 'relative' }} ariaHidden="true">
+        _
+      </Tabs.Wrapper>
+    )
+    expect($.prop('style')).toEqual({
+      position: 'relative'
+    })
+    expect($.prop('ariaHidden')).toBe('true')
+  })
+
   it('renders a defined node type', () => {
     const $ = shallow(<Tabs.Wrapper node="article" />)
     expect($.type()).toBe('article')

@@ -1,11 +1,8 @@
-/**
- * Created by robertsmith on 07/08/2017.
- */
 const addEventListener = (e, cb) =>
-  document.addEventListener(e, cb)
+  window.addEventListener(e, cb)
 
 const removeEventListener = (e, cb) =>
-  document.addEventListener(e, cb)
+  window.removeEventListener(e, cb)
 
 export {
   addEventListener,

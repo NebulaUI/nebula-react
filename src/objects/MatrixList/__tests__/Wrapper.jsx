@@ -34,13 +34,20 @@ describe('<MatrixList.Wrapper />', () => {
     expect($.type()).toBe('ul')
   })
 
-  it('renders with the default className', () => {
-    const $ = shallow(<MatrixList.Wrapper />)
-    expect($.hasClass('o-matrix-list')).toBe(true)
-  })
-
   it('renders the user defined className', () => {
     const $ = shallow(<MatrixList.Wrapper className="test" />)
     expect($.hasClass('o-matrix-list test')).toBe(true)
+  })
+
+  it('renders with attributes', () => {
+    const $ = shallow(
+      <MatrixList.Wrapper style={{ position: 'relative' }} ariaHidden="true">
+        _
+      </MatrixList.Wrapper>
+    )
+    expect($.prop('style')).toEqual({
+      position: 'relative'
+    })
+    expect($.prop('ariaHidden')).toBe('true')
   })
 })

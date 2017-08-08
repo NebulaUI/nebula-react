@@ -3,10 +3,10 @@ import T from 'prop-types'
 
 import classNames from '../../utils/classNames/index'
 
-const FlagBody = ({ node, children, className }) =>
+const FlagBody = ({ node, children, className, ...rest }) =>
   E(
     node || 'div',
-    { className: classNames('o-flag__body', className) },
+    { className: classNames('o-flag__body', className), ...rest },
     children
   )
 

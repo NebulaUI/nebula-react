@@ -39,6 +39,18 @@ describe('<BareList.Wrapper />', () => {
     expect($.hasClass('o-bare-list')).toBe(true)
   })
 
+  it('renders with attributes', () => {
+    const $ = shallow(
+      <BareList.Wrapper style={{ position: 'relative' }} ariaHidden="true">
+        _
+      </BareList.Wrapper>
+    )
+    expect($.prop('style')).toEqual({
+      position: 'relative'
+    })
+    expect($.prop('ariaHidden')).toBe('true')
+  })
+
   it('renders the user defined className', () => {
     const $ = shallow(<BareList.Wrapper className="test" />)
     expect($.hasClass('o-bare-list test')).toBe(true)

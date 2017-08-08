@@ -18,6 +18,18 @@ describe('<Navbar.Toggle.Wrapper />', () => {
     expect($.hasClass('c-navbar__toggle test')).toBe(true)
   })
 
+  it('renders with attributes', () => {
+    const $ = shallow(
+      <Navbar.Toggle.Wrapper style={{ position: 'relative' }} ariaHidden="true">
+        _
+      </Navbar.Toggle.Wrapper>
+    )
+    expect($.prop('style')).toEqual({
+      position: 'relative'
+    })
+    expect($.prop('ariaHidden')).toBe('true')
+  })
+
   it('calls handleToggle.Wrapper when clicked', () => {
     const handleToggleWrapperMock = jest.fn()
     const $ = shallow(<Navbar.Toggle.Wrapper handleToggle={handleToggleWrapperMock} />)

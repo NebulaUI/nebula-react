@@ -4,7 +4,7 @@ import T from 'prop-types'
 import classNames from '../../utils/classNames'
 import buildClassName from '../../utils/buildClassName'
 
-const UniformedListWrapper = ({ node, breakpoint, className, children }) =>
+const UniformedListWrapper = ({ node, breakpoint, className, children, ...rest }) =>
   E(
     node || 'ul',
     {
@@ -13,7 +13,8 @@ const UniformedListWrapper = ({ node, breakpoint, className, children }) =>
           ? buildClassName('o-bare-list o-uniformed-list@', breakpoint)
           : 'o-uniformed-list',
         className
-      )
+      ),
+      ...rest
     },
     children
   )

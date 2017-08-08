@@ -3,7 +3,7 @@ import T from 'prop-types'
 
 import classNames from '../../utils/classNames/index'
 
-const FlagComponent = ({ node, nowrap, children, className }) =>
+const FlagComponent = ({ node, nowrap, children, className, ...rest }) =>
   E(
     node || 'div',
     {
@@ -11,7 +11,8 @@ const FlagComponent = ({ node, nowrap, children, className }) =>
         'o-flag__component',
         { 'o-flag__component--nowrap': nowrap },
         className
-      )
+      ),
+      ...rest
     },
     children
   )

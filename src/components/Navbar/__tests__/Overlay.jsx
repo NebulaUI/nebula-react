@@ -18,6 +18,18 @@ describe('<Navbar.Overlay />', () => {
     expect($.hasClass('c-navbar__overlay test')).toBe(true)
   })
 
+  it('renders with attributes', () => {
+    const $ = shallow(
+      <Navbar.Overlay style={{ position: 'relative' }} ariaHidden="true">
+        _
+      </Navbar.Overlay>
+    )
+    expect($.prop('style')).toEqual({
+      position: 'relative'
+    })
+    expect($.prop('ariaHidden')).toBe('true')
+  })
+
   it('calls handleToggle when clicked', () => {
     const handleToggleMock = jest.fn()
     const $ = shallow(<Navbar.Overlay handleToggle={handleToggleMock} />)

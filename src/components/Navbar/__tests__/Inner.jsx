@@ -18,6 +18,18 @@ describe('<Navbar.Inner />', () => {
     expect($.hasClass('c-navbar__wrap test')).toBe(true)
   })
 
+  it('renders with attributes', () => {
+    const $ = shallow(
+      <Navbar.Inner style={{ position: 'relative' }} ariaHidden="true">
+        _
+      </Navbar.Inner>
+    )
+    expect($.prop('style')).toEqual({
+      position: 'relative'
+    })
+    expect($.prop('ariaHidden')).toBe('true')
+  })
+
   it('passes handleToggle to appropriate children', () => {
     const handleToggle = jest.fn()
     const $ = shallow(

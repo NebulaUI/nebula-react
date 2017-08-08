@@ -18,6 +18,18 @@ describe('<Navbar.Wrapper />', () => {
     expect($.hasClass('c-navbar test')).toBe(true)
   })
 
+  it('renders with attributes', () => {
+    const $ = shallow(
+      <Navbar.Wrapper style={{ position: 'relative' }} ariaHidden="true">
+        _
+      </Navbar.Wrapper>
+    )
+    expect($.prop('style')).toEqual({
+      position: 'relative'
+    })
+    expect($.prop('ariaHidden')).toBe('true')
+  })
+
   it('renders closed on the initial render', () => {
     const $ = shallow(<Navbar.Wrapper>_</Navbar.Wrapper>)
     expect($.hasClass('is-open')).toBe(false)

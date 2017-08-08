@@ -12,7 +12,8 @@ const GridWrapper = ({
   reverse,
   align,
   className,
-  children
+  children,
+  ...rest
 }) =>
   E(
     node || 'div',
@@ -27,7 +28,8 @@ const GridWrapper = ({
         { 'o-grid--reverse': reverse },
         align ? `o-grid--${align}` : null,
         className
-      )
+      ),
+      ...rest
     },
     children
   )

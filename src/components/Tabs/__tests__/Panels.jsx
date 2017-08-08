@@ -21,4 +21,16 @@ describe('<Tabs.Panels />', () => {
     const $ = shallow(<Tabs.Panels className="test" />)
     expect($.hasClass('c-tabs__panels test')).toBe(true)
   })
+
+  it('renders with attributes', () => {
+    const $ = shallow(
+      <Tabs.Panels style={{ position: 'relative' }} ariaHidden="true">
+        _
+      </Tabs.Panels>
+    )
+    expect($.prop('style')).toEqual({
+      position: 'relative'
+    })
+    expect($.prop('ariaHidden')).toBe('true')
+  })
 })
