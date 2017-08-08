@@ -4,9 +4,14 @@ import { shallow } from 'enzyme'
 import { Section } from '../'
 
 describe('<Section />', () => {
-  it('takes a single size', () => {
-    const $ = shallow(<Section size="md" />)
+  it('renders medium size by default', () => {
+    const $ = shallow(<Section />)
     expect($.hasClass('o-section-md')).toBe(true)
+  })
+
+  it('takes a single size', () => {
+    const $ = shallow(<Section size="lg" />)
+    expect($.hasClass('o-section-lg')).toBe(true)
   })
 
   it('takes a list of sizes', () => {
@@ -17,7 +22,7 @@ describe('<Section />', () => {
 
   it('renders children', () => {
     const $ = shallow(
-      <Section size="t">
+      <Section>
         <div className="child" />
       </Section>
     )
@@ -25,23 +30,23 @@ describe('<Section />', () => {
   })
 
   it('renders a defined node type', () => {
-    const $ = shallow(<Section size="t" node="article" />)
+    const $ = shallow(<Section node="article" />)
     expect($.type()).toBe('article')
   })
 
   it('renders a div by default', () => {
-    const $ = shallow(<Section size="t" />)
+    const $ = shallow(<Section />)
     expect($.type()).toBe('section')
   })
 
   it('renders the user defined className', () => {
-    const $ = shallow(<Section size="t" className="test" />)
+    const $ = shallow(<Section className="test" />)
     expect($.hasClass('test')).toBe(true)
   })
 
   it('renders with attributes', () => {
     const $ = shallow(
-      <Section size="t" style={{ position: 'relative' }} ariaHidden="true">
+      <Section style={{ position: 'relative' }} ariaHidden="true">
         _
       </Section>
     )
