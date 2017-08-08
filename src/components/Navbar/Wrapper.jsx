@@ -35,11 +35,11 @@ class NavbarWrapper extends Component {
       return child
     })
     return (
-      <div className={classNames('c-navbar', { 'is-open': isOpen })}>
+      <header className={classNames('c-navbar', { 'is-open': isOpen })}>
         <div className={classNames('c-navbar__inner', className, { 'is-sticky': sticky })} {...rest}>
           {enhancedChildren}
         </div>
-      </div>
+      </header>
     )
   }
 }
