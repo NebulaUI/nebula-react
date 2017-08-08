@@ -15,8 +15,7 @@ describe('<Form.Label />', () => {
   })
 
   it('takes attributes', () => {
-    const $ = shallow(<Form.TextInput placeholder="test" id="foo" htmlFor="t" />)
-    expect($.prop('placeholder')).toBe('test')
+    const $ = shallow(<Form.Label id="foo" htmlFor="t" />)
     expect($.prop('id')).toBe('foo')
   })
 
