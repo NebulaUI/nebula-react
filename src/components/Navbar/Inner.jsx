@@ -1,46 +1,29 @@
-import React, { Component } from 'react'
+import React from 'react'
 import T from 'prop-types'
-
 import { classNames, removeFalsy } from '../../utils/'
-import Overlay from './Overlay'
-import Wrap from './Wrap'
 
-class Inner extends Component {
-  constructor() {
-    super()
+import ToggleWrapper from './ToggleWrapper'
 
-    this.state = {
-      isOpen: false
+const NavbarInner = ({ handleToggle, children, className, ...rest }) => {
+  const enhancedChildren = React.Children.map(removeFalsy(children), (child) => {
+    if (child.type === ToggleWrapper) {
+      return React.cloneElement(child, {
+        handleToggle
+      })
     }
-  }
-
-  handleToggle = () => {
-    this.setState({
-      isOpen: !this.state.isOpen
-    })
-  }
-
-  render() {
-    const { handleToggle, state: { isOpen }, props: { children, className, ...rest } } = this
-    const enhancedChildren = React.Children.map(removeFalsy(children), (child) => {
-      if (child.type === Overlay || child.type === Wrap) {
-        return React.cloneElement(child, {
-          handleToggle
-        })
-      }
-      return child
-    })
-    return (
-      <div className={classNames('c-navbar__inner', className, { 'is-open': isOpen })} {...rest}>
-        {enhancedChildren}
-      </div>
-    )
-  }
+    return child
+  })
+  return (
+    <nav className={classNames('c-navbar__wrap', className)} {...rest}>
+      {enhancedChildren}
+    </nav>
+  )
 }
 
-Inner.propTypes = {
+NavbarInner.propTypes = {
+  handleToggle: T.func,
   children: T.node.isRequired,
   className: T.string
 }
 
-export default Inner
+export default NavbarInner

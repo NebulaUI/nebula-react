@@ -1,16 +1,52 @@
-import React from 'react'
+import React, { Component } from 'react'
 import T from 'prop-types'
-import { classNames } from '../../utils/'
 
+import { classNames, removeFalsy } from '../../utils/'
+import Overlay from './Overlay'
+import Inner from './Inner'
 
-const NavbarWrapper = ({ className, children, ...rest }) => (
-  <div className={classNames('c-navbar', className)} {...rest}>
-    {children}
-  </div>
-)
+class NavbarWrapper extends Component {
+  constructor() {
+    super()
+
+    this.state = {
+      isOpen: false
+    }
+  }
+
+  handleToggle = () => {
+    this.setState({
+      isOpen: !this.state.isOpen
+    })
+  }
+
+  render() {
+    const {
+      handleToggle,
+      state: { isOpen },
+      props: { children, className, sticky, ...rest }
+    } = this
+    const enhancedChildren = React.Children.map(removeFalsy(children), (child) => {
+      if (child.type === Overlay || child.type === Inner) {
+        return React.cloneElement(child, {
+          handleToggle
+        })
+      }
+      return child
+    })
+    return (
+      <div className={classNames('c-navbar', { 'is-open': isOpen })}>
+        <div className={classNames('c-navbar__inner', className, { 'is-sticky': sticky })} {...rest}>
+          {enhancedChildren}
+        </div>
+      </div>
+    )
+  }
+}
 
 NavbarWrapper.propTypes = {
   children: T.node.isRequired,
+  sticky: T.bool,
   className: T.string
 }
 
