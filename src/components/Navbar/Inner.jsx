@@ -1,11 +1,11 @@
 import React from 'react'
 import T from 'prop-types'
-import classNames from '../../utils/classNames'
+import { classNames, removeFalsy } from '../../utils/'
 
 import ToggleWrapper from './ToggleWrapper'
 
 const NavbarInner = ({ handleToggle, children, className, ...rest }) => {
-  const enhancedChildren = React.Children.map(children, (child) => {
+  const enhancedChildren = React.Children.map(removeFalsy(children), (child) => {
     if (child.type === ToggleWrapper) {
       return React.cloneElement(child, {
         handleToggle

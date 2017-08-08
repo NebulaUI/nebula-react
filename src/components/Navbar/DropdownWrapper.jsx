@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import T from 'prop-types'
-import classNames from '../../utils/classNames'
-import { addEventListener, removeEventListener } from '../../utils/window'
 
+import { classNames, addEventListener, removeEventListener } from '../../utils'
 import DropdownToggle from './DropdownToggle'
 
 class NavbarDropdown extends Component {

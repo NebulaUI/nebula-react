@@ -1,6 +1,6 @@
 import React, { Component, createElement as E } from 'react'
 import T from 'prop-types'
-import classNames from '../../utils/classNames'
+import { classNames, removeFalsy } from '../../utils'
 
 import List from './TabList'
 import Panels from './Panels'
@@ -26,7 +26,7 @@ class TabsWrapper extends Component {
       state: { activeIndex },
       props: { node, className, children, ...rest }
     } = this
-    const enhancedChildren = React.Children.map(children, (child) => {
+    const enhancedChildren = React.Children.map(removeFalsy(children), (child) => {
       if (child.type === List) {
         return React.cloneElement(child, {
           activeIndex,

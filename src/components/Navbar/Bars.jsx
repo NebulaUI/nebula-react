@@ -1,6 +1,6 @@
 import React from 'react'
 import T from 'prop-types'
-import classNames from '../../utils/classNames'
+import { classNames } from '../../utils'
 
 const NavbarToggleBars = ({ children, className, ...rest }) => (
   <span className={classNames('c-navbar__toggle-bars', className)} {...rest}>
