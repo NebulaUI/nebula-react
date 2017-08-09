@@ -18,6 +18,16 @@ describe('<Navbar.Dropdown.Wrapper />', () => {
     expect($.hasClass('c-navbar__item test')).toBe(true)
   })
 
+  it('renders a defined node type', () => {
+    const $ = shallow(<Navbar.Dropdown.Wrapper node="article">_</Navbar.Dropdown.Wrapper>)
+    expect($.type()).toBe('article')
+  })
+
+  it('renders a li by default', () => {
+    const $ = shallow(<Navbar.Dropdown.Wrapper>-</Navbar.Dropdown.Wrapper>)
+    expect($.type()).toBe('li')
+  })
+
   it('renders with attributes', () => {
     const $ = shallow(
       <Navbar.Dropdown.Wrapper style={{ position: 'relative' }} ariaHidden="true">

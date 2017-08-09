@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames, removeFalsy } from '../../utils/'
@@ -24,7 +24,7 @@ class NavbarWrapper extends Component {
     const {
       handleToggle,
       state: { isOpen },
-      props: { children, className, sticky, ...rest }
+      props: { node, children, className, sticky, ...rest }
     } = this
     const enhancedChildren = React.Children.map(removeFalsy(children), (child) => {
       if (child.type === Overlay || child.type === Inner) {
@@ -34,18 +34,29 @@ class NavbarWrapper extends Component {
       }
       return child
     })
-    return (
-      <header className={classNames('c-navbar', { 'is-open': isOpen })}>
-        <div className={classNames('c-navbar__inner', className, { 'is-sticky': sticky })} {...rest}>
-          {enhancedChildren}
-        </div>
-      </header>
+    return E(
+      node || 'header',
+      {
+        className: classNames('c-navbar', { 'is-open': isOpen }),
+        ...rest
+      },
+      E(
+        'div',
+        {
+          className: classNames(
+            'c-navbar__inner', className,
+            { 'is-sticky': sticky }
+          )
+        },
+        enhancedChildren
+      )
     )
   }
 }
 
 NavbarWrapper.propTypes = {
   children: T.node.isRequired,
+  node: T.string,
   sticky: T.bool,
   className: T.string
 }

@@ -19,6 +19,16 @@ describe('<Navbar.Dropdown.Content />', () => {
     expect($.hasClass('c-navbar__dropdown test')).toBe(true)
   })
 
+  it('renders a defined node type', () => {
+    const $ = shallow(<Navbar.Dropdown.Content node="article">_</Navbar.Dropdown.Content>)
+    expect($.type()).toBe('article')
+  })
+
+  it('renders a ul by default', () => {
+    const $ = shallow(<Navbar.Dropdown.Content>-</Navbar.Dropdown.Content>)
+    expect($.type()).toBe('ul')
+  })
+
   it('renders with attributes', () => {
     const $ = shallow(
       <Navbar.Dropdown.Content style={{ position: 'relative' }} ariaHidden="true">

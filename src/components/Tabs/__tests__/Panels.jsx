@@ -22,6 +22,16 @@ describe('<Tabs.Panels />', () => {
     expect($.hasClass('c-tabs__panels test')).toBe(true)
   })
 
+  it('renders a defined node type', () => {
+    const $ = shallow(<Tabs.Panels node="article">_</Tabs.Panels>)
+    expect($.type()).toBe('article')
+  })
+
+  it('renders a div by default', () => {
+    const $ = shallow(<Tabs.Panels>-</Tabs.Panels>)
+    expect($.type()).toBe('div')
+  })
+
   it('renders with attributes', () => {
     const $ = shallow(
       <Tabs.Panels style={{ position: 'relative' }} ariaHidden="true">

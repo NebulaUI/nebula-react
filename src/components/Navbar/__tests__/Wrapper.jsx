@@ -24,16 +24,26 @@ describe('<Navbar.Wrapper />', () => {
     expect($.children().hasClass('is-sticky')).toBe(true)
   })
 
+  it('renders a defined node type', () => {
+    const $ = shallow(<Navbar.Wrapper node="article">_</Navbar.Wrapper>)
+    expect($.type()).toBe('article')
+  })
+
+  it('renders a header by default', () => {
+    const $ = shallow(<Navbar.Wrapper>-</Navbar.Wrapper>)
+    expect($.type()).toBe('header')
+  })
+
   it('renders with attributes', () => {
     const $ = shallow(
       <Navbar.Wrapper style={{ position: 'relative' }} ariaHidden="true">
         _
       </Navbar.Wrapper>
     )
-    expect($.children().prop('style')).toEqual({
+    expect($.prop('style')).toEqual({
       position: 'relative'
     })
-    expect($.children().prop('ariaHidden')).toBe('true')
+    expect($.prop('ariaHidden')).toBe('true')
   })
 
   it('renders closed on the initial render', () => {

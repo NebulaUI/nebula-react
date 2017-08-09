@@ -30,6 +30,16 @@ describe('<Navbar.Inner />', () => {
     expect($.prop('ariaHidden')).toBe('true')
   })
 
+  it('renders a defined node type', () => {
+    const $ = shallow(<Navbar.Inner node="article">_</Navbar.Inner>)
+    expect($.type()).toBe('article')
+  })
+
+  it('renders a nav by default', () => {
+    const $ = shallow(<Navbar.Inner>-</Navbar.Inner>)
+    expect($.type()).toBe('nav')
+  })
+
   it('passes handleToggle to appropriate children', () => {
     const handleToggle = jest.fn()
     const $ = shallow(

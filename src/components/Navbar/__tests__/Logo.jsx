@@ -18,6 +18,16 @@ describe('<Navbar.Logo />', () => {
     expect($.hasClass('c-navbar__logo test')).toBe(true)
   })
 
+  it('renders a defined node type', () => {
+    const $ = shallow(<Navbar.Logo to="/" node="article">_</Navbar.Logo>)
+    expect($.type()).toBe('article')
+  })
+
+  it('renders an a by default', () => {
+    const $ = shallow(<Navbar.Logo to="/">-</Navbar.Logo>)
+    expect($.type()).toBe('a')
+  })
+
   it('renders with attributes', () => {
     const $ = shallow(
       <Navbar.Logo to="/" style={{ position: 'relative' }} ariaHidden="true">
