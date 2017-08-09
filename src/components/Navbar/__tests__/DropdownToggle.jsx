@@ -23,6 +23,16 @@ describe('<Navbar.Dropdown.Toggle />', () => {
     expect($.hasClass('c-navbar__dropdown-toggle test')).toBe(true)
   })
 
+  it('renders a defined node type', () => {
+    const $ = shallow(<Navbar.Dropdown.Toggle node="article">_</Navbar.Dropdown.Toggle>)
+    expect($.type()).toBe('article')
+  })
+
+  it('renders a button by default', () => {
+    const $ = shallow(<Navbar.Dropdown.Toggle>-</Navbar.Dropdown.Toggle>)
+    expect($.type()).toBe('button')
+  })
+
   it('renders with attributes', () => {
     const $ = shallow(
       <Navbar.Dropdown.Toggle style={{ position: 'relative' }} ariaHidden="true">

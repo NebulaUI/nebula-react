@@ -18,6 +18,16 @@ describe('<Tabs.Tab />', () => {
     expect($.hasClass('c-tabs__tab test')).toBe(true)
   })
 
+  it('renders a defined node type', () => {
+    const $ = shallow(<Tabs.Tab node="article">_</Tabs.Tab>)
+    expect($.type()).toBe('article')
+  })
+
+  it('renders a button by default', () => {
+    const $ = shallow(<Tabs.Tab>-</Tabs.Tab>)
+    expect($.type()).toBe('button')
+  })
+
   it('renders with attributes', () => {
     const $ = shallow(
       <Tabs.Tab style={{ position: 'relative' }} ariaHidden="true">

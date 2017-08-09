@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component, createElement as E } from 'react'
 import T from 'prop-types'
 import { classNames, addEListener, removeEListener } from '../../utils'
 
@@ -33,22 +33,26 @@ class NavbarDropdownToggle extends Component {
     })
 
   render() {
-    const { children, className, ...rest } = this.props
-    return (
-      <button
-        onClick={this.handleClick}
-        className={classNames('c-navbar__dropdown-toggle', className, { 'is-open': this.state.isOpen })}
-        ref={(node) => { this.button = node }}
-        {...rest}
-      >
-        {children}
-      </button>
+    const { node, children, className, ...rest } = this.props
+    return E(
+      node || 'button',
+      {
+        onClick: this.handleClick,
+        ref: (n) => { this.button = n },
+        className: classNames(
+          'c-navbar__dropdown-toggle', className,
+          { 'is-open': this.state.isOpen }
+        ),
+        ...rest
+      },
+      children
     )
   }
 }
 
 NavbarDropdownToggle.propTypes = {
   className: T.string,
+  node: T.string,
   children: T.node.isRequired
 }
 

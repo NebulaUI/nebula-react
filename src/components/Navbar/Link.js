@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component, createElement as E } from 'react'
 import T from 'prop-types'
 import { classNames } from '../../utils/'
 
@@ -8,21 +8,27 @@ class NavbarLink extends Component {
   }
 
   render() {
-    const { to, className, callback, children, ...rest } = this.props
+    const { to, node, className, callback, children, ...rest } = this.props
     const onClickProps = callback
       ? {
         onClick: this.handleClick
       } : {}
-    return (
-      <a href={to} className={classNames('c-navbar__link', className)} {...onClickProps} {...rest}>
-        {children}
-      </a>
+    return E(
+      node || 'a',
+      {
+        href: to,
+        className: classNames('c-navbar__link', className),
+        ...onClickProps,
+        ...rest
+      },
+      children
     )
   }
 }
 
 NavbarLink.propTypes = {
   to: T.string.isRequired,
+  node: T.string,
   className: T.string,
   callback: T.func,
   children: T.node.isRequired

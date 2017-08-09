@@ -18,6 +18,16 @@ describe('<Navbar.Toggle.Bars />', () => {
     expect($.hasClass('c-navbar__toggle-bars test')).toBe(true)
   })
 
+  it('renders a defined node type', () => {
+    const $ = shallow(<Navbar.Toggle.Bars node="article">_</Navbar.Toggle.Bars>)
+    expect($.type()).toBe('article')
+  })
+
+  it('renders a span by default', () => {
+    const $ = shallow(<Navbar.Toggle.Bars>-</Navbar.Toggle.Bars>)
+    expect($.type()).toBe('span')
+  })
+
   it('renders with attributes', () => {
     const $ = shallow(
       <Navbar.Toggle.Bars style={{ position: 'relative' }} ariaHidden="true">

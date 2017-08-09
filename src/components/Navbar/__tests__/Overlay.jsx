@@ -18,6 +18,16 @@ describe('<Navbar.Overlay />', () => {
     expect($.hasClass('c-navbar__overlay test')).toBe(true)
   })
 
+  it('renders a defined node type', () => {
+    const $ = shallow(<Navbar.Overlay node="article" />)
+    expect($.type()).toBe('article')
+  })
+
+  it('renders a button by default', () => {
+    const $ = shallow(<Navbar.Overlay />)
+    expect($.type()).toBe('button')
+  })
+
   it('renders with attributes', () => {
     const $ = shallow(
       <Navbar.Overlay style={{ position: 'relative' }} ariaHidden="true">

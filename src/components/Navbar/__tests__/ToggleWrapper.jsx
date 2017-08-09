@@ -18,6 +18,16 @@ describe('<Navbar.Toggle.Wrapper />', () => {
     expect($.hasClass('c-navbar__toggle test')).toBe(true)
   })
 
+  it('renders a defined node type', () => {
+    const $ = shallow(<Navbar.Toggle.Wrapper node="article">_</Navbar.Toggle.Wrapper>)
+    expect($.type()).toBe('article')
+  })
+
+  it('renders a button by default', () => {
+    const $ = shallow(<Navbar.Toggle.Wrapper>-</Navbar.Toggle.Wrapper>)
+    expect($.type()).toBe('button')
+  })
+
   it('renders with attributes', () => {
     const $ = shallow(
       <Navbar.Toggle.Wrapper style={{ position: 'relative' }} ariaHidden="true">

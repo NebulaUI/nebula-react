@@ -10,6 +10,12 @@ describe('<Tabs.TabList />', () => {
     expect($.find('.c-tabs__list')).toHaveLength(1)
   })
 
+  it('renders with appropriate classNames', () => {
+    const $ = shallow(<Tabs.TabList className="test">Test</Tabs.TabList>)
+    expect($.hasClass('c-tabs__list-wrapper test')).toBe(true)
+    expect($.children().hasClass('c-tabs__list')).toBe(true)
+  })
+
   it('renders with attributes', () => {
     const $ = shallow(
       <Tabs.TabList style={{ position: 'relative' }} ariaHidden="true">
@@ -20,6 +26,16 @@ describe('<Tabs.TabList />', () => {
       position: 'relative'
     })
     expect($.prop('ariaHidden')).toBe('true')
+  })
+
+  it('renders a defined node type', () => {
+    const $ = shallow(<Tabs.TabList node="article">_</Tabs.TabList>)
+    expect($.type()).toBe('article')
+  })
+
+  it('renders a div by default', () => {
+    const $ = shallow(<Tabs.TabList>-</Tabs.TabList>)
+    expect($.type()).toBe('div')
   })
 
   it('renders tabs passing the index and callback', () => {

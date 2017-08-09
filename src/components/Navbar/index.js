@@ -4,23 +4,21 @@ import Dropdowntoggle from './DropdownToggle'
 import DropdownContent from './DropdownContent'
 import DropdownWrapper from './DropdownWrapper'
 import Logo from './Logo'
-import Nav from './Nav'
+import Content from './Content'
 import Overlay from './Overlay'
 import ToggleWrapper from './ToggleWrapper'
 import Bars from './Bars'
-import Wrap from './Wrap'
-import Wrapper from './Wrapper'
 import Inner from './Inner'
+import Wrapper from './Wrapper'
 
 const Navbar = {
   Item,
   Link,
   Logo,
-  Nav,
+  Content,
   Overlay,
-  Wrap,
-  Wrapper,
   Inner,
+  Wrapper,
   Toggle: {
     Wrapper: ToggleWrapper,
     Bars
