@@ -13,9 +13,20 @@ describe('<Navbar.Item />', () => {
     expect($.contains('Item text')).toBe(true)
   })
 
+  it('renders a defined node type', () => {
+    const $ = shallow(<Navbar.Item node="article">_</Navbar.Item>)
+    expect($.type()).toBe('article')
+  })
+
+  it('renders a li by default', () => {
+    const $ = shallow(<Navbar.Item>-</Navbar.Item>)
+    expect($.type()).toBe('li')
+  })
+
   it('renders with appropriate classNames', () => {
     const $ = shallow(<Navbar.Item className="test">_</Navbar.Item>)
     expect($.hasClass('c-navbar__item test')).toBe(true)
+    expect($.hasClass('c-navbar__item--reset-line-height')).toBe(false)
   })
 
   it('renders with attributes', () => {
@@ -28,5 +39,10 @@ describe('<Navbar.Item />', () => {
       position: 'relative'
     })
     expect($.prop('ariaHidden')).toBe('true')
+  })
+
+  it('renders with line-height reset', () => {
+    const $ = shallow(<Navbar.Item resetLineHeight>-</Navbar.Item>)
+    expect($.hasClass('c-navbar__item--reset-line-height')).toBe(true)
   })
 })
