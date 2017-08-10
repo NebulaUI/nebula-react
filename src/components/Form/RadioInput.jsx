@@ -5,8 +5,8 @@ import { classNames } from '../../utils/'
 const RadioInput = ({ className, id, name, ...rest }) => (
   <input
     className={classNames('c-form-input__input', className)}
-    id={id}
-    name={name}
+    id="radio-1"
+    name="radio-group"
     {...rest}
   />
 )

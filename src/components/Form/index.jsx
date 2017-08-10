@@ -14,7 +14,6 @@ const Form = {
   RadioWrapper,
   RadioLabel,
   RadioInput
-
 }
 
 export { Form }

@@ -7,7 +7,8 @@ import {
   BareList,
   InlineList,
   MatrixList,
-  UniformedList
+  UniformedList,
+  Form,
 } from 'nebula-react'
 
 const App = () => (
@@ -50,6 +51,7 @@ const App = () => (
             </Tabs.Panel>
           </Tabs.Panels>
         </Tabs.Wrapper>
+        <Form.Radio id="radio-1" name="radio-group">Radio 1</Form.Radio>  // <= TODO checked && selectedOption
       </SiteWrap>
     </Section>
   </div>
