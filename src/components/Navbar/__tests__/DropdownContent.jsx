@@ -17,6 +17,12 @@ describe('<Navbar.Dropdown.Content />', () => {
   it('renders with appropriate classNames', () => {
     const $ = shallow(<Navbar.Dropdown.Content className="test">_</Navbar.Dropdown.Content>)
     expect($.hasClass('c-navbar__dropdown test')).toBe(true)
+    expect($.hasClass('c-navbar__dropdown--south-west')).toBe(false)
+  })
+
+  it('renders to the right hand side', () => {
+    const $ = shallow(<Navbar.Dropdown.Content southWest>-</Navbar.Dropdown.Content>)
+    expect($.hasClass('c-navbar__dropdown--south-west')).toBe(true)
   })
 
   it('renders a defined node type', () => {
