@@ -22,10 +22,10 @@ describe('<Form.RadioInput id="radio-1" name="radio-group" />', () => {
     expect($.prop('checked')).toBe(true)
   })
 
-  // it('renders in a disselected state', () => {
-  //   const $ = shallow(<Form.RadioInput id="radio-1" name="radio-group" />)
-  //   expect($.prop('checked')).toBe(false)
-  // })
+  it('renders in a disselected state', () => {
+    const $ = shallow(<Form.RadioInput id="radio-1" name="radio-group" />)
+    expect($.prop('checked')).toBe(undefined)
+  })
 
   it('renders a `checked` and a `disabled` attr and is non selectable', () => {
     const $ = shallow(<Form.RadioInput id="radio-1" name="radio-group" checked disabled />)
