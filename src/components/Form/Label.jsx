@@ -3,7 +3,7 @@ import T from 'prop-types'
 import classNames from '../../utils/classNames'
 
 const Label = ({ className, children, htmlFor, ...rest }) => (
-  <label id="c-label" htmlFor={htmlFor} className={classNames('c-label', className)} {...rest}>
+  <label htmlFor={htmlFor} className={classNames('c-label', className)} {...rest}>
     {children}
   </label>
 )

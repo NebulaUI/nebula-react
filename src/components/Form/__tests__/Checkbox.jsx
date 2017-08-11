@@ -3,39 +3,35 @@ import { shallow } from 'enzyme'
 
 import { Form } from '../'
 
-describe('<Form.CheckboxWrapper id="checkbox-1" />', () => {
-  it('renders the appropriate classNames', () => {
-    const $ = shallow(<Form.CheckboxWrapper className="test" />)
-    expect($.hasClass('c-form-input test')).toBe(true)
+describe('<Form.Checkbox />', () => {
+  it('renders <Form.CheckboxInput /> && <Form.CheckboxLabel /> in the correct order', () => {
+    const $ = shallow(<Form.Checkbox id="test-checkbox-1">_</Form.Checkbox>)
+    expect($.childAt(0).type()).toBe(Form.CheckboxInput)
+    expect($.childAt(1).type()).toBe(Form.CheckboxLabel)
   })
 
-  it('renders children', () => {
+  it('renders <Form.CheckboxInput /> with an id, checked, disabled and name prop', () => {
+    const $ = shallow(<Form.Checkbox id="test-checkbox-1" checked disabled>_</Form.Checkbox>)
+    expect($.find(Form.CheckboxInput).prop('id')).toBe('test-checkbox-1')
+    expect($.find(Form.CheckboxInput).prop('checked')).toBe(true)
+    expect($.find(Form.CheckboxInput).prop('disabled')).toBe(true)
+
+    const $$ = shallow(<Form.Checkbox id="test-checkbox-1" name="test-checkbox-group">_</Form.Checkbox>)
+    expect($$.find(Form.CheckboxInput).prop('checked')).toBe(undefined)
+    expect($$.find(Form.CheckboxInput).prop('disabled')).toBe(undefined)
+  })
+
+  it('renders <Form.CheckboxLabel /> with an htmlFor prop aliased from "id"', () => {
+    const $ = shallow(<Form.Checkbox id="test-checkbox-1">_</Form.Checkbox>)
+    expect($.find(Form.CheckboxLabel).prop('htmlFor')).toBe('test-checkbox-1')
+  })
+
+  it('renders children inside <Form.CheckboxLabel />', () => {
     const $ = shallow(
-      <Form.CheckboxWrapper>
-        Test container children
-      </Form.CheckboxWrapper>)
-    expect($.contains('Test container children')).toBe(true)
-  })
-
-  it('renders a defined node type', () => {
-    const $ = shallow(<Form.CheckboxWrapper node="article" />)
-    expect($.type()).toBe('article')
-  })
-
-  it('renders a div by default', () => {
-    const $ = shallow(<Form.CheckboxWrapper />)
-    expect($.type()).toBe('div')
-  })
-
-  it('renders with attributes', () => {
-    const $ = shallow(
-      <Form.CheckboxWrapper style={{ position: 'relative' }} ariaHidden="true">
-        _
-      </Form.CheckboxWrapper>
+      <Form.Checkbox id="test-checkbox-1" name="test-checkbox-group">
+        hello test
+      </Form.Checkbox>
     )
-    expect($.prop('style')).toEqual({
-      position: 'relative'
-    })
-    expect($.prop('ariaHidden')).toBe('true')
+    expect($.find(Form.CheckboxLabel).contains('hello test')).toBe(true)
   })
 })

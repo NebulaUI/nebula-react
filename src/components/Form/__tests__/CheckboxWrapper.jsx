@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 
 import { Form } from '../'
 
-describe('<Form.CheckboxWrapper id="checkbox-1" />', () => {
+describe('<Form.CheckboxWrapper />', () => {
   it('renders the appropriate classNames', () => {
     const $ = shallow(<Form.CheckboxWrapper className="test" />)
     expect($.hasClass('c-form-input test')).toBe(true)
