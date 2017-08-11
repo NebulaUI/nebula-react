@@ -35,7 +35,7 @@ describe('<Form.Checkbox />', () => {
     expect($.find(Form.CheckboxLabel).contains('hello test')).toBe(true)
   })
 
-  it('takes a handleChange prop passing it to <Form.CheckboxInput />', () => {
+  it('takes a onChange prop passing it to <Form.CheckboxInput />', () => {
     const testFn = jest.fn()
     const $ = shallow(<Form.Checkbox id="test-checkbox-1" onChange={testFn} >_</Form.Checkbox>)
     expect($.find(Form.CheckboxInput).prop('onChange')).toBe(testFn)
