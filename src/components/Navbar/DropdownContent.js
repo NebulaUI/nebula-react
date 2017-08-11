@@ -2,11 +2,15 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 import { classNames } from '../../utils/'
 
-const NavbarDropdownContent = ({ node, children, className, ...rest }) =>
+const NavbarDropdownContent = ({ node, southWest, children, className, ...rest }) =>
   E(
     node || 'ul',
     {
-      className: classNames('c-navbar__dropdown', className),
+      className: classNames(
+        'c-navbar__dropdown',
+        { 'c-navbar__dropdown--south-west': southWest },
+        className
+      ),
       ...rest
     },
     children
@@ -14,6 +18,7 @@ const NavbarDropdownContent = ({ node, children, className, ...rest }) =>
 
 NavbarDropdownContent.propTypes = {
   className: T.string,
+  southWest: T.bool,
   node: T.string,
   children: T.node.isRequired
 }
