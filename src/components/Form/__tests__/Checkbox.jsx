@@ -34,4 +34,22 @@ describe('<Form.Checkbox />', () => {
     )
     expect($.find(Form.CheckboxLabel).contains('hello test')).toBe(true)
   })
+
+  it('takes a handleChange prop passing it to <Form.CheckboxInput />', () => {
+    const testFn = jest.fn()
+    const $ = shallow(<Form.Checkbox id="test-checkbox-1" onChange={testFn} >_</Form.Checkbox>)
+    expect($.find(Form.CheckboxInput).prop('onChange')).toBe(testFn)
+  })
+
+  it('renders with attributes on <Form.CheckboxWrapper />', () => {
+    const $ = shallow(
+      <Form.Checkbox id="test" style={{ position: 'relative' }} ariaHidden="true">
+        _
+      </Form.Checkbox>
+    )
+    expect($.prop('style')).toEqual({
+      position: 'relative'
+    })
+    expect($.prop('ariaHidden')).toBe('true')
+  })
 })
