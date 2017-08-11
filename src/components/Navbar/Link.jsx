@@ -10,6 +10,7 @@ class NavbarLink extends Component {
   render() {
     const {
       to,
+      component,
       node,
       className,
       activeClassName = 'is-active',
@@ -23,7 +24,7 @@ class NavbarLink extends Component {
         onClick: this.handleClick
       } : {}
 
-    const ComponentOverride = this.props.component
+    const ComponentOverride = component
 
     if (ComponentOverride) {
       return (
