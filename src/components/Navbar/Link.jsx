@@ -1,4 +1,4 @@
-import { Component, createElement as E } from 'react'
+import React, { Component, createElement as E } from 'react'
 import T from 'prop-types'
 import { classNames } from '../../utils/'
 
@@ -8,11 +8,35 @@ class NavbarLink extends Component {
   }
 
   render() {
-    const { to, node, className, callback, children, ...rest } = this.props
+    const {
+      to,
+      node,
+      className,
+      activeClassName = 'is-active',
+      callback,
+      children,
+      ...rest
+    } = this.props
+
     const onClickProps = callback
       ? {
         onClick: this.handleClick
       } : {}
+
+    const ComponentOverride = this.props.component
+
+    if (ComponentOverride) {
+      return (
+        <ComponentOverride
+          to={to}
+          className={classNames('c-navbar__link', className)}
+          activeClassName={activeClassName}
+          {...rest}
+        >
+          {children}
+        </ComponentOverride>
+      )
+    }
     return E(
       node || 'a',
       {
@@ -27,6 +51,11 @@ class NavbarLink extends Component {
 }
 
 NavbarLink.propTypes = {
+  component: T.oneOfType([
+    T.func,
+    T.node
+  ]),
+  activeClassName: T.string,
   to: T.string.isRequired,
   node: T.string,
   className: T.string,

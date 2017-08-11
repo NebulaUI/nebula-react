@@ -64,4 +64,56 @@ describe('<Navbar.Link />', () => {
 
     expect(mockCallback).not.toHaveBeenCalled()
   })
+
+  describe('HOC', () => {
+    // eslint-disable-next-line react/prop-types
+    const RRNavLink = props => <div>{props.children}</div>
+
+    it('renders the component with children', () => {
+      const $ = shallow(<Navbar.Link component={RRNavLink} to="/test">Nebula</Navbar.Link>)
+      expect($.find(RRNavLink)).toHaveLength(1)
+      expect($.find(RRNavLink).contains('Nebula')).toBe(true)
+    })
+
+    it('passes through "to", "className" and "activeClassName" props', () => {
+      const $ = shallow(
+        <Navbar.Link
+          className="test"
+          activeClassName="is-test"
+          component={RRNavLink}
+          to="/test"
+        >Nebula</Navbar.Link>
+      )
+      expect($.find(RRNavLink).hasClass('c-navbar__link test')).toBe(true)
+      expect($.find(RRNavLink).prop('activeClassName')).toBe('is-test')
+      expect($.find(RRNavLink).prop('to')).toBe('/test')
+    })
+
+    it('gets an activeClassName default', () => {
+      const $ = shallow(
+        <Navbar.Link
+          component={RRNavLink}
+          to="/"
+        >Nebula</Navbar.Link>
+      )
+      expect($.find(RRNavLink).prop('activeClassName')).toBe('is-active')
+    })
+
+    it('renders with attributes', () => {
+      const $ = shallow(
+        <Navbar.Link
+          component={RRNavLink}
+          to="/"
+          style={{ position: 'relative' }}
+          ariaHidden="true"
+        >
+          _
+        </Navbar.Link>
+      )
+      expect($.find(RRNavLink).prop('style')).toEqual({
+        position: 'relative'
+      })
+      expect($.find(RRNavLink).prop('ariaHidden')).toBe('true')
+    })
+  })
 })
