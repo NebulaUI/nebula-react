@@ -57,6 +57,9 @@ const App = () => (
         <Form.Checkbox id="checkbox-1">Option 1</Form.Checkbox>
         <Form.Checkbox id="checkbox-2" checked disabled>Option 2</Form.Checkbox>
         <Form.Checkbox id="checkbox-3" disabled>Option 3</Form.Checkbox>
+        <Form.Select>
+          <Form.Options />
+        </Form.Select>
       </SiteWrap>
     </Section>
   </div>
