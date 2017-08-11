@@ -14,10 +14,9 @@ describe('<Form.Label />', () => {
     expect($.prop('htmlFor')).toBe('test')
   })
 
-  it('takes attributes', () => {
-    const $ = shallow(<Form.TextInput placeholder="test" id="foo" htmlFor="t" />)
-    expect($.prop('placeholder')).toBe('test')
-    expect($.prop('id')).toBe('foo')
+  it('renders with a htmlFor prop', () => {
+    const $ = shallow(<Form.Label htmlFor="t" />)
+    expect($.prop('htmlFor')).toBe('t')
   })
 
   it('renders children', () => {

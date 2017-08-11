@@ -11,7 +11,6 @@ import {
   Form,
 } from 'nebula-react'
 
-
 const App = () => (
   <div>
     <Section size="md">
@@ -52,8 +51,12 @@ const App = () => (
             </Tabs.Panel>
           </Tabs.Panels>
         </Tabs.Wrapper>
-        <Form.Radio id="radio1" value="one" name="radio-group">Radio 1</Form.Radio>
-        <Form.Radio id="radio2" value="two" name="radio-group">Radio 2</Form.Radio>
+        <Form.Radio id="radio-1" value="one" name="radio-group" checked>Option 1</Form.Radio>
+        <Form.Radio id="radio-2" value="two" name="radio-group">Option 2</Form.Radio>
+        <Form.Radio id="radio-3" value="two" name="radio-group" disabled>Option 3</Form.Radio>
+        <Form.Checkbox id="checkbox-1">Option 1</Form.Checkbox>
+        <Form.Checkbox id="checkbox-2" checked disabled>Option 2</Form.Checkbox>
+        <Form.Checkbox id="checkbox-3" disabled>Option 3</Form.Checkbox>
       </SiteWrap>
     </Section>
   </div>
