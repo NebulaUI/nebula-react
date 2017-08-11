@@ -2,10 +2,9 @@ import React from 'react'
 import T from 'prop-types'
 import { classNames } from '../../utils/'
 
-const RadioLabel = ({ className, children, id, ...rest }) => (
+const RadioLabel = ({ className, children, htmlFor, ...rest }) => (
   <label
-    id="c-form-input__label"
-    htmlFor={id}
+    htmlFor={htmlFor}
     className={classNames('c-form-input__label c-form-input__label--radio', className)}
     {...rest}
   >
@@ -16,7 +15,7 @@ const RadioLabel = ({ className, children, id, ...rest }) => (
 RadioLabel.propTypes = {
   className: T.string,
   children: T.node,
-  id: T.string.isRequired
+  htmlFor: T.string.isRequired
 }
 
 export default RadioLabel

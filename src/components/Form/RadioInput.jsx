@@ -2,18 +2,22 @@ import React from 'react'
 import T from 'prop-types'
 import { classNames } from '../../utils/'
 
-const RadioInput = ({ className, id, name, ...rest }) => (
+const RadioInput = ({ className, checked, disabled, id, name, ...rest }) => (
   <input
+    type="radio"
     className={classNames('c-form-input__input', className)}
-    id="radio-1"
-    name="radio-group"
+    id={id}
+    checked={checked}
+    disabled={disabled}
+    name={name}
     {...rest}
   />
 )
 
 RadioInput.propTypes = {
   className: T.string,
-  children: T.node,
+  checked: T.bool,
+  disabled: T.bool,
   id: T.string.isRequired,
   name: T.string.isRequired
 }

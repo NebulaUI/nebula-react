@@ -1,50 +1,30 @@
-import React, { Component } from 'react'
+import React from 'react'
 import T from 'prop-types'
 
 import RadioWrapper from './RadioWrapper'
 import RadioLabel from './RadioLabel'
 import RadioInput from './RadioInput'
 
-class Radio extends Component {
-  constructor() {
-    super()
-    this.state = {
-      isChecked: false,  // <= TODO
-      selectedOption: {
-        option1: 'Option 1',
-        option2: 'Option 2',
-        option3: 'Option 3'
-      }
-    }
-  }
-
-  handleChange = () => {
-    this.setState = ({
-      isChecked: true,
-      selectedOption: this.state.selectedOption.option1
-    })
-  }
-
-  render() {
-    const { id, name, children } = this.props
-    return (
-      <RadioWrapper>
-        <RadioInput
-          id={id}
-          name={name}
-          onChange={this.handleChange}
-          checked={this.state.selectedOption === 'Option 1'}
-          value="option1"
-        />
-        <RadioLabel id={id}>
-          {children}
-        </RadioLabel>
-      </RadioWrapper>
-    )
-  }
-}
+const Radio = ({ id, checked, value, disabled, name, children }) => (
+  <RadioWrapper>
+    <RadioInput
+      id={id}
+      name={name}
+      checked={checked}
+      disabled={disabled}
+      value={value}
+    />
+    <RadioLabel htmlFor={id}>
+      {children}
+    </RadioLabel>
+  </RadioWrapper>
+)
 
 Radio.propTypes = {
+  checked: T.bool,
+  disabled: T.bool,
+  // eslint-disable-next-line react/forbid-prop-types
+  value: T.any,
   children: T.node.isRequired,
   id: T.string.isRequired,
   name: T.string.isRequired
