@@ -4,7 +4,6 @@ import { classNames } from '../../utils/'
 
 const CheckboxLabel = ({ className, children, htmlFor, ...rest }) => (
   <label
-    id="c-form-input__label"
     htmlFor={htmlFor}
     className={classNames('c-form-input__label c-form-input__label--checkbox', className)}
     {...rest}
