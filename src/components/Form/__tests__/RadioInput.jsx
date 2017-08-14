@@ -31,4 +31,13 @@ describe('<Form.RadioInput />', () => {
     const $ = shallow(<Form.RadioInput id="test-radio-1" name="test-radio-group" disabled />)
     expect($.prop('disabled')).toBe(true)
   })
+
+  it('takes a onChange prop passing it to <Form.CheckboxInput />', () => {
+    const testFn = jest.fn()
+    const $ = shallow(
+      <Form.CheckboxInput id="test-checkbox-1" onChange={testFn} >
+        _
+      </Form.CheckboxInput>)
+    expect($.prop('onChange')).toBe(testFn)
+  })
 })

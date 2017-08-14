@@ -35,4 +35,22 @@ describe('<Form.Radio />', () => {
     )
     expect($.find(Form.RadioLabel).contains('hello test')).toBe(true)
   })
+
+  it('takes a onChange prop passing it to <Form.RadioInput />', () => {
+    const testFn = jest.fn()
+    const $ = shallow(<Form.Radio name="test" id="test-checkbox-1" onChange={testFn} >_</Form.Radio>)
+    expect($.find(Form.RadioInput).prop('onChange')).toBe(testFn)
+  })
+
+  it('renders with attributes on <Form.RadioWrapper />', () => {
+    const $ = shallow(
+      <Form.Radio id="test" name="test" style={{ position: 'relative' }} ariaHidden="true">
+        _
+      </Form.Radio>
+    )
+    expect($.prop('style')).toEqual({
+      position: 'relative'
+    })
+    expect($.prop('ariaHidden')).toBe('true')
+  })
 })
