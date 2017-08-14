@@ -16,6 +16,7 @@
     "build": "npm run clean && yarn build:js && yarn build:css",
     "lint": "eslint . --ext .js,.jsx",
     "unit": "jest",
+    "unit:watch": "jest --watch",
     "unit:coverage": "jest --coverage",
     "unit:ci": "jest --maxWorkers=4 --coverage",
     "test": "yarn lint && yarn unit",

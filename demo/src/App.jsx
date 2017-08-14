@@ -51,12 +51,18 @@ const App = () => (
             </Tabs.Panel>
           </Tabs.Panels>
         </Tabs.Wrapper>
-        <Form.Radio id="radio-1" value="one" name="radio-group" checked>Option 1</Form.Radio>
+        <Form.Radio id="radio-1" value="one" name="radio-group" checked onChange={() => {}}>Option 1</Form.Radio>
         <Form.Radio id="radio-2" value="two" name="radio-group">Option 2</Form.Radio>
         <Form.Radio id="radio-3" value="two" name="radio-group" disabled>Option 3</Form.Radio>
         <Form.Checkbox id="checkbox-1">Option 1</Form.Checkbox>
         <Form.Checkbox id="checkbox-2" checked disabled>Option 2</Form.Checkbox>
         <Form.Checkbox id="checkbox-3" disabled>Option 3</Form.Checkbox>
+        <Form.Select value="default" name="select-name" onChange={() => {}}>
+          <option value="default">Select option</option>
+          <option value="1">Option 1</option>
+          <option value="2" disabled>Option 2</option>
+          <option value="3">Option 3</option>
+        </Form.Select>
       </SiteWrap>
     </Section>
   </div>
