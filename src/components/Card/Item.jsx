@@ -15,5 +15,4 @@ Item.propTypes = {
   className: T.string,
   children: T.node
 }
-
 export default Item
