@@ -10,7 +10,7 @@ import RadioWrapper from './RadioWrapper'
 import RadioLabel from './RadioLabel'
 import RadioInput from './RadioInput'
 import Select from './Select'
-import Options from './Options'
+import Option from './Option'
 
 const Form = {
   Label,
@@ -25,7 +25,7 @@ const Form = {
   RadioLabel,
   RadioInput,
   Select,
-  Options
+  Option
 }
 
 export { Form }

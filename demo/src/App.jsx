@@ -57,8 +57,11 @@ const App = () => (
         <Form.Checkbox id="checkbox-1">Option 1</Form.Checkbox>
         <Form.Checkbox id="checkbox-2" checked disabled>Option 2</Form.Checkbox>
         <Form.Checkbox id="checkbox-3" disabled>Option 3</Form.Checkbox>
-        <Form.Select>
-          <Form.Options />
+        <Form.Select name="select-name">
+          <Form.Option defaultValue>Select option</Form.Option>
+          <Form.Option selected value="1">Option 1</Form.Option>
+          <Form.Option disabled value="2">Option 2</Form.Option>
+          <Form.Option multiple value="3">Option 3</Form.Option>
         </Form.Select>
       </SiteWrap>
     </Section>
