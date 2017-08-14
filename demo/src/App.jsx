@@ -1,6 +1,7 @@
 import React from 'react'
 
 import {
+  Card,
   SiteWrap,
   Section,
   Tabs,
@@ -63,6 +64,7 @@ const App = () => (
           <option value="2" disabled>Option 2</option>
           <option value="3">Option 3</option>
         </Form.Select>
+       <Card.Item></Card.Item>
       </SiteWrap>
     </Section>
   </div>
