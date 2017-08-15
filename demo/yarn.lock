@@ -3349,10 +3349,11 @@ nebula-css@^2.5.0, nebula-css@^2.6.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/nebula-css/-/nebula-css-2.6.0.tgz#8dbde3c8c8a1a038bd134ffa6beba03bec814e19"
 
-nebula-react@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/nebula-react/-/nebula-react-0.1.0.tgz#f2c75015d7dfa991918cf8ca1b720c1a44449bad"
+nebula-react@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/nebula-react/-/nebula-react-0.1.1.tgz#03fbc6c3164a6068b81567ab7deb37a1b85b91f3"
   dependencies:
+    babel-plugin-transform-object-rest-spread "^6.23.0"
     nebula-components "^0.1.0"
     nebula-css "^2.6.0"
 

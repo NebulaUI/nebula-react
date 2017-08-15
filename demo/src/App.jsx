@@ -1,6 +1,7 @@
 import React from 'react'
 
 import {
+  Card,
   SiteWrap,
   Section,
   Tabs,
@@ -9,9 +10,10 @@ import {
   MatrixList,
   UniformedList,
   Form,
+  StatusCard
 } from 'nebula-react'
 
-const App = () => (
+const App = ({ status }) => (
   <div>
     <Section size="md">
       <SiteWrap padding>
@@ -63,6 +65,19 @@ const App = () => (
           <option value="2" disabled>Option 2</option>
           <option value="3">Option 3</option>
         </Form.Select>
+        <Card>
+          <h3>Card Title</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+           Ab adipisci architecto assumenda et expedita fugit id illum.</p>
+        </Card>
+        <Card status="warning">
+          <h3>Card Title</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Ab adipisci architecto assumenda et expedita fugit id illum.</p>
+        </Card>
+        <StatusCard status="error">
+          Error
+        </StatusCard>
       </SiteWrap>
     </Section>
   </div>
