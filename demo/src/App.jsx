@@ -10,6 +10,7 @@ import {
   MatrixList,
   UniformedList,
   Form,
+  StatusCard
 } from 'nebula-react'
 
 const App = ({ status }) => (
@@ -74,6 +75,9 @@ const App = ({ status }) => (
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
             Ab adipisci architecto assumenda et expedita fugit id illum.</p>
         </Card>
+        <StatusCard status="error">
+          Error
+        </StatusCard>
       </SiteWrap>
     </Section>
   </div>

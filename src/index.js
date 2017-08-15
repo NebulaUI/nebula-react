@@ -10,6 +10,7 @@ import { UniformedList } from './objects/UniformedList/'
 import { Card } from './components/Card/'
 import { Form } from './components/Form/'
 import { Navbar } from './components/Navbar/'
+import { StatusCard } from './components/StatusCard/'
 import { Tabs } from './components/Tabs/'
 
 export {
@@ -23,6 +24,7 @@ export {
   Navbar,
   Section,
   SiteWrap,
+  StatusCard,
   Tabs,
   UniformedList
 }
