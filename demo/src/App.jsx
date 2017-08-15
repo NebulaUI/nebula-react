@@ -9,11 +9,12 @@ import {
   InlineList,
   MatrixList,
   UniformedList,
+  Flyout,
   Form,
-  StatusCard
+  StatusCard,
 } from 'nebula-react'
 
-const App = ({ status }) => (
+const App = () => (
   <div>
     <Section size="md">
       <SiteWrap padding>
@@ -70,14 +71,15 @@ const App = ({ status }) => (
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
            Ab adipisci architecto assumenda et expedita fugit id illum.</p>
         </Card>
-        <Card status="warning">
-          <h3>Card Title</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Ab adipisci architecto assumenda et expedita fugit id illum.</p>
-        </Card>
         <StatusCard status="error">
           Error
         </StatusCard>
+        <Flyout>
+          {/*<Flyout direction="ne">*/}
+            {/*Test*/}
+          {/*</Flyout>*/}
+          {/*<Flyout.Toggle>dsdsd</Flyout.Toggle>*/}
+        </Flyout>
       </SiteWrap>
     </Section>
   </div>
