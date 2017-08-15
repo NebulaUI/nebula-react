@@ -12,7 +12,7 @@ import {
   Form,
 } from 'nebula-react'
 
-const App = () => (
+const App = ({ status }) => (
   <div>
     <Section size="md">
       <SiteWrap padding>
@@ -64,16 +64,16 @@ const App = () => (
           <option value="2" disabled>Option 2</option>
           <option value="3">Option 3</option>
         </Form.Select>
-        <Card.Item>
+        <Card>
           <h3>Card Title</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
            Ab adipisci architecto assumenda et expedita fugit id illum.</p>
-        </Card.Item>
-        <Card.Item className="c-status-card c-status-card--warning">
+        </Card>
+        <Card status="warning">
           <h3>Card Title</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
             Ab adipisci architecto assumenda et expedita fugit id illum.</p>
-        </Card.Item>
+        </Card>
       </SiteWrap>
     </Section>
   </div>
