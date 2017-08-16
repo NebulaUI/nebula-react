@@ -9,7 +9,7 @@ import {
   InlineList,
   MatrixList,
   UniformedList,
-  Flyouts,
+  Flyout,
   Form,
   StatusCard,
 } from 'nebula-react'
@@ -74,26 +74,39 @@ const App = () => (
         <StatusCard status="error">
           Error
         </StatusCard>
-        <Flyouts.Wrapper>
-          <Flyouts.Flyout direction="ne">
-            <Flyouts.Toggle handleClick={()=> {}} />
-          </Flyouts.Flyout>
-        </Flyouts.Wrapper>
-        <Flyouts.Wrapper>
-          <Flyouts.Flyout direction="se">
-            <Flyouts.Toggle handleClick={()=> {}} />
-          </Flyouts.Flyout>
-        </Flyouts.Wrapper>
-        <Flyouts.Wrapper>
-          <Flyouts.Flyout direction="sw">
-            <Flyouts.Toggle handleClick={()=> {}} />
-          </Flyouts.Flyout>
-        </Flyouts.Wrapper>
-        <Flyouts.Wrapper>
-          <Flyouts.Flyout direction="nw">
-            <Flyouts.Toggle handleClick={()=> {}} />
-          </Flyouts.Flyout>
-        </Flyouts.Wrapper>
+        <Flyout.Wrapper>
+          <Flyout.Toggle>
+            Click me
+          </Flyout.Toggle>
+          <Flyout.Content direction="se">
+            <Card>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Ab adipisci architecto assumenda et expedita fugit id illum
+            </Card>
+          </Flyout.Content>
+        </Flyout.Wrapper>
+        <Flyout.Wrapper>
+          <Flyout.Toggle>
+            Click me
+          </Flyout.Toggle>
+          <Flyout.Content direction="ne">
+            <Card>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Ab adipisci architecto assumenda et expedita fugit id illum
+            </Card>
+          </Flyout.Content>
+        </Flyout.Wrapper>
+        <Flyout.Wrapper>
+          <Flyout.Toggle>
+            Click me
+          </Flyout.Toggle>
+          <Flyout.Content>
+            <Card>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Ab adipisci architecto assumenda et expedita fugit id illum
+            </Card>
+          </Flyout.Content>
+        </Flyout.Wrapper>
       </SiteWrap>
     </Section>
   </div>

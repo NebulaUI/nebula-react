@@ -8,7 +8,7 @@ import { SiteWrap } from './objects/SiteWrap/'
 import { UniformedList } from './objects/UniformedList/'
 
 import { Card } from './components/Card/'
-import { Flyouts } from './components/Flyouts/'
+import { Flyout } from './components/Flyout/'
 import { Form } from './components/Form/'
 import { Navbar } from './components/Navbar/'
 import { StatusCard } from './components/StatusCard/'
@@ -18,7 +18,7 @@ export {
   BareList,
   Card,
   Flag,
-  Flyouts,
+  Flyout,
   Form,
   Grid,
   InlineList,
