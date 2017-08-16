@@ -1,6 +1,7 @@
 import React from 'react'
 
 import {
+  Button,
   Card,
   SiteWrap,
   Section,
@@ -107,6 +108,12 @@ const App = () => (
             </Card>
           </Flyout.Content>
         </Flyout.Wrapper>
+        <Button type="submit" to="http://google.com">
+          Button test
+        </Button>
+        <a to="http://google.com">
+         Link test
+        </a>
       </SiteWrap>
     </Section>
   </div>
