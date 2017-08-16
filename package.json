@@ -31,7 +31,7 @@
   "dependencies": {
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "nebula-components": "^0.1.0",
-    "nebula-css": "^2.6.1"
+    "nebula-css": "^2.6.2"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",

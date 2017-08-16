@@ -8,12 +8,12 @@ class NavbarOverlay extends Component {
   }
 
   render() {
-    const { handleToggle, node, className, callback, children, ...rest } = this.props
+    const { close, node, className, callback, children, ...rest } = this.props
     const onClickProps = callback
       ? {
         onClick: this.handleClick
       } : {
-        onClick: handleToggle
+        onClick: close
       }
     return E(
       node || 'button',
@@ -28,7 +28,7 @@ class NavbarOverlay extends Component {
 }
 
 NavbarOverlay.propTypes = {
-  handleToggle: T.func,
+  close: T.func,
   node: T.string,
   callback: T.func,
   children: T.node,
