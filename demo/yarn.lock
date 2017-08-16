@@ -3345,17 +3345,17 @@ nebula-components@^0.1.0:
   dependencies:
     nebula-css "^2.5.0"
 
-nebula-css@^2.5.0, nebula-css@^2.6.0:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/nebula-css/-/nebula-css-2.6.0.tgz#8dbde3c8c8a1a038bd134ffa6beba03bec814e19"
+nebula-css@^2.5.0, nebula-css@^2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/nebula-css/-/nebula-css-2.6.1.tgz#6aca7dd3e895ed5edd4fa875f4eab635f25ca3e7"
 
-nebula-react@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/nebula-react/-/nebula-react-0.1.1.tgz#03fbc6c3164a6068b81567ab7deb37a1b85b91f3"
+nebula-react@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/nebula-react/-/nebula-react-0.1.2.tgz#471147e3778aa9d3e6a09e7b75fc74ceb1c60a61"
   dependencies:
     babel-plugin-transform-object-rest-spread "^6.23.0"
     nebula-components "^0.1.0"
-    nebula-css "^2.6.0"
+    nebula-css "^2.6.1"
 
 negotiator@0.6.1:
   version "0.6.1"

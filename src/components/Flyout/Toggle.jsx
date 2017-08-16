@@ -14,12 +14,6 @@ const Toggle = ({ className, handleToggle, children, ...rest }) => (
 )
 
 Toggle.propTypes = {
-  direction: T.shape({
-    ne: T.bool,
-    se: T.bool,
-    sw: T.bool,
-    nw: T.bool
-  }),
   className: T.string,
   handleToggle: T.func,
   children: T.node.isRequired
