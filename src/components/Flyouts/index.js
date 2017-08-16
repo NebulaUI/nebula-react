@@ -1,9 +1,11 @@
 import FlyoutWrapper from './Wrapper'
+import Flyout from './Flyout'
 import FlyoutToggle from './Toggle'
 
-const Flyout = {
+const Flyouts = {
+  Flyout,
   Wrapper: FlyoutWrapper,
   Toggle: FlyoutToggle
 }
 
-export { Flyout }
+export { Flyouts }

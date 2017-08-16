@@ -5,7 +5,7 @@ import { classNames } from '../../utils/'
 
 const initial = 'c-flyout-content'
 
-const Flyout = ({ node, className, direction, children, handleClick, ...rest }) =>
+const Flyout = ({ node, className, children, isOpen, direction, ...rest }) =>
   E(
     node || 'div',
     {
@@ -18,12 +18,14 @@ const Flyout = ({ node, className, direction, children, handleClick, ...rest }) 
 Flyout.propTypes = {
   node: T.string,
   className: T.string,
-  direction: T.oneOf([
-    'ne',
-    'se',
-    'sw',
-    'nw'
-  ]),
-  handleClick: T.func.isRequired,
+  isOpen: T.bool,
+  direction: T.shape({
+    ne: true,
+    se: false,
+    sw: false,
+    nw: false
+  }),
   children: T.node.isRequired
 }
+
+export default Flyout

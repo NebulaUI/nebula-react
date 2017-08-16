@@ -9,7 +9,7 @@ import {
   InlineList,
   MatrixList,
   UniformedList,
-  Flyout,
+  Flyouts,
   Form,
   StatusCard,
 } from 'nebula-react'
@@ -74,12 +74,26 @@ const App = () => (
         <StatusCard status="error">
           Error
         </StatusCard>
-        <Flyout>
-          {/*<Flyout direction="ne">*/}
-            {/*Test*/}
-          {/*</Flyout>*/}
-          {/*<Flyout.Toggle>dsdsd</Flyout.Toggle>*/}
-        </Flyout>
+        <Flyouts.Wrapper>
+          <Flyouts.Flyout direction="ne">
+            <Flyouts.Toggle handleClick={()=> {}} />
+          </Flyouts.Flyout>
+        </Flyouts.Wrapper>
+        <Flyouts.Wrapper>
+          <Flyouts.Flyout direction="se">
+            <Flyouts.Toggle handleClick={()=> {}} />
+          </Flyouts.Flyout>
+        </Flyouts.Wrapper>
+        <Flyouts.Wrapper>
+          <Flyouts.Flyout direction="sw">
+            <Flyouts.Toggle handleClick={()=> {}} />
+          </Flyouts.Flyout>
+        </Flyouts.Wrapper>
+        <Flyouts.Wrapper>
+          <Flyouts.Flyout direction="nw">
+            <Flyouts.Toggle handleClick={()=> {}} />
+          </Flyouts.Flyout>
+        </Flyouts.Wrapper>
       </SiteWrap>
     </Section>
   </div>
