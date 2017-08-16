@@ -64,4 +64,15 @@ describe('<Tabs.Wrapper />', () => {
     $.find(Tabs.TabList).prop('activateTab')(1)
     expect($.find(Tabs.TabList).prop('activeIndex')).toBe(1)
   })
+
+  it('allows for initialActiveIndex to be passed as a prop', () => {
+    const $ = shallow(
+      <Tabs.Wrapper initialActiveIndex={1}>
+        <Tabs.TabList />
+        <Tabs.Panels />
+      </Tabs.Wrapper>
+    )
+    expect($.find(Tabs.Panels).prop('activeIndex')).toBe(1)
+    expect($.find(Tabs.TabList).prop('activeIndex')).toBe(1)
+  })
 })
