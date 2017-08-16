@@ -2,7 +2,7 @@ import React, { createElement as E } from 'react'
 import T from 'prop-types'
 import { classNames, removeFalsy } from '../../utils'
 
-const TabList = ({ node, children, activateTab, activeIndex, className, ...rest }) => {
+const TabsList = ({ node, children, activateTab, activeIndex, className, ...rest }) => {
   const enhancedChildren = React.Children.map(removeFalsy(children), (child, index) =>
     React.cloneElement(child, {
       index,
@@ -23,7 +23,7 @@ const TabList = ({ node, children, activateTab, activeIndex, className, ...rest 
   )
 }
 
-TabList.propTypes = {
+TabsList.propTypes = {
   node: T.string,
   className: T.string,
   children: T.node,
@@ -31,4 +31,4 @@ TabList.propTypes = {
   activeIndex: T.number
 }
 
-export default TabList
+export default TabsList
