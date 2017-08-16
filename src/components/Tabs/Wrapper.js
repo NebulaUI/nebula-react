@@ -2,8 +2,8 @@ import React, { Component, createElement as E } from 'react'
 import T from 'prop-types'
 import { classNames, removeFalsy } from '../../utils'
 
-import List from './TabList'
-import Panels from './Panels'
+import TabList from './TabList'
+import PanelList from './PanelList'
 
 class TabsWrapper extends Component {
   constructor(props) {
@@ -31,12 +31,12 @@ class TabsWrapper extends Component {
     delete enchancedChildProps.initialActiveIndex
 
     const enhancedChildren = React.Children.map(removeFalsy(children), (child) => {
-      if (child.type === List) {
+      if (child.type === TabList) {
         return React.cloneElement(child, {
           activeIndex,
           activateTab
         })
-      } else if (child.type === Panels) {
+      } else if (child.type === PanelList) {
         return React.cloneElement(child, {
           activeIndex
         })

@@ -40,17 +40,17 @@ describe('<Tabs.Wrapper />', () => {
     expect($.contains('Test')).toBe(true)
   })
 
-  it('renders <Tabs.Panels /> and <Tabs.TabList /> passing in the activeIndex', () => {
+  it('renders <Tabs.PanelList /> and <Tabs.TabList /> passing in the activeIndex', () => {
     const $ = shallow(
       <Tabs.Wrapper>
         <Tabs.TabList />
-        <Tabs.Panels />
+        <Tabs.PanelList />
       </Tabs.Wrapper>
     )
-    expect($.find(Tabs.Panels).prop('activeIndex')).toBe(0)
+    expect($.find(Tabs.PanelList).prop('activeIndex')).toBe(0)
     expect($.find(Tabs.TabList).prop('activeIndex')).toBe(0)
     $.setState({ activeIndex: 2 })
-    expect($.find(Tabs.Panels).prop('activeIndex')).toBe(2)
+    expect($.find(Tabs.PanelList).prop('activeIndex')).toBe(2)
     expect($.find(Tabs.TabList).prop('activeIndex')).toBe(2)
   })
 
@@ -69,10 +69,10 @@ describe('<Tabs.Wrapper />', () => {
     const $ = shallow(
       <Tabs.Wrapper initialActiveIndex={1}>
         <Tabs.TabList />
-        <Tabs.Panels />
+        <Tabs.PanelList />
       </Tabs.Wrapper>
     )
-    expect($.find(Tabs.Panels).prop('activeIndex')).toBe(1)
+    expect($.find(Tabs.PanelList).prop('activeIndex')).toBe(1)
     expect($.find(Tabs.TabList).prop('activeIndex')).toBe(1)
   })
 })

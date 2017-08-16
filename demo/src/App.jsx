@@ -10,10 +10,10 @@ import {
   MatrixList,
   UniformedList,
   Form,
-  StatusCard
+  StatusCard,
 } from 'nebula-react'
 
-const App = ({ status }) => (
+const App = () => (
   <div>
     <Section size="md">
       <SiteWrap padding>
@@ -26,7 +26,7 @@ const App = ({ status }) => (
             <Tabs.Tab>Matrix list</Tabs.Tab>
             <Tabs.Tab>Uniformed list</Tabs.Tab>
           </Tabs.TabList>
-          <Tabs.Panels>
+          <Tabs.PanelList>
             <Tabs.Panel>
               <BareList.Wrapper spacing="md">
                 <BareList.Item>Help</BareList.Item>
@@ -51,7 +51,7 @@ const App = ({ status }) => (
                 <UniformedList.Item>Me</UniformedList.Item>
               </UniformedList.Wrapper>
             </Tabs.Panel>
-          </Tabs.Panels>
+          </Tabs.PanelList>
         </Tabs.Wrapper>
         <Form.Radio id="radio-1" value="one" name="radio-group" checked onChange={() => {}}>Option 1</Form.Radio>
         <Form.Radio id="radio-2" value="two" name="radio-group">Option 2</Form.Radio>
