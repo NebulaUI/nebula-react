@@ -11,12 +11,16 @@ import {
   UniformedList,
   Form,
   StatusCard,
+  Icon,
 } from 'nebula-react'
+
+import githubIcon from './assets/github.svg'
 
 const App = () => (
   <div>
     <Section size="md">
       <SiteWrap padding>
+        <Icon icon={githubIcon} width="100px" height="100px" />
         <h1>Nebula React</h1>
         <h2>Lists</h2>
         <Tabs.Wrapper>
