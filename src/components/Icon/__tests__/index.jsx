@@ -22,7 +22,7 @@ describe('<Icon />', () => {
       width: '20px',
       height: '50px'
     })
-    expect($.find('svg').prop('className')).toBe('c-icon')
+    expect($.find('svg').hasClass('c-icon')).toBe(true)
   })
 
   it('renders with a defined className', () => {
@@ -31,7 +31,7 @@ describe('<Icon />', () => {
       className: 'test'
     }
     const $ = shallow(<Icon {...props} />)
-    expect($.find('svg').prop('className')).toBe('test')
+    expect($.find('svg').hasClass('c-icon test')).toBe(true)
   })
 
   it('renders with appropriate role', () => {

@@ -1,9 +1,12 @@
 import React from 'react'
 import T from 'prop-types'
 
-const Icon = ({ width, height, className = 'c-icon', icon: { id, viewBox } }) => (
+import { classNames } from '../../utils/'
+
+const Icon = ({ width, height, className, icon: { id, viewBox } }) => (
   <svg
-    {...{ className, viewBox }}
+    viewBox={viewBox}
+    className={classNames('c-icon', className)}
     role="presentation"
     style={{ width, height }}
   >
