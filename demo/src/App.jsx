@@ -12,16 +12,11 @@ import {
   Flyout,
   Form,
   StatusCard,
-<<<<<<< HEAD
-} from 'nebula-react'
-
-=======
   Icon,
 } from 'nebula-react'
 
 import githubIcon from './assets/github.svg'
 
->>>>>>> 07bbb1fa7a4491615e3d1d6c90fbc87bf5e0d0c6
 const App = () => (
   <div>
     <Section size="md">
@@ -80,14 +75,6 @@ const App = () => (
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
            Ab adipisci architecto assumenda et expedita fugit id illum.</p>
         </Card>
-<<<<<<< HEAD
-=======
-        <StatusCard status="warning">
-          <h3>Card Title</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Ab adipisci architecto assumenda et expedita fugit id illum.</p>
-        </StatusCard>
->>>>>>> 07bbb1fa7a4491615e3d1d6c90fbc87bf5e0d0c6
         <StatusCard status="error">
           Error
         </StatusCard>
