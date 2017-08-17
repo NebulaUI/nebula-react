@@ -41,12 +41,12 @@ describe('<Navbar.Overlay />', () => {
   })
 
   it('calls handleToggle when clicked', () => {
-    const handleToggleMock = jest.fn()
-    const $ = shallow(<Navbar.Overlay handleToggle={handleToggleMock} />)
-    expect(handleToggleMock).not.toHaveBeenCalled()
+    const closeMock = jest.fn()
+    const $ = shallow(<Navbar.Overlay close={closeMock} />)
+    expect(closeMock).not.toHaveBeenCalled()
 
     $.simulate('click')
-    expect(handleToggleMock).toHaveBeenCalled()
+    expect(closeMock).toHaveBeenCalled()
   })
 
   it('takes a callback that is called with the event and component instance when clicked', () => {

@@ -60,10 +60,10 @@ describe('<Navbar.Wrapper />', () => {
     )
     expect($.hasClass('is-open')).toBe(false)
 
-    $.find(Navbar.Overlay).prop('handleToggle')()
+    $.find(Navbar.Inner).prop('handleToggle')()
     expect($.hasClass('is-open')).toBe(true)
 
-    $.find(Navbar.Inner).prop('handleToggle')()
+    $.find(Navbar.Overlay).prop('close')()
     expect($.hasClass('is-open')).toBe(false)
   })
 })

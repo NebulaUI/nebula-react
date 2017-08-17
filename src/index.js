@@ -11,6 +11,7 @@ import { Button } from './components/Button/'
 import { Card } from './components/Card/'
 import { Flyout } from './components/Flyout/'
 import { Form } from './components/Form/'
+import { Icon } from './components/Icon'
 import { Navbar } from './components/Navbar/'
 import { StatusCard } from './components/StatusCard/'
 import { Tabs } from './components/Tabs/'
@@ -30,5 +31,6 @@ export {
   SiteWrap,
   StatusCard,
   Tabs,
-  UniformedList
+  UniformedList,
+  Icon
 }

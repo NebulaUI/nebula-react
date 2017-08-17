@@ -20,18 +20,32 @@ class NavbarWrapper extends Component {
     })
   }
 
+  close = () => {
+    this.setState({
+      isOpen: false
+    })
+  }
+
   render() {
     const {
       handleToggle,
+      close,
       state: { isOpen },
       props: { node, children, className, sticky, ...rest }
     } = this
     const enhancedChildren = React.Children.map(removeFalsy(children), (child) => {
-      if (child.type === Overlay || child.type === Inner) {
+      if (child.type === Overlay) {
+        return React.cloneElement(child, {
+          close
+        })
+      }
+
+      if (child.type === Inner) {
         return React.cloneElement(child, {
           handleToggle
         })
       }
+
       return child
     })
     return E(
