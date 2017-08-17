@@ -12,12 +12,21 @@ import {
   Flyout,
   Form,
   StatusCard,
+<<<<<<< HEAD
 } from 'nebula-react'
 
+=======
+  Icon,
+} from 'nebula-react'
+
+import githubIcon from './assets/github.svg'
+
+>>>>>>> 07bbb1fa7a4491615e3d1d6c90fbc87bf5e0d0c6
 const App = () => (
   <div>
     <Section size="md">
       <SiteWrap padding>
+        <Icon icon={githubIcon} width="100px" height="100px" />
         <h1>Nebula React</h1>
         <h2>Lists</h2>
         <Tabs.Wrapper>
@@ -27,7 +36,7 @@ const App = () => (
             <Tabs.Tab>Matrix list</Tabs.Tab>
             <Tabs.Tab>Uniformed list</Tabs.Tab>
           </Tabs.TabList>
-          <Tabs.Panels>
+          <Tabs.PanelList>
             <Tabs.Panel>
               <BareList.Wrapper spacing="md">
                 <BareList.Item>Help</BareList.Item>
@@ -52,7 +61,7 @@ const App = () => (
                 <UniformedList.Item>Me</UniformedList.Item>
               </UniformedList.Wrapper>
             </Tabs.Panel>
-          </Tabs.Panels>
+          </Tabs.PanelList>
         </Tabs.Wrapper>
         <Form.Radio id="radio-1" value="one" name="radio-group" checked onChange={() => {}}>Option 1</Form.Radio>
         <Form.Radio id="radio-2" value="two" name="radio-group">Option 2</Form.Radio>
@@ -71,6 +80,14 @@ const App = () => (
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
            Ab adipisci architecto assumenda et expedita fugit id illum.</p>
         </Card>
+<<<<<<< HEAD
+=======
+        <StatusCard status="warning">
+          <h3>Card Title</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Ab adipisci architecto assumenda et expedita fugit id illum.</p>
+        </StatusCard>
+>>>>>>> 07bbb1fa7a4491615e3d1d6c90fbc87bf5e0d0c6
         <StatusCard status="error">
           Error
         </StatusCard>

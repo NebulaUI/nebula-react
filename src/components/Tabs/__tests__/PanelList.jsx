@@ -3,14 +3,14 @@ import { shallow } from 'enzyme'
 
 import { Tabs } from '../'
 
-describe('<Tabs.Panels />', () => {
+describe('<Tabs.PanelList />', () => {
   it('renders the active panel', () => {
     const $ = shallow(
-      <Tabs.Panels activeIndex={1}>
+      <Tabs.PanelList activeIndex={1}>
         <Tabs.Panel className="panel0" />
         <Tabs.Panel className="panel1" />
         <Tabs.Panel className="panel2" />
-      </Tabs.Panels>
+      </Tabs.PanelList>
     )
     expect($.contains(<Tabs.Panel className="panel0" />)).toBe(false)
     expect($.contains(<Tabs.Panel className="panel1" />)).toBe(true)
@@ -18,25 +18,25 @@ describe('<Tabs.Panels />', () => {
   })
 
   it('passes in an optional className', () => {
-    const $ = shallow(<Tabs.Panels className="test" />)
+    const $ = shallow(<Tabs.PanelList className="test" />)
     expect($.hasClass('c-tabs__panels test')).toBe(true)
   })
 
   it('renders a defined node type', () => {
-    const $ = shallow(<Tabs.Panels node="article">_</Tabs.Panels>)
+    const $ = shallow(<Tabs.PanelList node="article">_</Tabs.PanelList>)
     expect($.type()).toBe('article')
   })
 
   it('renders a div by default', () => {
-    const $ = shallow(<Tabs.Panels>-</Tabs.Panels>)
+    const $ = shallow(<Tabs.PanelList>-</Tabs.PanelList>)
     expect($.type()).toBe('div')
   })
 
   it('renders with attributes', () => {
     const $ = shallow(
-      <Tabs.Panels style={{ position: 'relative' }} ariaHidden="true">
+      <Tabs.PanelList style={{ position: 'relative' }} ariaHidden="true">
         _
-      </Tabs.Panels>
+      </Tabs.PanelList>
     )
     expect($.prop('style')).toEqual({
       position: 'relative'

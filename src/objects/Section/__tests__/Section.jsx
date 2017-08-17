@@ -4,11 +4,6 @@ import { shallow } from 'enzyme'
 import { Section } from '../'
 
 describe('<Section />', () => {
-  it('renders medium size by default', () => {
-    const $ = shallow(<Section />)
-    expect($.hasClass('o-section-md')).toBe(true)
-  })
-
   it('takes a single size', () => {
     const $ = shallow(<Section size="lg" />)
     expect($.hasClass('o-section-lg')).toBe(true)

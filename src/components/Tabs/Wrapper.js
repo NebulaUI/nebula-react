@@ -2,15 +2,15 @@ import React, { Component, createElement as E } from 'react'
 import T from 'prop-types'
 import { classNames, removeFalsy } from '../../utils'
 
-import List from './TabList'
-import Panels from './Panels'
+import TabList from './TabList'
+import PanelList from './PanelList'
 
 class TabsWrapper extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 
     this.state = {
-      activeIndex: 0
+      activeIndex: this.props.initialActiveIndex || 0
     }
   }
 
@@ -26,13 +26,17 @@ class TabsWrapper extends Component {
       state: { activeIndex },
       props: { node, className, children, ...rest }
     } = this
+
+    const enchancedChildProps = { ...rest }
+    delete enchancedChildProps.initialActiveIndex
+
     const enhancedChildren = React.Children.map(removeFalsy(children), (child) => {
-      if (child.type === List) {
+      if (child.type === TabList) {
         return React.cloneElement(child, {
           activeIndex,
           activateTab
         })
-      } else if (child.type === Panels) {
+      } else if (child.type === PanelList) {
         return React.cloneElement(child, {
           activeIndex
         })
@@ -42,7 +46,7 @@ class TabsWrapper extends Component {
     })
     return E(
       node || 'div',
-      { className: classNames('c-tabs', className), ...rest },
+      { className: classNames('c-tabs', className), ...enchancedChildProps },
       enhancedChildren
     )
   }
@@ -51,7 +55,8 @@ class TabsWrapper extends Component {
 TabsWrapper.propTypes = {
   node: T.string,
   children: T.node,
-  className: T.string
+  className: T.string,
+  initialActiveIndex: T.number
 }
 
 export default TabsWrapper
