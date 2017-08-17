@@ -38,6 +38,7 @@ class NavbarLink extends Component {
         </ComponentOverride>
       )
     }
+
     return E(
       node || 'a',
       {

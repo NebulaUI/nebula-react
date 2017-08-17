@@ -1,6 +1,7 @@
 import React from 'react'
 
 import {
+  Button,
   Card,
   SiteWrap,
   Section,
@@ -9,9 +10,11 @@ import {
   InlineList,
   MatrixList,
   UniformedList,
+  Flyout,
   Form,
   StatusCard,
 } from 'nebula-react'
+
 
 const App = () => (
   <div>
@@ -26,7 +29,7 @@ const App = () => (
             <Tabs.Tab>Matrix list</Tabs.Tab>
             <Tabs.Tab>Uniformed list</Tabs.Tab>
           </Tabs.TabList>
-          <Tabs.PanelList>
+          <Tabs.Panels>
             <Tabs.Panel>
               <BareList.Wrapper spacing="md">
                 <BareList.Item>Help</BareList.Item>
@@ -51,7 +54,7 @@ const App = () => (
                 <UniformedList.Item>Me</UniformedList.Item>
               </UniformedList.Wrapper>
             </Tabs.Panel>
-          </Tabs.PanelList>
+          </Tabs.Panels>
         </Tabs.Wrapper>
         <Form.Radio id="radio-1" value="one" name="radio-group" checked onChange={() => {}}>Option 1</Form.Radio>
         <Form.Radio id="radio-2" value="two" name="radio-group">Option 2</Form.Radio>
@@ -70,14 +73,47 @@ const App = () => (
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
            Ab adipisci architecto assumenda et expedita fugit id illum.</p>
         </Card>
-        <Card status="warning">
-          <h3>Card Title</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Ab adipisci architecto assumenda et expedita fugit id illum.</p>
-        </Card>
         <StatusCard status="error">
           Error
         </StatusCard>
+        <Flyout.Wrapper>
+          <Flyout.Toggle>
+            Click me
+          </Flyout.Toggle>
+          <Flyout.Content direction="se">
+            <Card>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Ab adipisci architecto assumenda et expedita fugit id illum
+            </Card>
+          </Flyout.Content>
+        </Flyout.Wrapper>
+        <Flyout.Wrapper>
+          <Flyout.Toggle>
+            <Button node="span" size="sm" theme="alpha">
+              Github
+            </Button>
+          </Flyout.Toggle>
+          <Flyout.Content direction="ne">
+            <Card>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Ab adipisci architecto assumenda et expedita fugit id illum
+            </Card>
+          </Flyout.Content>
+        </Flyout.Wrapper>
+        <Flyout.Wrapper>
+          <Flyout.Toggle>
+            Click me
+          </Flyout.Toggle>
+          <Flyout.Content>
+            <Card>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Ab adipisci architecto assumenda et expedita fugit id illum
+            </Card>
+          </Flyout.Content>
+        </Flyout.Wrapper>
+        <Button type="submit" size="md" theme="beta">
+          Button test
+        </Button>
       </SiteWrap>
     </Section>
   </div>

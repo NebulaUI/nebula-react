@@ -7,7 +7,9 @@ import { Section } from './objects/Section/'
 import { SiteWrap } from './objects/SiteWrap/'
 import { UniformedList } from './objects/UniformedList/'
 
+import { Button } from './components/Button/'
 import { Card } from './components/Card/'
+import { Flyout } from './components/Flyout/'
 import { Foldable } from './components/Foldable/'
 import { Form } from './components/Form/'
 import { Navbar } from './components/Navbar/'
@@ -16,8 +18,10 @@ import { Tabs } from './components/Tabs/'
 
 export {
   BareList,
+  Button,
   Card,
   Flag,
+  Flyout,
   Form,
   Foldable,
   Grid,
