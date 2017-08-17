@@ -74,11 +74,11 @@ const App = () => (
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
            Ab adipisci architecto assumenda et expedita fugit id illum.</p>
         </Card>
-        <Card status="warning">
+        <StatusCard status="warning">
           <h3>Card Title</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
             Ab adipisci architecto assumenda et expedita fugit id illum.</p>
-        </Card>
+        </StatusCard>
         <StatusCard status="error">
           Error
         </StatusCard>
