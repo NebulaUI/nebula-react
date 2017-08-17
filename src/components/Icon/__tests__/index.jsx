@@ -11,16 +11,18 @@ const defaultProps = {
 }
 
 describe('<Icon />', () => {
-  it('renders with width and height attributes and default className', () => {
+  it('renders with verticalAlign, width and height attributes and default className', () => {
     const props = {
       ...defaultProps,
       width: '20px',
-      height: '50px'
+      height: '50px',
+      verticalAlign: 'sub'
     }
     const $ = shallow(<Icon {...props} />)
     expect($.find('svg').prop('style')).toEqual({
       width: '20px',
-      height: '50px'
+      height: '50px',
+      verticalAlign: 'sub'
     })
     expect($.find('svg').hasClass('c-icon')).toBe(true)
   })
@@ -32,6 +34,24 @@ describe('<Icon />', () => {
     }
     const $ = shallow(<Icon {...props} />)
     expect($.find('svg').hasClass('c-icon test')).toBe(true)
+  })
+
+  it('renders left', () => {
+    const props = {
+      ...defaultProps,
+      left: true
+    }
+    const $ = shallow(<Icon {...props} />)
+    expect($.find('svg').hasClass('c-icon c-icon--left')).toBe(true)
+  })
+
+  it('renders right', () => {
+    const props = {
+      ...defaultProps,
+      right: true
+    }
+    const $ = shallow(<Icon {...props} />)
+    expect($.find('svg').hasClass('c-icon c-icon--right')).toBe(true)
   })
 
   it('renders with appropriate role', () => {
