@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
+    "nebula-components": "^0.1.0",
     "nebula-react": "^0.1.2",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",

@@ -2949,6 +2949,7 @@ nebula-components@^0.1.0:
     nebula-css "^2.5.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 nebula-css@^2.5.0, nebula-css@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/nebula-css/-/nebula-css-2.6.1.tgz#6aca7dd3e895ed5edd4fa875f4eab635f25ca3e7"
@@ -2961,6 +2962,11 @@ nebula-css@^2.6.2:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/nebula-css/-/nebula-css-2.6.2.tgz#bf9a1270dadc27bb0e3cc1809280f0d7995b2c68"
 >>>>>>> 294b43c... Add close function to navbar
+=======
+nebula-css@^2.5.0, nebula-css@^2.6.2:
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/nebula-css/-/nebula-css-2.6.2.tgz#bf9a1270dadc27bb0e3cc1809280f0d7995b2c68"
+>>>>>>> b445dbdde02b35b31c1cbf27ee3d967ccca4236a
 
 node-fetch@^1.0.1:
   version "1.7.1"

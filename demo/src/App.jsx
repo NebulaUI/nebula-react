@@ -1,6 +1,7 @@
 import React from 'react'
 
 import {
+  Button,
   Card,
   SiteWrap,
   Section,
@@ -13,6 +14,7 @@ import {
   Form,
   StatusCard,
 } from 'nebula-react'
+
 
 const App = () => (
   <div>
@@ -87,7 +89,9 @@ const App = () => (
         </Flyout.Wrapper>
         <Flyout.Wrapper>
           <Flyout.Toggle>
-            Click me
+            <Button node="span" size="sm" theme="alpha">
+              Github
+            </Button>
           </Flyout.Toggle>
           <Flyout.Content direction="ne">
             <Card>
@@ -107,6 +111,9 @@ const App = () => (
             </Card>
           </Flyout.Content>
         </Flyout.Wrapper>
+        <Button type="submit" size="md" theme="beta">
+          Button test
+        </Button>
       </SiteWrap>
     </Section>
   </div>

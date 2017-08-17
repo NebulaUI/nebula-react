@@ -1711,7 +1711,7 @@ domutils@1.1:
   dependencies:
     domelementtype "1"
 
-domutils@1.5.1:
+domutils@1.5.1, domutils@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/domutils/-/domutils-1.5.1.tgz#dcd8488a26f563d61079e48c9f7b7e32373682cf"
   dependencies:
@@ -3346,8 +3346,8 @@ nebula-components@^0.1.0:
     nebula-css "^2.5.0"
 
 nebula-css@^2.5.0, nebula-css@^2.6.1:
-  version "2.6.1"
-  resolved "https://registry.yarnpkg.com/nebula-css/-/nebula-css-2.6.1.tgz#6aca7dd3e895ed5edd4fa875f4eab635f25ca3e7"
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/nebula-css/-/nebula-css-2.6.2.tgz#bf9a1270dadc27bb0e3cc1809280f0d7995b2c68"
 
 nebula-react@^0.1.2:
   version "0.1.2"
