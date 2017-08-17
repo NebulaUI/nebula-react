@@ -108,10 +108,10 @@ const App = () => (
             </Card>
           </Flyout.Content>
         </Flyout.Wrapper>
-        <Button type="submit" to="http://google.com">
+        <Button type="submit" className="c-btn--alpha" size="c-btn--md">
           Button test
         </Button>
-        <a to="http://google.com">
+        <a to="http://google.com" color="c-btn--alpha" size="c-btn--md">
          Link test
         </a>
       </SiteWrap>

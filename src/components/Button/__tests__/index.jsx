@@ -4,10 +4,10 @@ import { shallow } from 'enzyme'
 import { Button } from '../'
 
 describe('<Button />', () => {
-  // it('passes in an optional className', () => {
-  //   const $ = shallow(<Button className="test">_</Button>)
-  //   expect($.hasClass('c-btn test')).toBe(true)
-  // })
+  it('passes in an optional className', () => {
+    const $ = shallow(<Button className="test">_</Button>)
+    expect($.hasClass('c-btn test')).toBe(true)
+  })
 
   it('renders a defined node type', () => {
     const $ = shallow(<Button node="a">_</Button>)
