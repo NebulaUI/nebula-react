@@ -37,12 +37,6 @@ const common = {
           },
         }],
       },
-      {
-        test: /\.svg$/,
-        use: [{
-          loader: 'svg-sprite-loader',
-        }],
-      },
     ],
   },
   plugins: [new HtmlWebpackPlugin({

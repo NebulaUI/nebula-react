@@ -5,17 +5,17 @@ import { Flyout } from '../'
 
 describe('<Flyout.Wrapper />', () => {
   it('renders a "div" by default', () => {
-    const $ = shallow(<Flyout.Wrapper>test child</Flyout.Wrapper>)
+    const $ = shallow(<Flyout.Wrapper>_</Flyout.Wrapper>)
     expect($.type()).toBe('div')
   })
 
   it('renders a defined node type', () => {
-    const $ = shallow(<Flyout.Wrapper node="article">test child</Flyout.Wrapper>)
+    const $ = shallow(<Flyout.Wrapper node="article">_</Flyout.Wrapper>)
     expect($.type()).toBe('article')
   })
 
   it('renders with appropriate classNames', () => {
-    const $ = shallow(<Flyout.Wrapper className="is-open">test child</Flyout.Wrapper>)
+    const $ = shallow(<Flyout.Wrapper className="is-open">_</Flyout.Wrapper>)
     expect($.hasClass('c-flyout is-open')).toBe(true)
   })
 
@@ -37,5 +37,21 @@ describe('<Flyout.Wrapper />', () => {
       position: 'relative'
     })
     expect($.prop('ariaHidden')).toBe('true')
+  })
+
+  it('can be opened / closed by clicking the toggle button', () => {
+    const $ = shallow(
+      <Flyout.Wrapper>
+        <Flyout.Toggle>_</Flyout.Toggle>
+        <Flyout.Content>_</Flyout.Content>
+      </Flyout.Wrapper>
+    )
+    expect($.hasClass('c-flyout')).toBe(true)
+
+    $.childAt(0).prop('handleToggle')()
+    expect($.hasClass('c-flyout is-open')).toBe(true)
+
+    $.childAt(0).prop('handleToggle')()
+    expect($.hasClass('c-flyout is-open')).not.toBe(true)
   })
 })

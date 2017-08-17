@@ -5,28 +5,23 @@ import { Flyout } from '../'
 
 describe('<Flyout.Content />', () => {
   it('renders a "div" by default', () => {
-    const $ = shallow(<Flyout.Content>test child</Flyout.Content>)
+    const $ = shallow(<Flyout.Content>_</Flyout.Content>)
     expect($.type()).toBe('div')
   })
 
   it('renders a defined node type', () => {
-    const $ = shallow(<Flyout.Content node="article">test child</Flyout.Content>)
+    const $ = shallow(<Flyout.Content node="article">_</Flyout.Content>)
     expect($.type()).toBe('article')
   })
 
   it('renders with appropriate classNames', () => {
-    const $ = shallow(<Flyout.Content className="test">test child</Flyout.Content>)
+    const $ = shallow(<Flyout.Content className="test">_</Flyout.Content>)
     expect($.hasClass('c-flyout__content test')).toBe(true)
   })
 
   it('renders children', () => {
-    const $ = shallow(<Flyout.Content>test child</Flyout.Content>)
-    expect($.contains('test child')).toBe(true)
-  })
-
-  it('renders with a default direction', () => {
-    const $ = shallow(<Flyout.Content>test child</Flyout.Content>)
-    expect($.hasClass('c-flyout__content')).toBe(true)
+    const $ = shallow(<Flyout.Content>Test child</Flyout.Content>)
+    expect($.contains('Test child')).toBe(true)
   })
 
   it('renders with attributes', () => {
@@ -35,7 +30,7 @@ describe('<Flyout.Content />', () => {
         style={{ position: 'relative' }}
         ariaHidden="true"
       >
-        test child
+        _
       </Flyout.Content>
     )
     expect($.prop('style')).toEqual({
@@ -44,53 +39,16 @@ describe('<Flyout.Content />', () => {
     expect($.prop('ariaHidden')).toBe('true')
   })
 
-  describe('can be configured with a direction and classname', () => {
+  describe('can be configured with a direction', () => {
     it('renders the direction as ne', () => {
       const $ = shallow(
         <Flyout.Content
-          className="c-flyout__content--ne"
           direction="ne"
         >
-          test child
+          _
         </Flyout.Content>
       )
       expect($.hasClass('c-flyout__content--ne')).toBe(true)
-    })
-
-    it('renders the direction as se', () => {
-      const $ = shallow(
-        <Flyout.Content
-          className="c-flyout__content--se"
-          direction="se"
-        >
-          test child
-        </Flyout.Content>
-      )
-      expect($.hasClass('c-flyout__content--se')).toBe(true)
-    })
-
-    it('renders the direction as sw', () => {
-      const $ = shallow(
-        <Flyout.Content
-          className="c-flyout__content--sw"
-          direction="sw"
-        >
-          test child
-        </Flyout.Content>
-      )
-      expect($.hasClass('c-flyout__content--sw')).toBe(true)
-    })
-
-    it('renders the direction as nw', () => {
-      const $ = shallow(
-        <Flyout.Content
-          className="c-flyout__content--nw"
-          direction="nw"
-        >
-          test child
-        </Flyout.Content>
-      )
-      expect($.hasClass('c-flyout__content--nw')).toBe(true)
     })
   })
 })
