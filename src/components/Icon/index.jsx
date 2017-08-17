@@ -14,7 +14,7 @@ const Icon = ({ width, height, className = 'c-icon', icon: { id, viewBox } }) =>
 Icon.propTypes = {
   icon: T.shape({
     id: T.string.isRequired,
-    viewBox: T.string.isRequired,
+    viewBox: T.string.isRequired
   }).isRequired,
   width: T.string,
   height: T.string,
