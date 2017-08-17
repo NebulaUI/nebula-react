@@ -1,23 +1,29 @@
-import React, { createElement as E } from 'react'
+import { createElement as E } from 'react'
 import T from 'prop-types'
 import { classNames } from '../../utils/'
 
-import Toggle from './Toggle'
-
-const FoldableHeader = ({ toggleOpen, node, className, children, ...rest }) => {
-  const enhancedChildren = React.Children.map(children, child => (
-    child.type === Toggle
-      ? React.cloneElement(child, { toggleOpen })
-      : child
-  ))
-
+const FoldableHeader = ({ toggleOpen, padding, node, className, children, ...rest }) => {
+  const handleClick = () => {
+    toggleOpen()
+  }
   return E(
     node || 'div',
     {
-      className: classNames('c-foldable__head', className),
+      className: classNames(
+        'c-foldable__head',
+        { 'c-foldable__head--padding': padding },
+        className
+      ),
       ...rest
     },
-    enhancedChildren
+    E(
+      'button',
+      {
+        className: 'c-foldable__toggle',
+        onClick: handleClick
+      }
+    ),
+    children
   )
 }
 

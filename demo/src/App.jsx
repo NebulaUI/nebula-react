@@ -12,6 +12,7 @@ import {
   UniformedList,
   Flyout,
   Form,
+  Foldable,
   StatusCard,
 } from 'nebula-react'
 
@@ -21,6 +22,14 @@ const App = () => (
     <Section size="md">
       <SiteWrap padding>
         <h1>Nebula React</h1>
+        <Foldable.Wrapper breakpoint="max-lg">
+          <Foldable.Header padding>
+            <h3>Some title</h3>
+          </Foldable.Header>
+          <Foldable.Body>
+            Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+          </Foldable.Body>
+        </Foldable.Wrapper>
         <h2>Lists</h2>
         <Tabs.Wrapper>
           <Tabs.TabList>

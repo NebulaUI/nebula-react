@@ -16,10 +16,11 @@ class FoldableWrapper extends Component {
   }
 
   render() {
+    const { isOpen } = this.state
     const { node, breakpoint, bordered, children, className, ...rest } = this.props
     const enhancedChildren = React.Children.map(children, (child) => {
       if (child.type === Header) {
-        return React.cloneElement(Header, {
+        return React.cloneElement(child, {
           toggleOpen: this.toggleOpen
         })
       }
@@ -32,6 +33,7 @@ class FoldableWrapper extends Component {
         className: classNames(
           breakpoint ? `c-foldable@${breakpoint}` : 'c-foldable',
           { 'c-foldable--bordered': bordered },
+          { 'is-open': isOpen },
           className
         ),
         ...rest
@@ -42,7 +44,7 @@ class FoldableWrapper extends Component {
 }
 
 FoldableWrapper.propTypes = {
-  breakpoint: T.oneOf('max-lg', 'max-md', 'max-sm', 'max-xs'),
+  breakpoint: T.oneOf(['max-lg', 'max-md', 'max-sm', 'max-xs']),
   bordered: T.bool,
   node: T.string,
   children: T.node.isRequired,

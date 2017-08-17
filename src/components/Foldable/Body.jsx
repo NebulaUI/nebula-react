@@ -2,7 +2,7 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 import { classNames } from '../../utils/'
 
-const Body = ({ node, className, children, ...rest }) =>
+const FoldableBody = ({ node, className, children, ...rest }) =>
   E(
     node || 'div',
     {
@@ -12,10 +12,10 @@ const Body = ({ node, className, children, ...rest }) =>
     children
   )
 
-Body.propTypes = {
+FoldableBody.propTypes = {
   node: T.string,
   className: T.string,
   children: T.node
 }
 
-export default Body
+export default FoldableBody
