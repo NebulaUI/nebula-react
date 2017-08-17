@@ -12,16 +12,12 @@ import {
   Flyout,
   Form,
   StatusCard,
-  Icon,
 } from 'nebula-react'
-
-import githubIcon from './assets/github.svg'
 
 const App = () => (
   <div>
     <Section size="md">
       <SiteWrap padding>
-        <Icon icon={githubIcon} width="100px" height="100px" />
         <h1>Nebula React</h1>
         <h2>Lists</h2>
         <Tabs.Wrapper>
@@ -31,7 +27,7 @@ const App = () => (
             <Tabs.Tab>Matrix list</Tabs.Tab>
             <Tabs.Tab>Uniformed list</Tabs.Tab>
           </Tabs.TabList>
-          <Tabs.PanelList>
+          <Tabs.Panels>
             <Tabs.Panel>
               <BareList.Wrapper spacing="md">
                 <BareList.Item>Help</BareList.Item>
@@ -56,7 +52,7 @@ const App = () => (
                 <UniformedList.Item>Me</UniformedList.Item>
               </UniformedList.Wrapper>
             </Tabs.Panel>
-          </Tabs.PanelList>
+          </Tabs.Panels>
         </Tabs.Wrapper>
         <Form.Radio id="radio-1" value="one" name="radio-group" checked onChange={() => {}}>Option 1</Form.Radio>
         <Form.Radio id="radio-2" value="two" name="radio-group">Option 2</Form.Radio>

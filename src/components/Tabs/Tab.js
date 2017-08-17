@@ -2,7 +2,7 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 import { classNames } from '../../utils'
 
-const TabsTab = ({ node, children, index, activateTab, isActive, className, ...rest }) => {
+const Tab = ({ node, children, index, activateTab, isActive, className, ...rest }) => {
   const handleClick = () => { activateTab(index) }
   return E(
     node || 'button',
@@ -18,7 +18,7 @@ const TabsTab = ({ node, children, index, activateTab, isActive, className, ...r
   )
 }
 
-TabsTab.propTypes = {
+Tab.propTypes = {
   node: T.string,
   children: T.node,
   activateTab: T.func,
@@ -27,4 +27,4 @@ TabsTab.propTypes = {
   className: T.string
 }
 
-export default TabsTab
+export default Tab

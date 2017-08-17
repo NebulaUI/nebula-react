@@ -19,11 +19,6 @@ describe('<StatusCard />', () => {
     expect($.hasClass('c-status-card')).toBe(true)
   })
 
-  it('takes an additional className', () => {
-    const $ = shallow(<StatusCard className="test-className">_</StatusCard>)
-    expect($.hasClass('c-status-card test-className')).toBe(true)
-  })
-
   describe('status styling', () => {
     it('renders with success', () => {
       const $ = shallow(<StatusCard status="success">_</StatusCard>)
