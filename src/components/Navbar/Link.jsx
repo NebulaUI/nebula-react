@@ -21,7 +21,7 @@ class NavbarLink extends Component {
 
     const onClickProps = callback
       ? {
-        onClick: this.handleClick0
+        onClick: this.handleClick
       } : {}
 
     const ComponentOverride = component
