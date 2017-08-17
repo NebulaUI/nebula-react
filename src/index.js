@@ -11,6 +11,7 @@ import { Button } from './components/Button/'
 import { Card } from './components/Card/'
 import { Flyout } from './components/Flyout/'
 import { Form } from './components/Form/'
+import { Modal } from './components/Modal/'
 import { Navbar } from './components/Navbar/'
 import { StatusCard } from './components/StatusCard/'
 import { Tabs } from './components/Tabs/'
@@ -25,6 +26,7 @@ export {
   Grid,
   InlineList,
   MatrixList,
+  Modal,
   Navbar,
   Section,
   SiteWrap,
