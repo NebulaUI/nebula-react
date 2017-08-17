@@ -1,6 +1,7 @@
 import React from 'react'
 
 import {
+  Button,
   Card,
   SiteWrap,
   Section,
@@ -9,6 +10,7 @@ import {
   InlineList,
   MatrixList,
   UniformedList,
+  Flyout,
   Form,
   StatusCard,
   Icon,
@@ -74,14 +76,49 @@ const App = () => (
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
            Ab adipisci architecto assumenda et expedita fugit id illum.</p>
         </Card>
-        <StatusCard status="warning">
-          <h3>Card Title</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Ab adipisci architecto assumenda et expedita fugit id illum.</p>
-        </StatusCard>
         <StatusCard status="error">
           Error
         </StatusCard>
+        <Flyout.Wrapper>
+          <Flyout.Toggle>
+            Click me
+          </Flyout.Toggle>
+          <Flyout.Content direction="se">
+            <Card>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Ab adipisci architecto assumenda et expedita fugit id illum
+            </Card>
+          </Flyout.Content>
+        </Flyout.Wrapper>
+        <Flyout.Wrapper>
+          <Flyout.Toggle>
+            Click me
+          </Flyout.Toggle>
+          <Flyout.Content direction="ne">
+            <Card>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Ab adipisci architecto assumenda et expedita fugit id illum
+            </Card>
+          </Flyout.Content>
+        </Flyout.Wrapper>
+        <Flyout.Wrapper>
+          <Flyout.Toggle>
+            Click me
+          </Flyout.Toggle>
+          <Flyout.Content>
+            <Card>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Ab adipisci architecto assumenda et expedita fugit id illum
+            </Card>
+          </Flyout.Content>
+        </Flyout.Wrapper>
+        <Button type="submit" size="md" theme="beta">
+          Button test
+        </Button>
+        <Button node="a" to="http://github.com" size="sm" theme="alpha">
+          <Icon left icon={githubIcon} />
+          Github
+        </Button>
       </SiteWrap>
     </Section>
   </div>
