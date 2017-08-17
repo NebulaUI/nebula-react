@@ -35,4 +35,32 @@ describe('<Button />', () => {
     })
     expect($.prop('ariaHidden')).toBe('true')
   })
+
+  it('renders with a size', () => {
+    const $ = shallow(<Button size="md">_</Button>)
+    expect($.hasClass('c-btn c-btn--md')).toBe(true)
+  })
+
+  it('renders with a theme', () => {
+    const $ = shallow(<Button theme="alpha">_</Button>)
+    expect($.hasClass('c-btn c-btn--alpha')).toBe(true)
+  })
+
+  it('renders full width', () => {
+    const $ = shallow(<Button full>_</Button>)
+    expect($.hasClass('c-btn c-btn--full')).toBe(true)
+  })
+
+  it('renders with a type', () => {
+    const $ = shallow(<Button type="submit">_</Button>)
+    expect($.prop('type')).toBe('submit')
+  })
+
+  it('renders with a pre defined component', () => {
+    const RRLink = () => <div />
+    const $ = shallow(<Button to="/test" theme="alpha" size="sm" component={RRLink}>_</Button>)
+    expect($.type()).toBe(RRLink)
+    expect($.prop('to')).toBe('/test')
+    expect($.hasClass('c-btn c-btn--alpha c-btn--sm')).toBe(true)
+  })
 })

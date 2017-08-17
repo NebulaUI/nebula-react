@@ -112,12 +112,13 @@ const App = () => (
             </Card>
           </Flyout.Content>
         </Flyout.Wrapper>
-        <Button type="submit" className="c-btn--alpha" size="c-btn--md">
+        <Button type="submit" size="md" theme="beta">
           Button test
         </Button>
-        <a to="http://google.com" color="c-btn--alpha" size="c-btn--md">
-         Link test
-        </a>
+        <Button node="a" to="http://github.com" size="sm" theme="alpha">
+          <Icon left icon={githubIcon} />
+          Github
+        </Button>
       </SiteWrap>
     </Section>
   </div>
