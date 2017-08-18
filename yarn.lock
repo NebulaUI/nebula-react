@@ -2970,13 +2970,13 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
 
-nebula-components@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/nebula-components/-/nebula-components-0.1.0.tgz#b06463589db549810e5cbbca908db6337854ea04"
+nebula-components@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/nebula-components/-/nebula-components-0.1.1.tgz#00f5a7bc92628ac6d50a5293a3462ac0be7aa71f"
   dependencies:
-    nebula-css "^2.5.0"
+    nebula-css "^2.6.2"
 
-nebula-css@^2.5.0, nebula-css@^2.6.2:
+nebula-css@^2.6.2:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/nebula-css/-/nebula-css-2.6.2.tgz#bf9a1270dadc27bb0e3cc1809280f0d7995b2c68"
 
