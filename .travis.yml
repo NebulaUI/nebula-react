@@ -8,4 +8,3 @@ install:
 
 script:
   - "yarn test:ci && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
-yarn
