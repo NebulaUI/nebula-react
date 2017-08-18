@@ -26,17 +26,15 @@ class App extends Component {
     }
   }
 
-  closeModal = () => {
-    document.body.style.overflow = 'visible'
+  openModal = () => {
     this.setState({
-      isModalOpen: false,
+      isModalOpen: true,
     })
   }
 
-  openModal = () => {
-    document.body.style.overflow = 'hidden'
+  closeModal = () => {
     this.setState({
-      isModalOpen: true,
+      isModalOpen: false,
     })
   }
 
@@ -47,6 +45,22 @@ class App extends Component {
         <Section size="md">
           <SiteWrap padding>
             <h1>Nebula React</h1>
+            <Button size="md" theme="alpha" onClick={this.openModal}>
+              Open Modal
+            </Button>
+            <Modal.Wrapper closeModal={this.closeModal} isOpen={isModalOpen}>
+              <Modal.Content>
+                <Modal.Dismiss>Close</Modal.Dismiss>
+                <p>This is modal content</p>
+                <p>This is modal content</p>
+                <p>This is modal content</p>
+                <p>This is modal content</p>
+                <p>This is modal content</p>
+                <p>ITCSS and BEMIT based Sass/CSS framework that is ultra exensible
+                  and scales to any project size.</p>
+              </Modal.Content>
+            </Modal.Wrapper>
+
             <h2>Lists</h2>
             <Tabs.Wrapper>
               <Tabs.TabList>
@@ -82,7 +96,7 @@ class App extends Component {
                 </Tabs.Panel>
               </Tabs.Panels>
             </Tabs.Wrapper>
-            <Modal.Example isOpen={isModalOpen} close={this.closeModal} open={this.openModal} />
+
             <Form.Radio id="radio-1" value="one" name="radio-group" checked onChange={() => {}}>Option 1</Form.Radio>
             <Form.Radio id="radio-2" value="two" name="radio-group">Option 2</Form.Radio>
             <Form.Radio id="radio-3" value="two" name="radio-group" disabled>Option 3</Form.Radio>
@@ -141,11 +155,6 @@ class App extends Component {
             <Button type="submit" size="md" theme="beta">
             Button test
           </Button>
-            <Modal.Toggle>
-              <Button node="span" size="md" theme="alpha" onClick={this.openModal}>
-              Open Modal
-            </Button>
-            </Modal.Toggle>
           </SiteWrap>
         </Section>
       </div>

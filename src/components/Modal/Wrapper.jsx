@@ -1,25 +1,48 @@
-import { createElement as E } from 'react'
+import React, { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
+import Content from './Content'
 
 const initial = 'c-modal'
 
-const Wrapper = ({ node, className, isOpen, children, ...rest }) =>
-  E(
+const ModalWrapper = ({ node, closeModal, className, isOpen, children, ...rest }) => {
+  const enhancedChildren = React.Children.map(children, (child) => {
+    if (child.type === Content) {
+      return React.cloneElement(child, {
+        closeModal
+      })
+    }
+
+    return child
+  })
+  return E(
     node || 'div',
     {
       className: classNames(initial, { 'is-open': isOpen }, className),
       ...rest
     },
-    children
+    E(
+      'button',
+      {
+        className: 'c-modal__overlay',
+        onClick: closeModal
+      }
+    ),
+    E(
+      'div',
+      { className: 'c-modal__body' },
+      enhancedChildren
+    )
   )
+}
 
-Wrapper.propTypes = {
+ModalWrapper.propTypes = {
   node: T.string,
   className: T.string,
-  isOpen: T.bool,
+  isOpen: T.bool.isRequired,
+  closeModal: T.func.isRequired,
   children: T.node.isRequired
 }
 
-export default Wrapper
+export default ModalWrapper
