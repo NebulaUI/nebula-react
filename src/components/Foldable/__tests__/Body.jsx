@@ -1,29 +1,29 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import { Card } from '../'
+import { Foldable } from '../'
 
-describe('<Card />', () => {
+describe('<Foldable.Body />', () => {
   it('passes in an optional className', () => {
-    const $ = shallow(<Card className="something else" />)
-    expect($.hasClass('c-card something else')).toBe(true)
+    const $ = shallow(<Foldable.Body className="something else" />)
+    expect($.hasClass('c-foldable__body something else')).toBe(true)
   })
 
   it('renders a defined node type', () => {
-    const $ = shallow(<Card node="article">_</Card>)
+    const $ = shallow(<Foldable.Body node="article">_</Foldable.Body>)
     expect($.type()).toBe('article')
   })
 
   it('renders a div by default', () => {
-    const $ = shallow(<Card>-</Card>)
+    const $ = shallow(<Foldable.Body>-</Foldable.Body>)
     expect($.type()).toBe('div')
   })
 
   it('renders with attributes', () => {
     const $ = shallow(
-      <Card style={{ position: 'relative' }} ariaHidden="true">
+      <Foldable.Body style={{ position: 'relative' }} ariaHidden="true">
         _
-      </Card>
+      </Foldable.Body>
     )
     expect($.prop('style')).toEqual({
       position: 'relative'
@@ -32,7 +32,7 @@ describe('<Card />', () => {
   })
 
   it('renders children', () => {
-    const $ = shallow(<Card>test child</Card>)
+    const $ = shallow(<Foldable.Body>test child</Foldable.Body>)
     expect($.contains('test child')).toBe(true)
   })
 })

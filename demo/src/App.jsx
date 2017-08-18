@@ -22,7 +22,7 @@ const App = () => (
     <Section size="md">
       <SiteWrap padding>
         <h1>Nebula React</h1>
-        <Foldable.Wrapper breakpoint="max-lg">
+        <Foldable.Wrapper open breakpoint="max-lg">
           <Foldable.Header padding>
             <h3>Some title</h3>
           </Foldable.Header>

@@ -5,10 +5,10 @@ import { classNames } from '../../utils/'
 import Header from './Header'
 
 class FoldableWrapper extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 
-    this.state = { isOpen: false }
+    this.state = { isOpen: props.open }
   }
 
   toggleOpen = () => {
@@ -47,6 +47,7 @@ FoldableWrapper.propTypes = {
   breakpoint: T.oneOf(['max-lg', 'max-md', 'max-sm', 'max-xs']),
   bordered: T.bool,
   node: T.string,
+  open: T.bool,
   children: T.node.isRequired,
   className: T.string
 }

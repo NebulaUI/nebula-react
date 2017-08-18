@@ -10,8 +10,8 @@ const FoldableHeader = ({ toggleOpen, padding, node, className, children, ...res
     node || 'div',
     {
       className: classNames(
-        'c-foldable__head',
-        { 'c-foldable__head--padding': padding },
+        'c-foldable__header',
+        { 'c-foldable__header--padding': padding },
         className
       ),
       ...rest
@@ -31,7 +31,7 @@ FoldableHeader.propTypes = {
   toggleOpen: T.func,
   node: T.string,
   className: T.string,
-  children: T.node
+  children: T.node.isRequired
 }
 
 export default FoldableHeader
