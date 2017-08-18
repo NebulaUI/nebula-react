@@ -3,23 +3,22 @@ import T from 'prop-types'
 
 import { classNames } from '../../utils/'
 
-const initial = 'c-modal'
+const initial = 'c-modal__body'
 
-const Wrapper = ({ node, className, isOpen, children, ...rest }) =>
+const Body = ({ node, className, children, ...rest }) =>
   E(
     node || 'div',
     {
-      className: classNames(initial, { 'is-open': isOpen }, className),
+      className: classNames(initial, className),
       ...rest
     },
     children
   )
 
-Wrapper.propTypes = {
+Body.propTypes = {
   node: T.string,
   className: T.string,
-  isOpen: T.bool,
   children: T.node.isRequired
 }
 
-export default Wrapper
+export default Body

@@ -3,17 +3,22 @@ import T from 'prop-types'
 
 import { classNames } from '../../utils/'
 
-const Toggle = ({ className, open, children, ...rest }) => (
+const initial = 'c-modal__toggle'
+
+const Toggle = ({ node, className, open, children, ...rest }) => (
   <button
-    className={classNames('c-modal__toggle', className)}
+    className={classNames(initial, className)}
     onClick={open}
     {...rest}
-  />
+  >
+    { children }
+  </button>
 )
 
 Toggle.propTypes = {
-  className: T.string,
+  node: T.string,
   open: T.func,
+  className: T.string,
   children: T.node.isRequired
 }
 

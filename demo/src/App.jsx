@@ -46,7 +46,6 @@ class App extends Component {
       <Section size="md">
         <SiteWrap padding>
           <h1>Nebula React</h1>
-          <Modal.Example isOpen={isModalOpen} close={this.closeModal} open={this.openModal} />
           <h2>Lists</h2>
           <Tabs.Wrapper>
             <Tabs.TabList>
@@ -82,6 +81,7 @@ class App extends Component {
               </Tabs.Panel>
             </Tabs.Panels>
           </Tabs.Wrapper>
+          <Modal.Example isOpen={isModalOpen} close={this.closeModal} open={this.openModal} />
           <Form.Radio id="radio-1" value="one" name="radio-group" checked onChange={() => {}}>Option 1</Form.Radio>
           <Form.Radio id="radio-2" value="two" name="radio-group">Option 2</Form.Radio>
           <Form.Radio id="radio-3" value="two" name="radio-group" disabled>Option 3</Form.Radio>
@@ -140,18 +140,11 @@ class App extends Component {
           <Button type="submit" size="md" theme="beta">
             Button test
           </Button>
-
-          <Modal.Toggle >
-            <Button size="md" theme="alpha" open={this.openModal}>
+          <Modal.Toggle>
+            <Button node="span" size="md" theme="alpha" onClick={this.openModal}>
               Open Modal
             </Button>
           </Modal.Toggle>
-          <Modal.Wrapper>
-            <Modal.Overlay onClick={close} />
-            <Modal.Content>
-              <Button size="sm" theme="alpha" onClick={close}>Close</Button>
-            </Modal.Content>
-          </Modal.Wrapper>
         </SiteWrap>
       </Section>
     </div>
