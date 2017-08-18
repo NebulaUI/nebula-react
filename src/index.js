@@ -10,8 +10,10 @@ import { UniformedList } from './objects/UniformedList/'
 import { Button } from './components/Button/'
 import { Card } from './components/Card/'
 import { Flyout } from './components/Flyout/'
+import { Foldable } from './components/Foldable/'
 import { Form } from './components/Form/'
 import { Modal } from './components/Modal/'
+import { Icon } from './components/Icon/'
 import { Navbar } from './components/Navbar/'
 import { StatusCard } from './components/StatusCard/'
 import { Tabs } from './components/Tabs/'
@@ -23,7 +25,9 @@ export {
   Flag,
   Flyout,
   Form,
+  Foldable,
   Grid,
+  Icon,
   InlineList,
   MatrixList,
   Modal,
