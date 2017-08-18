@@ -8,7 +8,7 @@ React Components for the Nebula Sass framework
 
 ### Dependencies
 
-Nebula React has the following peerDependencies
+Nebula React has the following peerDependencies.
 * [`react`](https://github.com/facebook/react)
 * [`react-dom`](https://www.npmjs.com/package/react-dom)
 
