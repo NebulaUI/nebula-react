@@ -3,6 +3,9 @@ language: node_js
 node_js:
   - "7"
 
+install:
+ - "yarn install --no-lockfile"
+
 script:
   - "yarn test:ci && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
 yarn
