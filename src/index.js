@@ -12,6 +12,7 @@ import { Card } from './components/Card/'
 import { Flyout } from './components/Flyout/'
 import { Foldable } from './components/Foldable/'
 import { Form } from './components/Form/'
+import { Icon } from './components/Icon/'
 import { Navbar } from './components/Navbar/'
 import { StatusCard } from './components/StatusCard/'
 import { Tabs } from './components/Tabs/'
@@ -25,6 +26,7 @@ export {
   Form,
   Foldable,
   Grid,
+  Icon,
   InlineList,
   MatrixList,
   Navbar,
