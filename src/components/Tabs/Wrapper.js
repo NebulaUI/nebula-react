@@ -6,11 +6,11 @@ import List from './TabList'
 import Panels from './Panels'
 
 class TabsWrapper extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 
     this.state = {
-      activeIndex: 0
+      activeIndex: props.initialActiveIndex || 0
     }
   }
 
@@ -24,7 +24,7 @@ class TabsWrapper extends Component {
     const {
       activateTab,
       state: { activeIndex },
-      props: { node, className, children, ...rest }
+      props: { node, className, initialActiveIndex, children, ...rest }
     } = this
     const enhancedChildren = React.Children.map(removeFalsy(children), (child) => {
       if (child.type === List) {
@@ -51,7 +51,8 @@ class TabsWrapper extends Component {
 TabsWrapper.propTypes = {
   node: T.string,
   children: T.node,
-  className: T.string
+  className: T.string,
+  initialActiveIndex: T.number
 }
 
 export default TabsWrapper

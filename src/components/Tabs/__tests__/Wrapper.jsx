@@ -31,6 +31,15 @@ describe('<Tabs.Wrapper />', () => {
     expect($.type()).toBe('div')
   })
 
+  it('renders with an initialActiveIndex', () => {
+    const $ = shallow(
+      <Tabs.Wrapper initialActiveIndex={1}>
+        <Tabs.TabList>_</Tabs.TabList>
+      </Tabs.Wrapper>
+    )
+    expect($.childAt(0).prop('activeIndex')).toBe(1)
+  })
+
   it('renders children', () => {
     const $ = shallow(
       <Tabs.Wrapper>
