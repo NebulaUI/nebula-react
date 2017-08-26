@@ -5,10 +5,11 @@ import CheckboxWrapper from './CheckboxWrapper'
 import CheckboxLabel from './CheckboxLabel'
 import CheckboxInput from './CheckboxInput'
 
-const Checkbox = ({ id, checked, onChange, disabled, value, children, ...rest }) => (
+const Checkbox = ({ id, name, checked, onChange, disabled, value, children, ...rest }) => (
   <CheckboxWrapper {...rest}>
     <CheckboxInput
       id={id}
+      name={name}
       checked={checked}
       disabled={disabled}
       value={value}
@@ -24,6 +25,7 @@ Checkbox.propTypes = {
   checked: T.bool,
   disabled: T.bool,
   onChange: T.func,
+  name: T.string,
   // eslint-disable-next-line react/forbid-prop-types
   value: T.any,
   children: T.node.isRequired,
