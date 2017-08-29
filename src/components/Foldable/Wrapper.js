@@ -8,7 +8,7 @@ class FoldableWrapper extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { isOpen: props.open }
+    this.state = { isOpen: props.openOnMount }
   }
 
   toggleOpen = () => {
@@ -17,7 +17,10 @@ class FoldableWrapper extends Component {
 
   render() {
     const { isOpen } = this.state
-    const { node, breakpoint, bordered, children, className, ...rest } = this.props
+    const {
+      openOnMount, // eslint-disable-line no-unused-vars
+      node, breakpoint, bordered, children, className, ...rest
+    } = this.props
     const enhancedChildren = React.Children.map(children, (child) => {
       if (child.type === Header) {
         return React.cloneElement(child, {
@@ -47,7 +50,7 @@ FoldableWrapper.propTypes = {
   breakpoint: T.oneOf(['max-lg', 'max-md', 'max-sm', 'max-xs']),
   bordered: T.bool,
   node: T.string,
-  open: T.bool,
+  openOnMount: T.bool,
   children: T.node.isRequired,
   className: T.string
 }

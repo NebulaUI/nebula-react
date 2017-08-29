@@ -56,7 +56,7 @@ describe('<Foldable.Wrapper />', () => {
   })
 
   it('renders open on initial mount', () => {
-    const $ = shallow(<Foldable.Wrapper open>_</Foldable.Wrapper>)
+    const $ = shallow(<Foldable.Wrapper openOnMount>_</Foldable.Wrapper>)
     expect($.hasClass('is-open')).toBe(true)
   })
 
