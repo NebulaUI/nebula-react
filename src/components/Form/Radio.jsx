@@ -10,6 +10,7 @@ const Radio = ({
  id = randomId(),
  onChange,
  checked,
+ defaultChecked,
  value,
  disabled,
  name,
@@ -24,6 +25,7 @@ const Radio = ({
       disabled={disabled}
       value={value}
       onChange={onChange}
+      defaultChecked={defaultChecked}
     />
     <RadioLabel htmlFor={id}>
       {children}
@@ -33,6 +35,7 @@ const Radio = ({
 
 Radio.propTypes = {
   checked: T.bool,
+  defaultChecked: T.bool,
   disabled: T.bool,
   onChange: T.func,
   // eslint-disable-next-line react/forbid-prop-types

@@ -3,6 +3,7 @@ import T from 'prop-types'
 import { classNames } from '../../utils/'
 
 import Header from './Header'
+import Body from './Body'
 
 class FoldableWrapper extends Component {
   constructor(props) {
@@ -25,6 +26,12 @@ class FoldableWrapper extends Component {
       if (child.type === Header) {
         return React.cloneElement(child, {
           toggleOpen: this.toggleOpen
+        })
+      }
+
+      if (child.type === Body) {
+        return React.cloneElement(child, {
+          isOpen
         })
       }
 

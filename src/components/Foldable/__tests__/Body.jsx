@@ -31,8 +31,13 @@ describe('<Foldable.Body />', () => {
     expect($.prop('ariaHidden')).toBe('true')
   })
 
-  it('renders children', () => {
-    const $ = shallow(<Foldable.Body>test child</Foldable.Body>)
+  it('renders children when open', () => {
+    const $ = shallow(<Foldable.Body isOpen>test child</Foldable.Body>)
     expect($.contains('test child')).toBe(true)
+  })
+
+  it('does not render children when closed', () => {
+    const $ = shallow(<Foldable.Body>test child</Foldable.Body>)
+    expect($.contains('test child')).toBe(false)
   })
 })

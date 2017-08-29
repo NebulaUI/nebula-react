@@ -14,6 +14,7 @@ const Checkbox = ({
   disabled,
   value,
   children,
+  defaultChecked,
   ...rest
 }) => (
   <CheckboxWrapper {...rest}>
@@ -24,6 +25,7 @@ const Checkbox = ({
       disabled={disabled}
       value={value}
       onChange={onChange}
+      defaultChecked={defaultChecked}
     />
     <CheckboxLabel htmlFor={id}>
       {children}
@@ -33,6 +35,7 @@ const Checkbox = ({
 
 Checkbox.propTypes = {
   checked: T.bool,
+  defaultChecked: T.bool,
   disabled: T.bool,
   onChange: T.func,
   name: T.string,
