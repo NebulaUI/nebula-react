@@ -1,7 +1,10 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
+import { randomId } from '../../../utils'
 import { Form } from '../'
+
+jest.mock('../../../utils')
 
 describe('<Form.Radio />', () => {
   it('renders <Form.RadioInput /> && <Form.RadioLabel /> in the correct order', () => {
@@ -52,5 +55,11 @@ describe('<Form.Radio />', () => {
       position: 'relative'
     })
     expect($.prop('ariaHidden')).toBe('true')
+  })
+
+  it('renders with a random id by default', () => {
+    randomId.mockImplementation(() => 'test-id')
+    const $ = shallow(<Form.Radio>_</Form.Radio>)
+    expect($.find(Form.RadioInput).prop('id')).toBe('test-id')
   })
 })

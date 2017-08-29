@@ -1,7 +1,10 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
+import { randomId } from '../../../utils'
 import { Form } from '../'
+
+jest.mock('../../../utils')
 
 describe('<Form.Checkbox />', () => {
   it('renders <Form.CheckboxInput /> && <Form.CheckboxLabel /> in the correct order', () => {
@@ -51,5 +54,11 @@ describe('<Form.Checkbox />', () => {
       position: 'relative'
     })
     expect($.prop('ariaHidden')).toBe('true')
+  })
+
+  it('renders with a random id by default', () => {
+    randomId.mockImplementation(() => 'test-id')
+    const $ = shallow(<Form.Checkbox>_</Form.Checkbox>)
+    expect($.find(Form.CheckboxInput).prop('id')).toBe('test-id')
   })
 })
