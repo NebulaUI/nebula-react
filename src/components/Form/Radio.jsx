@@ -1,11 +1,21 @@
 import React from 'react'
 import T from 'prop-types'
 
+import { randomId } from '../../utils'
 import RadioWrapper from './RadioWrapper'
 import RadioLabel from './RadioLabel'
 import RadioInput from './RadioInput'
 
-const Radio = ({ id, onChange, checked, value, disabled, name, children, ...rest }) => (
+const Radio = ({
+ id = randomId(),
+ onChange,
+ checked,
+ value,
+ disabled,
+ name,
+ children,
+ ...rest
+}) => (
   <RadioWrapper {...rest}>
     <RadioInput
       id={id}
@@ -28,7 +38,7 @@ Radio.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   value: T.any,
   children: T.node.isRequired,
-  id: T.string.isRequired,
+  id: T.string,
   name: T.string.isRequired
 }
 

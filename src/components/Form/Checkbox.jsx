@@ -1,11 +1,21 @@
 import React from 'react'
 import T from 'prop-types'
 
+import { randomId } from '../../utils'
 import CheckboxWrapper from './CheckboxWrapper'
 import CheckboxLabel from './CheckboxLabel'
 import CheckboxInput from './CheckboxInput'
 
-const Checkbox = ({ id, name, checked, onChange, disabled, value, children, ...rest }) => (
+const Checkbox = ({
+  id = randomId(),
+  name,
+  checked,
+  onChange,
+  disabled,
+  value,
+  children,
+  ...rest
+}) => (
   <CheckboxWrapper {...rest}>
     <CheckboxInput
       id={id}
@@ -29,7 +39,7 @@ Checkbox.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   value: T.any,
   children: T.node.isRequired,
-  id: T.string.isRequired
+  id: T.string
 }
 
 export default Checkbox
