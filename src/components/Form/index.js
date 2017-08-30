@@ -1,6 +1,6 @@
 import Label from './Label'
 import TextInput from './TextInput'
-import TextArea from './TextArea'
+import Textarea from './Textarea'
 import Checkbox from './Checkbox'
 import CheckboxWrapper from './CheckboxWrapper'
 import CheckboxLabel from './CheckboxLabel'
@@ -14,7 +14,7 @@ import Select from './Select'
 const Form = {
   Label,
   TextInput,
-  TextArea,
+  Textarea,
   Checkbox,
   CheckboxWrapper,
   CheckboxLabel,

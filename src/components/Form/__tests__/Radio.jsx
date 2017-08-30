@@ -59,7 +59,7 @@ describe('<Form.Radio />', () => {
 
   it('renders with a random id by default', () => {
     randomId.mockImplementation(() => 'test-id')
-    const $ = shallow(<Form.Radio>_</Form.Radio>)
+    const $ = shallow(<Form.Radio name="test">_</Form.Radio>)
     expect($.find(Form.RadioInput).prop('id')).toBe('test-id')
   })
 })
