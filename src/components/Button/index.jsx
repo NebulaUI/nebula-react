@@ -3,7 +3,18 @@ import T from 'prop-types'
 
 import { classNames } from '../../utils/'
 
-const Button = ({ node, component, to, fullWidth, theme, size, type, className, children, ...rest }) => {
+const Button = ({
+  node,
+  component,
+  to,
+  fullWidth,
+  theme,
+  size,
+  type,
+  className,
+  children,
+  ...rest
+}) => {
   const ComponentOverride = component
   const enhancedClassName = classNames(
     'c-btn',

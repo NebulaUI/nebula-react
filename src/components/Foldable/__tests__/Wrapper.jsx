@@ -2,7 +2,6 @@ import React from 'react'
 import { shallow, mount } from 'enzyme'
 
 import { Foldable } from '../'
-import FoldableBody from "../Body";
 
 describe('<Foldable.Wrapper />', () => {
   it('passes in an optional className', () => {

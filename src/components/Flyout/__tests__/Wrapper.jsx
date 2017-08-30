@@ -38,20 +38,4 @@ describe('<Flyout.Wrapper />', () => {
     })
     expect($.prop('ariaHidden')).toBe('true')
   })
-
-  it('can be opened / closed by clicking the toggle button', () => {
-    const $ = shallow(
-      <Flyout.Wrapper>
-        <Flyout.Toggle>_</Flyout.Toggle>
-        <Flyout.Content>_</Flyout.Content>
-      </Flyout.Wrapper>
-    )
-    expect($.hasClass('c-flyout')).toBe(true)
-
-    $.childAt(0).prop('handleToggle')()
-    expect($.hasClass('c-flyout is-open')).toBe(true)
-
-    $.childAt(0).prop('handleToggle')()
-    expect($.hasClass('c-flyout is-open')).not.toBe(true)
-  })
 })

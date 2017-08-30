@@ -28,17 +28,4 @@ describe('<Flyout.Toggle />', () => {
     })
     expect($.prop('ariaHidden')).toBe('true')
   })
-
-  it('takes a callback function assigned to the `handleToggle` prop', () => {
-    const handleToggleMock = jest.fn()
-    const props = {
-      handleToggle: handleToggleMock
-    }
-    const $ = shallow(
-      <Flyout.Toggle {...props}>test child</Flyout.Toggle>
-    )
-    expect(handleToggleMock).not.toBeCalled()
-    $.simulate('click')
-    expect(handleToggleMock).toBeCalled()
-  })
 })
