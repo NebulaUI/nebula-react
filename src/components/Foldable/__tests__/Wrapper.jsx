@@ -64,6 +64,7 @@ describe('<Foldable.Wrapper />', () => {
     const $ = mount(
       <Foldable.Wrapper>
         <Foldable.Header>_</Foldable.Header>
+        <Foldable.Body>Children</Foldable.Body>
       </Foldable.Wrapper>
     )
 
@@ -71,8 +72,10 @@ describe('<Foldable.Wrapper />', () => {
 
     $.find('.c-foldable__toggle').simulate('click')
     expect($.hasClass('is-open')).toBe(true)
+    expect($.find('.c-foldable__body').text()).toBe('Children')
 
     $.find('.c-foldable__toggle').simulate('click')
     expect($.hasClass('is-open')).toBe(false)
+    expect($.find('.c-foldable__body').text()).toBe('')
   })
 })

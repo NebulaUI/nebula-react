@@ -2,9 +2,9 @@ import React from 'react'
 import T from 'prop-types'
 import classNames from '../../utils/classNames'
 
-const Select = ({ className, onChange, value, children, ...rest }) => (
+const Select = ({ className, small, onChange, value, children, ...rest }) => (
   <select
-    className={classNames('c-select', className)}
+    className={classNames('c-select', { 'c-select--sm': small }, className)}
     onChange={onChange}
     value={value}
     {...rest}
@@ -19,7 +19,8 @@ Select.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   value: T.any,
   children: T.node,
-  onChange: T.func.isRequired
+  onChange: T.func,
+  small: T.bool
 }
 
 export default Select

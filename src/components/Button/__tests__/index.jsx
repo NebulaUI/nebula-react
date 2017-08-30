@@ -47,7 +47,7 @@ describe('<Button />', () => {
   })
 
   it('renders full width', () => {
-    const $ = shallow(<Button full>_</Button>)
+    const $ = shallow(<Button fullWidth>_</Button>)
     expect($.hasClass('c-btn c-btn--full')).toBe(true)
   })
 

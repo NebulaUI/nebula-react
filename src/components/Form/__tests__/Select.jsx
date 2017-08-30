@@ -51,4 +51,13 @@ describe('<Form.Select />', () => {
     expect($.prop('placeholder')).toBe('test')
     expect($.prop('id')).toBe('foo')
   })
+
+  it('renders small variant', () => {
+    const props = {
+      ...defaultProps,
+      small: true
+    }
+    const $ = shallow(<Form.Select {...props} />)
+    expect($.hasClass('c-select c-select--sm')).toBe(true)
+  })
 })

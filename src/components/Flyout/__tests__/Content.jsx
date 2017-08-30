@@ -20,7 +20,7 @@ describe('<Flyout.Content />', () => {
   })
 
   it('renders children', () => {
-    const $ = shallow(<Flyout.Content>Test child</Flyout.Content>)
+    const $ = shallow(<Flyout.Content isOpen>Test child</Flyout.Content>)
     expect($.contains('Test child')).toBe(true)
   })
 

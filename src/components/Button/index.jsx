@@ -3,7 +3,18 @@ import T from 'prop-types'
 
 import { classNames } from '../../utils/'
 
-const Button = ({ node, component, to, full, theme, size, type, className, children, ...rest }) => {
+const Button = ({
+  node,
+  component,
+  to,
+  fullWidth,
+  theme,
+  size,
+  type,
+  className,
+  children,
+  ...rest
+}) => {
   const ComponentOverride = component
   const enhancedClassName = classNames(
     'c-btn',
@@ -13,7 +24,7 @@ const Button = ({ node, component, to, full, theme, size, type, className, child
     { 'c-btn--sm': size === 'sm' },
     { 'c-btn--md': size === 'md' },
     { 'c-btn--lg': size === 'lg' },
-    { 'c-btn--full': full }
+    { 'c-btn--full': fullWidth }
   )
 
   if (ComponentOverride) {
@@ -44,7 +55,7 @@ Button.propTypes = {
   node: T.string,
   type: T.oneOf(['submit', 'reset', 'menu', 'link']),
   to: T.string,
-  full: T.bool,
+  fullWidth: T.bool,
   size: T.oneOf(['sm', 'md', 'lg']),
   theme: T.oneOf(['alpha', 'beta']),
   className: T.string,
