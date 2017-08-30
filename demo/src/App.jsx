@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import {
   Button,
+  ButtonDropdown,
   Card,
   SiteWrap,
   Section,
@@ -153,8 +154,23 @@ class App extends Component {
               </Flyout.Content>
             </Flyout.Wrapper>
             <Button type="submit" size="md" theme="beta">
-            Button test
-          </Button>
+              Button test
+            </Button>
+            <ButtonDropdown.Wrapper className="c-btn-dropdown" togglePosition="right" ref={(node) => { this.wrapperRef = node }}>
+              <Button size="md" theme="alpha">
+                Click to go to link
+              </Button>
+              <ButtonDropdown.Toggle />
+              <ButtonDropdown.Content>
+                <Card>
+                  <ul className="o-bare-list">
+                    <li className="o-bare-list__item">Option 1</li>
+                    <li className="o-bare-list__item">Option 2</li>
+                    <li className="o-bare-list__item">Option 3</li>
+                  </ul>
+                </Card>
+              </ButtonDropdown.Content>
+          </ButtonDropdown.Wrapper>
           </SiteWrap>
         </Section>
       </div>
