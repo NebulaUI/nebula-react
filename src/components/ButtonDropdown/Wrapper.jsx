@@ -39,10 +39,11 @@ class ButtonDropdownWrapper extends Component {
     const {
       handleToggle,
       state: { isOpen },
-      props: { node, className, children, togglePosition, ...rest }
+      props: { node, className, children, togglePosition }
     } = this
     const enhancedClassName = classNames(
-      `c-btn-dropdown--toggle--${togglePosition}`,
+      `c-btn-dropdown c-btn-dropdown--toggle-${togglePosition}`,
+      'c-btn-dropdown--full',
       { 'is-open': isOpen },
       className
     )
@@ -59,8 +60,8 @@ class ButtonDropdownWrapper extends Component {
         node || 'div',
         {
           className: enhancedClassName,
-          ...rest
-          // ref: this.wrapperRef, ??
+          // eslint-disable-next-line no-shadow
+          ref: (node) => { this.wrapperRef = node }
         },
         enhancedChildren
       )
