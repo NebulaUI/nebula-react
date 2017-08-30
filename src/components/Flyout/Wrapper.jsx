@@ -18,7 +18,9 @@ class FlyoutWrapper extends Component {
   })
 
   componentDidMount() {
-    addEListener('click', this.handleClickOutside)
+    setTimeout(() => {
+      addEListener('click', this.handleClickOutside)
+    }, 50)
   }
 
   componentWillUnmount() {
@@ -31,13 +33,13 @@ class FlyoutWrapper extends Component {
     })
   }
 
-  handleClickOutside = ({ target }) =>
+  handleClickOutside = ({ target }) => {
     this.setState({
       isOpen: !this.flyout.contains(target)
         ? false
         : this.state.isOpen
     })
-
+  }
 
   render() {
     const { isOpen } = this.state
