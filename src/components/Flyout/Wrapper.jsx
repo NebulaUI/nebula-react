@@ -4,7 +4,7 @@ import T from 'prop-types'
 import { classNames, addEListener, removeEListener } from '../../utils'
 import Content from './Content'
 
-class Wrapper extends Component {
+class FlyoutWrapper extends Component {
   constructor(props) {
     super(props)
 
@@ -68,15 +68,15 @@ class Wrapper extends Component {
   }
 }
 
-Wrapper.propTypes = {
+FlyoutWrapper.propTypes = {
   node: T.string,
   className: T.string,
   children: T.node.isRequired,
   openOnMount: T.bool
 }
 
-Wrapper.childContextTypes = {
+FlyoutWrapper.childContextTypes = {
   handleToggle: T.func
 }
 
-export default Wrapper
+export default FlyoutWrapper

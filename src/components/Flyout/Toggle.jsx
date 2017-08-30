@@ -4,7 +4,7 @@ import T from 'prop-types'
 import { classNames } from '../../utils/'
 
 // eslint-disable-next-line react/prefer-stateless-function
-class Toggle extends Component {
+class FlyoutToggle extends Component {
   render() {
     const { className, handleToggle, children, ...rest } = this.props
     return (
@@ -19,14 +19,14 @@ class Toggle extends Component {
   }
 }
 
-Toggle.propTypes = {
+FlyoutToggle.propTypes = {
   className: T.string,
   handleToggle: T.func,
   children: T.node.isRequired
 }
 
-Toggle.contextTypes = {
+FlyoutToggle.contextTypes = {
   handleToggle: T.func
 }
 
-export default Toggle
+export default FlyoutToggle
