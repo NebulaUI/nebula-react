@@ -1,8 +1,7 @@
-import React, { Component, createElement as E } from 'react'
+import { Component, createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames, addEListener, removeEListener } from '../../utils'
-import Content from './Content'
 
 class FlyoutWrapper extends Component {
   constructor(props) {

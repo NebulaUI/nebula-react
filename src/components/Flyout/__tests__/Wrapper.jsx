@@ -1,5 +1,5 @@
 import React from 'react'
-import { shallow, mount } from 'enzyme'
+import { shallow } from 'enzyme'
 
 import { Flyout } from '../'
 
@@ -38,5 +38,4 @@ describe('<Flyout.Wrapper />', () => {
     })
     expect($.prop('ariaHidden')).toBe('true')
   })
-
 })
