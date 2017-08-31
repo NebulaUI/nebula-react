@@ -27,19 +27,19 @@ class ButtonDropdownWrapper extends Component {
     })
   }
 
-  handleClickOutside = (e) => {
-    if (!this.wrapperRef.contains(e.target)) {
-      this.setState({
-        isOpen: false
-      })
-    }
+  handleClickOutside = ({ target }) => {
+    this.setState({
+      isOpen: !this.wrapperRef.contains(target)
+        ? false
+        : this.state.isOpen
+    })
   }
 
   render() {
     const {
       handleToggle,
       state: { isOpen },
-      props: { node, className, children, togglePosition }
+      props: { node, className, children, togglePosition, ...rest }
     } = this
     const enhancedClassName = classNames(
       `c-btn-dropdown c-btn-dropdown--toggle-${togglePosition}`,
@@ -60,7 +60,8 @@ class ButtonDropdownWrapper extends Component {
         node || 'div',
         {
           className: enhancedClassName,
-          ref: (n) => { this.wrapperRef = n }
+          ref: (n) => { this.wrapperRef = n },
+          ...rest
         },
         enhancedChildren
       )
