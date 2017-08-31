@@ -4,12 +4,12 @@ import { classNames, randomId } from '../../utils/'
 
 const initial = 'c-search'
 
-const Search = ({ className, small, type = 'search', placeholder = 'Search....', submitPosition, buttonTitle = 'Submit', ...rest }) => (
+const Search = ({ id, className, small, placeholder = 'Search....', submitPosition, submitTitle = 'Submit', ...rest }) => (
   <form role="search" action="" method="" className={classNames(initial, submitPosition ? `${initial}--submit-${submitPosition}` : '', className)}>
-    <button title={buttonTitle} type="submit" className={classNames('c-search__submit c-btn c-btn--alpha')} />
+    <button title={submitTitle} type="submit" className={classNames('c-search__submit c-btn c-btn--alpha')} />
     <input
       id={randomId()}
-      type={type}
+      type="search"
       placeholder={placeholder}
       className={classNames('c-text-input', { 'c-text-input--sm': small }, 'c-search__input', className)}
       {...rest}
@@ -26,7 +26,7 @@ Search.propTypes = {
   submitPosition: T.oneOf([
     'left', 'right'
   ]),
-  buttonTitle: T.string
+  submitTitle: T.string
 }
 
 export default Search
