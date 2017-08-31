@@ -1,31 +1,32 @@
 import React from 'react'
 import T from 'prop-types'
-import { classNames } from '../../utils/'
+import { classNames, randomId } from '../../utils/'
 
 const initial = 'c-search'
 
-const Search = ({ className, small, type = 'text', iconPosition, ...rest }) => (
-  <div className={classNames(initial, iconPosition ? `${initial}--submit-${iconPosition}` : '', className)}>
-    <button type="submit" title="submit" className={classNames('c-search__submit c-btn c-btn--alpha')} />
+const Search = ({ className, small, type = 'search', placeholder = 'Search....', submitPosition, buttonTitle = 'Submit', ...rest }) => (
+  <form role="search" action="" method="" className={classNames(initial, submitPosition ? `${initial}--submit-${submitPosition}` : '', className)}>
+    <button title={buttonTitle} type="submit" className={classNames('c-search__submit c-btn c-btn--alpha')} />
     <input
-      id="search"
+      id={randomId()}
       type={type}
-      placeholder="Search…"
+      placeholder={placeholder}
       className={classNames('c-text-input', { 'c-text-input--sm': small }, 'c-search__input', className)}
       {...rest}
     />
-  </div>
+  </form>
 )
 
 Search.propTypes = {
+  id: T.string,
   className: T.string,
-  type: T.oneOf([
-    'text', 'password', 'email', 'number', 'search', 'url'
-  ]),
-  iconPosition: T.oneOf([
+  small: T.bool,
+  type: T.string,
+  placeholder: T.string,
+  submitPosition: T.oneOf([
     'left', 'right'
   ]),
-  small: T.bool
+  buttonTitle: T.string
 }
 
 export default Search
