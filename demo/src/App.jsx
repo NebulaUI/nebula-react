@@ -109,6 +109,10 @@ class App extends Component {
               <option value="2" disabled>Option 2</option>
               <option value="3">Option 3</option>
             </Form.Select>
+            <Form.Search iconPosition="left" />
+            <Form.Search iconPosition="right" />
+            <Form.Search small="true" iconPosition="left" />
+            <Form.Search small="true" iconPosition="right" />
             <Card>
               <h3>Card Title</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -153,8 +157,8 @@ class App extends Component {
               </Flyout.Content>
             </Flyout.Wrapper>
             <Button type="submit" size="md" theme="beta">
-            Button test
-          </Button>
+              Button test
+            </Button>
           </SiteWrap>
         </Section>
       </div>

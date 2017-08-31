@@ -9,6 +9,7 @@ import Radio from './Radio'
 import RadioWrapper from './RadioWrapper'
 import RadioLabel from './RadioLabel'
 import RadioInput from './RadioInput'
+import Search from './Search'
 import Select from './Select'
 
 const Form = {
@@ -23,6 +24,7 @@ const Form = {
   RadioWrapper,
   RadioLabel,
   RadioInput,
+  Search,
   Select
 }
 
