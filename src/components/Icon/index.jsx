@@ -1,18 +1,41 @@
-import React from 'react'
+import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
 
-const Icon = ({ width, height, left, right, verticalAlign, className, icon: { id, viewBox } }) => (
-  <svg
-    viewBox={viewBox}
-    className={classNames('c-icon', { 'c-icon--left': left }, { 'c-icon--right': right }, className)}
-    role="presentation"
-    style={{ width, height, verticalAlign }}
-  >
-    <use xlinkHref={`#${id}`} />
-  </svg>
-)
+const Icon = ({
+  node,
+  width,
+  height,
+  iconLeft,
+  iconRight,
+  verticalAlign,
+  className,
+  children,
+  icon: { id, viewBox }
+}) =>
+  E(
+    node || 'div',
+    {
+      className: classNames('c-icon', className)
+    },
+    children && iconRight && E('span', { className: 'c-icon__text', style: { verticalAlign } }, children),
+    E(
+      'svg',
+      {
+        viewBox,
+        className: classNames('c-icon__svg', { 'c-icon__svg--left': iconLeft }, { 'c-icon__svg--right': iconRight }),
+        role: 'presentation',
+        style: { width, height, verticalAlign }
+      },
+      E(
+        'use',
+        { xlinkHref: `#${id}` },
+        null
+      )
+    ),
+    children && iconLeft && E('span', { className: 'c-icon__text', style: { verticalAlign } }, children)
+  )
 
 Icon.propTypes = {
   icon: T.shape({
@@ -21,10 +44,11 @@ Icon.propTypes = {
   }).isRequired,
   width: T.string,
   height: T.string,
-  left: T.bool,
-  right: T.bool,
+  iconLeft: T.bool,
+  iconRight: T.bool,
   verticalAlign: T.string,
-  className: T.string
+  className: T.string,
+  children: T.node
 }
 
 export { Icon }

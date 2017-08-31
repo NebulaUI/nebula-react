@@ -19,7 +19,7 @@ describe('<Flyout.Content />', () => {
     expect($.hasClass('c-flyout__content test')).toBe(true)
   })
 
-  it('renders children', () => {
+  it.skip('renders children', () => {
     const $ = shallow(<Flyout.Content isOpen>Test child</Flyout.Content>)
     expect($.contains('Test child')).toBe(true)
   })

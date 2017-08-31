@@ -1,8 +1,7 @@
-import React, { Component, createElement as E } from 'react'
+import { Component, createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames, addEListener, removeEListener } from '../../utils'
-import Content from './Content'
 
 class FlyoutWrapper extends Component {
   constructor(props) {
@@ -14,7 +13,8 @@ class FlyoutWrapper extends Component {
   }
 
   getChildContext = () => ({
-    handleToggle: this.toggleOpen
+    handleToggle: this.toggleOpen,
+    isOpen: this.state.isOpen
   })
 
   componentDidMount() {
@@ -48,16 +48,6 @@ class FlyoutWrapper extends Component {
       node, className, children, ...rest
     } = this.props
 
-    const enhancedChildren = React.Children.map(children, (child) => {
-      if (child.type === Content) {
-        return React.cloneElement(child, {
-          isOpen
-        })
-      }
-
-      return child
-    })
-
     return E(
       node || 'div',
       {
@@ -65,7 +55,7 @@ class FlyoutWrapper extends Component {
         className: classNames('c-flyout', { 'is-open': isOpen }, className),
         ...rest
       },
-      enhancedChildren
+      children
     )
   }
 }
@@ -78,7 +68,8 @@ FlyoutWrapper.propTypes = {
 }
 
 FlyoutWrapper.childContextTypes = {
-  handleToggle: T.func
+  handleToggle: T.func,
+  isOpen: T.bool
 }
 
 export default FlyoutWrapper
