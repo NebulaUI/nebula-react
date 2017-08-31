@@ -60,8 +60,7 @@ class ButtonDropdownWrapper extends Component {
         node || 'div',
         {
           className: enhancedClassName,
-          // eslint-disable-next-line no-shadow
-          ref: (node) => { this.wrapperRef = node }
+          ref: (n) => { this.wrapperRef = n }
         },
         enhancedChildren
       )
