@@ -2,7 +2,7 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 import { classNames } from '../../utils/'
 
-const ContentWrapper = ({ node, children, className, ...rest }) =>
+const NavbarContentWrapper = ({ node, children, className, ...rest }) =>
   E(
     node || 'div',
     {
@@ -12,11 +12,11 @@ const ContentWrapper = ({ node, children, className, ...rest }) =>
     children
   )
 
-ContentWrapper.propTypes = {
+NavbarContentWrapper.propTypes = {
   handleToggle: T.func,
   node: T.string,
   children: T.node.isRequired,
   className: T.string
 }
 
-export default ContentWrapper
+export default NavbarContentWrapper
