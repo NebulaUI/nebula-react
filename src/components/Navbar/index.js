@@ -5,6 +5,7 @@ import DropdownContent from './DropdownContent'
 import DropdownWrapper from './DropdownWrapper'
 import Logo from './Logo'
 import Content from './Content'
+import ContentWrapper from './ContentWrapper'
 import Overlay from './Overlay'
 import ToggleWrapper from './ToggleWrapper'
 import Bars from './Bars'
@@ -16,6 +17,7 @@ const Navbar = {
   Link,
   Logo,
   Content,
+  ContentWrapper,
   Overlay,
   Inner,
   Wrapper,

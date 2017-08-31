@@ -1,19 +1,25 @@
-import { createElement as E } from 'react'
+import { Component, createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
 
-const initial = 'c-flyout__content'
-
-const FlyoutContent = ({ node, isOpen, className, children, direction, ...rest }) =>
-  E(
-    node || 'div',
-    {
-      className: classNames(initial, direction ? `${initial}--${direction}` : '', className),
-      ...rest
-    },
-    isOpen && children
-  )
+// eslint-disable-next-line react/prefer-stateless-function
+class FlyoutContent extends Component {
+  render() {
+    const { node, className, children, direction, ...rest } = this.props
+    return E(
+      node || 'div',
+      {
+        className: classNames('c-flyout__content', direction ? `c-flyout__content--${direction}` : '', className),
+        ...rest
+      },
+      this.context.isOpen && children
+    )
+  }
+}
+FlyoutContent.contextTypes = {
+  isOpen: T.bool
+}
 
 FlyoutContent.propTypes = {
   node: T.string,

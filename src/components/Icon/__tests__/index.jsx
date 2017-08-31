@@ -24,7 +24,8 @@ describe('<Icon />', () => {
       height: '50px',
       verticalAlign: 'sub'
     })
-    expect($.find('svg').hasClass('c-icon')).toBe(true)
+    expect($.hasClass('c-icon')).toBe(true)
+    expect($.find('svg').hasClass('c-icon__svg')).toBe(true)
   })
 
   it('renders with a defined className', () => {
@@ -33,25 +34,29 @@ describe('<Icon />', () => {
       className: 'test'
     }
     const $ = shallow(<Icon {...props} />)
-    expect($.find('svg').hasClass('c-icon test')).toBe(true)
+    expect($.hasClass('c-icon test')).toBe(true)
   })
 
-  it('renders left', () => {
+  it('renders with icon to the left of children', () => {
     const props = {
       ...defaultProps,
-      left: true
+      iconLeft: true
     }
-    const $ = shallow(<Icon {...props} />)
-    expect($.find('svg').hasClass('c-icon c-icon--left')).toBe(true)
+    const $ = shallow(<Icon {...props}>Test</Icon>)
+    expect($.childAt(0).hasClass('c-icon__svg c-icon__svg--left')).toBe(true)
+    expect($.childAt(1).hasClass('c-icon__text')).toBe(true)
+    expect($.childAt(1).text()).toBe('Test')
   })
 
-  it('renders right', () => {
+  it('renders with icon to the right of children', () => {
     const props = {
       ...defaultProps,
-      right: true
+      iconRight: true
     }
-    const $ = shallow(<Icon {...props} />)
-    expect($.find('svg').hasClass('c-icon c-icon--right')).toBe(true)
+    const $ = shallow(<Icon {...props}>Test</Icon>)
+    expect($.childAt(0).hasClass('c-icon__text')).toBe(true)
+    expect($.childAt(0).text()).toBe('Test')
+    expect($.childAt(1).hasClass('c-icon__svg c-icon__svg--right')).toBe(true)
   })
 
   it('renders with appropriate role', () => {
