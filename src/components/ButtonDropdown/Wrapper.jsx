@@ -41,12 +41,7 @@ class ButtonDropdownWrapper extends Component {
       state: { isOpen },
       props: { node, className, children, togglePosition, ...rest }
     } = this
-    const enhancedClassName = classNames(
-      `c-btn-dropdown c-btn-dropdown--toggle-${togglePosition}`,
-      'c-btn-dropdown--full',
-      { 'is-open': isOpen },
-      className
-    )
+
     const enhancedChildren = React.Children.map(children, (child) => {
       if (child.type === ButtonDropdownToggle) {
         return React.cloneElement(child, {
@@ -59,7 +54,13 @@ class ButtonDropdownWrapper extends Component {
       E(
         node || 'div',
         {
-          className: enhancedClassName,
+          className: classNames(
+            'c-btn-dropdown',
+            `c-btn-dropdown--toggle-${togglePosition}`,
+            'c-btn-dropdown--full',
+            { 'is-open': isOpen },
+            className
+          ),
           ref: (n) => { this.wrapperRef = n },
           ...rest
         },

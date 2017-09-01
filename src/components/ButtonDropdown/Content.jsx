@@ -10,7 +10,7 @@ const ButtonDropdownContent = ({ node, className, children, ...rest }) =>
       ...rest
     },
     children
-  )
+)
 
 ButtonDropdownContent.propTypes = {
   node: T.string,

@@ -18,7 +18,7 @@ ButtonDropdownToggle.propTypes = {
   node: T.string,
   handleToggle: T.func,
   className: T.string,
-  children: T.node.isRequired
+  children: T.node
 }
 
 export default ButtonDropdownToggle
