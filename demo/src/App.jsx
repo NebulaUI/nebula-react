@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import {
   Button,
+  ButtonDropdown,
   Card,
   SiteWrap,
   Section,
@@ -13,9 +14,47 @@ import {
   Flyout,
   Form,
   Modal,
-  Foldable,
+  Table,
   StatusCard,
 } from 'nebula-react'
+
+const tableData = {
+  columns: [
+    {
+      id: 'column-0',
+      title: 'Name',
+      sortable: true,
+    }, {
+      id: 'column-1',
+      title: 'Email',
+      sortable: true,
+      defaultSorted: true,
+    },
+    {
+      id: 'column-2',
+      title: 'Age',
+      sortable: true,
+    },
+  ],
+  rows: [
+    {
+      id: 'row-0',
+      name: 'Robert Smith',
+      email: 'robert.smith@checkd.media',
+      age: 32,
+    }, {
+      id: 'row-1',
+      name: 'Elliott Hesp',
+      email: 'elliott.hesp@checkd.media',
+      age: 26,
+    }, {
+      id: 'row-2',
+      name: 'Mike Diarmid',
+      email: <a href="test">mike.diarmid@checkd.media</a>,
+      age: 34,
+    },
+  ],
+}
 
 class App extends Component {
   constructor() {
@@ -159,6 +198,55 @@ class App extends Component {
             <Button type="submit" size="md" theme="beta">
               Button test
             </Button>
+            <h3>Button Dropdowns</h3>
+            <ButtonDropdown.Wrapper togglePosition="left">
+              <Button node="a" to="/" size="md" theme="alpha" className="c-btn--full">
+                Click to go to link
+              </Button>
+              <ButtonDropdown.Toggle />
+              <ButtonDropdown.Content>
+                <Card>
+                  <ul className="o-bare-list">
+                    <li className="o-bare-list__item">Option 1</li>
+                    <li className="o-bare-list__item">Option 2</li>
+                    <li className="o-bare-list__item">Option 3</li>
+                  </ul>
+                </Card>
+              </ButtonDropdown.Content>
+            </ButtonDropdown.Wrapper>
+            <ButtonDropdown.Wrapper togglePosition="right">
+              <Button node="a" to="/" size="lg" theme="alpha" className="c-btn--full">
+                Click to go to link
+              </Button>
+              <ButtonDropdown.Toggle />
+              <ButtonDropdown.Content>
+                <Card>
+                  <ul className="o-bare-list">
+                    <li className="o-bare-list__item">Option 1</li>
+                    <li className="o-bare-list__item">Option 2</li>
+                    <li className="o-bare-list__item">Option 3</li>
+                  </ul>
+                </Card>
+              </ButtonDropdown.Content>
+            </ButtonDropdown.Wrapper>
+            <ButtonDropdown.Wrapper togglePosition="right">
+              <Button node="a" to="/" size="sm" theme="alpha" className="c-btn--full">
+                Click to go to link
+              </Button>
+              <ButtonDropdown.Toggle />
+              <ButtonDropdown.Content>
+                <Card>
+                  <ul className="o-bare-list">
+                    <li className="o-bare-list__item">Option 1</li>
+                    <li className="o-bare-list__item">Option 2</li>
+                    <li className="o-bare-list__item">Option 3</li>
+                  </ul>
+                </Card>
+              </ButtonDropdown.Content>
+            </ButtonDropdown.Wrapper>
+            <Section size="md">
+              <Table stackAt="max-md" data={tableData} />
+            </Section>
           </SiteWrap>
         </Section>
       </div>

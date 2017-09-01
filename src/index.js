@@ -8,6 +8,7 @@ import { SiteWrap } from './objects/SiteWrap/'
 import { UniformedList } from './objects/UniformedList/'
 
 import { Button } from './components/Button/'
+import { ButtonDropdown } from './components/ButtonDropdown/'
 import { Card } from './components/Card/'
 import { Flyout } from './components/Flyout/'
 import { Foldable } from './components/Foldable/'
@@ -16,11 +17,13 @@ import { Modal } from './components/Modal/'
 import { Icon } from './components/Icon/'
 import { Navbar } from './components/Navbar/'
 import { StatusCard } from './components/StatusCard/'
+import { Table } from './components/Table/'
 import { Tabs } from './components/Tabs/'
 
 export {
   BareList,
   Button,
+  ButtonDropdown,
   Card,
   Flag,
   Flyout,
@@ -35,6 +38,7 @@ export {
   Section,
   SiteWrap,
   StatusCard,
+  Table,
   Tabs,
   UniformedList
 }
