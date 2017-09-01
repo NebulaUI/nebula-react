@@ -8,6 +8,7 @@ import { SiteWrap } from './objects/SiteWrap/'
 import { UniformedList } from './objects/UniformedList/'
 
 import { Button } from './components/Button/'
+import { ButtonDropdown } from './components/ButtonDropdown/'
 import { Card } from './components/Card/'
 import { Flyout } from './components/Flyout/'
 import { Foldable } from './components/Foldable/'
@@ -22,6 +23,7 @@ import { Tabs } from './components/Tabs/'
 export {
   BareList,
   Button,
+  ButtonDropdown,
   Card,
   Flag,
   Flyout,

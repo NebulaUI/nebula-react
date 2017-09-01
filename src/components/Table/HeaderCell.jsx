@@ -4,7 +4,6 @@ import T from 'prop-types'
 import { classNames } from '../../utils'
 
 const HeaderCell = ({ sortable, sorted, title, sort, index }) => {
-
   const handleClick = () => {
     sort(index)
   }

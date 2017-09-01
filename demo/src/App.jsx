@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import {
   Button,
+  ButtonDropdown,
   Card,
   SiteWrap,
   Section,
@@ -193,6 +194,52 @@ class App extends Component {
             <Button type="submit" size="md" theme="beta">
               Button test
             </Button>
+            <h3>Button Dropdowns</h3>
+            <ButtonDropdown.Wrapper togglePosition="left">
+              <Button node="a" to="/" size="md" theme="alpha" className="c-btn--full">
+                Click to go to link
+              </Button>
+              <ButtonDropdown.Toggle />
+              <ButtonDropdown.Content>
+                <Card>
+                  <ul className="o-bare-list">
+                    <li className="o-bare-list__item">Option 1</li>
+                    <li className="o-bare-list__item">Option 2</li>
+                    <li className="o-bare-list__item">Option 3</li>
+                  </ul>
+                </Card>
+              </ButtonDropdown.Content>
+            </ButtonDropdown.Wrapper>
+            <ButtonDropdown.Wrapper togglePosition="right">
+              <Button node="a" to="/" size="lg" theme="alpha" className="c-btn--full">
+                Click to go to link
+              </Button>
+              <ButtonDropdown.Toggle />
+              <ButtonDropdown.Content>
+                <Card>
+                  <ul className="o-bare-list">
+                    <li className="o-bare-list__item">Option 1</li>
+                    <li className="o-bare-list__item">Option 2</li>
+                    <li className="o-bare-list__item">Option 3</li>
+                  </ul>
+                </Card>
+              </ButtonDropdown.Content>
+            </ButtonDropdown.Wrapper>
+            <ButtonDropdown.Wrapper togglePosition="right">
+              <Button node="a" to="/" size="sm" theme="alpha" className="c-btn--full">
+                Click to go to link
+              </Button>
+              <ButtonDropdown.Toggle />
+              <ButtonDropdown.Content>
+                <Card>
+                  <ul className="o-bare-list">
+                    <li className="o-bare-list__item">Option 1</li>
+                    <li className="o-bare-list__item">Option 2</li>
+                    <li className="o-bare-list__item">Option 3</li>
+                  </ul>
+                </Card>
+              </ButtonDropdown.Content>
+            </ButtonDropdown.Wrapper>
             <Section size="md">
               <Table stackAt="max-md" data={tableData} />
             </Section>
