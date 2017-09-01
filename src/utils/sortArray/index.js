@@ -9,6 +9,10 @@ function normaliseValue(value) {
     return value.valueOf()
   }
 
+  if (value.props) {
+    return value.props.children
+  }
+
   return value
 }
 
