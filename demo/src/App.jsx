@@ -14,9 +14,48 @@ import {
   Flyout,
   Form,
   Modal,
-  Foldable,
+  Table,
   StatusCard,
 } from 'nebula-react'
+
+const tableData = {
+  columns: [
+    {
+      id: 'column-0',
+      title: 'Name',
+      sortable: true,
+    }, {
+      id: 'column-1',
+      title: 'Email',
+      sortable: true,
+      defaultSorted: true,
+    },
+  ],
+  rows: [
+    {
+      id: 'row-0',
+      cells: [
+        { id: 'cell-0', children: 'Robert Smith' },
+        { id: 'cell-1', children: 'robert.smith@checkd.media' },
+      ],
+    }, {
+      id: 'row-1',
+      cells: [
+        { id: 'cell-0', children: 'Elliott Hesp' },
+        { id: 'cell-1', children: 'elliott.hesp@checkd.media' },
+      ],
+    }, {
+      id: 'row-2',
+      cells: [
+        { id: 'cell-0', children: 'Mike Diarmid' },
+        {
+          id: 'cell-1',
+          children: <a href="mailto:mike.diarmid@checkd.media">mike.diarmid@checkd.media</a>
+        },
+      ],
+    },
+  ],
+}
 
 class App extends Component {
   constructor() {
@@ -202,6 +241,9 @@ class App extends Component {
                 </Card>
               </ButtonDropdown.Content>
             </ButtonDropdown.Wrapper>
+            <Section size="md">
+              <Table stackAt="max-md" data={tableData} />
+            </Section>
           </SiteWrap>
         </Section>
       </div>
