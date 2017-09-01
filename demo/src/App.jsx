@@ -150,8 +150,8 @@ class App extends Component {
             </Form.Select>
             <Form.Search submitPosition="left" />
             <Form.Search submitPosition="right" />
-            <Form.Search small="true" submitPosition="left" />
-            <Form.Search small="true" submitPosition="right" />
+            <Form.Search submitPosition="left" small />
+            <Form.Search submitPosition="right" small />
             <Card>
               <h3>Card Title</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
