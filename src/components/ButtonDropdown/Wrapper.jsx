@@ -51,14 +51,14 @@ class ButtonDropdownWrapper extends Component {
       }
       return child
     })
-    const togglePositionClassName = togglePosition ? `c-btn-dropdown--toggle-${togglePosition}` : ''
+
     return (
       E(
         node || 'div',
         {
           className: classNames(
             'c-btn-dropdown',
-            togglePositionClassName,
+            `c-btn-dropdown--toggle-${togglePosition}`,
             { 'c-btn-dropdown--full': fullWidth },
             { 'is-open': isOpen },
             className

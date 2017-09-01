@@ -74,7 +74,7 @@ describe('<ButtonDropdown.Wrapper />', () => {
     expect($.hasClass('is-open')).toBe(false)
   })
 
-  it('can be opened', () => {
+  it('can be opened and closed via the toggle', () => {
     const mockOpen = jest.fn()
     const $ = shallow(
       <ButtonDropdown.Wrapper {...defaultProps}>
@@ -85,31 +85,6 @@ describe('<ButtonDropdown.Wrapper />', () => {
     expect($.hasClass('is-open')).toBe(false)
 
     $.find(ButtonDropdown.Toggle).prop('handleToggle')()
-    expect($.hasClass('is-open')).toBe(true)
-  })
-
-  it('takes a callback when the dropdown toggle is clicked', () => {
-    const mockOpen = jest.fn()
-    const $ = mount(
-      <ButtonDropdown.Wrapper {...defaultProps}>
-        <ButtonDropdown.Content>
-          <ButtonDropdown.Toggle handleToggle={mockOpen} />
-        </ButtonDropdown.Content>
-      </ButtonDropdown.Wrapper>
-    )
-    $.setState({
-      isOpen: false
-    })
-    expect(mockOpen).toHaveBeenCalledTimes(0)
-    $.find('.c-btn-dropdown')
-    expect($.hasClass('is-open')).toBe(false)
-
-    $.find('.c-btn-dropdown__toggle').simulate('click')
-    expect(mockOpen).toHaveBeenCalledTimes(1)
-    $.setState({
-      isOpen: true
-    })
-    $.find('.c-btn-dropdown')
     expect($.hasClass('is-open')).toBe(true)
   })
 
