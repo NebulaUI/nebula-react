@@ -16,6 +16,7 @@ import { Modal } from './components/Modal/'
 import { Icon } from './components/Icon/'
 import { Navbar } from './components/Navbar/'
 import { StatusCard } from './components/StatusCard/'
+import { Table } from './components/Table/'
 import { Tabs } from './components/Tabs/'
 
 export {
@@ -35,6 +36,7 @@ export {
   Section,
   SiteWrap,
   StatusCard,
+  Table,
   Tabs,
   UniformedList
 }
