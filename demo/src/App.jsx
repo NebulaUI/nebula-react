@@ -29,29 +29,28 @@ const tableData = {
       sortable: true,
       defaultSorted: true,
     },
+    {
+      id: 'column-2',
+      title: 'Age',
+      sortable: true,
+    },
   ],
   rows: [
     {
       id: 'row-0',
-      cells: [
-        { id: 'cell-0', children: 'Robert Smith' },
-        { id: 'cell-1', children: 'robert.smith@checkd.media' },
-      ],
+      name: 'Robert Smith',
+      email: 'robert.smith@checkd.media',
+      age: 32,
     }, {
       id: 'row-1',
-      cells: [
-        { id: 'cell-0', children: 'Elliott Hesp' },
-        { id: 'cell-1', children: 'elliott.hesp@checkd.media' },
-      ],
+      name: 'Elliott Hesp',
+      email: 'elliott.hesp@checkd.media',
+      age: 26,
     }, {
       id: 'row-2',
-      cells: [
-        { id: 'cell-0', children: 'Mike Diarmid' },
-        {
-          id: 'cell-1',
-          children: <a href="mailto:mike.diarmid@checkd.media">mike.diarmid@checkd.media</a>
-        },
-      ],
+      name: 'Mike Diarmid',
+      email: <a href="test">mike.diarmid@checkd.media</a>,
+      age: 34,
     },
   ],
 }

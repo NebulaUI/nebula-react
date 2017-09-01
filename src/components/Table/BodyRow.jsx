@@ -5,16 +5,12 @@ import Cell from './BodyCell'
 
 const BodyRow = ({ row }) => (
   <tr className="c-table__row">
-    { row.cells.map(c => <Cell key={c.id} cell={c} />)}
+    { Object.keys(row).map(key => <Cell key={row[key]} data={row[key]} />) }
   </tr>
 )
 
 BodyRow.propTypes = {
-  row: T.shape({
-    cells: T.arrayOf(T.shape({
-      id: T.string.isRequired
-    }))
-  })
+  row: T.shape({})
 }
 
 export default BodyRow
