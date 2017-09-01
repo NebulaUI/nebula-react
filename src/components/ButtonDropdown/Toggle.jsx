@@ -16,7 +16,7 @@ const ButtonDropdownToggle = ({ node, handleToggle, className, children, ...rest
 
 ButtonDropdownToggle.propTypes = {
   node: T.string,
-  handleToggle: T.func,
+  handleToggle: T.func.isRequired,
   className: T.string,
   children: T.node
 }
