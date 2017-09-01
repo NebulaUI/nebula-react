@@ -26,6 +26,27 @@ describe('<ButtonDropdown.Wrapper />', () => {
     expect($.hasClass('c-btn-dropdown c-btn-dropdown--toggle-left test')).toBe(true)
   })
 
+  it('can be configured with a left direction', () => {
+    const $ = shallow(
+      <ButtonDropdown.Wrapper togglePosition="left">_</ButtonDropdown.Wrapper>
+    )
+    expect($.hasClass('c-btn-dropdown--toggle-left')).toBe(true)
+  })
+
+  it('can be configured with a right direction', () => {
+    const $ = shallow(
+      <ButtonDropdown.Wrapper togglePosition="right">_</ButtonDropdown.Wrapper>
+    )
+    expect($.hasClass('c-btn-dropdown--toggle-right')).toBe(true)
+  })
+
+  it('can be configured to full width', () => {
+    const $ = shallow(
+      <ButtonDropdown.Wrapper {...defaultProps} fullWidth>_</ButtonDropdown.Wrapper>
+    )
+    expect($.hasClass('c-btn-dropdown--full')).toBe(true)
+  })
+
   it('renders a defined node type', () => {
     const $ = shallow(<ButtonDropdown.Wrapper {...defaultProps} node="article">_</ButtonDropdown.Wrapper>)
     expect($.type()).toBe('article')
@@ -48,25 +69,23 @@ describe('<ButtonDropdown.Wrapper />', () => {
     expect($.prop('ariaHidden')).toBe('true')
   })
 
-  it('can be configured with a left direction', () => {
-    const $ = shallow(
-      <ButtonDropdown.Wrapper togglePosition="left">_</ButtonDropdown.Wrapper>
-    )
-    expect($.hasClass('c-btn-dropdown--toggle-left')).toBe(true)
+  it('renders closed on the initial render', () => {
+    const $ = shallow(<ButtonDropdown.Wrapper {...defaultProps}>_</ButtonDropdown.Wrapper>)
+    expect($.hasClass('is-open')).toBe(false)
   })
 
-  it('can be configured with a right direction', () => {
+  it('can be opened', () => {
+    const mockOpen = jest.fn()
     const $ = shallow(
-      <ButtonDropdown.Wrapper togglePosition="right">_</ButtonDropdown.Wrapper>
+      <ButtonDropdown.Wrapper {...defaultProps}>
+        <ButtonDropdown.Toggle handleToggle={mockOpen}>_</ButtonDropdown.Toggle>
+        <ButtonDropdown.Content>_</ButtonDropdown.Content>
+      </ButtonDropdown.Wrapper>
     )
-    expect($.hasClass('c-btn-dropdown--toggle-right')).toBe(true)
-  })
+    expect($.hasClass('is-open')).toBe(false)
 
-  it('can be configured to full width', () => {
-    const $ = shallow(
-      <ButtonDropdown.Wrapper {...defaultProps} fullWidth>_</ButtonDropdown.Wrapper>
-    )
-    expect($.hasClass('c-btn-dropdown--full')).toBe(true)
+    $.find(ButtonDropdown.Toggle).prop('handleToggle')()
+    expect($.hasClass('is-open')).toBe(true)
   })
 
   it('takes a callback when the dropdown toggle is clicked', () => {
@@ -78,11 +97,9 @@ describe('<ButtonDropdown.Wrapper />', () => {
         </ButtonDropdown.Content>
       </ButtonDropdown.Wrapper>
     )
-
     $.setState({
       isOpen: false
     })
-
     expect(mockOpen).toHaveBeenCalledTimes(0)
     $.find('.c-btn-dropdown')
     expect($.hasClass('is-open')).toBe(false)
