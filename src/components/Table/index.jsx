@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import T from 'prop-types'
 
-import { classNames } from '../../utils'
+import { classNames, sortArray } from '../../utils'
 
 import Header from './Header'
 import Body from './Body'
@@ -42,7 +42,9 @@ class Table extends Component {
     const { stackAt, data } = this.props
     const { sortedBy } = this.state
     const stackClassName = !!stackAt && `c-table--stack@${stackAt}`
-
+    const sortedRows = sortedBy
+      ? sortArray(data.rows, sortedBy.label, sortedBy.descending)
+      : data.rows
     return (
       <div className="c-table-container">
         <table
@@ -53,7 +55,7 @@ class Table extends Component {
           )}
         >
           <Header columns={data.columns} sortedBy={sortedBy} sort={this.sort} />
-          <Body rows={data.rows} />
+          <Body rows={sortedRows} />
         </table>
       </div>
     )

@@ -1,16 +1,14 @@
 import React from 'react'
 import T from 'prop-types'
 
-const BodyCell = ({ cell }) => (
+const BodyCell = ({ data }) => (
   <td className="c-table__cell" data-label="Name">
-    { cell.children }
+    { data }
   </td>
 )
 
 BodyCell.propTypes = {
-  cell: T.shape({
-    children: T.node.isRequired
-  })
+  data: T.node.isRequired
 }
 
 export default BodyCell
