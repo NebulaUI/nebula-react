@@ -48,6 +48,54 @@ describe('<ButtonDropdown.Wrapper />', () => {
     expect($.prop('ariaHidden')).toBe('true')
   })
 
+  it('can be configured with a left direction', () => {
+    const $ = shallow(
+      <ButtonDropdown.Wrapper togglePosition="left">_</ButtonDropdown.Wrapper>
+    )
+    expect($.hasClass('c-btn-dropdown--toggle-left')).toBe(true)
+  })
+
+  it('can be configured with a right direction', () => {
+    const $ = shallow(
+      <ButtonDropdown.Wrapper togglePosition="right">_</ButtonDropdown.Wrapper>
+    )
+    expect($.hasClass('c-btn-dropdown--toggle-right')).toBe(true)
+  })
+
+  it('can be configured to full width', () => {
+    const $ = shallow(
+      <ButtonDropdown.Wrapper {...defaultProps} fullWidth>_</ButtonDropdown.Wrapper>
+    )
+    expect($.hasClass('c-btn-dropdown--full')).toBe(true)
+  })
+
+  it('takes a callback when the dropdown toggle is clicked', () => {
+    const mockOpen = jest.fn()
+    const $ = mount(
+      <ButtonDropdown.Wrapper {...defaultProps}>
+        <ButtonDropdown.Content>
+          <ButtonDropdown.Toggle handleToggle={mockOpen} />
+        </ButtonDropdown.Content>
+      </ButtonDropdown.Wrapper>
+    )
+
+    $.setState({
+      isOpen: false
+    })
+
+    expect(mockOpen).toHaveBeenCalledTimes(0)
+    $.find('.c-btn-dropdown')
+    expect($.hasClass('is-open')).toBe(false)
+
+    $.find('.c-btn-dropdown__toggle').simulate('click')
+    expect(mockOpen).toHaveBeenCalledTimes(1)
+    $.setState({
+      isOpen: true
+    })
+    $.find('.c-btn-dropdown')
+    expect($.hasClass('is-open')).toBe(true)
+  })
+
   it('adds a click handler to the window when mounted and removes it when it unmounts', () => {
     const mockAddEventListener = jest.fn()
     const mockRemoveEventListener = jest.fn()

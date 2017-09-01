@@ -52,7 +52,11 @@ describe('<ButtonDropdown.Toggle />', () => {
 
   it('calls handleToggle when clicked', () => {
     const mockHandleToggle = jest.fn()
-    const $ = shallow(<ButtonDropdown.Toggle handleToggle={mockHandleToggle}>_</ButtonDropdown.Toggle>)
+    const $ = shallow(
+      <ButtonDropdown.Toggle handleToggle={mockHandleToggle}>
+        _
+      </ButtonDropdown.Toggle>
+    )
 
     expect(mockHandleToggle).toHaveBeenCalledTimes(0)
 

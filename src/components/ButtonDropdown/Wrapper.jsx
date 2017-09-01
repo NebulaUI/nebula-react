@@ -3,7 +3,6 @@ import T from 'prop-types'
 import { classNames } from '../../utils/'
 import { addEListener, removeEListener } from '../../utils/window'
 
-
 import ButtonDropdownToggle from './Toggle'
 
 class ButtonDropdownWrapper extends Component {
