@@ -10,6 +10,9 @@ import RadioWrapper from './RadioWrapper'
 import RadioLabel from './RadioLabel'
 import RadioInput from './RadioInput'
 import Search from './Search'
+import SearchWrapper from './SearchWrapper'
+import SearchSubmit from './SearchSubmit'
+import SearchInput from './SearchInput'
 import Select from './Select'
 
 const Form = {
@@ -25,6 +28,9 @@ const Form = {
   RadioLabel,
   RadioInput,
   Search,
+  SearchWrapper,
+  SearchSubmit,
+  SearchInput,
   Select
 }
 
