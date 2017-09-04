@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import T from 'prop-types'
 import { randomId } from '../../utils/'
 
@@ -6,12 +6,44 @@ import SearchWrapper from './SearchWrapper'
 import SearchSubmit from './SearchSubmit'
 import SearchInput from './SearchInput'
 
-const Search = ({ id, small, submitPosition, ...rest }) => (
-  <SearchWrapper id={randomId()} submitPosition={submitPosition} {...rest}>
-    <SearchSubmit />
-    <SearchInput id={randomId()} small={small} />
-  </SearchWrapper>
-)
+class Search extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      value: ''
+    }
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      value: e.target.value
+    })
+  }
+
+  handleSubmit = () => {
+    // console.log('Submitted:', this.state.value)
+  }
+
+  render() {
+    const { id, submitPosition, small, ...rest } = this.props
+    return (
+      <SearchWrapper
+        id={id || randomId()}
+        onSubmit={this.handleSubmit()}
+        submitPosition={submitPosition}
+        {...rest}
+      >
+        <SearchSubmit />
+        <SearchInput
+          id={id || randomId()}
+          small={small}
+          onChange={this.handleChange}
+          value={this.state.value}
+        />
+      </SearchWrapper>
+    )
+  }
+}
 
 Search.propTypes = {
   id: T.string,

@@ -131,7 +131,6 @@ class App extends Component {
                 </Tabs.Panel>
               </Tabs.Panels>
             </Tabs.Wrapper>
-
             <Form.Radio id="radio-1" value="one" name="radio-group" checked onChange={() => {}}>Option 1</Form.Radio>
             <Form.Radio id="radio-2" value="two" name="radio-group">Option 2</Form.Radio>
             <Form.Radio id="radio-3" value="two" name="radio-group" disabled>Option 3</Form.Radio>
@@ -144,10 +143,10 @@ class App extends Component {
               <option value="2" disabled>Option 2</option>
               <option value="3">Option 3</option>
             </Form.Select>
-            <Form.Search submitPosition="left" />
-            <Form.Search submitPosition="right" />
-            <Form.Search small submitPosition="left"  />
-            <Form.Search small submitPosition="right" />
+            <Form.Search id="" method="" action="/" submitPosition="left"  />
+            <Form.Search id="" method="" action="/" submitPosition="right" />
+            <Form.Search id="" method="" action="/" small submitPosition="left" />
+            <Form.Search id="" method="" action="/" small submitPosition="right" />
             <Card>
               <h3>Card Title</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
