@@ -7,7 +7,7 @@ const Card = ({ node, className, children, ...rest }) =>
   E(
     node || 'div',
     {
-      className: classNames('c-card', className),
+      className: classNames(className || 'c-card'),
       ...rest
     },
     children

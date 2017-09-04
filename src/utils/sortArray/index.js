@@ -26,7 +26,7 @@ function select(item, selector) {
 
 function sortArray(array = [], selector = identity, descending = false) {
   const selectValue = typeof selector === 'string'
-    ? (item => select(item, normaliseValue(selector)))
+    ? (item => select(item, selector))
     : selector
   const compare = (a, b) => {
     const aValue = normaliseValue(selectValue(a))

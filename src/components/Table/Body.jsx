@@ -1,20 +1,34 @@
-import React from 'react'
+import React, { Component } from 'react'
 import T from 'prop-types'
 
-import { objectWithoutKey } from '../../utils'
+import { randomId } from '../../utils'
 
 import Row from './BodyRow'
 
-const Body = ({ rows }) => (
-  <tbody className="c-table__body">
-    { rows.map(r => <Row key={r.id} row={objectWithoutKey(r, 'id')} />) }
-  </tbody>
-)
+class Body extends Component {
+  componentWillMount() {
+    this.rows = this.props.rows.map(cells =>
+      ({
+        id: randomId(),
+        cells: cells.map(cell => ({
+          id: randomId(),
+          value: cell
+        }))
+      })
+    )
+  }
+
+  render() {
+    return (
+      <tbody className="c-table__body">
+        { this.rows.map(r => <Row key={r.id} cells={r.cells} />) }
+      </tbody>
+    )
+  }
+}
 
 Body.propTypes = {
-  rows: T.arrayOf(T.shape({
-    id: T.string.isRequired
-  }))
+  rows: T.arrayOf(T.arrayOf(T.any))
 }
 
 export default Body
