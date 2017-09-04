@@ -144,10 +144,10 @@ class App extends Component {
               <option value="2" disabled>Option 2</option>
               <option value="3">Option 3</option>
             </Form.Select>
-            <Form.Search id="" submitPosition="left" />
-            <Form.Search id="" submitPosition="right" />
-            <Form.Search id="" small submitPosition="left"  />
-            <Form.Search id="" small submitPosition="right" />
+            <Form.Search submitPosition="left" />
+            <Form.Search submitPosition="right" />
+            <Form.Search small submitPosition="left"  />
+            <Form.Search small submitPosition="right" />
             <Card>
               <h3>Card Title</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
