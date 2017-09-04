@@ -21,38 +21,34 @@ import {
 const tableData = {
   columns: [
     {
-      id: 'column-0',
       title: 'Name',
       sortable: true,
     }, {
-      id: 'column-1',
       title: 'Email',
       sortable: true,
       defaultSorted: true,
     },
     {
-      id: 'column-2',
       title: 'Age',
       sortable: true,
     },
   ],
   rows: [
-    {
-      id: 'row-0',
-      name: 'Robert Smith',
-      email: 'robert.smith@checkd.media',
-      age: 32,
-    }, {
-      id: 'row-1',
-      name: 'Elliott Hesp',
-      email: 'elliott.hesp@checkd.media',
-      age: 26,
-    }, {
-      id: 'row-2',
-      name: 'Mike Diarmid',
-      email: <a href="test">mike.diarmid@checkd.media</a>,
-      age: 34,
-    },
+    [
+      'Robert Smith',
+      'robert.smith@checkd.media',
+      32,
+    ],
+    [
+      'Elliott Hesp',
+      'elliott.hesp@checkd.media',
+      26,
+    ],
+    [
+      'Mike Diarmid',
+      'mike.diarmid@checkd.media',
+      34,
+    ],
   ],
 }
 

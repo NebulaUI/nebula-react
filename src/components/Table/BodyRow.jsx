@@ -3,14 +3,14 @@ import T from 'prop-types'
 
 import Cell from './BodyCell'
 
-const BodyRow = ({ row }) => (
+const BodyRow = ({ cells }) => (
   <tr className="c-table__row">
-    { Object.keys(row).map(key => <Cell key={row[key]} data={row[key]} />) }
+    { cells.map(cell => <Cell key={cell.id} data={cell.value} />) }
   </tr>
 )
 
 BodyRow.propTypes = {
-  row: T.shape({})
+  cells: T.arrayOf(T.any)
 }
 
 export default BodyRow

@@ -4,7 +4,7 @@ import { shallow } from 'enzyme'
 import { Card } from '../'
 
 describe('<Card />', () => {
-  it('passes in an optional className', () => {
+  it('passes in an optional className override', () => {
     const $ = shallow(<Card className="something else" />)
     expect($.hasClass('c-card something else')).toBe(true)
   })
