@@ -60,7 +60,7 @@ TabsWrapper.childContextTypes = {
 
 TabsWrapper.propTypes = {
   node: T.string,
-  children: T.node,
+  children: T.node.isRequired,
   className: T.string,
   onChange: T.func,
   activeId: T.oneOfType([T.string, T.number]),
