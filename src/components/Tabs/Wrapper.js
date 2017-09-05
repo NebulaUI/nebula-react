@@ -1,58 +1,70 @@
-import React, { Component, createElement as E } from 'react'
+import { Component, createElement as E } from 'react'
 import T from 'prop-types'
-import { classNames, removeFalsy } from '../../utils'
-
-import List from './TabList'
-import Panels from './Panels'
+import { classNames } from '../../utils'
 
 class TabsWrapper extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      activeIndex: props.initialActiveIndex || 0
+      activeLabel: '',
+      activeId: props.defaultActiveId || null
     }
   }
 
-  activateTab = (activeIndex) => {
-    this.setState({
-      activeIndex
-    })
+  getChildContext = () => ({
+    activateTab: this.activateTab,
+    setActiveLabel: this.setActiveLabel,
+    activeLabel: this.state.activeLabel,
+    activeId: this.isControlled()
+      ? this.props.activeId
+      : this.state.activeId
+  })
+
+  setActiveLabel = activeLabel => this.setState({ activeLabel })
+
+  activateTab = (activeId, initialMount) => {
+    if (this.props.onChange && !initialMount) {
+      this.props.onChange(activeId)
+    }
+
+    if (!this.isControlled()) {
+      this.setState({ activeId })
+    }
   }
+
+  isControlled = () => !!this.props.activeId
 
   render() {
     const {
-      activateTab,
-      state: { activeIndex },
-      props: { node, className, initialActiveIndex, children, ...rest }
-    } = this
-    const enhancedChildren = React.Children.map(removeFalsy(children), (child) => {
-      if (child.type === List) {
-        return React.cloneElement(child, {
-          activeIndex,
-          activateTab
-        })
-      } else if (child.type === Panels) {
-        return React.cloneElement(child, {
-          activeIndex
-        })
+      props: {
+        defaultActiveId, activeId, // eslint-disable-line no-unused-vars
+        node, className, children, ...rest
       }
+    } = this
 
-      return child
-    })
     return E(
       node || 'div',
       { className: classNames('c-tabs', className), ...rest },
-      enhancedChildren
+      children
     )
   }
+}
+
+TabsWrapper.childContextTypes = {
+  activateTab: T.func.isRequired,
+  activeId: T.oneOfType([T.string, T.number]),
+  activeLabel: T.string.isRequired,
+  setActiveLabel: T.func.isRequired
 }
 
 TabsWrapper.propTypes = {
   node: T.string,
   children: T.node,
   className: T.string,
-  initialActiveIndex: T.number
+  onChange: T.func,
+  activeId: T.oneOfType([T.string, T.number]),
+  defaultActiveId: T.oneOfType([T.string, T.number])
 }
 
 export default TabsWrapper
