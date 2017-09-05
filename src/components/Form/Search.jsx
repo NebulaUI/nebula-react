@@ -14,31 +14,48 @@ class Search extends Component {
     }
   }
 
+  isControlled = () => !!this.props.value
+
   handleChange = (e) => {
-    this.setState({
-      value: e.target.value
-    })
+    if (this.isControlled) {
+      return this.props.onChange(e.target.value)
+    }
+    return this.setState(e.target.value)
   }
 
   handleSubmit = () => {
-    // console.log('Submitted:', this.state.value)
+    if (this.isControlled) {
+      return this.props.onSubmit(this.props.value)
+    }
+    return this.state.value
   }
 
   render() {
-    const { id, submitPosition, small, ...rest } = this.props
+    const {
+      id = randomId(),
+      action,
+      method,
+      submitPosition,
+      small,
+      defaultValue,
+      value,
+      ...rest
+    } = this.props
     return (
       <SearchWrapper
-        id={id || randomId()}
-        onSubmit={this.handleSubmit()}
+        id={id}
+        action={action}
+        method={method}
+        onSubmit={this.handleSubmit}
         submitPosition={submitPosition}
         {...rest}
       >
         <SearchSubmit />
         <SearchInput
-          id={id || randomId()}
+          id={id}
           small={small}
           onChange={this.handleChange}
-          value={this.state.value}
+          value={defaultValue}
         />
       </SearchWrapper>
     )
@@ -47,8 +64,14 @@ class Search extends Component {
 
 Search.propTypes = {
   id: T.string,
+  action: T.string,
+  method: T.string,
   small: T.bool,
-  submitPosition: T.oneOf(['left', 'right']).isRequired
+  submitPosition: T.oneOf(['left', 'right']).isRequired,
+  onChange: T.func,
+  onSubmit: T.func,
+  defaultValue: T.oneOfType([T.number, T.string]),
+  value: T.oneOfType([T.number, T.string])
 }
 
 export default Search

@@ -1,26 +1,36 @@
 import React from 'react'
 import T from 'prop-types'
-import { classNames } from '../../utils/'
+import { randomId, classNames } from '../../utils/'
 
-const TextInput = ({ className, small, value, type = 'text', handleChange, ...rest }) => (
-  <input
-    type={type}
-    className={classNames('c-text-input', { 'c-text-input--sm': small }, className)}
-    onChange={handleChange}
-    value={value}
-    {...rest}
-  />
+const TextInput = ({
+  id = randomId(),
+  type = 'text',
+  className,
+  small,
+  onChange,
+  value,
+  defaultValue,
+  ...rest }) => (
+    <input
+      id={id}
+      type={type}
+      className={classNames('c-text-input', { 'c-text-input--sm': small }, className)}
+      onChange={onChange}
+      value={value}
+      {...rest}
+    />
 )
 
 TextInput.propTypes = {
+  id: T.string,
   className: T.string,
+  small: T.bool,
   type: T.oneOf([
     'text', 'password', 'email', 'number', 'search', 'url'
   ]),
-  small: T.bool,
-  handleChange: T.func,
-  // eslint-disable-next-line react/forbid-prop-types
-  value: T.any
+  onChange: T.func,
+  defaultValue: T.oneOfType([T.number, T.string]),
+  value: T.oneOfType([T.number, T.string])
 }
 
 export default TextInput

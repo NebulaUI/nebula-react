@@ -143,10 +143,10 @@ class App extends Component {
               <option value="2" disabled>Option 2</option>
               <option value="3">Option 3</option>
             </Form.Select>
-            <Form.Search id="" method="" action="/" submitPosition="left"  />
-            <Form.Search id="" method="" action="/" submitPosition="right" />
-            <Form.Search id="" method="" action="/" small submitPosition="left" />
-            <Form.Search id="" method="" action="/" small submitPosition="right" />
+            <Form.Search id="search-1" method="" onChange={value => console.log(value)} action="/" submitPosition="left" defaultValue="Default Value 1" />
+            <Form.Search id="search-2" method="" onChange={value => console.log(value)} action="/" submitPosition="right" defaultValue="Default Value 2"  />
+            <Form.Search method="" onChange={value => console.log(value)} action="/" small submitPosition="left" />
+            <Form.Search method="" onChange={value => console.log(value)} action="/" small submitPosition="right" />
             <Card>
               <h3>Card Title</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.

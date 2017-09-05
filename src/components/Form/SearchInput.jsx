@@ -4,16 +4,24 @@ import { randomId, classNames } from '../../utils/'
 
 import { Form } from './'
 
-const SearchInput = ({ id, className, small, placeholder = 'Search...', handleChange, value, ...rest }) => (
-  <Form.TextInput
-    type="search"
-    id={id || randomId()}
-    className={classNames('c-text-input', { 'c-text-input--sm': small }, 'c-search__input', className)}
-    placeholder={placeholder}
-    onChange={handleChange}
-    value={value}
-    {...rest}
-  />
+const SearchInput = ({
+  id = randomId(),
+  className,
+  small,
+  placeholder = 'Search...',
+  onChange,
+  value,
+  defaultValue,
+  ...rest }) => (
+    <Form.TextInput
+      type="search"
+      id={id}
+      className={classNames('c-search__input' || className, { 'c-text-input--sm': small })}
+      placeholder={placeholder}
+      onChange={onChange}
+      value={defaultValue}
+      {...rest}
+    />
 )
 
 SearchInput.propTypes = {
@@ -21,9 +29,9 @@ SearchInput.propTypes = {
   className: T.string,
   small: T.bool,
   placeholder: T.string,
-  handleChange: T.func,
-  // eslint-disable-next-line react/forbid-prop-types
-  value: T.any
+  onChange: T.func,
+  defaultValue: T.oneOfType([T.number, T.string]),
+  value: T.oneOfType([T.number, T.string])
 }
 
 export default SearchInput

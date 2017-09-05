@@ -5,21 +5,21 @@ import { randomId, classNames } from '../../utils/'
 const initial = 'c-search'
 
 const SearchWrapper = ({
-  id,
+  id = randomId(),
   action,
   method,
   className,
   submitPosition,
-  handleSubmit,
+  onSubmit,
   ...rest
 }) => (
   <form
-    id={id || randomId()}
+    id={id}
     role="search"
     action={action}
     method={method}
     className={classNames(`${initial} ${initial}--submit-${submitPosition}`, className)}
-    onSubmit={handleSubmit}
+    onSubmit={onSubmit}
     {...rest}
   />
 )
@@ -29,8 +29,8 @@ SearchWrapper.propTypes = {
   action: T.string,
   method: T.string,
   className: T.string,
-  handleSubmit: T.func,
-  submitPosition: T.oneOf(['left', 'right']).isRequired
+  submitPosition: T.oneOf(['left', 'right']).isRequired,
+  onSubmit: T.func
 }
 
 export default SearchWrapper
