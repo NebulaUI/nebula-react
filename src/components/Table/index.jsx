@@ -3,8 +3,6 @@ import T from 'prop-types'
 
 import { classNames, sortArray } from '../../utils'
 
-
-
 import Header from './Header'
 import Body from './Body'
 
