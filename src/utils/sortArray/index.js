@@ -24,7 +24,7 @@ function select(item, selector) {
   )
 }
 
-function sortArray(array = [], selector = identity, descending = false) {
+function sortArray(array, selector = identity, descending = false) {
   const selectValue = typeof selector === 'string'
     ? (item => select(item, selector))
     : selector
@@ -41,7 +41,7 @@ function sortArray(array = [], selector = identity, descending = false) {
     return 0
   }
 
-  return array.sort(compare)
+  return array.length && array.sort(compare)
 }
 
 export default sortArray
