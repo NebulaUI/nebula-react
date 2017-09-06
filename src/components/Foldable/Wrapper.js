@@ -1,64 +1,83 @@
-import React, { Component, createElement as E } from 'react'
+import { Component, createElement as E } from 'react'
 import T from 'prop-types'
-import { classNames } from '../../utils/'
-
-import Header from './Header'
-import Body from './Body'
+import { classNames, randomId } from '../../utils/'
 
 class FoldableWrapper extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { isOpen: props.openOnMount }
+    this.state = {
+      isOpen: props.defaultExpanded
+        ? props.defaultExpanded === 'expanded'
+        : false
+    }
+  }
+
+  getChildContext = () => ({
+    isOpen: this.isOpen(),
+    toggleOpen: this.toggleOpen,
+    foldableId: this.id
+  })
+
+  componentWillMount() {
+    this.id = this.props.id || randomId()
   }
 
   toggleOpen = () => {
-    this.setState({ isOpen: !this.state.isOpen })
+    const { onFoldableChange, expanded } = this.props
+    if (onFoldableChange) {
+      onFoldableChange(expanded === 'expanded' ? 'collapsed' : 'expanded')
+    }
+
+    if (!this.isControlled()) {
+      this.setState({ isOpen: !this.state.isOpen })
+    }
   }
 
+  isOpen = () => (this.isControlled()
+    ? this.props.expanded === 'expanded'
+    : this.state.isOpen)
+
+  isControlled = () =>
+    !!this.props.expanded
+
   render() {
-    const { isOpen } = this.state
     const {
-      openOnMount, // eslint-disable-line no-unused-vars
+      defaultExpanded, onFoldableChange, expanded, // eslint-disable-line no-unused-vars
       node, breakpoint, bordered, children, className, ...rest
     } = this.props
-    const enhancedChildren = React.Children.map(children, (child) => {
-      if (child.type === Header) {
-        return React.cloneElement(child, {
-          toggleOpen: this.toggleOpen
-        })
-      }
-
-      if (child.type === Body) {
-        return React.cloneElement(child, {
-          isOpen
-        })
-      }
-
-      return child
-    })
     return E(
       node || 'div',
       {
         className: classNames(
           breakpoint ? `c-foldable@${breakpoint}` : 'c-foldable',
           { 'c-foldable--bordered': bordered },
-          { 'is-open': isOpen },
+          { 'is-open': this.isOpen() },
           className
         ),
+        'aria-expanded': this.isOpen(),
         ...rest
       },
-      enhancedChildren
+      children
     )
   }
+}
+
+FoldableWrapper.childContextTypes = {
+  isOpen: T.bool.isRequired,
+  toggleOpen: T.func.isRequired,
+  foldableId: T.string.isRequired
 }
 
 FoldableWrapper.propTypes = {
   breakpoint: T.oneOf(['max-lg', 'max-md', 'max-sm', 'max-xs']),
   bordered: T.bool,
   node: T.string,
-  openOnMount: T.bool,
+  defaultExpanded: T.string,
+  expanded: T.string,
+  onFoldableChange: T.func,
   children: T.node.isRequired,
+  id: T.string,
   className: T.string
 }
 

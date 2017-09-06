@@ -56,7 +56,7 @@ describe('<Foldable.Wrapper />', () => {
   })
 
   it('renders open on initial mount', () => {
-    const $ = shallow(<Foldable.Wrapper openOnMount>_</Foldable.Wrapper>)
+    const $ = shallow(<Foldable.Wrapper defaultExpanded="expanded">_</Foldable.Wrapper>)
     expect($.hasClass('is-open')).toBe(true)
   })
 
@@ -69,7 +69,6 @@ describe('<Foldable.Wrapper />', () => {
     )
 
     expect($.hasClass('is-open')).toBe(false)
-
     $.find('.c-foldable__toggle').simulate('click')
     expect($.hasClass('is-open')).toBe(true)
     expect($.find('.c-foldable__body').text()).toBe('Children')
@@ -77,5 +76,62 @@ describe('<Foldable.Wrapper />', () => {
     $.find('.c-foldable__toggle').simulate('click')
     expect($.hasClass('is-open')).toBe(false)
     expect($.find('.c-foldable__body').text()).toBe('')
+  })
+
+  it('can be controlled externally', () => {
+    const mockOnChange = jest.fn()
+    const $ = mount(
+      <Foldable.Wrapper
+        onFoldableChange={mockOnChange}
+        expanded="expanded"
+      >
+        <Foldable.Header>_</Foldable.Header>
+        <Foldable.Body>Children</Foldable.Body>
+      </Foldable.Wrapper>
+    )
+
+    expect(mockOnChange).not.toHaveBeenCalled()
+    expect($.hasClass('is-open')).toBe(true)
+
+    $.setProps({
+      expanded: 'collapsed'
+    })
+    expect(mockOnChange).not.toHaveBeenCalled()
+    expect($.hasClass('is-open')).toBe(false)
+
+    $.find('.c-foldable__toggle').simulate('click')
+    expect($.hasClass('is-open')).toBe(false)
+    expect(mockOnChange).toHaveBeenCalledWith('expanded')
+
+    $.setProps({
+      expanded: 'expanded'
+    })
+
+    $.find('.c-foldable__toggle').simulate('click')
+    expect($.hasClass('is-open')).toBe(true)
+    expect(mockOnChange).toHaveBeenCalledWith('collapsed')
+  })
+
+  it('sets correct aria attributes', () => {
+    const $ = shallow(<Foldable.Wrapper expanded="collapsed">_</Foldable.Wrapper>)
+
+    expect($.prop('aria-expanded')).toBe(false)
+
+    $.setProps({
+      expanded: 'expanded'
+    })
+    expect($.prop('aria-expanded')).toBe(true)
+  })
+
+  it('mounts with an optionally passed in id', () => {
+    const $ = mount(
+      <Foldable.Wrapper id="test-id">
+        <Foldable.Header>_</Foldable.Header>
+        <Foldable.Body>Children</Foldable.Body>
+      </Foldable.Wrapper>
+    )
+
+    expect($.find('.c-foldable__toggle').prop('aria-controls')).toBe('test-id')
+    expect($.find('.c-foldable__body').prop('id')).toBe('test-id')
   })
 })
