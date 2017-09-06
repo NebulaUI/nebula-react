@@ -1,38 +1,28 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
 
-import { randomId } from '../../../utils'
-
 import { Form } from '../'
-
-jest.mock('../../../utils')
 
 const defaultProps = {
   submitPosition: 'left'
 }
 
 describe('<Form.Search />', () => {
-  it('renders with a random id by default', () => {
-    randomId.mockImplementation(() => 'test-id')
-    const $ = shallow(<Form.Search {...defaultProps} id={randomId()} />)
-    expect($.prop('id')).toBe('test-id')
-  })
-
   it('renders with appropriate classNames', () => {
     const $ = shallow(<Form.Search {...defaultProps} className="test" />)
     expect($.find(Form.SearchWrapper).hasClass('c-search test'))
   })
 
   it('can be configured with the submit button to the left', () => {
-    const $ = shallow(<Form.Search submitPosition="left" />)
+    const $ = mount(<Form.Search submitPosition="left" />)
     expect($.find(Form.SearchWrapper).prop('submitPosition')).toBe('left')
-    expect($.find(Form.SearchWrapper).hasClass('c-search--submit-left'))
+    expect($.find(Form.SearchWrapper).hasClass('c-search--submit-left')).toBe(true)
   })
 
   it('can be configured with the submit button to the right', () => {
-    const $ = shallow(<Form.Search submitPosition="right" />)
+    const $ = mount(<Form.Search submitPosition="right" />)
     expect($.find(Form.SearchWrapper).prop('submitPosition')).toBe('right')
-    expect($.find(Form.SearchWrapper).hasClass('c-search--submit-left'))
+    expect($.find(Form.SearchWrapper).hasClass('c-search--submit-right')).toBe(true)
   })
 
   it('renders small', () => {
@@ -52,5 +42,19 @@ describe('<Form.Search />', () => {
   it('renders with type "search" by default', () => {
     const $ = shallow(<Form.Search {...defaultProps} type="search" />)
     expect($.prop('type')).toBe('search')
+  })
+
+  it('takes a onChange prop passing it to <Form.SearchInput />', () => {
+    const props = {
+      ...defaultProps,
+      onChange: jest.fn()
+    }
+    const mockFn = jest.fn()
+    const $ = mount(<Form.Search {...props} onChange={mockFn} />)
+    expect($.find(Form.SearchInput).prop('onChange')).toBe(mockFn)
+
+    // expect(mockFn).not.toBeCalled()
+    // $.simulate('change')
+    // expect(mockFn).toBeCalled()
   })
 })
