@@ -1,27 +1,29 @@
 import React from 'react'
 import T from 'prop-types'
-import { randomId, classNames } from '../../utils/'
+import { classNames } from '../../utils/'
 
 import { Form } from './'
 
 const SearchInput = ({
-  id = randomId(),
+  id,
   className,
   small,
   placeholder = 'Search...',
   onChange,
   value,
   defaultValue,
-  ...rest }) => (
-    <Form.TextInput
-      type="search"
-      id={id}
-      className={classNames('c-search__input' || className, { 'c-text-input--sm': small })}
-      placeholder={placeholder}
-      onChange={onChange}
-      value={defaultValue}
-      {...rest}
-    />
+  ...rest
+}) => (
+  <Form.TextInput
+    type="search"
+    id={id}
+    className={classNames('c-search__input' || className, { 'c-text-input--sm': small })}
+    placeholder={placeholder}
+    onChange={onChange}
+    defaultValue={defaultValue}
+    value={value}
+    {...rest}
+  />
 )
 
 SearchInput.propTypes = {

@@ -16,6 +16,7 @@ const TextInput = ({
       type={type}
       className={classNames('c-text-input', { 'c-text-input--sm': small }, className)}
       onChange={onChange}
+      defaultValue={defaultValue}
       value={value}
       {...rest}
     />

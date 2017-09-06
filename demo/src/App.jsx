@@ -6,7 +6,6 @@ import {
   Card,
   SiteWrap,
   Section,
-  Tabs,
   BareList,
   InlineList,
   MatrixList,
@@ -51,7 +50,6 @@ const tableData = {
     ],
   ],
 }
-
 class App extends Component {
   constructor() {
     super()
@@ -96,41 +94,6 @@ class App extends Component {
               </Modal.Content>
             </Modal.Wrapper>
 
-            <h2>Lists</h2>
-            <Tabs.Wrapper>
-              <Tabs.TabList>
-                <Tabs.Tab>Bare list</Tabs.Tab>
-                <Tabs.Tab>Inline list</Tabs.Tab>
-                <Tabs.Tab>Matrix list</Tabs.Tab>
-                <Tabs.Tab>Uniformed list</Tabs.Tab>
-              </Tabs.TabList>
-              <Tabs.Panels>
-                <Tabs.Panel>
-                  <BareList.Wrapper spacing="md">
-                    <BareList.Item>Help</BareList.Item>
-                    <BareList.Item>Me</BareList.Item>
-                  </BareList.Wrapper>
-                </Tabs.Panel>
-                <Tabs.Panel>
-                  <InlineList.Wrapper spacing="md@md">
-                    <InlineList.Item>Help</InlineList.Item>
-                    <InlineList.Item>Me</InlineList.Item>
-                  </InlineList.Wrapper>
-                </Tabs.Panel>
-                <Tabs.Panel>
-                  <MatrixList.Wrapper spacing="md">
-                    <MatrixList.Item>Help</MatrixList.Item>
-                    <MatrixList.Item>Me</MatrixList.Item>
-                  </MatrixList.Wrapper>
-                </Tabs.Panel>
-                <Tabs.Panel>
-                  <UniformedList.Wrapper breakpoint="md">
-                    <UniformedList.Item>Help</UniformedList.Item>
-                    <UniformedList.Item>Me</UniformedList.Item>
-                  </UniformedList.Wrapper>
-                </Tabs.Panel>
-              </Tabs.Panels>
-            </Tabs.Wrapper>
             <Form.Radio id="radio-1" value="one" name="radio-group" checked onChange={() => {}}>Option 1</Form.Radio>
             <Form.Radio id="radio-2" value="two" name="radio-group">Option 2</Form.Radio>
             <Form.Radio id="radio-3" value="two" name="radio-group" disabled>Option 3</Form.Radio>
@@ -143,10 +106,9 @@ class App extends Component {
               <option value="2" disabled>Option 2</option>
               <option value="3">Option 3</option>
             </Form.Select>
-            <Form.Search id="search-1" method="" onChange={value => console.log(value)} action="/" submitPosition="left" defaultValue="Default Value 1" />
-            <Form.Search id="search-2" method="" onChange={value => console.log(value)} action="/" submitPosition="right" defaultValue="Default Value 2"  />
-            <Form.Search method="" onChange={value => console.log(value)} action="/" small submitPosition="left" />
-            <Form.Search method="" onChange={value => console.log(value)} action="/" small submitPosition="right" />
+
+            <Form.Search submitPosition="left" />
+
             <Card>
               <h3>Card Title</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -248,5 +210,15 @@ class App extends Component {
     )
   }
 }
+
+/*
+            <Form.SearchWrapper onSubmit={(e) => {
+              e.preventDefault()
+              console.log(e)
+            }} submitPosition="right">
+              <Form.SearchInput defaultValue="test me" onChange={e => console.log(e.target.value)} />
+              <Form.SearchSubmit />
+            </Form.SearchWrapper>
+            */
 
 export default App

@@ -1,11 +1,11 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 
 import { Tabs } from '../'
 
 describe('<Tabs.Wrapper />', () => {
   it('passes in an optional className', () => {
-    const $ = shallow(<Tabs.Wrapper className="test" />)
+    const $ = shallow(<Tabs.Wrapper className="test">_</Tabs.Wrapper>)
     expect($.hasClass('c-tabs test')).toBe(true)
   })
 
@@ -22,22 +22,13 @@ describe('<Tabs.Wrapper />', () => {
   })
 
   it('renders a defined node type', () => {
-    const $ = shallow(<Tabs.Wrapper node="article" />)
+    const $ = shallow(<Tabs.Wrapper node="article">_</Tabs.Wrapper>)
     expect($.type()).toBe('article')
   })
 
   it('renders a div by default', () => {
-    const $ = shallow(<Tabs.Wrapper />)
+    const $ = shallow(<Tabs.Wrapper>_</Tabs.Wrapper>)
     expect($.type()).toBe('div')
-  })
-
-  it('renders with an initialActiveIndex', () => {
-    const $ = shallow(
-      <Tabs.Wrapper initialActiveIndex={1}>
-        <Tabs.TabList>_</Tabs.TabList>
-      </Tabs.Wrapper>
-    )
-    expect($.childAt(0).prop('activeIndex')).toBe(1)
   })
 
   it('renders children', () => {
@@ -49,28 +40,60 @@ describe('<Tabs.Wrapper />', () => {
     expect($.contains('Test')).toBe(true)
   })
 
-  it('renders <Tabs.Panels /> and <Tabs.TabList /> passing in the activeIndex', () => {
-    const $ = shallow(
-      <Tabs.Wrapper>
-        <Tabs.TabList />
-        <Tabs.Panels />
+  it('the active Id can be passed in as a prop, overriding local state', () => {
+    const $ = mount(
+      <Tabs.Wrapper activeId="test-id">
+        <Tabs.TabList>
+          <Tabs.Tab target="foo">_</Tabs.Tab>
+          <Tabs.Tab target="test-id">_</Tabs.Tab>
+        </Tabs.TabList>
+        <Tabs.Panel id="foo">Foo content</Tabs.Panel>
+        <Tabs.Panel id="test-id">Test Content</Tabs.Panel>
       </Tabs.Wrapper>
     )
-    expect($.find(Tabs.Panels).prop('activeIndex')).toBe(0)
-    expect($.find(Tabs.TabList).prop('activeIndex')).toBe(0)
-    $.setState({ activeIndex: 2 })
-    expect($.find(Tabs.Panels).prop('activeIndex')).toBe(2)
-    expect($.find(Tabs.TabList).prop('activeIndex')).toBe(2)
+
+    expect($.state('activeId')).toBeNull()
+    expect($.find(Tabs.Tab).at(0).prop('isActive')).toBe(false)
+    expect($.find(Tabs.Tab).at(1).prop('isActive')).toBe(true)
+    expect($.find(Tabs.Panel).at(0).contains('Foo content')).toBe(false)
+    expect($.find(Tabs.Panel).at(1).text()).toBe('Test Content')
+
+    $.find(Tabs.Tab).at(0).simulate('click')
+    expect($.find(Tabs.Tab).at(0).prop('isActive')).toBe(false)
   })
 
-  it('passes activateTab() to <Tabs.TabList /> that sets the activeIndex when called', () => {
-    const $ = shallow(
-      <Tabs.Wrapper>
-        <Tabs.TabList />
+  it('allows a defaultActiveId to be passed', () => {
+    const $ = mount(
+      <Tabs.Wrapper defaultActiveId="test-id">
+        <Tabs.TabList>
+          <Tabs.Tab target="foo">_</Tabs.Tab>
+          <Tabs.Tab target="test-id">_</Tabs.Tab>
+        </Tabs.TabList>
       </Tabs.Wrapper>
     )
-    expect($.state('activeIndex')).toBe(0)
-    $.find(Tabs.TabList).prop('activateTab')(1)
-    expect($.find(Tabs.TabList).prop('activeIndex')).toBe(1)
+
+    expect($.state('activeId')).toBe('test-id')
+    expect($.find(Tabs.Tab).at(0).prop('isActive')).toBe(false)
+    expect($.find(Tabs.Tab).at(1).prop('isActive')).toBe(true)
+  })
+
+  it('takes an onChange callback that gets called when a tab is changed', () => {
+    const mockOnChange = jest.fn()
+    const $ = mount(
+      <Tabs.Wrapper onChange={mockOnChange}>
+        <Tabs.TabList>
+          <Tabs.Tab target="foo">_</Tabs.Tab>
+          <Tabs.Tab target="test-id">_</Tabs.Tab>
+        </Tabs.TabList>
+      </Tabs.Wrapper>
+    )
+
+    expect(mockOnChange).not.toHaveBeenCalled()
+
+    $.find(Tabs.Tab).at(1).simulate('click')
+    expect(mockOnChange).toHaveBeenCalledWith('test-id')
+
+    $.find(Tabs.Tab).at(0).simulate('click')
+    expect(mockOnChange).toHaveBeenCalledWith('foo')
   })
 })
