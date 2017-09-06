@@ -93,7 +93,46 @@ class App extends Component {
                   and scales to any project size.</p>
               </Modal.Content>
             </Modal.Wrapper>
+            <h2>Lists</h2>
 
+            <Tabs.Wrapper
+              onChange={value => console.log('uncontrolled tab change', value)}
+            >
+              <Tabs.TabList>
+                <Tabs.Tab id="bare-list-tab" target="bare-list-panel">Bare list</Tabs.Tab>
+                <Tabs.Tab id="inline-list-tab" target="inline-list-panel">Inline list</Tabs.Tab>
+                <Tabs.Tab id="matrix-list-tab" target="matrix-list-panel">Matrix list</Tabs.Tab>
+                <Tabs.Tab id="uniformed-list-tab" target="uniformed-list-panel">Uniformed list</Tabs.Tab>
+              </Tabs.TabList>
+              <Tabs.Panel id="bare-list-panel">
+                <BareList.Wrapper spacing="md">
+                  <BareList.Item>Help</BareList.Item>
+                  <BareList.Item>Me</BareList.Item>
+                </BareList.Wrapper>
+              </Tabs.Panel>
+              <Tabs.Panel id="inline-list-panel">
+                <InlineList.Wrapper spacing="md@md">
+                  <InlineList.Item>Help</InlineList.Item>
+                  <InlineList.Item>Me</InlineList.Item>
+                </InlineList.Wrapper>
+              </Tabs.Panel>
+              <Tabs.Panel id="matrix-list-panel">
+                <MatrixList.Wrapper spacing="md">
+                  <MatrixList.Item>Help</MatrixList.Item>
+                  <MatrixList.Item>Me</MatrixList.Item>
+                </MatrixList.Wrapper>
+              </Tabs.Panel>
+              <Tabs.Panel id="uniformed-list-panel">
+                <UniformedList.Wrapper breakpoint="md">
+                  <UniformedList.Item>Help</UniformedList.Item>
+                  <UniformedList.Item>Me</UniformedList.Item>
+                </UniformedList.Wrapper>
+              </Tabs.Panel>
+            </Tabs.Wrapper>
+            <Section size="md">
+              <TabsExample />
+            </Section>
+>>>>>>> be5e4230419300077be07ddc597a585401938f18
             <Form.Radio id="radio-1" value="one" name="radio-group" checked onChange={() => {}}>Option 1</Form.Radio>
             <Form.Radio id="radio-2" value="two" name="radio-group">Option 2</Form.Radio>
             <Form.Radio id="radio-3" value="two" name="radio-group" disabled>Option 3</Form.Radio>
