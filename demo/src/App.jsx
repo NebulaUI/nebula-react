@@ -52,6 +52,90 @@ const tableData = {
   ],
 }
 
+
+class TabsExample extends Component {
+  state = {
+    activeId: 'bare-list',
+  }
+
+  render() {
+    const activateUniformedList = () => {
+      this.setState({
+        activeId: 'uniformed-list',
+      })
+    }
+
+    const activateBareList = () => {
+      this.setState({
+        activeId: 'bare-list',
+      })
+    }
+    return (
+      <div>
+        <div>
+          <Section size="md">
+            <Button size="sm" theme="alpha" onClick={activateUniformedList}>
+              Take me to the Uniformed list
+            </Button>
+          </Section>
+        </div>
+        <Tabs.Wrapper
+          activeId={this.state.activeId}
+          onChange={(target) => {
+            console.log('controlled tab change', target)
+            this.setState({
+              activeId: target,
+            })
+          }}
+        >
+          <div>
+            Controlled
+            <hr />
+            <Tabs.TabList>
+              <Tabs.Tab target="bare-list">Bare list</Tabs.Tab>
+              <Tabs.Tab target="inline-list">Inline list</Tabs.Tab>
+              <Tabs.Tab target="matrix-list">Matrix list</Tabs.Tab>
+              <Tabs.Tab target="uniformed-list">Uniformed list</Tabs.Tab>
+            </Tabs.TabList>
+          </div>
+          <div style={{ minHeight: '100px', border: '10px solid red' }}>
+            <Tabs.Panel id="bare-list">
+              <BareList.Wrapper spacing="md">
+                <BareList.Item>Help</BareList.Item>
+                <BareList.Item>Me</BareList.Item>
+              </BareList.Wrapper>
+              <Button size="sm" theme="alpha" onClick={activateUniformedList}>
+                Take me to the Uniformed list
+              </Button>
+            </Tabs.Panel>
+            <Tabs.Panel id="inline-list">
+              <InlineList.Wrapper spacing="md@md">
+                <InlineList.Item>Help</InlineList.Item>
+                <InlineList.Item>Me</InlineList.Item>
+              </InlineList.Wrapper>
+            </Tabs.Panel>
+            <Tabs.Panel id="matrix-list">
+              <MatrixList.Wrapper spacing="md">
+                <MatrixList.Item>Help</MatrixList.Item>
+                <MatrixList.Item>Me</MatrixList.Item>
+              </MatrixList.Wrapper>
+            </Tabs.Panel>
+            <Tabs.Panel id="uniformed-list">
+              <UniformedList.Wrapper breakpoint="md">
+                <UniformedList.Item>Help</UniformedList.Item>
+                <UniformedList.Item>Me</UniformedList.Item>
+              </UniformedList.Wrapper>
+              <Button size="sm" theme="alpha" onClick={activateBareList}>
+                Go back to bare list
+              </Button>
+            </Tabs.Panel>
+          </div>
+        </Tabs.Wrapper>
+      </div>
+    )
+  }
+}
+// eslint-disable-next-line react/no-multi-comp
 class App extends Component {
   constructor() {
     super()
@@ -97,40 +181,44 @@ class App extends Component {
             </Modal.Wrapper>
 
             <h2>Lists</h2>
-            <Tabs.Wrapper>
+
+            <Tabs.Wrapper
+              onChange={value => console.log('uncontrolled tab change', value)}
+            >
               <Tabs.TabList>
-                <Tabs.Tab>Bare list</Tabs.Tab>
-                <Tabs.Tab>Inline list</Tabs.Tab>
-                <Tabs.Tab>Matrix list</Tabs.Tab>
-                <Tabs.Tab>Uniformed list</Tabs.Tab>
+                <Tabs.Tab id="bare-list-tab" target="bare-list-panel">Bare list</Tabs.Tab>
+                <Tabs.Tab id="inline-list-tab" target="inline-list-panel">Inline list</Tabs.Tab>
+                <Tabs.Tab id="matrix-list-tab" target="matrix-list-panel">Matrix list</Tabs.Tab>
+                <Tabs.Tab id="uniformed-list-tab" target="uniformed-list-panel">Uniformed list</Tabs.Tab>
               </Tabs.TabList>
-              <Tabs.Panels>
-                <Tabs.Panel>
-                  <BareList.Wrapper spacing="md">
-                    <BareList.Item>Help</BareList.Item>
-                    <BareList.Item>Me</BareList.Item>
-                  </BareList.Wrapper>
-                </Tabs.Panel>
-                <Tabs.Panel>
-                  <InlineList.Wrapper spacing="md@md">
-                    <InlineList.Item>Help</InlineList.Item>
-                    <InlineList.Item>Me</InlineList.Item>
-                  </InlineList.Wrapper>
-                </Tabs.Panel>
-                <Tabs.Panel>
-                  <MatrixList.Wrapper spacing="md">
-                    <MatrixList.Item>Help</MatrixList.Item>
-                    <MatrixList.Item>Me</MatrixList.Item>
-                  </MatrixList.Wrapper>
-                </Tabs.Panel>
-                <Tabs.Panel>
-                  <UniformedList.Wrapper breakpoint="md">
-                    <UniformedList.Item>Help</UniformedList.Item>
-                    <UniformedList.Item>Me</UniformedList.Item>
-                  </UniformedList.Wrapper>
-                </Tabs.Panel>
-              </Tabs.Panels>
+              <Tabs.Panel id="bare-list-panel">
+                <BareList.Wrapper spacing="md">
+                  <BareList.Item>Help</BareList.Item>
+                  <BareList.Item>Me</BareList.Item>
+                </BareList.Wrapper>
+              </Tabs.Panel>
+              <Tabs.Panel id="inline-list-panel">
+                <InlineList.Wrapper spacing="md@md">
+                  <InlineList.Item>Help</InlineList.Item>
+                  <InlineList.Item>Me</InlineList.Item>
+                </InlineList.Wrapper>
+              </Tabs.Panel>
+              <Tabs.Panel id="matrix-list-panel">
+                <MatrixList.Wrapper spacing="md">
+                  <MatrixList.Item>Help</MatrixList.Item>
+                  <MatrixList.Item>Me</MatrixList.Item>
+                </MatrixList.Wrapper>
+              </Tabs.Panel>
+              <Tabs.Panel id="uniformed-list-panel">
+                <UniformedList.Wrapper breakpoint="md">
+                  <UniformedList.Item>Help</UniformedList.Item>
+                  <UniformedList.Item>Me</UniformedList.Item>
+                </UniformedList.Wrapper>
+              </Tabs.Panel>
             </Tabs.Wrapper>
+            <Section size="md">
+              <TabsExample />
+            </Section>
             <Form.Radio id="radio-1" value="one" name="radio-group" checked onChange={() => {}}>Option 1</Form.Radio>
             <Form.Radio id="radio-2" value="two" name="radio-group">Option 2</Form.Radio>
             <Form.Radio id="radio-3" value="two" name="radio-group" disabled>Option 3</Form.Radio>
