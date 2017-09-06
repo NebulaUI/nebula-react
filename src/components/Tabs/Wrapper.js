@@ -24,8 +24,8 @@ class TabsWrapper extends Component {
   setActiveLabel = activeLabel => this.setState({ activeLabel })
 
   activateTab = (activeId, initialMount) => {
-    if (this.props.onChange && !initialMount) {
-      this.props.onChange(activeId)
+    if (this.props.onTabChange && !initialMount) {
+      this.props.onTabChange(activeId)
     }
 
     if (!this.isControlled()) {
@@ -38,7 +38,7 @@ class TabsWrapper extends Component {
   render() {
     const {
       props: {
-        defaultActiveId, activeId, // eslint-disable-line no-unused-vars
+        defaultActiveId, activeId, onTabChange, // eslint-disable-line no-unused-vars
         node, className, children, ...rest
       }
     } = this
@@ -62,7 +62,7 @@ TabsWrapper.propTypes = {
   node: T.string,
   children: T.node.isRequired,
   className: T.string,
-  onChange: T.func,
+  onTabChange: T.func,
   activeId: T.oneOfType([T.string, T.number]),
   defaultActiveId: T.oneOfType([T.string, T.number])
 }
