@@ -4,10 +4,10 @@ import { shallow } from 'enzyme'
 import { Form } from '../'
 
 describe('<Form.SearchSubmit />', () => {
-  // it('renders with appropriate classNames', () => {
-  //   const $ = shallow(<Form.SearchSubmit className="test" />)
-  //   expect($.hasClass('c-search__submit test')).toBe(true)
-  // })
+  it('renders with appropriate classNames', () => {
+    const $ = shallow(<Form.SearchSubmit className="test" />)
+    expect($.hasClass('c-search__submit c-btn c-btn--alpha')).toBe(true)
+  })
 
   it('takes additional props', () => {
     const $ = shallow(<Form.SearchSubmit title="test" style={{ position: 'relative' }} />)

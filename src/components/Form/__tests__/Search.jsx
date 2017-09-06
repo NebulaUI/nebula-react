@@ -1,5 +1,5 @@
 import React from 'react'
-import { mount } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 
 import { randomId } from '../../../utils'
 
@@ -14,27 +14,35 @@ const defaultProps = {
 describe('<Form.Search />', () => {
   it('renders with a random id by default', () => {
     randomId.mockImplementation(() => 'test-id')
-    const $ = mount(<Form.Search {...defaultProps} id={randomId()} />)
+    const $ = shallow(<Form.Search {...defaultProps} id={randomId()} />)
     expect($.prop('id')).toBe('test-id')
   })
 
-  it.skip('renders with appropriate classNames', () => {
-    const $ = mount(<Form.Search {...defaultProps} className="test" />)
-    expect($.hasClass('c-search c-search--submit-left test')).toBe(true)
+  it('renders with appropriate classNames', () => {
+    const $ = shallow(<Form.Search {...defaultProps} className="test" />)
+    expect($.find(Form.SearchWrapper).hasClass('c-search test'))
   })
 
-  it.skip('can be configured with the submit button to the left', () => {
-    const $ = mount(<Form.Search submitPosition="left" />)
-    expect($.hasClass('c-search--submit-left')).toBe(true)
+  it('can be configured with the submit button to the left', () => {
+    const $ = shallow(<Form.Search submitPosition="left" />)
+    expect($.find(Form.SearchWrapper).prop('submitPosition')).toBe('left')
+    expect($.find(Form.SearchWrapper).hasClass('c-search--submit-left'))
   })
 
-  it.skip('can be configured with the submit button to the right', () => {
-    const $ = mount(<Form.Search submitPosition="right" />)
-    expect($.hasClass('c-search--submit-right')).toBe(true)
+  it('can be configured with the submit button to the right', () => {
+    const $ = shallow(<Form.Search submitPosition="right" />)
+    expect($.find(Form.SearchWrapper).prop('submitPosition')).toBe('right')
+    expect($.find(Form.SearchWrapper).hasClass('c-search--submit-left'))
+  })
+
+  it('renders small', () => {
+    const $ = mount(<Form.Search {...defaultProps} small />)
+    expect($.prop('small')).toBe(true)
+    expect($.find(Form.SearchInput).hasClass('c-text-input--sm'))
   })
 
   it('takes attributes', () => {
-    const $ = mount(<Form.Search {...defaultProps} placeholder="test" style={{ position: 'relative' }} />)
+    const $ = shallow(<Form.Search {...defaultProps} placeholder="test" style={{ position: 'relative' }} />)
     expect($.prop('placeholder')).toBe('test')
     expect($.prop('style')).toEqual({
       position: 'relative'
@@ -42,12 +50,7 @@ describe('<Form.Search />', () => {
   })
 
   it('renders with type "search" by default', () => {
-    const $ = mount(<Form.Search {...defaultProps} type="search" />)
+    const $ = shallow(<Form.Search {...defaultProps} type="search" />)
     expect($.prop('type')).toBe('search')
-  })
-
-  it('renders small', () => {
-    const $ = mount(<Form.Search {...defaultProps} small />)
-    expect($.prop('small')).toBe(true)
   })
 })
