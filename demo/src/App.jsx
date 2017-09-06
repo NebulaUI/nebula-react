@@ -106,9 +106,7 @@ class App extends Component {
               <option value="2" disabled>Option 2</option>
               <option value="3">Option 3</option>
             </Form.Select>
-
             <Form.Search submitPosition="left" />
-
             <Card>
               <h3>Card Title</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -210,15 +208,5 @@ class App extends Component {
     )
   }
 }
-
-/*
-            <Form.SearchWrapper onSubmit={(e) => {
-              e.preventDefault()
-              console.log(e)
-            }} submitPosition="right">
-              <Form.SearchInput defaultValue="test me" onChange={e => console.log(e.target.value)} />
-              <Form.SearchSubmit />
-            </Form.SearchWrapper>
-            */
 
 export default App
