@@ -53,8 +53,8 @@ describe('<Form.Search />', () => {
     const $ = mount(<Form.Search {...props} onChange={mockFn} />)
     expect($.find(Form.SearchInput).prop('onChange')).toBe(mockFn)
 
-    // expect(mockFn).not.toBeCalled()
-    // $.simulate('change')
-    // expect(mockFn).toBeCalled()
+    expect(mockFn).not.toBeCalled()
+    $.find(Form.SearchInput).simulate('change')
+    expect(mockFn).toBeCalled()
   })
 })
