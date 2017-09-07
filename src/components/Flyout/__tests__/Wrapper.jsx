@@ -40,7 +40,7 @@ describe('<Flyout.Wrapper />', () => {
   it('can be opened and closed', () => {
     const $ = mount(
       <Flyout.Wrapper>
-        <Flyout.Toggle>_</Flyout.Toggle>
+        <Flyout.Toggle><button /></Flyout.Toggle>
         <Flyout.Content>Child content</Flyout.Content>
       </Flyout.Wrapper>
     )

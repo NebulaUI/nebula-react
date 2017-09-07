@@ -1,22 +1,18 @@
-import React from 'react'
+import React, { cloneElement } from 'react'
 import T from 'prop-types'
 
-import { classNames } from '../../utils/'
-
 // eslint-disable-next-line react/prefer-stateless-function
-const FlyoutToggle = ({ className, children, ...rest }, { handleToggle }) => (
-  <button
-    className={classNames('c-flyout__toggle', className)}
-    onClick={handleToggle}
-    {...rest}
-  >
-    { children }
-  </button>
-)
+const FlyoutToggle = ({ children, ...rest }, { handleToggle }) => {
+  const enhancedChildren = React.Children.map(children, child =>
+    cloneElement(child, {
+      onClick: handleToggle
+    })
+  )[0]
+  return enhancedChildren
+}
 
 FlyoutToggle.propTypes = {
-  className: T.string,
-  children: T.node.isRequired
+  children: T.element.isRequired
 }
 
 FlyoutToggle.contextTypes = {
