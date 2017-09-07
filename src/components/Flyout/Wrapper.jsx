@@ -1,14 +1,16 @@
 import { Component, createElement as E } from 'react'
 import T from 'prop-types'
 
-import { classNames, addEListener, removeEListener } from '../../utils'
+import { ClickOutside } from '../../'
+
+import { classNames } from '../../utils'
 
 class FlyoutWrapper extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      isOpen: this.props.openOnMount
+      isOpen: this.props.defaultOpen
     }
   }
 
@@ -17,45 +19,40 @@ class FlyoutWrapper extends Component {
     isOpen: this.state.isOpen
   })
 
-  componentDidMount() {
-    setTimeout(() => {
-      addEListener('click', this.handleClickOutside)
-    }, 50)
-  }
-
-  componentWillUnmount() {
-    removeEListener('click', this.handleClickOutside)
-  }
-
   toggleOpen = () => {
     this.setState({
       isOpen: !this.state.isOpen
     })
   }
 
-  handleClickOutside = ({ target }) => {
+  close = () => {
     this.setState({
-      isOpen: !this.flyout.contains(target)
-        ? false
-        : this.state.isOpen
+      isOpen: false
     })
   }
 
   render() {
     const { isOpen } = this.state
     const {
-      openOnMount,
+      defaultOpen,
       node, className, children, ...rest
     } = this.props
 
     return E(
-      node || 'div',
+      ClickOutside,
       {
-        ref: (n) => { this.flyout = n },
-        className: classNames('c-flyout', { 'is-open': isOpen }, className),
-        ...rest
+        onClickOutside: this.close
       },
-      children
+      E(
+        node || 'div',
+        {
+          className: classNames('c-flyout', { 'is-open': isOpen }, className),
+          'aria-haspopup': true,
+          'aria-expanded': isOpen,
+          ...rest
+        },
+        children
+      )
     )
   }
 }
@@ -64,7 +61,7 @@ FlyoutWrapper.propTypes = {
   node: T.string,
   className: T.string,
   children: T.node.isRequired,
-  openOnMount: T.bool
+  defaultOpen: T.bool
 }
 
 FlyoutWrapper.childContextTypes = {

@@ -1,27 +1,27 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 
 import { Flyout } from '../'
 
 describe('<Flyout.Wrapper />', () => {
   it('renders a "div" by default', () => {
     const $ = shallow(<Flyout.Wrapper>_</Flyout.Wrapper>)
-    expect($.type()).toBe('div')
+    expect($.childAt(0).type()).toBe('div')
   })
 
   it('renders a defined node type', () => {
     const $ = shallow(<Flyout.Wrapper node="article">_</Flyout.Wrapper>)
-    expect($.type()).toBe('article')
+    expect($.childAt(0).type()).toBe('article')
   })
 
   it('renders with appropriate classNames', () => {
     const $ = shallow(<Flyout.Wrapper className="is-open">_</Flyout.Wrapper>)
-    expect($.hasClass('c-flyout is-open')).toBe(true)
+    expect($.childAt(0).hasClass('c-flyout is-open')).toBe(true)
   })
 
   it('renders children', () => {
     const $ = shallow(<Flyout.Wrapper>test child</Flyout.Wrapper>)
-    expect($.contains('test child')).toBe(true)
+    expect($.childAt(0).contains('test child')).toBe(true)
   })
 
   it('renders with attributes', () => {
@@ -29,13 +29,28 @@ describe('<Flyout.Wrapper />', () => {
       <Flyout.Wrapper
         style={{ position: 'relative' }}
         ariaHidden="true"
-      >
-        test child
-      </Flyout.Wrapper>
+      >_</Flyout.Wrapper>
     )
-    expect($.prop('style')).toEqual({
+    expect($.childAt(0).prop('style')).toEqual({
       position: 'relative'
     })
-    expect($.prop('ariaHidden')).toBe('true')
+    expect($.childAt(0).prop('ariaHidden')).toBe('true')
+  })
+
+  it('can be opened and closed', () => {
+    const $ = mount(
+      <Flyout.Wrapper>
+        <Flyout.Toggle>_</Flyout.Toggle>
+        <Flyout.Content>Child content</Flyout.Content>
+      </Flyout.Wrapper>
+    )
+
+    expect($.find(Flyout.Wrapper).hasClass('is-open')).toBe(false)
+
+    $.find(Flyout.Toggle).simulate('click')
+    expect($.find(Flyout.Wrapper).hasClass('is-open')).toBe(true)
+
+    $.instance().close()
+    expect($.find(Flyout.Wrapper).hasClass('is-open')).toBe(false)
   })
 })
