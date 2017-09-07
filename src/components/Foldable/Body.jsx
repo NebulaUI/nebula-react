@@ -8,9 +8,10 @@ const FoldableBody = ({ node, className, children, ...rest }, { isOpen, foldable
     {
       className: classNames('c-foldable__body', className),
       id: foldableId,
+      'aria-hidden': !isOpen,
       ...rest
     },
-    isOpen ? children : null
+    children
   )
 
 FoldableBody.contextTypes = {

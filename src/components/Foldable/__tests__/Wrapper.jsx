@@ -50,12 +50,12 @@ describe('<Foldable.Wrapper />', () => {
     expect($$.hasClass('c-foldable c-foldable--bordered')).toBe(false)
   })
 
-  it('renders closed by default', () => {
+  it('renders collapsed by default', () => {
     const $ = shallow(<Foldable.Wrapper breakpoint="max-lg">_</Foldable.Wrapper>)
     expect($.hasClass('is-open')).toBe(false)
   })
 
-  it('renders open on initial mount', () => {
+  it('renders expanded on initial mount', () => {
     const $ = shallow(<Foldable.Wrapper defaultExpanded="expanded">_</Foldable.Wrapper>)
     expect($.hasClass('is-open')).toBe(true)
   })
@@ -64,18 +64,15 @@ describe('<Foldable.Wrapper />', () => {
     const $ = mount(
       <Foldable.Wrapper>
         <Foldable.Header>_</Foldable.Header>
-        <Foldable.Body>Children</Foldable.Body>
       </Foldable.Wrapper>
     )
 
     expect($.hasClass('is-open')).toBe(false)
     $.find('.c-foldable__toggle').simulate('click')
     expect($.hasClass('is-open')).toBe(true)
-    expect($.find('.c-foldable__body').text()).toBe('Children')
 
     $.find('.c-foldable__toggle').simulate('click')
     expect($.hasClass('is-open')).toBe(false)
-    expect($.find('.c-foldable__body').text()).toBe('')
   })
 
   it('can be controlled externally', () => {
@@ -86,7 +83,6 @@ describe('<Foldable.Wrapper />', () => {
         expanded="expanded"
       >
         <Foldable.Header>_</Foldable.Header>
-        <Foldable.Body>Children</Foldable.Body>
       </Foldable.Wrapper>
     )
 
@@ -127,7 +123,7 @@ describe('<Foldable.Wrapper />', () => {
     const $ = mount(
       <Foldable.Wrapper id="test-id">
         <Foldable.Header>_</Foldable.Header>
-        <Foldable.Body>Children</Foldable.Body>
+        <Foldable.Body>_</Foldable.Body>
       </Foldable.Wrapper>
     )
 
