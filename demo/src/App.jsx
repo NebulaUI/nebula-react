@@ -6,13 +6,10 @@ import {
   Card,
   SiteWrap,
   Section,
-  BareList,
-  InlineList,
-  MatrixList,
-  UniformedList,
   Flyout,
   Form,
   Modal,
+  Pagination,
   Table,
   StatusCard,
 } from 'nebula-react'
@@ -207,6 +204,23 @@ class App extends Component {
             <Section size="md">
               <Table stackAt="max-md" data={tableData} />
             </Section>
+            <Pagination.Wrapper activeLabel="Pagination Navigation">
+              <Pagination.Item>
+                <Pagination.Link className="c-pagination__link--previous" to="/" disabled>Prev</Pagination.Link>
+              </Pagination.Item>
+              <Pagination.Item>
+                <Pagination.Link className="c-pagination__link" to="/">1</Pagination.Link>
+              </Pagination.Item>
+              <Pagination.Item>
+                <Pagination.Link className="c-pagination__link" to="/" isActive>2</Pagination.Link>
+              </Pagination.Item>
+              <Pagination.Item>
+                <Pagination.Link className="c-pagination__link" to="/">3</Pagination.Link>
+              </Pagination.Item>
+              <Pagination.Item>
+                <Pagination.Link className="c-pagination__link--next" to="/">Next</Pagination.Link>
+              </Pagination.Item>
+            </Pagination.Wrapper>
           </SiteWrap>
         </Section>
       </div>
