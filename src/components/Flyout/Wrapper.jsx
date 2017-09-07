@@ -18,7 +18,9 @@ class FlyoutWrapper extends Component {
 
   getChildContext = () => ({
     handleToggle: this.toggleOpen,
-    isOpen: this.props.isOpen || this.state.isOpen
+    isOpen: this.props.isOpen
+      ? this.props.isOpen === 'open'
+      : this.state.isOpen
   })
 
   toggleOpen = () => {
