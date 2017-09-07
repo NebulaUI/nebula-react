@@ -28,14 +28,4 @@ describe('<Modal.Dismiss />', () => {
     const $ = shallow(<Modal.Dismiss className="test" />)
     expect($.hasClass('c-modal__dismiss test')).toBe(true)
   })
-
-  it('takes a callback that is called when clicked', () => {
-    const mockFn = jest.fn()
-    const $ = shallow(<Modal.Dismiss closeModal={mockFn} />)
-
-    expect(mockFn).toHaveBeenCalledTimes(0)
-
-    $.simulate('click')
-    expect(mockFn).toHaveBeenCalledTimes(1)
-  })
 })
