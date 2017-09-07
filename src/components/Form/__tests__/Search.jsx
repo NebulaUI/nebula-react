@@ -44,17 +44,53 @@ describe('<Form.Search />', () => {
     expect($.prop('type')).toBe('search')
   })
 
-  it('takes a onChange prop passing it to <Form.SearchInput />', () => {
+  it('takes a onChange handler that is called when the search input changes', () => {
+    const mockOnChange = jest.fn()
     const props = {
       ...defaultProps,
+      onChange: mockOnChange
+    }
+    
+    const $ = mount(<Form.Search {...props} />)
+
+    expect(mockOnChange).not.toBeCalled()
+    $.find(Form.SearchInput).simulate('change')
+    expect(mockOnChange).toBeCalled()
+  })
+
+  it('takes a onSubmit handler that is called when the form submits', () => {
+    const mockOnSubmit = jest.fn()
+    const props = {
+      ...defaultProps,
+      onSubmit: mockOnSubmit
+    }
+    
+    const $ = mount(<Form.Search {...props} />)
+
+    expect(mockOnSubmit).not.toBeCalled()
+    $.find(Form.SearchWrapper).simulate('submit')
+    expect(mockOnSubmit).toBeCalled()
+  })
+
+  it('takes a defaultValue prop passing it to the input', () => {
+    const props = {
+      ...defaultProps,
+      defaultValue: 'test-default-value',
       onChange: jest.fn()
     }
-    const mockFn = jest.fn()
-    const $ = mount(<Form.Search {...props} onChange={mockFn} />)
-    expect($.find(Form.SearchInput).prop('onChange')).toBe(mockFn)
 
-    expect(mockFn).not.toBeCalled()
-    $.find(Form.SearchInput).simulate('change')
-    expect(mockFn).toBeCalled()
+    const $ = mount(<Form.Search {...props} />)
+    expect($.find(Form.SearchInput).prop('defaultValue')).toBe('test-default-value')
+  })
+
+  it('takes a value prop passing it to the input', () => {
+    const props = {
+      ...defaultProps,
+      value: 'test-value',
+      onChange: jest.fn()
+    }
+
+    const $ = mount(<Form.Search {...props} />)
+    expect($.find(Form.SearchInput).prop('value')).toBe('test-value')
   })
 })

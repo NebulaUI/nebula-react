@@ -9,10 +9,19 @@ describe('<Form.SearchSubmit />', () => {
     expect($.hasClass('c-search__submit c-btn c-btn--alpha')).toBe(true)
   })
 
-  it('takes additional props', () => {
-    const $ = shallow(<Form.SearchSubmit title="test" style={{ position: 'relative' }} />)
-    expect($.prop('title')).toBe('test')
+  it('renders with a static type of "submit"', () => {
+    const $ = shallow(<Form.SearchSubmit />)
     expect($.prop('type')).toBe('submit')
+  })
+
+  it('renders with a default title', () => {
+    const $ = shallow(<Form.SearchSubmit />)
+    expect($.prop('title')).toBe('Submit')
+  })
+
+  it('renders with a defined title', () => {
+    const $ = shallow(<Form.SearchSubmit title="test" />)
+    expect($.prop('title')).toBe('test')
   })
 
   it('takes additional attributes', () => {

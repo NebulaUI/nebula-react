@@ -5,10 +5,15 @@ import { Form } from '../'
 
 describe('<Form.SearchInput />', () => {
   it('takes additional props', () => {
-    const $ = shallow(<Form.SearchInput id="test-search" placeholder="Search..." value="foo" defaultValue="foo" />)
+    const $ = shallow(<Form.SearchInput id="test-search" placeholder="test" value="foo" defaultValue="foo" />)
     expect($.prop('id')).toBe('test-search')
     expect($.prop('value')).toBe('foo')
     expect($.prop('defaultValue')).toBe('foo')
+    expect($.prop('placeholder')).toBe('test')
+  })
+
+  it('renders with a default placeholder value', () => {
+    const $ = shallow(<Form.SearchInput />)
     expect($.prop('placeholder')).toBe('Search...')
   })
 
