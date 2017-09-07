@@ -50,7 +50,7 @@ describe('<Form.Search />', () => {
       ...defaultProps,
       onChange: mockOnChange
     }
-    
+
     const $ = mount(<Form.Search {...props} />)
 
     expect(mockOnChange).not.toBeCalled()
@@ -64,7 +64,7 @@ describe('<Form.Search />', () => {
       ...defaultProps,
       onSubmit: mockOnSubmit
     }
-    
+
     const $ = mount(<Form.Search {...props} />)
 
     expect(mockOnSubmit).not.toBeCalled()
