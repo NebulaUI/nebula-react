@@ -83,7 +83,9 @@ class App extends Component {
             </Button>
             <Modal.Wrapper closeModal={this.closeModal} isOpen={isModalOpen}>
               <Modal.Content>
-                <Modal.Dismiss>Close</Modal.Dismiss>
+                <Modal.Close>
+                  <Modal.Dismiss>Close</Modal.Dismiss>
+                </Modal.Close>
                 <p>This is modal content</p>
                 <p>This is modal content</p>
                 <p>This is modal content</p>
@@ -91,6 +93,9 @@ class App extends Component {
                 <p>This is modal content</p>
                 <p>ITCSS and BEMIT based Sass/CSS framework that is ultra exensible
                   and scales to any project size.</p>
+                <Modal.Close>
+                  <Button size="sm" theme="alpha">Close me</Button>
+                </Modal.Close>
               </Modal.Content>
             </Modal.Wrapper>
             <h2>Lists</h2>

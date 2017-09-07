@@ -64,7 +64,9 @@ describe('<Modal.Wrapper />', () => {
     const $ = mount(
       <Modal.Wrapper {...props}>
         <Modal.Content>
-          <Modal.Dismiss />
+          <Modal.Close>
+            <Modal.Dismiss />
+          </Modal.Close>
         </Modal.Content>
       </Modal.Wrapper>
     )

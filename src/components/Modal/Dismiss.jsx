@@ -3,11 +3,10 @@ import T from 'prop-types'
 
 import { classNames } from '../../utils'
 
-const ModalDismiss = ({ closeModal, className, children, ...rest }) => (
+const ModalDismiss = ({ className, children, ...rest }) => (
   <button
     title="Close"
     className={classNames('c-modal__dismiss', className)}
-    onClick={closeModal}
     {...rest}
   >
     { children }
@@ -15,7 +14,6 @@ const ModalDismiss = ({ closeModal, className, children, ...rest }) => (
 )
 
 ModalDismiss.propTypes = {
-  closeModal: T.func,
   children: T.node,
   className: T.string
 }
