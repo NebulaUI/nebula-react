@@ -17,7 +17,7 @@ const SearchInput = ({
   <Form.TextInput
     type="search"
     id={id}
-    className={classNames('c-search__input', className, { 'c-text-input--sm': small })}
+    className={classNames('c-search__input', { 'c-text-input--sm': small }, className)}
     placeholder={placeholder}
     onChange={onChange}
     defaultValue={defaultValue}

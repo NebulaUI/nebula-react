@@ -2,11 +2,17 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 import { classNames } from '../../utils/'
 
-const FoldableHeader = ({ toggleOpen, padding, node, className, children, ...rest }) => {
-  const handleClick = () => {
-    toggleOpen()
-  }
-  return E(
+const FoldableHeader = ({
+  padding,
+  node,
+  className,
+  children,
+  ...rest
+}, {
+  toggleOpen,
+  foldableId
+}) =>
+  E(
     node || 'div',
     {
       className: classNames(
@@ -20,15 +26,19 @@ const FoldableHeader = ({ toggleOpen, padding, node, className, children, ...res
       'button',
       {
         className: 'c-foldable__toggle',
-        onClick: handleClick
+        onClick: toggleOpen,
+        'aria-controls': foldableId
       }
     ),
     children
   )
+
+FoldableHeader.contextTypes = {
+  toggleOpen: T.func.isRequired,
+  foldableId: T.string.isRequired
 }
 
 FoldableHeader.propTypes = {
-  toggleOpen: T.func,
   node: T.string,
   className: T.string,
   children: T.node.isRequired
