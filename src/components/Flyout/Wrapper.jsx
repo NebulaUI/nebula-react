@@ -10,34 +10,47 @@ class FlyoutWrapper extends Component {
     super(props)
 
     this.state = {
-      isOpen: this.props.defaultOpen
+      isOpen: this.isControlled()
+        ? this.props.isOpen === 'open'
+        : this.props.defaultOpen === 'open'
     }
   }
 
   getChildContext = () => ({
     handleToggle: this.toggleOpen,
-    isOpen: this.state.isOpen
+    isOpen: this.props.isOpen || this.state.isOpen
   })
 
   toggleOpen = () => {
-    this.setState({
-      isOpen: !this.state.isOpen
-    })
+    if (this.props.handleFlyoutChange && !this.props.isOpen) {
+      this.props.handleFlyoutChange(this.props.isOpen || this.state.isOpen)
+    }
+    if (!this.isControlled()) {
+      this.setState({
+        isOpen: !this.state.isOpen
+      })
+    }
   }
 
   close = () => {
-    this.setState({
-      isOpen: false
-    })
+    if (this.props.handleFlyoutChange) {
+      this.props.handleFlyoutChange(this.props.isOpen || this.state.isOpen)
+    }
+    if (!this.isControlled()) {
+      this.setState({
+        isOpen: false
+      })
+    }
   }
 
+  isControlled = () => !!this.props.isOpen
+
   render() {
-    const { isOpen } = this.state
     const {
-      defaultOpen,
+      defaultOpen, isOpen, handleFlyoutChange,
       node, className, children, ...rest
     } = this.props
-
+    const open = isOpen || this.state.isOpen
     return E(
       ClickOutside,
       {
@@ -46,9 +59,9 @@ class FlyoutWrapper extends Component {
       E(
         node || 'div',
         {
-          className: classNames('c-flyout', { 'is-open': isOpen }, className),
+          className: classNames('c-flyout', { 'is-open': open }, className),
           'aria-haspopup': true,
-          'aria-expanded': isOpen,
+          'aria-expanded': open,
           ...rest
         },
         children
@@ -61,7 +74,9 @@ FlyoutWrapper.propTypes = {
   node: T.string,
   className: T.string,
   children: T.node.isRequired,
-  defaultOpen: T.bool
+  handleFlyoutChange: T.func,
+  isOpen: T.oneOf(['open', 'closed']),
+  defaultOpen: T.oneOf(['open', 'closed'])
 }
 
 FlyoutWrapper.childContextTypes = {
