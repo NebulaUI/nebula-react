@@ -1,27 +1,21 @@
-import React, { Component } from 'react'
+import React from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
 
 // eslint-disable-next-line react/prefer-stateless-function
-class FlyoutToggle extends Component {
-  render() {
-    const { className, handleToggle, children, ...rest } = this.props
-    return (
-      <button
-        className={classNames('c-flyout__toggle', className)}
-        onClick={this.context.handleToggle}
-        {...rest}
-      >
-        { children }
-      </button>
-    )
-  }
-}
+const FlyoutToggle = ({ className, children, ...rest }, { handleToggle }) => (
+  <button
+    className={classNames('c-flyout__toggle', className)}
+    onClick={handleToggle}
+    {...rest}
+  >
+    { children }
+  </button>
+)
 
 FlyoutToggle.propTypes = {
   className: T.string,
-  handleToggle: T.func,
   children: T.node.isRequired
 }
 

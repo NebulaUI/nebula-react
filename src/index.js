@@ -13,6 +13,7 @@ import { Card } from './components/Card/'
 import { Flyout } from './components/Flyout/'
 import { Foldable } from './components/Foldable/'
 import { Form } from './components/Form/'
+import { ClickOutside } from './components/ClickOutside/'
 import { Modal } from './components/Modal/'
 import { Icon } from './components/Icon/'
 import { Navbar } from './components/Navbar/'
@@ -29,6 +30,7 @@ export {
   Flyout,
   Form,
   Foldable,
+  ClickOutside,
   Grid,
   Icon,
   InlineList,
