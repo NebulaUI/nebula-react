@@ -4,7 +4,7 @@ import T from 'prop-types'
 import { classNames } from '../../utils/'
 
 // eslint-disable-next-line react/prefer-stateless-function
-const FlyoutContent = ({ node, className, children, direction, ...rest }, { isOpen }) =>
+const FlyoutContent = ({ node, className, children, ...rest }, { isOpen, direction }) =>
   E(
     node || 'div',
     {
@@ -15,13 +15,13 @@ const FlyoutContent = ({ node, className, children, direction, ...rest }, { isOp
   )
 
 FlyoutContent.contextTypes = {
-  isOpen: T.bool
+  isOpen: T.bool,
+  direction: T.oneOf(['nw', 'ne', 'sw', 'se'])
 }
 
 FlyoutContent.propTypes = {
   node: T.string,
   className: T.string,
-  direction: T.oneOf(['nw', 'ne', 'sw', 'se']),
   children: T.node.isRequired
 }
 

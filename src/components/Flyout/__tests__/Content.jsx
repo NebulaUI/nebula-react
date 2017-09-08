@@ -19,9 +19,22 @@ describe('<Flyout.Content />', () => {
     expect($.hasClass('c-flyout__content test')).toBe(true)
   })
 
-  it.skip('renders children', () => {
-    const $ = shallow(<Flyout.Content isOpen>Test child</Flyout.Content>)
+  it('renders children when open', () => {
+    const context = { isOpen: true }
+    const $ = shallow(<Flyout.Content isOpen>Test child</Flyout.Content>, { context })
     expect($.contains('Test child')).toBe(true)
+  })
+
+  it('does not render children when closed', () => {
+    const context = { isOpen: false }
+    const $ = shallow(<Flyout.Content isOpen>Test child</Flyout.Content>, { context })
+    expect($.contains('Test child')).toBe(false)
+  })
+
+  it('renders with a set direction', () => {
+    const context = { direction: 'nw' }
+    const $ = shallow(<Flyout.Content isOpen>Test child</Flyout.Content>, { context })
+    expect($.hasClass('c-flyout__content c-flyout__content--nw')).toBe(true)
   })
 
   it('renders with attributes', () => {
@@ -37,18 +50,5 @@ describe('<Flyout.Content />', () => {
       position: 'relative'
     })
     expect($.prop('ariaHidden')).toBe('true')
-  })
-
-  describe('can be configured with a direction', () => {
-    it('renders the direction as ne', () => {
-      const $ = shallow(
-        <Flyout.Content
-          direction="ne"
-        >
-          _
-        </Flyout.Content>
-      )
-      expect($.hasClass('c-flyout__content--ne')).toBe(true)
-    })
   })
 })
