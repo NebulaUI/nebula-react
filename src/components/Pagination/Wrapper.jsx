@@ -11,6 +11,7 @@ class PaginationWrapper extends Component {
         {
           role: 'navigation',
           'aria-label': activeLabel,
+          className: classNames(className),
           ...rest
         },
         E(
