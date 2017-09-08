@@ -11,19 +11,19 @@ describe('<Pagination.Wrapper />', () => {
 
   it('renders with attributes', () => {
     const $ = shallow(
-      <Pagination.Wrapper style={{ position: 'relative' }} ariaHidden>
+      <Pagination.Wrapper style={{ position: 'relative' }} aria-label="Test">
         _
       </Pagination.Wrapper>
     )
     expect($.prop('style')).toEqual({
       position: 'relative'
     })
-    expect($.prop('ariaHidden')).toBe(true)
+    expect($.prop('aria-label')).toBe('Test')
   })
 
-  it('renders the aria-label with an override passed in as a prop', () => {
-    const $ = shallow(<Pagination.Wrapper style={{ position: 'relative' }} ariaHidden="test">_</Pagination.Wrapper>)
-    expect($.prop('ariaHidden')).toBe('test')
+  it.skip('renders the aria-label with a prop passed in as an override', () => {
+    const $ = shallow(<Pagination.Wrapper ariaLabel="Test Override">_</Pagination.Wrapper>)
+    expect($.prop('ariaLabel')).toBe('Test Override')
   })
 
   it('renders a defined node type', () => {

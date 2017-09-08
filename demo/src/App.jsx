@@ -117,41 +117,42 @@ class App extends Component {
             <StatusCard status="error">
             Error
           </StatusCard>
-            <Flyout.Wrapper>
-              <Flyout.Toggle>
-              Click me
-            </Flyout.Toggle>
-              <Flyout.Content direction="se">
-                <Card>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Ab adipisci architecto assumenda et expedita fugit id illum
-              </Card>
-              </Flyout.Content>
-            </Flyout.Wrapper>
-            <Flyout.Wrapper>
-              <Flyout.Toggle>
-                <Button node="span" size="sm" theme="alpha">
-                Github
-              </Button>
-              </Flyout.Toggle>
-              <Flyout.Content direction="ne">
-                <Card>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Ab adipisci architecto assumenda et expedita fugit id illum
-              </Card>
-              </Flyout.Content>
-            </Flyout.Wrapper>
-            <Flyout.Wrapper>
-              <Flyout.Toggle>
-              Click me
-            </Flyout.Toggle>
-              <Flyout.Content>
-                <Card>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Ab adipisci architecto assumenda et expedita fugit id illum
-              </Card>
-              </Flyout.Content>
-            </Flyout.Wrapper>
+            {/*TODO uncomment when fixed as this is currently braking*/}
+            {/*<Flyout.Wrapper>*/}
+              {/*<Flyout.Toggle>*/}
+              {/*Click me*/}
+            {/*</Flyout.Toggle>*/}
+              {/*<Flyout.Content direction="se">*/}
+                {/*<Card>*/}
+                {/*Lorem ipsum dolor sit amet, consectetur adipisicing elit.*/}
+                {/*Ab adipisci architecto assumenda et expedita fugit id illum*/}
+              {/*</Card>*/}
+              {/*</Flyout.Content>*/}
+            {/*</Flyout.Wrapper>*/}
+            {/*<Flyout.Wrapper>*/}
+              {/*<Flyout.Toggle>*/}
+                {/*<Button node="span" size="sm" theme="alpha">*/}
+                {/*Github*/}
+              {/*</Button>*/}
+              {/*</Flyout.Toggle>*/}
+              {/*<Flyout.Content direction="ne">*/}
+                {/*<Card>*/}
+                {/*Lorem ipsum dolor sit amet, consectetur adipisicing elit.*/}
+                {/*Ab adipisci architecto assumenda et expedita fugit id illum*/}
+              {/*</Card>*/}
+              {/*</Flyout.Content>*/}
+            {/*</Flyout.Wrapper>*/}
+            {/*<Flyout.Wrapper>*/}
+              {/*<Flyout.Toggle>*/}
+              {/*Click me*/}
+            {/*</Flyout.Toggle>*/}
+              {/*<Flyout.Content>*/}
+                {/*<Card>*/}
+                {/*Lorem ipsum dolor sit amet, consectetur adipisicing elit.*/}
+                {/*Ab adipisci architecto assumenda et expedita fugit id illum*/}
+              {/*</Card>*/}
+              {/*</Flyout.Content>*/}
+            {/*</Flyout.Wrapper>*/}
             <Button type="submit" size="md" theme="beta">
               Button test
             </Button>
@@ -204,21 +205,21 @@ class App extends Component {
             <Section size="md">
               <Table stackAt="max-md" data={tableData} />
             </Section>
-            <Pagination.Wrapper ariaLabel="Pagination">
+            <Pagination.Wrapper ariaLabel="Pagination Test Override">
               <Pagination.Item>
-                <Pagination.Link togglePreviousNext="previous" to="/" disabled>Prev</Pagination.Link>
+                <Pagination.Link ariaLabel="Page Test Override Disabled" to="/" previous disabled>Prev</Pagination.Link>
               </Pagination.Item>
               <Pagination.Item>
-                <Pagination.Link to="/">1</Pagination.Link>
+                <Pagination.Link ariaLabel="Page Test Override 1" to="/" >1</Pagination.Link>
               </Pagination.Item>
               <Pagination.Item>
-                <Pagination.Link to="/" isActive>2</Pagination.Link>
+                <Pagination.Link ariaLabel="Page Test Override 2" to="/" isActive>2</Pagination.Link>
               </Pagination.Item>
               <Pagination.Item>
-                <Pagination.Link to="/">3</Pagination.Link>
+                <Pagination.Link ariaLabel="Page Test Override 3" to="/">3</Pagination.Link>
               </Pagination.Item>
               <Pagination.Item>
-                <Pagination.Link togglePreviousNext="next" to="/">Next</Pagination.Link>
+                <Pagination.Link ariaLabel="Page Test Next Link" to="/" next>Next</Pagination.Link>
               </Pagination.Item>
             </Pagination.Wrapper>
           </SiteWrap>

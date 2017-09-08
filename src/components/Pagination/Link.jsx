@@ -17,7 +17,9 @@ class PaginationLink extends Component {
       activeClassName = 'is-active',
       callback,
       children,
-      togglePreviousNext,
+      previous,
+      next,
+      ariaLabel,
       ...rest
     } = this.props
 
@@ -34,7 +36,9 @@ class PaginationLink extends Component {
           to={to}
           className={classNames('c-pagination__link', className)}
           activeClassName={activeClassName}
-          togglePreviousNext={togglePreviousNext}
+          previous={previous}
+          next={next}
+          ariaLabel={ariaLabel}
           {...rest}
         >
           {children}
@@ -47,8 +51,11 @@ class PaginationLink extends Component {
       {
         href: to,
         className: classNames(
-        'c-pagination__link', togglePreviousNext ? `c-pagination__link--${togglePreviousNext}` : '', className,
+        'c-pagination__link', className,
+        previous ? 'c-pagination__link--previous' : '',
+        next ? 'c-pagination__link--next' : '',
         { 'is-active': isActive }),
+        'aria-label': ariaLabel && 'Page',
         ...onClickProps,
         ...rest
       },
@@ -69,7 +76,9 @@ PaginationLink.propTypes = {
   className: T.string,
   callback: T.func,
   children: T.node.isRequired,
-  togglePreviousNext: T.oneOf(['previous', 'next'])
+  previous: T.bool,
+  next: T.bool,
+  ariaLabel: T.string
 }
 
 export default PaginationLink

@@ -10,7 +10,7 @@ class PaginationWrapper extends Component {
         node || 'nav',
         {
           role: 'navigation',
-          'aria-label': ariaLabel,
+          'aria-label': ariaLabel && 'Pagination',
           className: classNames(className),
           ...rest
         },
@@ -18,7 +18,6 @@ class PaginationWrapper extends Component {
           node || 'ul',
           {
             className: classNames('c-pagination', className),
-            ariaLabel,
             ...rest
           },
           children

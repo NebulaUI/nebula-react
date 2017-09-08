@@ -24,7 +24,7 @@ describe('<Pagination.Item />', () => {
   })
 
   it('renders an li by default', () => {
-    const $ = shallow(<Pagination.Item>-</Pagination.Item>)
+    const $ = shallow(<Pagination.Item>_</Pagination.Item>)
     expect($.type()).toBe('li')
   })
 

@@ -78,10 +78,10 @@ describe('<Pagination.Link />', () => {
     expect($.prop('href')).toBe('/')
   })
 
-  describe('can be configured with a togglePreviousNext prop', () => {
+  describe('can be configured with a previous and next link', () => {
     it('renders the previous link', () => {
       const $ = shallow(
-        <Pagination.Link {...defaultProps} togglePreviousNext="previous">
+        <Pagination.Link {...defaultProps} previous>
           _
         </Pagination.Link>
       )
@@ -89,7 +89,7 @@ describe('<Pagination.Link />', () => {
     })
     it('renders the next link', () => {
       const $ = shallow(
-        <Pagination.Link {...defaultProps} togglePreviousNext="next">
+        <Pagination.Link {...defaultProps} next>
           _
         </Pagination.Link>
       )
