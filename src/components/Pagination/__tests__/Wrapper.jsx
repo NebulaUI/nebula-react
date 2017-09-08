@@ -11,14 +11,19 @@ describe('<Pagination.Wrapper />', () => {
 
   it('renders with attributes', () => {
     const $ = shallow(
-      <Pagination.Wrapper style={{ position: 'relative' }} ariaHidden="true">
+      <Pagination.Wrapper style={{ position: 'relative' }} ariaHidden>
         _
       </Pagination.Wrapper>
     )
     expect($.prop('style')).toEqual({
       position: 'relative'
     })
-    expect($.prop('ariaHidden')).toBe('true')
+    expect($.prop('ariaHidden')).toBe(true)
+  })
+
+  it('renders the aria-label with an override passed in as a prop', () => {
+    const $ = shallow(<Pagination.Wrapper style={{ position: 'relative' }} ariaHidden="test">_</Pagination.Wrapper>)
+    expect($.prop('ariaHidden')).toBe('test')
   })
 
   it('renders a defined node type', () => {
@@ -38,5 +43,10 @@ describe('<Pagination.Wrapper />', () => {
       </Pagination.Wrapper>
     )
     expect($.contains('Test')).toBe(true)
+  })
+
+  it('renders a nav by default', () => {
+    const $ = shallow(<Pagination.Wrapper>_</Pagination.Wrapper>)
+    expect($.type()).toBe('nav')
   })
 })

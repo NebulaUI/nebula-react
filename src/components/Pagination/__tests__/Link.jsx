@@ -1,12 +1,16 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 
 import { Pagination } from '../'
+
+const defaultProps = {
+  to: '/'
+}
 
 describe('<Pagination.Link />', () => {
   it('renders children', () => {
     const $ = shallow(
-      <Pagination.Link to="/">
+      <Pagination.Link {...defaultProps}>
         Link text
       </Pagination.Link>
     )
@@ -14,23 +18,23 @@ describe('<Pagination.Link />', () => {
   })
 
   it('renders with appropriate classNames', () => {
-    const $ = shallow(<Pagination.Link to="/" className="test">Test</Pagination.Link>)
+    const $ = shallow(<Pagination.Link {...defaultProps} className="test">Test</Pagination.Link>)
     expect($.hasClass('c-pagination__link test')).toBe(true)
   })
 
   it('renders a defined node type', () => {
-    const $ = shallow(<Pagination.Link to="/" node="article">_</Pagination.Link>)
+    const $ = shallow(<Pagination.Link {...defaultProps} node="article">_</Pagination.Link>)
     expect($.type()).toBe('article')
   })
 
   it('renders an a by default', () => {
-    const $ = shallow(<Pagination.Link to="/">-</Pagination.Link>)
+    const $ = shallow(<Pagination.Link {...defaultProps}>_</Pagination.Link>)
     expect($.type()).toBe('a')
   })
 
   it('renders with attributes', () => {
     const $ = shallow(
-      <Pagination.Link to="/" style={{ position: 'relative' }} ariaHidden="true">
+      <Pagination.Link {...defaultProps} style={{ position: 'relative' }} ariaHidden="true">
         _
       </Pagination.Link>
     )
@@ -40,10 +44,19 @@ describe('<Pagination.Link />', () => {
     expect($.prop('ariaHidden')).toBe('true')
   })
 
+  it('allows an isActive prop to be passed', () => {
+    const $ = mount(<Pagination.Link {...defaultProps} isActive>_</Pagination.Link>)
+    expect($.prop('isActive')).toBe(true)
+  })
+
   it('takes a callback that is called with the event and component instance when clicked', () => {
     const mockCallback = jest.fn()
     const mockEvent = 'test'
-    const $ = shallow(<Pagination.Link to="/" callback={mockCallback}>Test</Pagination.Link>)
+    const $ = shallow(
+      <Pagination.Link {...defaultProps} callback={mockCallback}>
+        Test
+      </Pagination.Link>
+    )
     expect(mockCallback).not.toHaveBeenCalled()
 
     $.simulate('click', mockEvent)
@@ -52,7 +65,7 @@ describe('<Pagination.Link />', () => {
 
   it('does not attempt to call a callback when clicked if no callback is passed', () => {
     const mockCallback = jest.fn()
-    const $ = shallow(<Pagination.Link to="/">Test</Pagination.Link>)
+    const $ = shallow(<Pagination.Link {...defaultProps}>Test</Pagination.Link>)
     expect(mockCallback).not.toHaveBeenCalled()
 
     $.simulate('click')
@@ -61,8 +74,27 @@ describe('<Pagination.Link />', () => {
   })
 
   it('takes a "to" prop that renders as a href attribute', () => {
-    const $ = shallow(<Pagination.Link to="/test">Test</Pagination.Link>)
-    expect($.prop('href')).toBe('/test')
+    const $ = shallow(<Pagination.Link {...defaultProps}>Test</Pagination.Link>)
+    expect($.prop('href')).toBe('/')
+  })
+
+  describe('can be configured with a togglePreviousNext prop', () => {
+    it('renders the previous link', () => {
+      const $ = shallow(
+        <Pagination.Link {...defaultProps} togglePreviousNext="previous">
+          _
+        </Pagination.Link>
+      )
+      expect($.hasClass('c-pagination__link--previous')).toBe(true)
+    })
+    it('renders the next link', () => {
+      const $ = shallow(
+        <Pagination.Link {...defaultProps} togglePreviousNext="next">
+          _
+        </Pagination.Link>
+      )
+      expect($.hasClass('c-pagination__link--next')).toBe(true)
+    })
   })
 
   describe('HOC', () => {
@@ -70,7 +102,11 @@ describe('<Pagination.Link />', () => {
     const RRPaginationLink = props => <div>{props.children}</div>
 
     it('renders the component with children', () => {
-      const $ = shallow(<Pagination.Link component={RRPaginationLink} to="/test">Nebula</Pagination.Link>)
+      const $ = shallow(
+        <Pagination.Link component={RRPaginationLink} {...defaultProps}>
+          Nebula
+        </Pagination.Link>
+      )
       expect($.find(RRPaginationLink)).toHaveLength(1)
       expect($.find(RRPaginationLink).contains('Nebula')).toBe(true)
     })
@@ -81,19 +117,19 @@ describe('<Pagination.Link />', () => {
           className="test"
           activeClassName="is-test"
           component={RRPaginationLink}
-          to="/test"
+          {...defaultProps}
         >Nebula</Pagination.Link>
       )
       expect($.find(RRPaginationLink).hasClass('c-pagination__link test')).toBe(true)
       expect($.find(RRPaginationLink).prop('activeClassName')).toBe('is-test')
-      expect($.find(RRPaginationLink).prop('to')).toBe('/test')
+      expect($.find(RRPaginationLink).prop('to')).toBe('/')
     })
 
     it('gets an activeClassName default', () => {
       const $ = shallow(
         <Pagination.Link
           component={RRPaginationLink}
-          to="/"
+          {...defaultProps}
         >Nebula</Pagination.Link>
       )
       expect($.find(RRPaginationLink).prop('activeClassName')).toBe('is-active')
@@ -103,7 +139,7 @@ describe('<Pagination.Link />', () => {
       const $ = shallow(
         <Pagination.Link
           component={RRPaginationLink}
-          to="/"
+          {...defaultProps}
           style={{ position: 'relative' }}
           ariaHidden="true"
         >

@@ -6,7 +6,7 @@ import { Pagination } from '../'
 describe('<Pagination.Item />', () => {
   it('renders children', () => {
     const $ = shallow(
-      <Pagination.Item to="/">
+      <Pagination.Item>
         Item text
       </Pagination.Item>
     )

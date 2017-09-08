@@ -204,21 +204,21 @@ class App extends Component {
             <Section size="md">
               <Table stackAt="max-md" data={tableData} />
             </Section>
-            <Pagination.Wrapper activeLabel="Pagination Navigation">
+            <Pagination.Wrapper ariaLabel="Pagination">
               <Pagination.Item>
-                <Pagination.Link className="c-pagination__link--previous" to="/" disabled>Prev</Pagination.Link>
+                <Pagination.Link togglePreviousNext="previous" to="/" disabled>Prev</Pagination.Link>
               </Pagination.Item>
               <Pagination.Item>
-                <Pagination.Link className="c-pagination__link" to="/">1</Pagination.Link>
+                <Pagination.Link to="/">1</Pagination.Link>
               </Pagination.Item>
               <Pagination.Item>
-                <Pagination.Link className="c-pagination__link" to="/" isActive>2</Pagination.Link>
+                <Pagination.Link to="/" isActive>2</Pagination.Link>
               </Pagination.Item>
               <Pagination.Item>
-                <Pagination.Link className="c-pagination__link" to="/">3</Pagination.Link>
+                <Pagination.Link to="/">3</Pagination.Link>
               </Pagination.Item>
               <Pagination.Item>
-                <Pagination.Link className="c-pagination__link--next" to="/">Next</Pagination.Link>
+                <Pagination.Link togglePreviousNext="next" to="/">Next</Pagination.Link>
               </Pagination.Item>
             </Pagination.Wrapper>
           </SiteWrap>
