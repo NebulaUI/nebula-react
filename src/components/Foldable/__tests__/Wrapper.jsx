@@ -56,7 +56,7 @@ describe('<Foldable.Wrapper />', () => {
   })
 
   it('renders expanded on initial mount', () => {
-    const $ = shallow(<Foldable.Wrapper defaultExpanded="expanded">_</Foldable.Wrapper>)
+    const $ = shallow(<Foldable.Wrapper defaultOpen="open">_</Foldable.Wrapper>)
     expect($.hasClass('is-open')).toBe(true)
   })
 
@@ -80,7 +80,7 @@ describe('<Foldable.Wrapper />', () => {
     const $ = mount(
       <Foldable.Wrapper
         onFoldableChange={mockOnChange}
-        expanded="expanded"
+        open="open"
       >
         <Foldable.Header>_</Foldable.Header>
       </Foldable.Wrapper>
@@ -90,31 +90,31 @@ describe('<Foldable.Wrapper />', () => {
     expect($.hasClass('is-open')).toBe(true)
 
     $.setProps({
-      expanded: 'collapsed'
+      open: 'closed'
     })
     expect(mockOnChange).not.toHaveBeenCalled()
     expect($.hasClass('is-open')).toBe(false)
 
     $.find('.c-foldable__toggle').simulate('click')
     expect($.hasClass('is-open')).toBe(false)
-    expect(mockOnChange).toHaveBeenCalledWith('expanded')
+    expect(mockOnChange).toHaveBeenCalledWith('open')
 
     $.setProps({
-      expanded: 'expanded'
+      open: 'open'
     })
 
     $.find('.c-foldable__toggle').simulate('click')
     expect($.hasClass('is-open')).toBe(true)
-    expect(mockOnChange).toHaveBeenCalledWith('collapsed')
+    expect(mockOnChange).toHaveBeenCalledWith('closed')
   })
 
   it('sets correct aria attributes', () => {
-    const $ = shallow(<Foldable.Wrapper expanded="collapsed">_</Foldable.Wrapper>)
+    const $ = shallow(<Foldable.Wrapper open="closed">_</Foldable.Wrapper>)
 
     expect($.prop('aria-expanded')).toBe(false)
 
     $.setProps({
-      expanded: 'expanded'
+      open: 'open'
     })
     expect($.prop('aria-expanded')).toBe(true)
   })

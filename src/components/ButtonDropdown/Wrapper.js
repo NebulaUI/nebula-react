@@ -50,13 +50,12 @@ class ButtonDropdownWrapper extends Component {
   }
 
   close = () => {
-    this.setState({
-      isOpen: false
-    })
-
     if (this.state.openingEl) {
       this.state.openingEl.focus()
     }
+    this.setState({
+      isOpen: false
+    })
   }
 
   isControlled = () => !!this.props.isOpen

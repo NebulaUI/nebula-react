@@ -7,8 +7,8 @@ class FoldableWrapper extends Component {
     super(props)
 
     this.state = {
-      isOpen: props.defaultExpanded
-        ? props.defaultExpanded === 'expanded'
+      isOpen: props.defaultOpen
+        ? props.defaultOpen === 'open'
         : false
     }
   }
@@ -24,9 +24,9 @@ class FoldableWrapper extends Component {
   }
 
   toggleOpen = () => {
-    const { onFoldableChange, expanded } = this.props
+    const { onFoldableChange, open } = this.props
     if (onFoldableChange) {
-      onFoldableChange(expanded === 'expanded' ? 'collapsed' : 'expanded')
+      onFoldableChange(open === 'open' ? 'closed' : 'open')
     }
 
     if (!this.isControlled()) {
@@ -35,15 +35,15 @@ class FoldableWrapper extends Component {
   }
 
   isOpen = () => (this.isControlled()
-    ? this.props.expanded === 'expanded'
+    ? this.props.open === 'open'
     : this.state.isOpen)
 
   isControlled = () =>
-    !!this.props.expanded
+    !!this.props.open
 
   render() {
     const {
-      defaultExpanded, onFoldableChange, expanded, // eslint-disable-line no-unused-vars
+      defaultOpen, onFoldableChange, open, // eslint-disable-line no-unused-vars
       node, breakpoint, bordered, children, className, ...rest
     } = this.props
     return E(
@@ -73,8 +73,8 @@ FoldableWrapper.propTypes = {
   breakpoint: T.oneOf(['max-lg', 'max-md', 'max-sm', 'max-xs']),
   bordered: T.bool,
   node: T.string,
-  defaultExpanded: T.oneOf(['expanded', 'collapsed']),
-  expanded: T.oneOf(['expanded', 'collapsed']),
+  defaultOpen: T.oneOf(['open', 'closed']),
+  open: T.oneOf(['open', 'closed']),
   onFoldableChange: T.func,
   children: T.node.isRequired,
   id: T.string,
