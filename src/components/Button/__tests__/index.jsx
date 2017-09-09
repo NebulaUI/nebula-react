@@ -64,8 +64,8 @@ describe('<Button />', () => {
     expect($.hasClass('c-btn c-btn--alpha c-btn--sm')).toBe(true)
   })
 
-  it('renders a link when passed a type of link', () => {
-    const $ = shallow(<Button type="link">_</Button>)
+  it('renders a link when passed a "to" prop', () => {
+    const $ = shallow(<Button to="/">_</Button>)
     expect($.type()).toBe('a')
   })
 })
