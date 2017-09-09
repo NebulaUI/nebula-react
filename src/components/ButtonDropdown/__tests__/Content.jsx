@@ -33,7 +33,9 @@ describe('<ButtonDropdown.Content />', () => {
   })
 
   it('renders a div by default', () => {
-    const $ = shallow(<ButtonDropdown.Content>_</ButtonDropdown.Content>, { context: defaultContext })
+    const $ = shallow(
+      <ButtonDropdown.Content>_</ButtonDropdown.Content>,
+      { context: defaultContext })
     expect($.type()).toBe('div')
   })
 
