@@ -18,7 +18,8 @@ class FlyoutWrapper extends Component {
   getChildContext = () => ({
     handleFlyoutToggle: this.handleToggle,
     isFlyoutOpen: this.isOpen(),
-    flyoutDirection: this.props.direction
+    flyoutDirection: this.props.direction,
+    flyoutDisabled: this.props.disabled
   })
 
   handleToggle = (e) => { // eslint-disable-line consistent-return
@@ -63,13 +64,25 @@ class FlyoutWrapper extends Component {
 
   isControlled = () => !!this.props.isOpen
 
-  isInitialOpen = () => (this.isControlled()
-  ? this.props.isOpen === 'open'
-  : this.props.defaultOpen === 'open')
+  isInitialOpen = () => {
+    if (this.props.disabled) {
+      return false
+    }
 
-  isOpen = () => (this.isControlled()
-    ? this.props.isOpen === 'open'
-    : this.state.isOpen)
+    return this.isControlled()
+      ? this.props.isOpen === 'open'
+      : this.props.defaultOpen === 'open'
+  }
+
+  isOpen = () => {
+    if (this.props.disabled) {
+      return false
+    }
+
+    return this.isControlled()
+      ? this.props.isOpen === 'open'
+      : this.state.isOpen
+  }
 
   render() {
     const {
@@ -106,12 +119,14 @@ FlyoutWrapper.propTypes = {
   isOpen: T.oneOf(['open', 'closed']),
   clickOutsideToClose: T.bool,
   defaultOpen: T.oneOf(['open', 'closed']),
+  disabled: T.bool,
   direction: T.oneOf(['nw', 'ne', 'sw', 'se']).isRequired
 }
 
 FlyoutWrapper.childContextTypes = {
   handleFlyoutToggle: T.func.isRequired,
   isFlyoutOpen: T.bool.isRequired,
+  flyoutDisabled: T.bool,
   flyoutDirection: T.oneOf(['nw', 'ne', 'sw', 'se']).isRequired
 }
 

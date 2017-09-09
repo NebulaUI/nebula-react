@@ -2,10 +2,11 @@ import React, { cloneElement } from 'react'
 import T from 'prop-types'
 
 // eslint-disable-next-line react/prefer-stateless-function
-const FlyoutToggle = ({ children }, { handleFlyoutToggle }) =>
+const FlyoutToggle = ({ children }, { handleFlyoutToggle, flyoutDisabled }) =>
   React.Children.map(children, child =>
     cloneElement(child, {
-      onClick: handleFlyoutToggle
+      onClick: handleFlyoutToggle,
+      disabled: flyoutDisabled
     })
   )[0]
 
@@ -14,7 +15,8 @@ FlyoutToggle.propTypes = {
 }
 
 FlyoutToggle.contextTypes = {
-  handleFlyoutToggle: T.func
+  handleFlyoutToggle: T.func.isRequired,
+  flyoutDisabled: T.bool
 }
 
 export default FlyoutToggle
