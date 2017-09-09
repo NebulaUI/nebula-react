@@ -3,7 +3,7 @@ import { shallow, mount } from 'enzyme'
 import { Flyout } from '../'
 
 const defaultProps = {
-  FlyoutDirection: 'nw'
+  direction: 'nw'
 }
 
 describe('<Flyout.Wrapper />', () => {
@@ -127,6 +127,24 @@ describe('<Flyout.Wrapper />', () => {
     expect($.hasClass('is-open')).toBe(false)
   })
 
+  it('can be closed open on the initial mount if disabled', () => {
+    const props = {
+      ...defaultProps,
+      defaultOpen: 'open',
+      disabled: true
+    }
+    const $ = mount(
+      <Flyout.Wrapper {...props}>
+        <Flyout.Toggle><button /></Flyout.Toggle>
+        <Flyout.Content>Child content</Flyout.Content>
+      </Flyout.Wrapper>
+    )
+    expect($.hasClass('is-open')).toBe(false)
+
+    $.find(Flyout.Toggle).simulate('click')
+    expect($.hasClass('is-open')).toBe(false)
+  })
+
   it('can be externally controlled', () => {
     const props = {
       ...defaultProps,
@@ -139,6 +157,16 @@ describe('<Flyout.Wrapper />', () => {
       isOpen: 'closed'
     })
 
+    expect($.hasClass('is-open')).toBe(false)
+  })
+
+  it('can renders closed when disabled even if externally closed', () => {
+    const props = {
+      ...defaultProps,
+      isOpen: 'open',
+      disabled: true
+    }
+    const $ = shallow(<Flyout.Wrapper {...props}>_</Flyout.Wrapper>)
     expect($.hasClass('is-open')).toBe(false)
   })
 
