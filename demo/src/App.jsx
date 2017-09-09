@@ -100,7 +100,7 @@ class App extends Component {
             </Modal.Wrapper>
 
             <h3>Button Dropdowns</h3>
-            <ButtonDropdown.Wrapper togglePosition="left">
+            <ButtonDropdown.Wrapper clickOutsideToClose defaultOpen="open" togglePosition="left">
               <Button node="a" to="/" size="md" theme="alpha" className="c-btn--full">
                 Click to go to link
               </Button>
@@ -112,10 +112,13 @@ class App extends Component {
                     <li className="o-bare-list__item">Option 2</li>
                     <li className="o-bare-list__item">Option 3</li>
                   </ul>
+                  <ButtonDropdown.Close>
+                    <Button>close</Button>
+                  </ButtonDropdown.Close>
                 </Card>
               </ButtonDropdown.Content>
             </ButtonDropdown.Wrapper>
-            <ButtonDropdown.Wrapper togglePosition="right">
+            <ButtonDropdown.Wrapper isOpen="open" togglePosition="right">
               <Button node="a" to="/" size="lg" theme="alpha" className="c-btn--full">
                 Click to go to link
               </Button>

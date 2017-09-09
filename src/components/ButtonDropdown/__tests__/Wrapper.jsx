@@ -1,11 +1,7 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
 
-import { addEListener, removeEListener } from '../../../utils/window'
-
 import { ButtonDropdown } from '../'
-
-jest.mock('../../../utils/window')
 
 const defaultProps = {
   togglePosition: 'left'
@@ -74,42 +70,111 @@ describe('<ButtonDropdown.Wrapper />', () => {
     expect($.hasClass('is-open')).toBe(false)
   })
 
-  it('can be opened and closed via the toggle', () => {
-    const mockOpen = jest.fn()
-    const $ = shallow(
-      <ButtonDropdown.Wrapper {...defaultProps}>
-        <ButtonDropdown.Toggle handleToggle={mockOpen}>_</ButtonDropdown.Toggle>
-        <ButtonDropdown.Content>_</ButtonDropdown.Content>
-      </ButtonDropdown.Wrapper>
-    )
-    expect($.hasClass('is-open')).toBe(false)
+  it('renders the correct aria-expanded prop', () => {
+    const $ = shallow(<ButtonDropdown.Wrapper {...defaultProps}>_</ButtonDropdown.Wrapper>)
+    expect($.prop('aria-expanded')).toBe(false)
 
-    $.find(ButtonDropdown.Toggle).prop('handleToggle')()
-    expect($.hasClass('is-open')).toBe(true)
-  })
-
-  it('adds a click handler to the window when mounted and removes it when it unmounts', () => {
-    const mockAddEventListener = jest.fn()
-    const mockRemoveEventListener = jest.fn()
-    addEListener.mockImplementation(mockAddEventListener)
-    removeEListener.mockImplementation(mockRemoveEventListener)
-
-    const $ = mount(<ButtonDropdown.Wrapper {...defaultProps}>_</ButtonDropdown.Wrapper>)
-    const handleClickOutside = $.instance().handleClickOutside
-    expect(mockAddEventListener).toHaveBeenCalledWith('mousedown', handleClickOutside)
-    $.unmount()
-    expect(mockRemoveEventListener).toHaveBeenCalledWith('mousedown', handleClickOutside)
-  })
-
-  it('closes when clicked outside', () => {
-    const $ = mount(<ButtonDropdown.Wrapper {...defaultProps}>_</ButtonDropdown.Wrapper>)
     $.setState({
       isOpen: true
     })
-    expect($.hasClass('is-open')).toBe(true)
-    $.instance().handleClickOutside({
-      target: 'foo'
-    })
+    expect($.prop('aria-expanded')).toBe(true)
+  })
+
+  it('can be opened and closed, focusing on the element that initially opened the flyout', () => {
+    const button = <button />
+    const $ = mount(
+      <ButtonDropdown.Wrapper {...defaultProps}>
+        <ButtonDropdown.Toggle node="div"><button /></ButtonDropdown.Toggle>
+        <ButtonDropdown.Content>
+          Child content
+          <ButtonDropdown.Close><button /></ButtonDropdown.Close>
+        </ButtonDropdown.Content>
+      </ButtonDropdown.Wrapper>
+    )
+
     expect($.hasClass('is-open')).toBe(false)
+    $.find(ButtonDropdown.Toggle).childAt(0).simulate('click')
+    expect($.hasClass('is-open')).toBe(true)
+
+    $.find(ButtonDropdown.Content).find(ButtonDropdown.Close).simulate('click')
+    expect($.hasClass('is-open')).toBe(false)
+    expect($.find(ButtonDropdown.Toggle).childAt(0).node === document.activeElement).toBe(true)
+  })
+
+
+  it('can be closed by clicking on the outside', () => {
+    const $ = mount(
+      <ButtonDropdown.Wrapper clickOutsideToClose {...defaultProps}>
+        <ButtonDropdown.Toggle />
+        <ButtonDropdown.Content>Child content</ButtonDropdown.Content>
+      </ButtonDropdown.Wrapper>
+    )
+
+    expect($.hasClass('is-open')).toBe(false)
+
+    $.find(ButtonDropdown.Toggle).simulate('click')
+    expect($.hasClass('is-open')).toBe(true)
+
+    const evt = document.createEvent('HTMLEvents')
+    evt.initEvent('click', false, true)
+    window.dispatchEvent(evt)
+
+    expect($.hasClass('is-open')).toBe(false)
+  })
+
+  it('can be rendered open on the initial mount', () => {
+    const props = {
+      ...defaultProps,
+      defaultOpen: 'open'
+    }
+    const $ = mount(
+      <ButtonDropdown.Wrapper {...props}>
+        <ButtonDropdown.Toggle />
+      </ButtonDropdown.Wrapper>
+    )
+    expect($.hasClass('is-open')).toBe(true)
+
+    $.find(ButtonDropdown.Toggle).simulate('click')
+    expect($.hasClass('is-open')).toBe(false)
+  })
+
+  it('can be externally controlled', () => {
+    const props = {
+      ...defaultProps,
+      isOpen: 'open'
+    }
+    const $ = shallow(<ButtonDropdown.Wrapper {...props}>_</ButtonDropdown.Wrapper>)
+    expect($.hasClass('is-open')).toBe(true)
+
+    $.setProps({
+      isOpen: 'closed'
+    })
+
+    expect($.hasClass('is-open')).toBe(false)
+  })
+
+  it('calls an optional callback prop when a change event occurs', () => {
+    const mockOnButtonDropdownChange = jest.fn()
+    const props = {
+      ...defaultProps,
+      onButtonDropdownChange: mockOnButtonDropdownChange,
+      clickOutsideToClose: true,
+      isOpen: 'open'
+    }
+    const $ = mount(
+      <ButtonDropdown.Wrapper {...props}>
+        <ButtonDropdown.Toggle />
+        <ButtonDropdown.Content>Child content</ButtonDropdown.Content>
+      </ButtonDropdown.Wrapper>
+    )
+    expect(mockOnButtonDropdownChange).not.toHaveBeenCalled()
+
+    $.find(ButtonDropdown.Toggle).simulate('click')
+    expect(mockOnButtonDropdownChange).toHaveBeenCalledWith(true)
+
+    const evt = document.createEvent('HTMLEvents')
+    evt.initEvent('click', false, true)
+    window.dispatchEvent(evt)
+    expect(mockOnButtonDropdownChange).toHaveBeenCalledTimes(2)
   })
 })

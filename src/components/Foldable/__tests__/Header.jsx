@@ -4,7 +4,7 @@ import { shallow } from 'enzyme'
 import { Foldable } from '../'
 
 const defaultContext = {
-  toggleOpen: jest.fn(),
+  toggleFoldableOpen: jest.fn(),
   foldableId: '123'
 }
 
@@ -57,7 +57,7 @@ describe('<Foldable.Header />', () => {
     const toggleOpenMock = jest.fn()
     const context = {
       ...defaultContext,
-      toggleOpen: toggleOpenMock
+      toggleFoldableOpen: toggleOpenMock
     }
     const $ = shallow(<Foldable.Header>_</Foldable.Header>, { context })
     expect(toggleOpenMock).toHaveBeenCalledTimes(0)
