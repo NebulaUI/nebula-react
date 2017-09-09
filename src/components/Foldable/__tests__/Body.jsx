@@ -54,6 +54,24 @@ describe('<Foldable.Body />', () => {
     expect($.prop('aria-hidden')).toBe(true)
   })
 
+  it('doesnt render children when collapsed', () => {
+    const context = {
+      ...defaultContext,
+      isFoldableOpen: false
+    }
+    const $ = shallow(<Foldable.Body>test child</Foldable.Body>, { context })
+    expect($.contains('test child')).toBe(false)
+  })
+
+  it('renders children when open', () => {
+    const context = {
+      ...defaultContext,
+      isFoldableOpen: true
+    }
+    const $ = shallow(<Foldable.Body>test child</Foldable.Body>, { context })
+    expect($.contains('test child')).toBe(true)
+  })
+
   it('renders with an id passed via context', () => {
     const context = {
       ...defaultContext,

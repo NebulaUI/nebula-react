@@ -6,7 +6,7 @@ import Tab from './Tab'
 
 class TabsTabList extends Component {
   componentDidMount() {
-    if (!this.context.activeId) {
+    if (!this.context.activeTabId) {
       this.setActiveId()
     }
   }
@@ -17,14 +17,15 @@ class TabsTabList extends Component {
     this.context.activateTab(this.getFirstChildTarget(), true)
 
   activateTab = (direction, index, child) => {
+    const qtyChildren = React.Children.count(this.props.children)
     const { activateTab } = this.context
     const { children } = this.props
     if (direction === 'next') {
-      if (index < children.length - 1) {
+      if (index < qtyChildren - 1) {
         return activateTab(children[index + 1].props.target)
       }
 
-      return null
+      return activateTab(children[0].props.target)
     }
 
     if (direction === 'prev') {
@@ -32,19 +33,19 @@ class TabsTabList extends Component {
         return activateTab(children[index - 1].props.target)
       }
 
-      return null
+      return activateTab(children[qtyChildren - 1].props.target)
     }
     return activateTab(child.props.target)
   }
 
   render() {
     const { node, children, className, ...rest } = this.props
-    const { activeId } = this.context
+    const { activeTabId } = this.context
     const enhancedChildren = React.Children.map(removeFalsy(children), (child, index) => {
       if (child.type === Tab) {
         return cloneElement(child, {
           activateTab: direction => this.activateTab(direction, index, child),
-          isActive: child.props.target === activeId
+          isActive: child.props.target === activeTabId
         })
       }
 
@@ -70,7 +71,7 @@ class TabsTabList extends Component {
 }
 
 TabsTabList.contextTypes = {
-  activeId: T.oneOfType([T.string, T.number]),
+  activeTabId: T.oneOfType([T.string, T.number]),
   activateTab: T.func.isRequired
 }
 

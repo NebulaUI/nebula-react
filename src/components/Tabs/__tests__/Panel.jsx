@@ -8,15 +8,15 @@ const defaultProps = {
 }
 
 const defaultContext = {
-  activeLabel: '_',
-  activeId: 'test'
+  activeTabLabel: '_',
+  activeTabId: 'test'
 }
 
 describe('<Tabs.Panel />', () => {
   it('renders children when active', () => {
     const context = {
       ...defaultContext,
-      activeId: 'test-id'
+      activeTabId: 'test-id'
     }
     const props = {
       ...defaultProps,
@@ -33,7 +33,7 @@ describe('<Tabs.Panel />', () => {
   it('doesnt render children when not active', () => {
     const context = {
       ...defaultContext,
-      activeId: 'dont-render'
+      activeTabId: 'dont-render'
     }
     const props = {
       ...defaultProps,
@@ -52,8 +52,7 @@ describe('<Tabs.Panel />', () => {
       ...defaultProps,
       className: 'test'
     }
-    const context = defaultContext
-    const $ = shallow(<Tabs.Panel {...props} />, { context })
+    const $ = shallow(<Tabs.Panel {...props} />, { context: defaultContext })
     expect($.hasClass('c-tabs__panel test')).toBe(true)
   })
 
@@ -65,8 +64,7 @@ describe('<Tabs.Panel />', () => {
         position: 'relative'
       }
     }
-    const context = defaultContext
-    const $ = shallow(<Tabs.Panel {...props} />, { context })
+    const $ = shallow(<Tabs.Panel {...props} />, { context: defaultContext })
     expect($.prop('style')).toEqual({
       position: 'relative'
     })
@@ -77,14 +75,12 @@ describe('<Tabs.Panel />', () => {
       ...defaultProps,
       node: 'article'
     }
-    const context = defaultContext
-    const $ = shallow(<Tabs.Panel {...props} />, { context })
+    const $ = shallow(<Tabs.Panel {...props} />, { context: defaultContext })
     expect($.type()).toBe('article')
   })
 
   it('renders a div by default', () => {
-    const context = defaultContext
-    const $ = shallow(<Tabs.Panel {...defaultProps} />, { context })
+    const $ = shallow(<Tabs.Panel {...defaultProps} />, { context: defaultContext })
     expect($.type()).toBe('div')
   })
 })

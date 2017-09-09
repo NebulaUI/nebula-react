@@ -19,17 +19,19 @@ class TabsTab extends Component {
   }
 
   setActiveLabel() {
-    this.context.setActiveLabel(this.props.children)
+    this.context.setActiveTabLabel(this.props.children)
   }
 
   render() {
     const { node, children, target, activateTab, isActive, className, ...rest } = this.props
-    const handleKeyDown = ({ keyCode }) => {
-      if (keyCode === 37) {
+    const handleKeyDown = (e) => {
+      if (e.keyCode === 37 || e.keyCode === 38) {
+        e.preventDefault()
         activateTab('prev')
       }
 
-      if (keyCode === 39) {
+      if (e.keyCode === 39 || e.keyCode === 40) {
+        e.preventDefault()
         activateTab('next')
       }
     }
@@ -61,7 +63,7 @@ class TabsTab extends Component {
 }
 
 TabsTab.contextTypes = {
-  setActiveLabel: T.func.isRequired
+  setActiveTabLabel: T.func.isRequired
 }
 
 TabsTab.propTypes = {
