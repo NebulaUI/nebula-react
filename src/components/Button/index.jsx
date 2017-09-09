@@ -19,11 +19,8 @@ const Button = ({
   const enhancedClassName = classNames(
     'c-btn',
     className,
-    { 'c-btn--alpha': theme === 'alpha' },
-    { 'c-btn--beta': theme === 'beta' },
-    { 'c-btn--sm': size === 'sm' },
-    { 'c-btn--md': size === 'md' },
-    { 'c-btn--lg': size === 'lg' },
+    theme ? `c-btn--${theme}` : '',
+    size ? `c-btn--${size}` : '',
     { 'c-btn--full': fullWidth }
   )
 
