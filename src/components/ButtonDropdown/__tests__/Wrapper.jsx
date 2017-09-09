@@ -177,4 +177,32 @@ describe('<ButtonDropdown.Wrapper />', () => {
     window.dispatchEvent(evt)
     expect(mockOnButtonDropdownChange).toHaveBeenCalledTimes(2)
   })
+
+  it('renders in a disabled state', () => {
+    const props = {
+      ...defaultProps,
+      disabled: true
+    }
+    const $ = mount(
+      <ButtonDropdown.Wrapper {...props}>
+        <ButtonDropdown.Toggle />
+      </ButtonDropdown.Wrapper>
+    )
+
+    expect($.find(ButtonDropdown.Toggle).html()).toMatch(/disabled/)
+  })
+
+  it('renders in a non disabled state', () => {
+    const props = {
+      ...defaultProps,
+      disabled: false
+    }
+    const $ = mount(
+      <ButtonDropdown.Wrapper {...props}>
+        <ButtonDropdown.Toggle />
+      </ButtonDropdown.Wrapper>
+    )
+
+    expect($.find(ButtonDropdown.Toggle).html()).not.toMatch(/disabled/)
+  })
 })

@@ -8,9 +8,9 @@ const ButtonDropdownContent = ({
  children,
  ...rest
 }, {
-  isButtonDropdownOpen
+  buttonDropdownOpen
 }) => (
-  isButtonDropdownOpen
+  buttonDropdownOpen
     ? E(
         node || 'div',
       {
@@ -23,7 +23,7 @@ const ButtonDropdownContent = ({
 )
 
 ButtonDropdownContent.contextTypes = {
-  isButtonDropdownOpen: T.bool.isRequired
+  buttonDropdownOpen: T.bool.isRequired
 }
 
 ButtonDropdownContent.propTypes = {

@@ -9,13 +9,15 @@ const ButtonDropdownToggle = ({
   ...rest
 },
 {
-  handleButtonDropdownToggle
+  handleButtonDropdownToggle,
+  buttonDropdownDisabled
 }) => (
   E(
     node || 'button',
     {
       className: classNames('c-btn-dropdown__toggle', className),
       onClick: handleButtonDropdownToggle,
+      disabled: buttonDropdownDisabled,
       ...rest
     },
     children
@@ -23,7 +25,8 @@ const ButtonDropdownToggle = ({
 )
 
 ButtonDropdownToggle.contextTypes = {
-  handleButtonDropdownToggle: T.func.isRequired
+  handleButtonDropdownToggle: T.func.isRequired,
+  buttonDropdownDisabled: T.bool
 }
 
 ButtonDropdownToggle.propTypes = {

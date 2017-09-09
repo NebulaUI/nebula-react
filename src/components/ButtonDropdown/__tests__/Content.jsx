@@ -4,14 +4,14 @@ import { shallow } from 'enzyme'
 import { ButtonDropdown } from '../'
 
 const defaultContext = {
-  isButtonDropdownOpen: true
+  buttonDropdownOpen: true
 }
 
 describe('<ButtonDropdown.Content />', () => {
   it('renders children', () => {
     const context = {
       ...defaultContext,
-      isButtonDropdownOpen: true
+      buttonDropdownOpen: true
     }
     const child = <div />
     const $ = shallow(
@@ -52,7 +52,7 @@ describe('<ButtonDropdown.Content />', () => {
   })
 
   it('returns "null" when the buttonDropdown is closed', () => {
-    const context = { isButtonDropdownOpen: false }
+    const context = { buttonDropdownOpen: false }
     const $ = shallow(<ButtonDropdown.Content>_</ButtonDropdown.Content>, { context })
     expect($.type()).toBeNull()
   })
