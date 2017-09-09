@@ -3,7 +3,7 @@ import { shallow, mount } from 'enzyme'
 import { Flyout } from '../'
 
 const defaultProps = {
-  direction: 'nw'
+  FlyoutDirection: 'nw'
 }
 
 describe('<Flyout.Wrapper />', () => {
@@ -167,3 +167,4 @@ describe('<Flyout.Wrapper />', () => {
     expect(mockOnFlyoutChange).toHaveBeenCalledTimes(2)
   })
 })
+

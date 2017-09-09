@@ -9,7 +9,7 @@ const FoldableHeader = ({
   children,
   ...rest
 }, {
-  toggleOpen,
+  toggleFoldableOpen,
   foldableId
 }) =>
   E(
@@ -26,7 +26,7 @@ const FoldableHeader = ({
       'button',
       {
         className: 'c-foldable__toggle',
-        onClick: toggleOpen,
+        onClick: toggleFoldableOpen,
         'aria-controls': foldableId
       }
     ),
@@ -34,7 +34,7 @@ const FoldableHeader = ({
   )
 
 FoldableHeader.contextTypes = {
-  toggleOpen: T.func.isRequired,
+  toggleFoldableOpen: T.func.isRequired,
   foldableId: T.string.isRequired
 }
 

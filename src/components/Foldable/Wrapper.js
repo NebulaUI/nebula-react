@@ -14,8 +14,8 @@ class FoldableWrapper extends Component {
   }
 
   getChildContext = () => ({
-    isOpen: this.isOpen(),
-    toggleOpen: this.toggleOpen,
+    isFoldableOpen: this.isOpen(),
+    toggleFoldableOpen: this.toggleOpen,
     foldableId: this.id
   })
 
@@ -64,8 +64,8 @@ class FoldableWrapper extends Component {
 }
 
 FoldableWrapper.childContextTypes = {
-  isOpen: T.bool.isRequired,
-  toggleOpen: T.func.isRequired,
+  isFoldableOpen: T.bool.isRequired,
+  toggleFoldableOpen: T.func.isRequired,
   foldableId: T.string.isRequired
 }
 

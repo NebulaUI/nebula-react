@@ -20,19 +20,19 @@ describe('<Flyout.Content />', () => {
   })
 
   it('renders children when open', () => {
-    const context = { isOpen: true }
+    const context = { isFlyoutOpen: true }
     const $ = shallow(<Flyout.Content isOpen>Test child</Flyout.Content>, { context })
     expect($.contains('Test child')).toBe(true)
   })
 
   it('does not render children when closed', () => {
-    const context = { isOpen: false }
+    const context = { isFlyoutOpen: false }
     const $ = shallow(<Flyout.Content isOpen>Test child</Flyout.Content>, { context })
     expect($.contains('Test child')).toBe(false)
   })
 
   it('renders with a set direction', () => {
-    const context = { direction: 'nw' }
+    const context = { flyoutDirection: 'nw' }
     const $ = shallow(<Flyout.Content isOpen>Test child</Flyout.Content>, { context })
     expect($.hasClass('c-flyout__content c-flyout__content--nw')).toBe(true)
   })
