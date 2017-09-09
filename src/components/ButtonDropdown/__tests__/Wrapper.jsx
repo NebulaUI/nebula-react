@@ -205,4 +205,19 @@ describe('<ButtonDropdown.Wrapper />', () => {
 
     expect($.find(ButtonDropdown.Toggle).html()).not.toMatch(/disabled/)
   })
+
+  it('renders closed when disabled, even when externally controlled', () => {
+    const props = {
+      ...defaultProps,
+      isOpen: 'open',
+      disabled: true
+    }
+    const $ = mount(
+      <ButtonDropdown.Wrapper {...props}>
+        <ButtonDropdown.Toggle />
+      </ButtonDropdown.Wrapper>
+    )
+
+    expect($.hasClass('is-open')).toBe(false)
+  })
 })

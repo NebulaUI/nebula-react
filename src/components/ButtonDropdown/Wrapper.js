@@ -61,13 +61,25 @@ class ButtonDropdownWrapper extends Component {
 
   isControlled = () => !!this.props.isOpen
 
-  isInitialOpen = () => (this.isControlled()
-    ? this.props.isOpen === 'open'
-    : this.props.defaultOpen === 'open')
+  isInitialOpen = () => {
+    if (this.props.disabled) {
+      return false
+    }
 
-  isOpen = () => (this.isControlled()
-    ? this.props.isOpen === 'open'
-    : this.state.isOpen)
+    return this.isControlled()
+      ? this.props.isOpen === 'open'
+      : this.props.defaultOpen === 'open'
+  }
+
+  isOpen = () => {
+    if (this.props.disabled) {
+      return false
+    }
+
+    return this.isControlled()
+      ? this.props.isOpen === 'open'
+      : this.state.isOpen
+  }
 
   render() {
     const {
