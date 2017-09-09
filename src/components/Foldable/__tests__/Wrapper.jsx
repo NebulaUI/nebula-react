@@ -108,6 +108,19 @@ describe('<Foldable.Wrapper />', () => {
     expect(mockOnChange).toHaveBeenCalledWith('closed')
   })
 
+  it('renders closed when disabled even if controlled externally', () => {
+    const $ = mount(
+      <Foldable.Wrapper
+        open="open"
+        disabled
+      >
+        <Foldable.Header>_</Foldable.Header>
+      </Foldable.Wrapper>
+    )
+
+    expect($.hasClass('is-open')).toBe(false)
+  })
+
   it('sets correct aria attributes', () => {
     const $ = shallow(<Foldable.Wrapper open="closed">_</Foldable.Wrapper>)
 

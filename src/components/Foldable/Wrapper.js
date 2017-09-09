@@ -16,7 +16,8 @@ class FoldableWrapper extends Component {
   getChildContext = () => ({
     isFoldableOpen: this.isOpen(),
     toggleFoldableOpen: this.toggleOpen,
-    foldableId: this.id
+    foldableId: this.id,
+    foldableDisabled: this.props.disabled
   })
 
   componentWillMount() {
@@ -34,9 +35,15 @@ class FoldableWrapper extends Component {
     }
   }
 
-  isOpen = () => (this.isControlled()
-    ? this.props.open === 'open'
-    : this.state.isOpen)
+  isOpen = () => {
+    if (this.props.disabled) {
+      return false
+    }
+
+    return this.isControlled()
+      ? this.props.open === 'open'
+      : this.state.isOpen
+  }
 
   isControlled = () =>
     !!this.props.open
@@ -66,7 +73,8 @@ class FoldableWrapper extends Component {
 FoldableWrapper.childContextTypes = {
   isFoldableOpen: T.bool.isRequired,
   toggleFoldableOpen: T.func.isRequired,
-  foldableId: T.string.isRequired
+  foldableId: T.string.isRequired,
+  foldableDisabled: T.bool
 }
 
 FoldableWrapper.propTypes = {
@@ -78,6 +86,7 @@ FoldableWrapper.propTypes = {
   onFoldableChange: T.func,
   children: T.node.isRequired,
   id: T.string,
+  disabled: T.bool,
   className: T.string
 }
 
