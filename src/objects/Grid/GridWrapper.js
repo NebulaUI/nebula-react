@@ -4,7 +4,7 @@ import T from 'prop-types'
 import { classNames, buildClassName } from '../../utils/'
 
 const GridWrapper = ({
-  node,
+  tag,
   gutter,
   matrix,
   equalHeight,
@@ -15,7 +15,7 @@ const GridWrapper = ({
   ...rest
 }) =>
   E(
-    node || 'div',
+    tag || 'div',
     {
       className: classNames(
         'o-grid',
@@ -34,7 +34,7 @@ const GridWrapper = ({
   )
 
 GridWrapper.propTypes = {
-  node: T.string,
+  tag: T.string,
   gutter: T.oneOfType([
     T.string,
     T.array
