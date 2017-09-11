@@ -9,26 +9,31 @@ const defaultContext = {
 
 describe('<Tabs.TabList />', () => {
   it('renders the list-wrapper and the list', () => {
-    const context = defaultContext
-    const $ = shallow(<Tabs.TabList>_</Tabs.TabList>, { context })
+    const $ = shallow(
+      <Tabs.TabList>
+        <Tabs.Tab target="_">_</Tabs.Tab>
+      </Tabs.TabList>
+      , { context: defaultContext })
     expect($.find('.c-tabs__list-wrapper')).toHaveLength(1)
     expect($.find('.c-tabs__list')).toHaveLength(1)
   })
 
   it('renders with appropriate classNames', () => {
-    const context = defaultContext
-    const $ = shallow(<Tabs.TabList className="test">Test</Tabs.TabList>, { context })
+    const $ = shallow(
+      <Tabs.TabList className="test">
+        <Tabs.Tab target="_">_</Tabs.Tab>
+      </Tabs.TabList>
+      , { context: defaultContext })
     expect($.hasClass('c-tabs__list-wrapper test')).toBe(true)
     expect($.children().hasClass('c-tabs__list')).toBe(true)
   })
 
   it('renders with attributes', () => {
-    const context = defaultContext
     const $ = shallow(
       <Tabs.TabList style={{ position: 'relative' }} ariaHidden="true">
-        _
+        <Tabs.Tab target="_">_</Tabs.Tab>
       </Tabs.TabList>
-    , { context })
+    , { context: defaultContext })
     expect($.prop('style')).toEqual({
       position: 'relative'
     })
@@ -36,14 +41,20 @@ describe('<Tabs.TabList />', () => {
   })
 
   it('renders a defined tag type', () => {
-    const context = defaultContext
-    const $ = shallow(<Tabs.TabList tag="article">_</Tabs.TabList>, { context })
+    const $ = shallow(
+      <Tabs.TabList tag="article">
+        <Tabs.Tab target="_">_</Tabs.Tab>
+      </Tabs.TabList>
+      , { context: defaultContext })
     expect($.type()).toBe('article')
   })
 
   it('renders a div by default', () => {
-    const context = defaultContext
-    const $ = shallow(<Tabs.TabList>_</Tabs.TabList>, { context })
+    const $ = shallow(
+      <Tabs.TabList>
+        <Tabs.Tab target="_">_</Tabs.Tab>
+      </Tabs.TabList>
+      , { context: defaultContext })
     expect($.type()).toBe('div')
   })
 
@@ -75,6 +86,34 @@ describe('<Tabs.TabList />', () => {
     const $ = mount(
       <Tabs.Wrapper>
         <Tabs.TabList>
+          <Tabs.Tab target="test-0">_</Tabs.Tab>
+          <Tabs.Tab target="test-1">_</Tabs.Tab>
+          <Tabs.Tab target="test-2" disabled>_</Tabs.Tab>
+          <Tabs.Tab target="test-3">_</Tabs.Tab>
+        </Tabs.TabList>
+      </Tabs.Wrapper>
+    )
+    expect($.state('activeId')).toBe('test-0')
+
+    $.find(Tabs.Tab).at(0).simulate('keydown', { keyCode: 39 })
+    expect($.state('activeId')).toBe('test-1')
+    $.find(Tabs.Tab).at(1).simulate('keydown', { keyCode: 39 })
+    expect($.state('activeId')).toBe('test-3')
+    $.find(Tabs.Tab).at(3).simulate('keydown', { keyCode: 39 })
+    expect($.state('activeId')).toBe('test-0')
+
+    $.find(Tabs.Tab).at(0).simulate('keydown', { keyCode: 37 })
+    expect($.state('activeId')).toBe('test-3')
+    $.find(Tabs.Tab).at(3).simulate('keydown', { keyCode: 37 })
+    expect($.state('activeId')).toBe('test-1')
+    $.find(Tabs.Tab).at(1).simulate('keydown', { keyCode: 37 })
+    expect($.state('activeId')).toBe('test-0')
+  })
+
+  it('activates the corresponding tab when clicked', () => {
+    const $ = mount(
+      <Tabs.Wrapper>
+        <Tabs.TabList>
           <Tabs.Tab target="test-1">_</Tabs.Tab>
           <Tabs.Tab target="test-2">_</Tabs.Tab>
           <Tabs.Tab target="test-3">_</Tabs.Tab>
@@ -83,19 +122,8 @@ describe('<Tabs.TabList />', () => {
     )
     expect($.state('activeId')).toBe('test-1')
 
-    $.find(Tabs.Tab).at(0).simulate('keydown', { keyCode: 39 })
+    $.find(Tabs.Tab).at(1).simulate('click')
     expect($.state('activeId')).toBe('test-2')
-    $.find(Tabs.Tab).at(1).simulate('keydown', { keyCode: 39 })
-    expect($.state('activeId')).toBe('test-3')
-    $.find(Tabs.Tab).at(2).simulate('keydown', { keyCode: 39 })
-    expect($.state('activeId')).toBe('test-1')
-
-    $.find(Tabs.Tab).at(2).simulate('keydown', { keyCode: 37 })
-    expect($.state('activeId')).toBe('test-2')
-    $.find(Tabs.Tab).at(1).simulate('keydown', { keyCode: 37 })
-    expect($.state('activeId')).toBe('test-1')
-    $.find(Tabs.Tab).at(0).simulate('keydown', { keyCode: 37 })
-    expect($.state('activeId')).toBe('test-3')
   })
 
   it('activates the corresponding tab when clicked', () => {
