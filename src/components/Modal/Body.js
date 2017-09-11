@@ -5,7 +5,7 @@ import FocusTrap from 'focus-trap-react'
 import { classNames } from '../../utils/'
 
 const ModalBody = ({
-  node,
+  tag,
   className,
   children,
   ...rest
@@ -14,7 +14,7 @@ const ModalBody = ({
   modalIsFullyMounted
 }) =>
   E(
-    node || 'div',
+    tag || 'div',
     {
       className: classNames('c-modal__body', className),
       ...rest
@@ -34,7 +34,8 @@ ModalBody.contextTypes = {
 }
 
 ModalBody.propTypes = {
-  children: T.node.isRequired
+  children: T.node.isRequired,
+  tag: T.string
 }
 
 export default ModalBody

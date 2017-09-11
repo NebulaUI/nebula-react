@@ -15,7 +15,7 @@ describe('<Modal.Body />', () => {
   })
 
   it('renders a defined node type', () => {
-    const $ = shallow(<Modal.Body node="article">_</Modal.Body>, { context: defaultContext })
+    const $ = shallow(<Modal.Body tag="article">_</Modal.Body>, { context: defaultContext })
     expect($.type()).toBe('article')
   })
 
