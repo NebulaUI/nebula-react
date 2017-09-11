@@ -9,8 +9,9 @@ const FoldableHeader = ({
   children,
   ...rest
 }, {
-  toggleOpen,
-  foldableId
+  toggleFoldableOpen,
+  foldableId,
+  foldableDisabled
 }) =>
   E(
     node || 'div',
@@ -26,16 +27,18 @@ const FoldableHeader = ({
       'button',
       {
         className: 'c-foldable__toggle',
-        onClick: toggleOpen,
-        'aria-controls': foldableId
+        onClick: toggleFoldableOpen,
+        'aria-controls': foldableId,
+        disabled: foldableDisabled
       }
     ),
     children
   )
 
 FoldableHeader.contextTypes = {
-  toggleOpen: T.func.isRequired,
-  foldableId: T.string.isRequired
+  toggleFoldableOpen: T.func.isRequired,
+  foldableId: T.string.isRequired,
+  foldableDisabled: T.bool
 }
 
 FoldableHeader.propTypes = {

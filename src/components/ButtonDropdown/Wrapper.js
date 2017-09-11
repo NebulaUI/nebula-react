@@ -1,11 +1,10 @@
-import { Component, createElement as E } from 'react'
+import { createElement as E, Component } from 'react'
 import T from 'prop-types'
 
 import { ClickOutside } from '../../'
+import { classNames } from '../../utils/'
 
-import { classNames } from '../../utils'
-
-class FlyoutWrapper extends Component {
+class ButtonDropdownWrapper extends Component {
   constructor(props) {
     super(props)
 
@@ -16,15 +15,14 @@ class FlyoutWrapper extends Component {
   }
 
   getChildContext = () => ({
-    handleFlyoutToggle: this.handleToggle,
-    isFlyoutOpen: this.isOpen(),
-    flyoutDirection: this.props.direction,
-    flyoutDisabled: this.props.disabled
+    handleButtonDropdownToggle: this.handleToggle,
+    buttonDropdownOpen: this.isOpen(),
+    buttonDropdownDisabled: this.props.disabled
   })
 
   handleToggle = (e) => { // eslint-disable-line consistent-return
-    if (this.props.onFlyoutChange) {
-      this.props.onFlyoutChange(this.isOpen())
+    if (this.props.onButtonDropdownChange) {
+      this.props.onButtonDropdownChange(this.isOpen())
     }
 
     if (!this.isControlled()) {
@@ -37,8 +35,8 @@ class FlyoutWrapper extends Component {
   }
 
   handleClickOutside = () => {
-    if (this.props.onFlyoutChange && this.isOpen()) {
-      this.props.onFlyoutChange(this.isOpen())
+    if (this.props.onButtonDropdownChange && this.isOpen()) {
+      this.props.onButtonDropdownChange(this.isOpen())
     }
     if (!this.isControlled() && this.isOpen()) {
       this.close()
@@ -53,13 +51,12 @@ class FlyoutWrapper extends Component {
   }
 
   close = () => {
-    this.setState({
-      isOpen: false
-    })
-
     if (this.state.openingEl) {
       this.state.openingEl.focus()
     }
+    this.setState({
+      isOpen: false
+    })
   }
 
   isControlled = () => !!this.props.isOpen
@@ -86,13 +83,25 @@ class FlyoutWrapper extends Component {
 
   render() {
     const {
-      defaultOpen, isOpen, onFlyoutChange,
-      node, className, children, clickOutsideToClose, ...rest
+      defaultOpen, disabled, isOpen, onButtonDropdownChange,
+      node,
+      className,
+      children,
+      togglePosition,
+      fullWidth,
+      clickOutsideToClose,
+      ...rest
     } = this.props
     const FlyoutComponent = E(
       node || 'div',
       {
-        className: classNames('c-flyout', { 'is-open': this.isOpen() }, className),
+        className: classNames(
+          'c-btn-dropdown',
+          `c-btn-dropdown--toggle-${togglePosition}`,
+          { 'c-btn-dropdown--full': fullWidth },
+          { 'is-open': this.isOpen() },
+          className
+        ),
         'aria-haspopup': true,
         'aria-expanded': this.isOpen(),
         ...rest
@@ -111,23 +120,23 @@ class FlyoutWrapper extends Component {
   }
 }
 
-FlyoutWrapper.propTypes = {
+ButtonDropdownWrapper.propTypes = {
   node: T.string,
   className: T.string,
   children: T.node.isRequired,
-  onFlyoutChange: T.func,
+  fullWidth: T.bool,
+  togglePosition: T.oneOf(['left', 'right']).isRequired,
+  defaultOpen: T.oneOf(['open', 'closed']),
   isOpen: T.oneOf(['open', 'closed']),
   clickOutsideToClose: T.bool,
-  defaultOpen: T.oneOf(['open', 'closed']),
   disabled: T.bool,
-  direction: T.oneOf(['nw', 'ne', 'sw', 'se']).isRequired
+  onButtonDropdownChange: T.func
 }
 
-FlyoutWrapper.childContextTypes = {
-  handleFlyoutToggle: T.func.isRequired,
-  isFlyoutOpen: T.bool.isRequired,
-  flyoutDisabled: T.bool,
-  flyoutDirection: T.oneOf(['nw', 'ne', 'sw', 'se']).isRequired
+ButtonDropdownWrapper.childContextTypes = {
+  handleButtonDropdownToggle: T.func.isRequired,
+  buttonDropdownOpen: T.bool.isRequired,
+  buttonDropdownDisabled: T.bool
 }
 
-export default FlyoutWrapper
+export default ButtonDropdownWrapper

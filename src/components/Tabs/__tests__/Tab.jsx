@@ -93,7 +93,7 @@ describe('<Tabs.Tab />', () => {
     expect(activateTab).toHaveBeenCalledTimes(1)
   })
 
-  it('allows switching tabs via arrow keys', () => {
+  it.only('allows switching tabs via arrow keys', () => {
     const context = defaultContext
     const activateTab = jest.fn()
     const props = {
@@ -105,10 +105,14 @@ describe('<Tabs.Tab />', () => {
       , { context })
 
     expect(activateTab).not.toHaveBeenCalled()
-    $.simulate('keydown', { keyCode: 37 })
+    $.simulate('keydown', { keyCode: 37, preventDefault: jest.fn() })
+    expect(activateTab).toHaveBeenCalledWith('prev')
+    $.simulate('keydown', { keyCode: 38, preventDefault: jest.fn() })
     expect(activateTab).toHaveBeenCalledWith('prev')
 
-    $.simulate('keydown', { keyCode: 39 })
+    $.simulate('keydown', { keyCode: 39, preventDefault: jest.fn() })
+    expect(activateTab).toHaveBeenCalledWith('next')
+    $.simulate('keydown', { keyCode: 40, preventDefault: jest.fn() })
     expect(activateTab).toHaveBeenCalledWith('next')
   })
 

@@ -2,8 +2,8 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 import { classNames } from '../../utils/'
 
-const TabsPanel = ({ node, children, className, id, ...rest }, { activeId, activeLabel }) => {
-  if (id !== activeId) {
+const TabsPanel = ({ node, children, className, id, ...rest }, { activeTabId, activeTabLabel }) => {
+  if (id !== activeTabId) {
     return null
   }
 
@@ -12,7 +12,7 @@ const TabsPanel = ({ node, children, className, id, ...rest }, { activeId, activ
     {
       className: classNames('c-tabs__panel', className),
       role: 'tabpanel',
-      'aria-labelledby': activeLabel,
+      'aria-labelledby': activeTabLabel,
       ...rest
     },
     children
@@ -20,8 +20,8 @@ const TabsPanel = ({ node, children, className, id, ...rest }, { activeId, activ
 }
 
 TabsPanel.contextTypes = {
-  activeId: T.oneOfType([T.string, T.number]),
-  activeLabel: T.string.isRequired
+  activeTabId: T.oneOfType([T.string, T.number]),
+  activeTabLabel: T.string.isRequired
 }
 
 TabsPanel.propTypes = {

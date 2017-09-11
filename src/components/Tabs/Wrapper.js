@@ -14,9 +14,9 @@ class TabsWrapper extends Component {
 
   getChildContext = () => ({
     activateTab: this.activateTab,
-    setActiveLabel: this.setActiveLabel,
-    activeLabel: this.state.activeLabel,
-    activeId: this.isControlled()
+    setActiveTabLabel: this.setActiveLabel,
+    activeTabLabel: this.state.activeLabel,
+    activeTabId: this.isControlled()
       ? this.props.activeId
       : this.state.activeId
   })
@@ -53,9 +53,9 @@ class TabsWrapper extends Component {
 
 TabsWrapper.childContextTypes = {
   activateTab: T.func.isRequired,
-  activeId: T.oneOfType([T.string, T.number]),
-  activeLabel: T.string.isRequired,
-  setActiveLabel: T.func.isRequired
+  activeTabId: T.oneOfType([T.string, T.number]),
+  activeTabLabel: T.string.isRequired,
+  setActiveTabLabel: T.func.isRequired
 }
 
 TabsWrapper.propTypes = {
