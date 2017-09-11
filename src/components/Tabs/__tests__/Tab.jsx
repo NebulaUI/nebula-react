@@ -30,10 +30,10 @@ describe('<Tabs.Tab />', () => {
     expect($.hasClass('c-tabs__tab test')).toBe(true)
   })
 
-  it('renders a defined node type', () => {
+  it('renders a defined tag type', () => {
     const context = defaultContext
     const $ = shallow(
-      <Tabs.Tab node="article" {...defaultProps}>_</Tabs.Tab>
+      <Tabs.Tab tag="article" {...defaultProps}>_</Tabs.Tab>
     , { context })
     expect($.type()).toBe('article')
   })

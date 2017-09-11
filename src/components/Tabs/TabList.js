@@ -39,7 +39,7 @@ class TabsTabList extends Component {
   }
 
   render() {
-    const { node, children, className, ...rest } = this.props
+    const { tag, children, className, ...rest } = this.props
     const { activeTabId } = this.context
     const enhancedChildren = React.Children.map(removeFalsy(children), (child, index) => {
       if (child.type === Tab) {
@@ -53,7 +53,7 @@ class TabsTabList extends Component {
     })
 
     return E(
-      node || 'div',
+      tag || 'div',
       {
         className: classNames('c-tabs__list-wrapper', className),
         ...rest
@@ -76,7 +76,7 @@ TabsTabList.contextTypes = {
 }
 
 TabsTabList.propTypes = {
-  node: T.string,
+  tag: T.string,
   className: T.string,
   children: T.node.isRequired
 }
