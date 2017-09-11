@@ -18,8 +18,8 @@ describe('<Navbar.Dropdown.Wrapper />', () => {
     expect($.hasClass('c-navbar__item test')).toBe(true)
   })
 
-  it('renders a defined node type', () => {
-    const $ = shallow(<Navbar.Dropdown.Wrapper node="article">_</Navbar.Dropdown.Wrapper>)
+  it('renders a defined tag type', () => {
+    const $ = shallow(<Navbar.Dropdown.Wrapper tag="article">_</Navbar.Dropdown.Wrapper>)
     expect($.type()).toBe('article')
   })
 

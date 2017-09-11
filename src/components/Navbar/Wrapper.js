@@ -31,7 +31,7 @@ class NavbarWrapper extends Component {
       handleToggle,
       close,
       state: { isOpen },
-      props: { node, children, className, sticky, ...rest }
+      props: { tag, children, className, sticky, ...rest }
     } = this
     const enhancedChildren = React.Children.map(removeFalsy(children), (child) => {
       if (child.type === Overlay) {
@@ -49,7 +49,7 @@ class NavbarWrapper extends Component {
       return child
     })
     return E(
-      node || 'header',
+      tag || 'header',
       {
         className: classNames('c-navbar', { 'is-open': isOpen }),
         ...rest
@@ -70,7 +70,7 @@ class NavbarWrapper extends Component {
 
 NavbarWrapper.propTypes = {
   children: T.node.isRequired,
-  node: T.string,
+  tag: T.string,
   sticky: T.bool,
   className: T.string
 }

@@ -18,8 +18,8 @@ describe('<Navbar.Logo />', () => {
     expect($.hasClass('c-navbar__logo test')).toBe(true)
   })
 
-  it('renders a defined node type', () => {
-    const $ = shallow(<Navbar.Logo to="/" node="article">_</Navbar.Logo>)
+  it('renders a defined tag type', () => {
+    const $ = shallow(<Navbar.Logo to="/" tag="article">_</Navbar.Logo>)
     expect($.type()).toBe('article')
   })
 

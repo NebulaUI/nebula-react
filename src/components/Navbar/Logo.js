@@ -8,13 +8,13 @@ class NavbarLogo extends Component {
   }
 
   render() {
-    const { to, node, width, className, callback, children, ...rest } = this.props
+    const { to, tag, width, className, callback, children, ...rest } = this.props
     const onClickProps = callback
       ? {
         onClick: this.handleClick
       } : {}
     return E(
-      node || 'a',
+      tag || 'a',
       {
         href: to,
         className: classNames('c-navbar__logo', className),
@@ -31,7 +31,7 @@ class NavbarLogo extends Component {
 
 NavbarLogo.propTypes = {
   to: T.string.isRequired,
-  node: T.string,
+  tag: T.string,
   width: T.string,
   callback: T.func,
   children: T.node.isRequired,

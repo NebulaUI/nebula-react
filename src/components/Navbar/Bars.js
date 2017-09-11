@@ -2,9 +2,9 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 import { classNames } from '../../utils'
 
-const NavbarToggleBars = ({ node, children, className, ...rest }) =>
+const NavbarToggleBars = ({ tag, children, className, ...rest }) =>
   E(
-    node || 'span',
+    tag || 'span',
     {
       className: classNames('c-navbar__toggle-bars', className),
       ...rest
@@ -14,7 +14,7 @@ const NavbarToggleBars = ({ node, children, className, ...rest }) =>
 
 NavbarToggleBars.propTypes = {
   children: T.node,
-  node: T.string,
+  tag: T.string,
   className: T.string
 }
 

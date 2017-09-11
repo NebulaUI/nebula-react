@@ -13,8 +13,8 @@ describe('<Navbar.Item />', () => {
     expect($.contains('Item text')).toBe(true)
   })
 
-  it('renders a defined node type', () => {
-    const $ = shallow(<Navbar.Item node="article">_</Navbar.Item>)
+  it('renders a defined tag type', () => {
+    const $ = shallow(<Navbar.Item tag="article">_</Navbar.Item>)
     expect($.type()).toBe('article')
   })
 
