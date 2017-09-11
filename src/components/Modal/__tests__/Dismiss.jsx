@@ -4,6 +4,16 @@ import { shallow } from 'enzyme'
 import { Modal } from '../'
 
 describe('<Modal.Dismiss />', () => {
+  it('renders a "button" by default', () => {
+    const $ = shallow(<Modal.Dismiss />)
+    expect($.type()).toBe('button')
+  })
+
+  it('renders a defined tag', () => {
+    const $ = shallow(<Modal.Dismiss tag="article" />)
+    expect($.type()).toBe('article')
+  })
+
   it('renders with attributes', () => {
     const $ = shallow(
       <Modal.Dismiss style={{ position: 'relative' }} ariaHidden="true" />

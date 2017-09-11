@@ -3,13 +3,11 @@ import T from 'prop-types'
 
 import { classNames } from '../../utils/'
 
-const initial = 'c-modal__content'
-
 const Content = ({ tag, className, children, ...rest }) =>
   E(
     tag || 'div',
     {
-      className: classNames(initial, className),
+      className: classNames('c-modal__content', className),
       ...rest
     },
     children
