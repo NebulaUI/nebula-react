@@ -24,8 +24,8 @@ describe('<BareList.Wrapper />', () => {
     expect($.contains(<div className="child" />)).toBe(true)
   })
 
-  it('renders a defined node type', () => {
-    const $ = shallow(<BareList.Wrapper node="article" />)
+  it('renders a defined tag type', () => {
+    const $ = shallow(<BareList.Wrapper tag="article" />)
     expect($.type()).toBe('article')
   })
 

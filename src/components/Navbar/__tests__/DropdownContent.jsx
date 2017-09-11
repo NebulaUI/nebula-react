@@ -25,8 +25,8 @@ describe('<Navbar.Dropdown.Content />', () => {
     expect($.hasClass('c-navbar__dropdown--south-west')).toBe(true)
   })
 
-  it('renders a defined node type', () => {
-    const $ = shallow(<Navbar.Dropdown.Content node="article">_</Navbar.Dropdown.Content>)
+  it('renders a defined tag type', () => {
+    const $ = shallow(<Navbar.Dropdown.Content tag="article">_</Navbar.Dropdown.Content>)
     expect($.type()).toBe('article')
   })
 

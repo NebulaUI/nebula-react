@@ -13,8 +13,8 @@ describe('<UniformedList.Item />', () => {
     expect($.contains(<div className="child" />)).toBe(true)
   })
 
-  it('renders a defined node type', () => {
-    const $ = shallow(<UniformedList.Item node="article" />)
+  it('renders a defined tag type', () => {
+    const $ = shallow(<UniformedList.Item tag="article" />)
     expect($.type()).toBe('article')
   })
 

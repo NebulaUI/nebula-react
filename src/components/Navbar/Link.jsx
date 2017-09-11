@@ -11,7 +11,7 @@ class NavbarLink extends Component {
     const {
       to,
       component,
-      node,
+      tag,
       className,
       activeClassName = 'is-active',
       callback,
@@ -40,7 +40,7 @@ class NavbarLink extends Component {
     }
 
     return E(
-      node || 'a',
+      tag || 'a',
       {
         href: to,
         className: classNames('c-navbar__link', className),
@@ -59,7 +59,7 @@ NavbarLink.propTypes = {
   ]),
   activeClassName: T.string,
   to: T.string.isRequired,
-  node: T.string,
+  tag: T.string,
   className: T.string,
   callback: T.func,
   children: T.node.isRequired

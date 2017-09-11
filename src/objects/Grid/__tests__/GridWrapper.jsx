@@ -30,8 +30,8 @@ describe('<Grid.Wrapper />', () => {
     expect($.prop('ariaHidden')).toBe('true')
   })
 
-  it('renders a defined node type', () => {
-    const $ = shallow(<Grid.Wrapper node="article" />)
+  it('renders a defined tag type', () => {
+    const $ = shallow(<Grid.Wrapper tag="article" />)
     expect($.type()).toBe('article')
   })
 

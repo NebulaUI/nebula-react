@@ -17,8 +17,8 @@ describe('<Form.CheckboxWrapper />', () => {
     expect($.contains('Test container children')).toBe(true)
   })
 
-  it('renders a defined node type', () => {
-    const $ = shallow(<Form.CheckboxWrapper node="article" />)
+  it('renders a defined tag type', () => {
+    const $ = shallow(<Form.CheckboxWrapper tag="article" />)
     expect($.type()).toBe('article')
   })
 

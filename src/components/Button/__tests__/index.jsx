@@ -9,8 +9,8 @@ describe('<Button />', () => {
     expect($.hasClass('c-btn test')).toBe(true)
   })
 
-  it('renders a defined node type', () => {
-    const $ = shallow(<Button node="a">_</Button>)
+  it('renders a defined tag type', () => {
+    const $ = shallow(<Button tag="a">_</Button>)
     expect($.type()).toBe('a')
   })
 

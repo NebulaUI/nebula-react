@@ -27,8 +27,8 @@ describe('<ButtonDropdown.Content />', () => {
     expect($.hasClass('c-btn-dropdown__content test')).toBe(true)
   })
 
-  it('renders a defined node type', () => {
-    const $ = shallow(<ButtonDropdown.Content node="article">_</ButtonDropdown.Content>, { context: defaultContext })
+  it('renders a defined tag type', () => {
+    const $ = shallow(<ButtonDropdown.Content tag="article">_</ButtonDropdown.Content>, { context: defaultContext })
     expect($.type()).toBe('article')
   })
 

@@ -2,9 +2,9 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 import { classNames } from '../../utils/'
 
-const NavbarContentWrapper = ({ node, children, className, ...rest }) =>
+const NavbarContentWrapper = ({ tag, children, className, ...rest }) =>
   E(
-    node || 'div',
+    tag || 'div',
     {
       className: classNames('c-navbar__content-wrapper', className),
       ...rest
@@ -14,7 +14,7 @@ const NavbarContentWrapper = ({ node, children, className, ...rest }) =>
 
 NavbarContentWrapper.propTypes = {
   handleToggle: T.func,
-  node: T.string,
+  tag: T.string,
   children: T.node.isRequired,
   className: T.string
 }

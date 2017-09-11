@@ -8,7 +8,7 @@ const defaultProps = {
 }
 
 const defaultContext = {
-  setActiveLabel: jest.fn()
+  setActiveTabLabel: jest.fn()
 }
 
 describe('<Tabs.Tab />', () => {
@@ -30,10 +30,10 @@ describe('<Tabs.Tab />', () => {
     expect($.hasClass('c-tabs__tab test')).toBe(true)
   })
 
-  it('renders a defined node type', () => {
+  it('renders a defined tag type', () => {
     const context = defaultContext
     const $ = shallow(
-      <Tabs.Tab node="article" {...defaultProps}>_</Tabs.Tab>
+      <Tabs.Tab tag="article" {...defaultProps}>_</Tabs.Tab>
     , { context })
     expect($.type()).toBe('article')
   })
@@ -93,7 +93,7 @@ describe('<Tabs.Tab />', () => {
     expect(activateTab).toHaveBeenCalledTimes(1)
   })
 
-  it.only('allows switching tabs via arrow keys', () => {
+  it('allows switching tabs via arrow keys', () => {
     const context = defaultContext
     const activateTab = jest.fn()
     const props = {
@@ -117,8 +117,8 @@ describe('<Tabs.Tab />', () => {
   })
 
   it('sets the active label when mounted and active', () => {
-    const setActiveLabel = jest.fn()
-    const context = { setActiveLabel }
+    const mockSetActiveTabLabel = jest.fn()
+    const context = { setActiveTabLabel: mockSetActiveTabLabel }
     const props = {
       ...defaultProps,
       isActive: true
@@ -127,12 +127,12 @@ describe('<Tabs.Tab />', () => {
       <Tabs.Tab {...props}>Test child</Tabs.Tab>
       , { context })
 
-    expect(setActiveLabel).toHaveBeenCalledWith('Test child')
+    expect(mockSetActiveTabLabel).toHaveBeenCalledWith('Test child')
   })
 
   it('doesnt set the active label if not active', () => {
-    const setActiveLabel = jest.fn()
-    const context = { setActiveLabel }
+    const mockSetActiveTabLabel = jest.fn()
+    const context = { setActiveTabLabel: mockSetActiveTabLabel }
     const props = {
       ...defaultProps,
       isActive: false
@@ -141,12 +141,12 @@ describe('<Tabs.Tab />', () => {
       <Tabs.Tab {...props}>Test child</Tabs.Tab>
       , { context })
 
-    expect(setActiveLabel).not.toHaveBeenCalledWith('Test child')
+    expect(mockSetActiveTabLabel).not.toHaveBeenCalledWith('Test child')
   })
 
   it('sets the active label when it becomes active', () => {
-    const setActiveLabel = jest.fn()
-    const context = { setActiveLabel }
+    const mockSetActiveTabLabel = jest.fn()
+    const context = { setActiveTabLabel: mockSetActiveTabLabel }
     const props = {
       ...defaultProps,
       isActive: false
@@ -155,16 +155,16 @@ describe('<Tabs.Tab />', () => {
       <Tabs.Tab {...props}>Test child</Tabs.Tab>
       , { context })
 
-    expect(setActiveLabel).not.toHaveBeenCalled()
+    expect(mockSetActiveTabLabel).not.toHaveBeenCalled()
 
     $.setProps({ target: 'foo' })
-    expect(setActiveLabel).not.toHaveBeenCalled()
+    expect(mockSetActiveTabLabel).not.toHaveBeenCalled()
 
     $.setProps({ isActive: true })
-    expect(setActiveLabel).toHaveBeenCalledTimes(1)
+    expect(mockSetActiveTabLabel).toHaveBeenCalledTimes(1)
 
     $.setProps({ isActive: false })
-    expect(setActiveLabel).toHaveBeenCalledTimes(1)
+    expect(mockSetActiveTabLabel).toHaveBeenCalledTimes(1)
   })
 
   it('sets the tabIndex to "-1" if not active', () => {

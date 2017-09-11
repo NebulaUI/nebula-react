@@ -4,7 +4,7 @@ import T from 'prop-types'
 import { classNames } from '../../utils/'
 
 const Button = ({
-  node,
+  tag,
   component,
   to,
   fullWidth,
@@ -37,7 +37,7 @@ const Button = ({
   }
 
   return E(
-    to ? 'a' : (node || 'button'),
+    to ? 'a' : (tag || 'button'),
     {
       type,
       href: to,
@@ -49,7 +49,7 @@ const Button = ({
 }
 
 Button.propTypes = {
-  node: T.string,
+  tag: T.string,
   type: T.oneOf(['submit', 'reset', 'menu']),
   to: T.string,
   fullWidth: T.bool,

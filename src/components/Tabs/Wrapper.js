@@ -39,12 +39,12 @@ class TabsWrapper extends Component {
     const {
       props: {
         defaultActiveId, activeId, onTabChange, // eslint-disable-line no-unused-vars
-        node, className, children, ...rest
+        tag, className, children, ...rest
       }
     } = this
 
     return E(
-      node || 'div',
+      tag || 'div',
       { className: classNames('c-tabs', className), ...rest },
       children
     )
@@ -59,7 +59,7 @@ TabsWrapper.childContextTypes = {
 }
 
 TabsWrapper.propTypes = {
-  node: T.string,
+  tag: T.string,
   children: T.node.isRequired,
   className: T.string,
   onTabChange: T.func,

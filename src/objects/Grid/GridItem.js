@@ -4,7 +4,7 @@ import T from 'prop-types'
 import { classNames, buildClassName } from '../../utils/'
 
 const GridItem = ({
-  node,
+  tag,
   width,
   push,
   pull,
@@ -13,7 +13,7 @@ const GridItem = ({
   ...rest
 }) =>
   E(
-    node || 'div',
+    tag || 'div',
     {
       className: classNames(
         'o-grid__item',
@@ -39,7 +39,7 @@ const propTypeFraction = T.oneOfType([
 ])
 
 GridItem.propTypes = {
-  node: T.string,
+  tag: T.string,
   width: propTypeFraction,
   push: propTypeFraction,
   pull: propTypeFraction,

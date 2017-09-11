@@ -13,8 +13,8 @@ describe('<InlineList.Item />', () => {
     expect($.contains(<div className="child" />)).toBe(true)
   })
 
-  it('renders a defined node type', () => {
-    const $ = shallow(<InlineList.Item node="article" />)
+  it('renders a defined tag type', () => {
+    const $ = shallow(<InlineList.Item tag="article" />)
     expect($.type()).toBe('article')
   })
 

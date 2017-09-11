@@ -3,9 +3,9 @@ import T from 'prop-types'
 
 import { classNames, buildClassName } from '../../utils/'
 
-const Section = ({ node, size, className, children, ...rest }) =>
+const Section = ({ tag, size, className, children, ...rest }) =>
   E(
-    node || 'section',
+    tag || 'section',
     {
       className: classNames(
         size && buildClassName('o-section-', size),
@@ -17,7 +17,7 @@ const Section = ({ node, size, className, children, ...rest }) =>
   )
 
 Section.propTypes = {
-  node: T.string,
+  tag: T.string,
   size: T.oneOfType([
     T.string,
     T.array

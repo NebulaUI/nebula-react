@@ -20,8 +20,8 @@ describe('<Navbar.Content />', () => {
     expect($.hasClass('c-navbar__content--right')).toBe(false)
   })
 
-  it('renders a defined node type', () => {
-    const $ = shallow(<Navbar.Content node="article">_</Navbar.Content>)
+  it('renders a defined tag type', () => {
+    const $ = shallow(<Navbar.Content tag="article">_</Navbar.Content>)
     expect($.type()).toBe('article')
   })
 

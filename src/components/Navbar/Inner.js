@@ -4,7 +4,7 @@ import { classNames, removeFalsy } from '../../utils/'
 
 import ToggleWrapper from './ToggleWrapper'
 
-const NavbarInner = ({ node, handleToggle, children, className, ...rest }) => {
+const NavbarInner = ({ tag, handleToggle, children, className, ...rest }) => {
   const enhancedChildren = React.Children.map(removeFalsy(children), (child) => {
     if (child.type === ToggleWrapper) {
       return React.cloneElement(child, {
@@ -14,7 +14,7 @@ const NavbarInner = ({ node, handleToggle, children, className, ...rest }) => {
     return child
   })
   return E(
-    node || 'nav',
+    tag || 'nav',
     {
       className: classNames('c-navbar__wrap', className),
       ...rest
@@ -25,7 +25,7 @@ const NavbarInner = ({ node, handleToggle, children, className, ...rest }) => {
 
 NavbarInner.propTypes = {
   handleToggle: T.func,
-  node: T.string,
+  tag: T.string,
   children: T.node.isRequired,
   className: T.string
 }

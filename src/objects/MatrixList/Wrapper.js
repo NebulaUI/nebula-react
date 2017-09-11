@@ -3,9 +3,9 @@ import T from 'prop-types'
 
 import { classNames, buildClassName } from '../../utils/'
 
-const MatrixListWrapper = ({ node, spacing, className, children, ...rest }) =>
+const MatrixListWrapper = ({ tag, spacing, className, children, ...rest }) =>
   E(
-    node || 'ul',
+    tag || 'ul',
     {
       className: classNames(
         'o-matrix-list',
@@ -20,7 +20,7 @@ const MatrixListWrapper = ({ node, spacing, className, children, ...rest }) =>
   )
 
 MatrixListWrapper.propTypes = {
-  node: T.string,
+  tag: T.string,
   spacing: T.oneOfType([
     T.string,
     T.array

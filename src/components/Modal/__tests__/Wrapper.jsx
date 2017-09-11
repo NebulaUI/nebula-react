@@ -5,19 +5,35 @@ import { Modal } from '../'
 
 const defaultProps = {
   closeModal: jest.fn(),
-  isOpen: false
+  ariaLabel: '_'
 }
 
+beforeEach(() => {
+  jest.useFakeTimers()
+})
+
 describe('<Modal.Wrapper />', () => {
+  it('prevents page scroll when mounted', () => {
+    // eslint-disable-next-line no-underscore-dangle
+    const getDocumentStyle = prop => document.documentElement.style._values[prop]
+
+    expect(getDocumentStyle('overflow')).toBe(undefined)
+    const $ = mount(<Modal.Wrapper {...defaultProps}>_</Modal.Wrapper>)
+    expect(getDocumentStyle('overflow')).toBe('hidden')
+
+    $.unmount()
+    expect(getDocumentStyle('overflow')).toBe(undefined)
+  })
+
   it('renders a "div" by default', () => {
     const $ = shallow(<Modal.Wrapper {...defaultProps}>_</Modal.Wrapper>)
     expect($.type()).toBe('div')
   })
 
-  it('renders a defined node type', () => {
+  it('renders a defined tag type', () => {
     const props = {
       ...defaultProps,
-      node: 'article'
+      tag: 'article'
     }
     const $ = shallow(<Modal.Wrapper {...props}>_</Modal.Wrapper>)
     expect($.type()).toBe('article')
@@ -40,7 +56,7 @@ describe('<Modal.Wrapper />', () => {
   it('renders with attributes', () => {
     const props = {
       ...defaultProps,
-      node: 'article',
+      tag: 'article',
       style: { position: 'relative' },
       ariaHidden: true
     }
@@ -63,6 +79,7 @@ describe('<Modal.Wrapper />', () => {
     }
     const $ = mount(
       <Modal.Wrapper {...props}>
+        <Modal.Overlay />
         <Modal.Content>
           <Modal.Close>
             <Modal.Dismiss />
@@ -77,5 +94,54 @@ describe('<Modal.Wrapper />', () => {
 
     $.find('.c-modal__dismiss').simulate('click')
     expect(mockClose).toHaveBeenCalledTimes(2)
+  })
+
+  it('add is-open className when fully mounted', () => {
+    const $ = mount(<Modal.Wrapper {...defaultProps}>_</Modal.Wrapper>)
+    expect($.hasClass('is-open')).toBe(false)
+
+    jest.runAllTimers()
+    expect($.hasClass('is-open')).toBe(true)
+  })
+
+  it('closes the modal after a defined timeout', () => {
+    const mockCloseModal = jest.fn()
+    const props = {
+      ...defaultProps,
+      closeModal: mockCloseModal,
+      timeout: 1000
+    }
+    mount(<Modal.Wrapper {...props}>_</Modal.Wrapper>)
+    expect(mockCloseModal).not.toHaveBeenCalled()
+
+    expect(setTimeout.mock.calls[0][1]).toBe(1000)
+    jest.runAllTimers()
+    expect(mockCloseModal).toHaveBeenCalled()
+  })
+
+  it('closes when escape key is pressed', () => {
+    const mockCloseModal = jest.fn()
+    const props = {
+      ...defaultProps,
+      closeModal: mockCloseModal
+    }
+    mount(<Modal.Wrapper {...props}>_</Modal.Wrapper>)
+    expect(mockCloseModal).not.toHaveBeenCalled()
+
+    const event = new KeyboardEvent('keyup', {
+      bubbles: false,
+      cancelable: false,
+      keyCode: 27
+    })
+    document.dispatchEvent(event)
+    expect(mockCloseModal).toHaveBeenCalledTimes(1)
+
+    const event2 = new KeyboardEvent('keyup', {
+      bubbles: false,
+      cancelable: false,
+      keyCode: 28
+    })
+    document.dispatchEvent(event2)
+    expect(mockCloseModal).toHaveBeenCalledTimes(1)
   })
 })

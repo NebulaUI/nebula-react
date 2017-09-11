@@ -43,8 +43,8 @@ describe('<ButtonDropdown.Wrapper />', () => {
     expect($.hasClass('c-btn-dropdown--full')).toBe(true)
   })
 
-  it('renders a defined node type', () => {
-    const $ = shallow(<ButtonDropdown.Wrapper {...defaultProps} node="article">_</ButtonDropdown.Wrapper>)
+  it('renders a defined tag type', () => {
+    const $ = shallow(<ButtonDropdown.Wrapper {...defaultProps} tag="article">_</ButtonDropdown.Wrapper>)
     expect($.type()).toBe('article')
   })
 
@@ -84,7 +84,7 @@ describe('<ButtonDropdown.Wrapper />', () => {
     const button = <button />
     const $ = mount(
       <ButtonDropdown.Wrapper {...defaultProps}>
-        <ButtonDropdown.Toggle node="div"><button /></ButtonDropdown.Toggle>
+        <ButtonDropdown.Toggle tag="div"><button /></ButtonDropdown.Toggle>
         <ButtonDropdown.Content>
           Child content
           <ButtonDropdown.Close><button /></ButtonDropdown.Close>

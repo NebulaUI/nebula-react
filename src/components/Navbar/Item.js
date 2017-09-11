@@ -2,9 +2,9 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 import { classNames } from '../../utils/'
 
-const NavbarItem = ({ node, resetLineHeight, children, className, ...rest }) =>
+const NavbarItem = ({ tag, resetLineHeight, children, className, ...rest }) =>
   E(
-    node || 'li',
+    tag || 'li',
     {
       className: classNames(
         'c-navbar__item', className,
@@ -16,6 +16,7 @@ const NavbarItem = ({ node, resetLineHeight, children, className, ...rest }) =>
   )
 
 NavbarItem.propTypes = {
+  tag: T.string,
   children: T.node.isRequired,
   resetLineHeight: T.bool,
   className: T.string

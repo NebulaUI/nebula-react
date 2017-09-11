@@ -5,9 +5,9 @@ import { classNames } from '../../utils/'
 
 const initial = 'c-status-card'
 
-const StatusCard = ({ node, status, children, ...rest }) =>
+const StatusCard = ({ tag, status, children, ...rest }) =>
   E(
-    node || 'div',
+    tag || 'div',
     {
       className: classNames(initial, `${initial}--${status}`),
       ...rest
@@ -16,7 +16,7 @@ const StatusCard = ({ node, status, children, ...rest }) =>
   )
 
 StatusCard.propTypes = {
-  node: T.string,
+  tag: T.string,
   status: T.oneOf([
     'success',
     'info',

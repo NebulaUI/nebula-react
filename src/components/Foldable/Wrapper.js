@@ -51,10 +51,10 @@ class FoldableWrapper extends Component {
   render() {
     const {
       defaultOpen, onFoldableChange, open, // eslint-disable-line no-unused-vars
-      node, breakpoint, bordered, children, className, ...rest
+      tag, breakpoint, bordered, children, className, ...rest
     } = this.props
     return E(
-      node || 'div',
+      tag || 'div',
       {
         className: classNames(
           breakpoint ? `c-foldable@${breakpoint}` : 'c-foldable',
@@ -80,7 +80,7 @@ FoldableWrapper.childContextTypes = {
 FoldableWrapper.propTypes = {
   breakpoint: T.oneOf(['max-lg', 'max-md', 'max-sm', 'max-xs']),
   bordered: T.bool,
-  node: T.string,
+  tag: T.string,
   defaultOpen: T.oneOf(['open', 'closed']),
   open: T.oneOf(['open', 'closed']),
   onFoldableChange: T.func,
