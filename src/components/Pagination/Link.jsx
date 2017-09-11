@@ -11,7 +11,7 @@ class PaginationLink extends Component {
     const {
       to,
       component,
-      node,
+      tag,
       className,
       isActive,
       activeClassName = 'is-active',
@@ -47,7 +47,7 @@ class PaginationLink extends Component {
     }
 
     return E(
-      node || 'a',
+      tag || 'a',
       {
         href: to,
         className: classNames(
@@ -72,7 +72,7 @@ PaginationLink.propTypes = {
   isActive: T.bool,
   activeClassName: T.string,
   to: T.string.isRequired,
-  node: T.string,
+  tag: T.string,
   className: T.string,
   callback: T.func,
   children: T.node.isRequired,

@@ -18,8 +18,8 @@ describe('<Pagination.Item />', () => {
     expect($.hasClass('c-pagination__item test')).toBe(true)
   })
 
-  it('renders a defined node type', () => {
-    const $ = shallow(<Pagination.Item node="article">_</Pagination.Item>)
+  it('renders a defined tag type', () => {
+    const $ = shallow(<Pagination.Item tag="article">_</Pagination.Item>)
     expect($.type()).toBe('article')
   })
 

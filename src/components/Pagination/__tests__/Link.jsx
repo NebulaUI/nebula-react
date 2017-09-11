@@ -22,8 +22,8 @@ describe('<Pagination.Link />', () => {
     expect($.hasClass('c-pagination__link test')).toBe(true)
   })
 
-  it('renders a defined node type', () => {
-    const $ = shallow(<Pagination.Link {...defaultProps} node="article">_</Pagination.Link>)
+  it('renders a defined tag type', () => {
+    const $ = shallow(<Pagination.Link {...defaultProps} tag="article">_</Pagination.Link>)
     expect($.type()).toBe('article')
   })
 

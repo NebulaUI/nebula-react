@@ -31,8 +31,8 @@ describe('<Pagination.Wrapper />', () => {
     expect($.prop('ariaLabel')).toBe('Test Override')
   })
 
-  it('renders a defined node type', () => {
-    const $ = shallow(<Pagination.Wrapper node="article">_</Pagination.Wrapper>)
+  it('renders a defined tag type', () => {
+    const $ = shallow(<Pagination.Wrapper tag="article">_</Pagination.Wrapper>)
     expect($.type()).toBe('article')
   })
 

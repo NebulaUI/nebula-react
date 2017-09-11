@@ -117,41 +117,41 @@ class App extends Component {
             <StatusCard status="error">
               Error
             </StatusCard>
-            {/*<Flyout.Wrapper>*/}
-              {/*<Flyout.Toggle>*/}
-              {/*Click me*/}
-            {/*</Flyout.Toggle>*/}
-              {/*<Flyout.Content direction="se">*/}
-                {/*<Card>*/}
-                {/*Lorem ipsum dolor sit amet, consectetur adipisicing elit.*/}
-                {/*Ab adipisci architecto assumenda et expedita fugit id illum*/}
-              {/*</Card>*/}
-              {/*</Flyout.Content>*/}
-            {/*</Flyout.Wrapper>*/}
-            {/*<Flyout.Wrapper>*/}
-              {/*<Flyout.Toggle>*/}
-                {/*<Button node="span" size="sm" theme="alpha">*/}
-                {/*Github*/}
-              {/*</Button>*/}
-              {/*</Flyout.Toggle>*/}
-              {/*<Flyout.Content direction="ne">*/}
-                {/*<Card>*/}
-                {/*Lorem ipsum dolor sit amet, consectetur adipisicing elit.*/}
-                {/*Ab adipisci architecto assumenda et expedita fugit id illum*/}
-              {/*</Card>*/}
-              {/*</Flyout.Content>*/}
-            {/*</Flyout.Wrapper>*/}
-            {/*<Flyout.Wrapper>*/}
-              {/*<Flyout.Toggle>*/}
-              {/*Click me*/}
-            {/*</Flyout.Toggle>*/}
-              {/*<Flyout.Content>*/}
-                {/*<Card>*/}
-                {/*Lorem ipsum dolor sit amet, consectetur adipisicing elit.*/}
-                {/*Ab adipisci architecto assumenda et expedita fugit id illum*/}
-              {/*</Card>*/}
-              {/*</Flyout.Content>*/}
-            {/*</Flyout.Wrapper>*/}
+            <Flyout.Wrapper>
+              <Flyout.Toggle>
+              Click me
+            </Flyout.Toggle>
+              <Flyout.Content direction="se">
+                <Card>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Ab adipisci architecto assumenda et expedita fugit id illum
+              </Card>
+              </Flyout.Content>
+            </Flyout.Wrapper>
+            <Flyout.Wrapper>
+              <Flyout.Toggle>
+                <Button node="span" size="sm" theme="alpha">
+                Github
+              </Button>
+              </Flyout.Toggle>
+              <Flyout.Content direction="ne">
+                <Card>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Ab adipisci architecto assumenda et expedita fugit id illum
+              </Card>
+              </Flyout.Content>
+            </Flyout.Wrapper>
+            <Flyout.Wrapper>
+              <Flyout.Toggle>
+              Click me
+            </Flyout.Toggle>
+              <Flyout.Content>
+                <Card>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Ab adipisci architecto assumenda et expedita fugit id illum
+              </Card>
+              </Flyout.Content>
+            </Flyout.Wrapper>
             <Button type="submit" size="md" theme="beta">
               Button test
             </Button>

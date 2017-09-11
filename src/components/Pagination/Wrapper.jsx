@@ -4,10 +4,10 @@ import { classNames } from '../../utils/'
 
 class PaginationWrapper extends Component {
   render() {
-    const { node, children, className, ariaLabel, ...rest } = this.props
+    const { tag, children, className, ariaLabel, ...rest } = this.props
     return (
       E(
-        node || 'nav',
+        tag || 'nav',
         {
           role: 'navigation',
           'aria-label': ariaLabel && 'Pagination',
@@ -15,7 +15,7 @@ class PaginationWrapper extends Component {
           ...rest
         },
         E(
-          node || 'ul',
+          tag || 'ul',
           {
             className: classNames('c-pagination', className),
             ...rest
@@ -28,7 +28,7 @@ class PaginationWrapper extends Component {
 }
 
 PaginationWrapper.propTypes = {
-  node: T.string,
+  tag: T.string,
   children: T.node.isRequired,
   className: T.string,
   ariaLabel: T.string

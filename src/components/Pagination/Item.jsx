@@ -3,12 +3,12 @@ import T from 'prop-types'
 import { classNames } from '../../utils/'
 
 const PaginationItem = ({
-  node,
+  tag,
   children,
   className,
   ...rest }) =>
   E(
-    node || 'li',
+    tag || 'li',
     {
       className: classNames('c-pagination__item', className),
       ...rest
@@ -17,7 +17,7 @@ const PaginationItem = ({
   )
 
 PaginationItem.propTypes = {
-  node: T.string,
+  tag: T.string,
   className: T.string,
   children: T.node.isRequired
 }
