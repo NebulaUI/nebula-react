@@ -1,6 +1,10 @@
 import { Component, createElement as E } from 'react'
 import T from 'prop-types'
-import { classNames, addEListener, removeEListener } from '../../utils'
+
+import { classNames } from '../../utils'
+import { ClickOutside } from '../../'
+
+const noop = () => {}
 
 class NavbarDropdownToggle extends Component {
   constructor() {
@@ -11,41 +15,36 @@ class NavbarDropdownToggle extends Component {
     }
   }
 
-  componentDidMount() {
-    addEListener('click', this.handleClickOutside)
-  }
-
-  componentWillUnmount() {
-    removeEListener('click', this.handleClickOutside)
-  }
-
   handleClick = () =>
     this.setState({
       isOpen: !this.state.isOpen
     })
 
 
-  handleClickOutside = ({ target }) =>
-    this.setState({
-      isOpen: !this.button.contains(target)
-        ? false
-        : this.state.isOpen
-    })
-
+  handleClickOutside = () => {
+    this.setState({ isOpen: false })
+  }
   render() {
-    const { tag, children, className, ...rest } = this.props
+    const { tag, clickOutsideToClose = true, children, className, ...rest } = this.props
     return E(
-      tag || 'button',
+      ClickOutside,
       {
-        onClick: this.handleClick,
-        ref: (n) => { this.button = n },
-        className: classNames(
-          'c-navbar__dropdown-toggle', className,
-          { 'is-open': this.state.isOpen }
-        ),
-        ...rest
+        onClickOutside: clickOutsideToClose
+          ? this.handleClickOutside
+          : noop
       },
-      children
+      E(
+        tag || 'button',
+        {
+          onClick: this.handleClick,
+          className: classNames(
+            'c-navbar__dropdown-toggle', className,
+            { 'is-open': this.state.isOpen }
+          ),
+          ...rest
+        },
+        children
+      )
     )
   }
 }
@@ -53,6 +52,7 @@ class NavbarDropdownToggle extends Component {
 NavbarDropdownToggle.propTypes = {
   className: T.string,
   tag: T.string,
+  clickOutsideToClose: T.bool,
   children: T.node.isRequired
 }
 

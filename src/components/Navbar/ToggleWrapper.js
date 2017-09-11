@@ -4,16 +4,16 @@ import { classNames } from '../../utils/'
 
 class NavbarToggleWrapper extends Component {
   handleClick = (e) => {
-    this.props.callback(e, this)
+    this.props.onClick(e, this)
   }
 
   render() {
-    const { handleToggle, tag, className, callback, children, ...rest } = this.props
-    const onClickProps = callback
+    const { tag, className, onClick, children, ...rest } = this.props
+    const onClickProps = onClick
       ? {
         onClick: this.handleClick
       } : {
-        onClick: handleToggle
+        onClick: this.context.handleToggle
       }
     return E(
       tag || 'button',
@@ -27,10 +27,13 @@ class NavbarToggleWrapper extends Component {
   }
 }
 
+NavbarToggleWrapper.contextTypes = {
+  handleToggle: T.func.isRequired
+}
+
 NavbarToggleWrapper.propTypes = {
-  handleToggle: T.func,
   tag: T.string,
-  callback: T.func,
+  onClick: T.func,
   children: T.node,
   className: T.string
 }

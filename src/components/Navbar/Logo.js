@@ -4,12 +4,12 @@ import { classNames } from '../../utils/'
 
 class NavbarLogo extends Component {
   handleClick = (e) => {
-    this.props.callback(e, this)
+    this.props.onClick(e, this)
   }
 
   render() {
-    const { to, tag, width, className, callback, children, ...rest } = this.props
-    const onClickProps = callback
+    const { to, tag, width, className, onClick, children, ...rest } = this.props
+    const onClickProps = onClick
       ? {
         onClick: this.handleClick
       } : {}
@@ -33,7 +33,7 @@ NavbarLogo.propTypes = {
   to: T.string.isRequired,
   tag: T.string,
   width: T.string,
-  callback: T.func,
+  onClick: T.func,
   children: T.node.isRequired,
   className: T.string
 }
