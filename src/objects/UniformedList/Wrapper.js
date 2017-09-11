@@ -3,9 +3,9 @@ import T from 'prop-types'
 
 import { classNames, buildClassName } from '../../utils/'
 
-const UniformedListWrapper = ({ node, breakpoint, className, children, ...rest }) =>
+const UniformedListWrapper = ({ tag, breakpoint, className, children, ...rest }) =>
   E(
-    node || 'ul',
+    tag || 'ul',
     {
       className: classNames(
         breakpoint
@@ -19,7 +19,7 @@ const UniformedListWrapper = ({ node, breakpoint, className, children, ...rest }
   )
 
 UniformedListWrapper.propTypes = {
-  node: T.string,
+  tag: T.string,
   breakpoint: T.string,
   className: T.string,
   children: T.node
