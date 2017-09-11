@@ -15,6 +15,7 @@ import { Foldable } from './components/Foldable/'
 import { Form } from './components/Form/'
 import { ClickOutside } from './components/ClickOutside/'
 import { Modal } from './components/Modal/'
+import { Pagination } from './components/Pagination/'
 import { Icon } from './components/Icon/'
 import { Navbar } from './components/Navbar/'
 import { StatusCard } from './components/StatusCard/'
@@ -37,6 +38,7 @@ export {
   MatrixList,
   Modal,
   Navbar,
+  Pagination,
   Section,
   SiteWrap,
   StatusCard,
