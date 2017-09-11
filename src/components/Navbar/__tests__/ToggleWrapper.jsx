@@ -18,8 +18,8 @@ describe('<Navbar.Toggle.Wrapper />', () => {
     expect($.hasClass('c-navbar__toggle test')).toBe(true)
   })
 
-  it('renders a defined node type', () => {
-    const $ = shallow(<Navbar.Toggle.Wrapper node="article">_</Navbar.Toggle.Wrapper>)
+  it('renders a defined tag type', () => {
+    const $ = shallow(<Navbar.Toggle.Wrapper tag="article">_</Navbar.Toggle.Wrapper>)
     expect($.type()).toBe('article')
   })
 

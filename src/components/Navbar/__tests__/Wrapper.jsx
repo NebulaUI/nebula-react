@@ -24,8 +24,8 @@ describe('<Navbar.Wrapper />', () => {
     expect($.children().hasClass('is-sticky')).toBe(true)
   })
 
-  it('renders a defined node type', () => {
-    const $ = shallow(<Navbar.Wrapper node="article">_</Navbar.Wrapper>)
+  it('renders a defined tag type', () => {
+    const $ = shallow(<Navbar.Wrapper tag="article">_</Navbar.Wrapper>)
     expect($.type()).toBe('article')
   })
 

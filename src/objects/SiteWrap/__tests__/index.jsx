@@ -35,8 +35,8 @@ describe('<SiteWrap />', () => {
     expect($.contains(<div className="child" />)).toBe(true)
   })
 
-  it('renders a defined node type', () => {
-    const $ = shallow(<SiteWrap node="article" />)
+  it('renders a defined tag type', () => {
+    const $ = shallow(<SiteWrap tag="article" />)
     expect($.type()).toBe('article')
   })
 

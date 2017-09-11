@@ -18,8 +18,8 @@ describe('<Navbar.Overlay />', () => {
     expect($.hasClass('c-navbar__overlay test')).toBe(true)
   })
 
-  it('renders a defined node type', () => {
-    const $ = shallow(<Navbar.Overlay node="article" />)
+  it('renders a defined tag type', () => {
+    const $ = shallow(<Navbar.Overlay tag="article" />)
     expect($.type()).toBe('article')
   })
 

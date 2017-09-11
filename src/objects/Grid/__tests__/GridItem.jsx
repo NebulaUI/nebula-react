@@ -30,8 +30,8 @@ describe('<Grid.Item />', () => {
     expect($.prop('ariaHidden')).toBe('true')
   })
 
-  it('renders a defined node type', () => {
-    const $ = shallow(<Grid.Item node="article" />)
+  it('renders a defined tag type', () => {
+    const $ = shallow(<Grid.Item tag="article" />)
     expect($.type()).toBe('article')
   })
 

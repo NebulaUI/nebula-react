@@ -4,7 +4,7 @@ import T from 'prop-types'
 import { classNames } from '../../utils/'
 
 const Icon = ({
-  node,
+  tag,
   width,
   height,
   iconLeft,
@@ -15,7 +15,7 @@ const Icon = ({
   icon: { id, viewBox }
 }) =>
   E(
-    node || 'div',
+    tag || 'div',
     {
       className: classNames('c-icon', className)
     },
@@ -42,6 +42,7 @@ Icon.propTypes = {
     id: T.string.isRequired,
     viewBox: T.string.isRequired
   }).isRequired,
+  tag: T.string,
   width: T.string,
   height: T.string,
   iconLeft: T.bool,

@@ -3,9 +3,9 @@ import T from 'prop-types'
 
 import { classNames } from '../../utils/'
 
-const SiteWrap = ({ node, padding, className, children, ...rest }) =>
+const SiteWrap = ({ tag, padding, className, children, ...rest }) =>
   E(
-    node || 'div',
+    tag || 'div',
     {
       className: classNames(
         'o-site-wrap',
@@ -18,7 +18,7 @@ const SiteWrap = ({ node, padding, className, children, ...rest }) =>
   )
 
 SiteWrap.propTypes = {
-  node: T.string,
+  tag: T.string,
   padding: T.bool,
   className: T.string,
   children: T.node

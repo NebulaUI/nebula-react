@@ -21,8 +21,8 @@ describe('<Tabs.Wrapper />', () => {
     expect($.prop('ariaHidden')).toBe('true')
   })
 
-  it('renders a defined node type', () => {
-    const $ = shallow(<Tabs.Wrapper node="article">_</Tabs.Wrapper>)
+  it('renders a defined tag type', () => {
+    const $ = shallow(<Tabs.Wrapper tag="article">_</Tabs.Wrapper>)
     expect($.type()).toBe('article')
   })
 

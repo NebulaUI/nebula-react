@@ -30,8 +30,8 @@ describe('<Flag.Body />', () => {
     expect($.prop('ariaHidden')).toBe('true')
   })
 
-  it('renders a defined node type', () => {
-    const $ = shallow(<Flag.Body node="article" />)
+  it('renders a defined tag type', () => {
+    const $ = shallow(<Flag.Body tag="article" />)
     expect($.type()).toBe('article')
   })
 

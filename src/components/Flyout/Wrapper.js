@@ -87,10 +87,10 @@ class FlyoutWrapper extends Component {
   render() {
     const {
       defaultOpen, isOpen, onFlyoutChange,
-      node, className, children, clickOutsideToClose, ...rest
+      tag, className, children, clickOutsideToClose, ...rest
     } = this.props
     const FlyoutComponent = E(
-      node || 'div',
+      tag || 'div',
       {
         className: classNames('c-flyout', { 'is-open': this.isOpen() }, className),
         'aria-haspopup': true,
@@ -112,7 +112,7 @@ class FlyoutWrapper extends Component {
 }
 
 FlyoutWrapper.propTypes = {
-  node: T.string,
+  tag: T.string,
   className: T.string,
   children: T.node.isRequired,
   onFlyoutChange: T.func,

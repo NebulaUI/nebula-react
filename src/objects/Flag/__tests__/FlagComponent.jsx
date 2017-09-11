@@ -35,8 +35,8 @@ describe('<Flag.Component />', () => {
     expect($.prop('ariaHidden')).toBe('true')
   })
 
-  it('renders a defined node type', () => {
-    const $ = shallow(<Flag.Component node="article" />)
+  it('renders a defined tag type', () => {
+    const $ = shallow(<Flag.Component tag="article" />)
     expect($.type()).toBe('article')
   })
 

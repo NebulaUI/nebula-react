@@ -3,9 +3,9 @@ import T from 'prop-types'
 
 import { classNames } from '../../utils'
 
-const NavbarDropdownWrapper = ({ node, children, className, ...rest }) =>
+const NavbarDropdownWrapper = ({ tag, children, className, ...rest }) =>
   E(
-    node || 'li',
+    tag || 'li',
     {
       className: classNames('c-navbar__item', className),
       ...rest
@@ -15,7 +15,7 @@ const NavbarDropdownWrapper = ({ node, children, className, ...rest }) =>
 
 NavbarDropdownWrapper.propTypes = {
   className: T.string,
-  node: T.string,
+  tag: T.string,
   children: T.node.isRequired
 }
 

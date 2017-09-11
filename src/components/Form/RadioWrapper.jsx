@@ -2,9 +2,9 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 import { classNames } from '../../utils/'
 
-const RadioWrapper = ({ node, className, children, ...rest }) =>
+const RadioWrapper = ({ tag, className, children, ...rest }) =>
   E(
-    node || 'div',
+    tag || 'div',
     {
       className: classNames('c-form-input', className),
       ...rest
@@ -13,7 +13,7 @@ const RadioWrapper = ({ node, className, children, ...rest }) =>
   )
 
 RadioWrapper.propTypes = {
-  node: T.string,
+  tag: T.string,
   className: T.string,
   children: T.node
 }

@@ -3,15 +3,15 @@ import T from 'prop-types'
 
 import { classNames } from '../../utils/'
 
-const BareListItem = ({ node, className, children, ...rest }) =>
+const BareListItem = ({ tag, className, children, ...rest }) =>
   E(
-    node || 'li',
+    tag || 'li',
     { className: classNames('o-bare-list__item', className), ...rest },
     children
   )
 
 BareListItem.propTypes = {
-  node: T.string,
+  tag: T.string,
   className: T.string,
   children: T.node
 }

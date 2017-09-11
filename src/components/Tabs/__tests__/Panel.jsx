@@ -70,10 +70,10 @@ describe('<Tabs.Panel />', () => {
     })
   })
 
-  it('renders a defined node type', () => {
+  it('renders a defined tag type', () => {
     const props = {
       ...defaultProps,
-      node: 'article'
+      tag: 'article'
     }
     const $ = shallow(<Tabs.Panel {...props} />, { context: defaultContext })
     expect($.type()).toBe('article')

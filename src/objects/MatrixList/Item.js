@@ -3,15 +3,15 @@ import T from 'prop-types'
 
 import { classNames } from '../../utils/'
 
-const MatrixListItem = ({ node, className, children, ...rest }) =>
+const MatrixListItem = ({ tag, className, children, ...rest }) =>
   E(
-    node || 'li',
+    tag || 'li',
     { className: classNames('o-matrix-list__item', className), ...rest },
     children
   )
 
 MatrixListItem.propTypes = {
-  node: T.string,
+  tag: T.string,
   className: T.string,
   children: T.node
 }

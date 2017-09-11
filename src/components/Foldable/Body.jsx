@@ -2,9 +2,9 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 import { classNames } from '../../utils/'
 
-const FoldableBody = ({ node, className, children, ...rest }, { isFoldableOpen, foldableId }) =>
+const FoldableBody = ({ tag, className, children, ...rest }, { isFoldableOpen, foldableId }) =>
   E(
-    node || 'div',
+    tag || 'div',
     {
       className: classNames('c-foldable__body', className),
       id: foldableId,
@@ -20,7 +20,7 @@ FoldableBody.contextTypes = {
 }
 
 FoldableBody.propTypes = {
-  node: T.string,
+  tag: T.string,
   className: T.string,
   children: T.node.isRequired
 }

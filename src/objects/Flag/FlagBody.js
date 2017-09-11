@@ -3,15 +3,15 @@ import T from 'prop-types'
 
 import { classNames } from '../../utils/'
 
-const FlagBody = ({ node, children, className, ...rest }) =>
+const FlagBody = ({ tag, children, className, ...rest }) =>
   E(
-    node || 'div',
+    tag || 'div',
     { className: classNames('o-flag__body', className), ...rest },
     children
   )
 
 FlagBody.propTypes = {
-  node: T.string,
+  tag: T.string,
   children: T.node,
   className: T.string
 }

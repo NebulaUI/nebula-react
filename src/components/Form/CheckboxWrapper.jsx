@@ -2,9 +2,9 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 import { classNames } from '../../utils/'
 
-const CheckboxWrapper = ({ node, className, children, ...rest }) => (
+const CheckboxWrapper = ({ tag, className, children, ...rest }) => (
   E(
-    node || 'div',
+    tag || 'div',
     {
       className: classNames('c-form-input', className),
       ...rest,
@@ -14,7 +14,7 @@ const CheckboxWrapper = ({ node, className, children, ...rest }) => (
 )
 
 CheckboxWrapper.propTypes = {
-  node: T.string,
+  tag: T.string,
   className: T.string,
   children: T.node
 }

@@ -51,11 +51,11 @@ class ModalWrapper extends Component {
   render() {
     const {
       timeout,
-      node, closeModal, className, ariaLabel, children, ...rest
+      tag, closeModal, className, ariaLabel, children, ...rest
     } = this.props
 
     return E(
-      node || 'div',
+      tag || 'div',
       {
         className: classNames('c-modal', { 'is-open': this.state.isFullyMounted }, className),
         role: 'dialog',
@@ -75,7 +75,7 @@ ModalWrapper.childContextTypes = {
 }
 
 ModalWrapper.propTypes = {
-  node: T.string,
+  tag: T.string,
   className: T.string,
   ariaLabel: T.string.isRequired,
   closeModal: T.func.isRequired,
