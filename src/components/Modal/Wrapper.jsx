@@ -9,10 +9,10 @@ class ModalWrapper extends Component {
   })
 
   render() {
-    const { node, closeModal, className, isOpen, children, ...rest } = this.props
+    const { tag, closeModal, className, isOpen, children, ...rest } = this.props
 
     return E(
-      node || 'div',
+      tag || 'div',
       {
         className: classNames('c-modal', { 'is-open': isOpen }, className),
         ...rest
@@ -38,7 +38,7 @@ ModalWrapper.childContextTypes = {
 }
 
 ModalWrapper.propTypes = {
-  node: T.string,
+  tag: T.string,
   className: T.string,
   isOpen: T.bool.isRequired,
   closeModal: T.func.isRequired,

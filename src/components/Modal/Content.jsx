@@ -5,9 +5,9 @@ import { classNames } from '../../utils/'
 
 const initial = 'c-modal__content'
 
-const Content = ({ node, className, children, ...rest }) =>
+const Content = ({ tag, className, children, ...rest }) =>
   E(
-    node || 'div',
+    tag || 'div',
     {
       className: classNames(initial, className),
       ...rest
@@ -16,7 +16,7 @@ const Content = ({ node, className, children, ...rest }) =>
   )
 
 Content.propTypes = {
-  node: T.string,
+  tag: T.string,
   className: T.string,
   children: T.node.isRequired
 }
