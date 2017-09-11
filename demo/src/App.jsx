@@ -1,12 +1,9 @@
 import React, { Component } from 'react'
 
 import {
-  Button,
-  ButtonDropdown,
   Card,
   SiteWrap,
   Section,
-  Modal,
   Pagination,
   Table,
 } from 'nebula-react'
@@ -45,36 +42,11 @@ const tableData = {
   ],
 }
 class App extends Component {
-  constructor() {
-    super()
-
-    this.state = {
-      isModalOpen: false,
-    }
-  }
-
-  openModal = () => {
-    this.setState({
-      isModalOpen: true,
-    })
-  }
-
-  closeModal = () => {
-    this.setState({
-      isModalOpen: false,
-    })
-  }
-
   render() {
-    const { isModalOpen } = this.state
     return (
       <div>
         <Section size="md">
           <SiteWrap padding>
-            <h1>Nebula React</h1>
-            <Button size="md" theme="alpha" onClick={this.openModal}>
-              Open Modal
-            </Button>
             <Section size="md">
               <Table stackAt="max-md" data={tableData} />
             </Section>
@@ -97,30 +69,6 @@ class App extends Component {
             </Pagination.Wrapper>
           </SiteWrap>
         </Section>
-        {
-          isModalOpen && (
-            <Modal.Wrapper ariaLabel="my modal" closeModal={this.closeModal}>
-              <Modal.Overlay />
-              <Modal.Body>
-                <Modal.Content>
-                  <Modal.Close>
-                    <Modal.Dismiss>Close</Modal.Dismiss>
-                  </Modal.Close>
-                  <p>This is modal content</p>
-                  <p>This is modal content</p>
-                  <p>This is modal content</p>
-                  <p>This is modal content</p>
-                  <p>This is modal content</p>
-                  <p>ITCSS and BEMIT based Sass/CSS framework that is ultra exensible
-                    and scales to any project size.</p>
-                  <Modal.Close>
-                    <Button size="sm" theme="alpha">Close me</Button>
-                  </Modal.Close>
-                </Modal.Content>
-              </Modal.Body>
-            </Modal.Wrapper>
-          )
-        }
       </div>
     )
   }
