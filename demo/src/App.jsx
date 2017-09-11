@@ -94,7 +94,7 @@ class App extends Component {
 
             <h3>Button Dropdowns</h3>
             <ButtonDropdown.Wrapper clickOutsideToClose defaultOpen="open" togglePosition="left">
-              <Button node="a" to="/" size="md" theme="alpha" className="c-btn--full">
+              <Button tag="a" to="/" size="md" theme="alpha" className="c-btn--full">
                 Click to go to link
               </Button>
               <ButtonDropdown.Toggle />
@@ -112,7 +112,7 @@ class App extends Component {
               </ButtonDropdown.Content>
             </ButtonDropdown.Wrapper>
             <ButtonDropdown.Wrapper isOpen="open" togglePosition="right">
-              <Button node="a" to="/" size="lg" theme="alpha" className="c-btn--full">
+              <Button tag="a" to="/" size="lg" theme="alpha" className="c-btn--full">
                 Click to go to link
               </Button>
               <ButtonDropdown.Toggle />
@@ -127,7 +127,7 @@ class App extends Component {
               </ButtonDropdown.Content>
             </ButtonDropdown.Wrapper>
             <ButtonDropdown.Wrapper togglePosition="right">
-              <Button node="a" to="/" size="sm" theme="alpha" className="c-btn--full">
+              <Button tag="a" to="/" size="sm" theme="alpha" className="c-btn--full">
                 Click to go to link
               </Button>
               <ButtonDropdown.Toggle />
