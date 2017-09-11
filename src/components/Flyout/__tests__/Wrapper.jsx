@@ -12,8 +12,8 @@ describe('<Flyout.Wrapper />', () => {
     expect($.type()).toBe('div')
   })
 
-  it('renders a defined node type', () => {
-    const $ = shallow(<Flyout.Wrapper node="article" {...defaultProps}>_</Flyout.Wrapper>)
+  it('renders a defined tag type', () => {
+    const $ = shallow(<Flyout.Wrapper tag="article" {...defaultProps}>_</Flyout.Wrapper>)
     expect($.type()).toBe('article')
   })
 
