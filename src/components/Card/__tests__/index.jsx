@@ -9,8 +9,8 @@ describe('<Card />', () => {
     expect($.hasClass('c-card something else')).toBe(true)
   })
 
-  it('renders a defined node type', () => {
-    const $ = shallow(<Card node="article">_</Card>)
+  it('renders a defined tag type', () => {
+    const $ = shallow(<Card tag="article">_</Card>)
     expect($.type()).toBe('article')
   })
 

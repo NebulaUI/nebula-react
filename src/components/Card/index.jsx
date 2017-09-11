@@ -3,9 +3,9 @@ import T from 'prop-types'
 
 import { classNames } from '../../utils/'
 
-const Card = ({ node, className, children, ...rest }) =>
+const Card = ({ tag, className, children, ...rest }) =>
   E(
-    node || 'div',
+    tag || 'div',
     {
       className: classNames('c-card', className),
       ...rest
@@ -14,7 +14,7 @@ const Card = ({ node, className, children, ...rest }) =>
   )
 
 Card.propTypes = {
-  node: T.string,
+  tag: T.string,
   className: T.string,
   children: T.node
 }
