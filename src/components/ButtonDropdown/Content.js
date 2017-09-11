@@ -3,7 +3,7 @@ import T from 'prop-types'
 import { classNames } from '../../utils/'
 
 const ButtonDropdownContent = ({
- node,
+ tag,
  className,
  children,
  ...rest
@@ -12,7 +12,7 @@ const ButtonDropdownContent = ({
 }) => (
   buttonDropdownOpen
     ? E(
-        node || 'div',
+        tag || 'div',
       {
         className: classNames('c-btn-dropdown__content', className),
         ...rest
@@ -27,7 +27,7 @@ ButtonDropdownContent.contextTypes = {
 }
 
 ButtonDropdownContent.propTypes = {
-  node: T.string,
+  tag: T.string,
   className: T.string,
   children: T.node.isRequired
 }

@@ -25,9 +25,9 @@ describe('<ButtonDropdown.Toggle />', () => {
     expect($.hasClass('c-btn-dropdown__toggle test')).toBe(true)
   })
 
-  it('renders a defined node type', () => {
+  it('renders a defined tag type', () => {
     const $ = shallow(
-      <ButtonDropdown.Toggle node="article" />
+      <ButtonDropdown.Toggle tag="article" />
       , { context: defaultContext })
     expect($.type()).toBe('article')
   })
