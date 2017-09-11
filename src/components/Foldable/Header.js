@@ -4,7 +4,7 @@ import { classNames } from '../../utils/'
 
 const FoldableHeader = ({
   padding,
-  node,
+  tag,
   className,
   children,
   ...rest
@@ -14,7 +14,7 @@ const FoldableHeader = ({
   foldableDisabled
 }) =>
   E(
-    node || 'div',
+    tag || 'div',
     {
       className: classNames(
         'c-foldable__header',
@@ -42,7 +42,7 @@ FoldableHeader.contextTypes = {
 }
 
 FoldableHeader.propTypes = {
-  node: T.string,
+  tag: T.string,
   className: T.string,
   children: T.node.isRequired
 }
