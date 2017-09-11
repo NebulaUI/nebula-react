@@ -1,5 +1,5 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 
 import { Pagination } from '../'
 
@@ -11,18 +11,23 @@ describe('<Pagination.Wrapper />', () => {
 
   it('renders with attributes', () => {
     const $ = shallow(
-      <Pagination.Wrapper style={{ position: 'relative' }} aria-label="Test">
+      <Pagination.Wrapper style={{ position: 'relative' }}>
         _
       </Pagination.Wrapper>
     )
     expect($.prop('style')).toEqual({
       position: 'relative'
     })
+  })
+
+  it('renders the aria-label attr with a default value', () => {
+    const $ = mount(<Pagination.Wrapper aria-label="Test">_</Pagination.Wrapper>)
     expect($.prop('aria-label')).toBe('Test')
   })
 
-  it.skip('renders the aria-label with a prop passed in as an override', () => {
-    const $ = shallow(<Pagination.Wrapper ariaLabel="Test Override">_</Pagination.Wrapper>)
+  it('renders the aria-label with a prop passed in as an override', () => {
+    const $ = mount(<Pagination.Wrapper aria-label="Test" ariaLabel="Test Override">_</Pagination.Wrapper>)
+    expect($.prop('aria-label')).toBe('Test')
     expect($.prop('ariaLabel')).toBe('Test Override')
   })
 

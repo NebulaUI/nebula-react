@@ -115,9 +115,8 @@ class App extends Component {
              Ab adipisci architecto assumenda et expedita fugit id illum.</p>
             </Card>
             <StatusCard status="error">
-            Error
-          </StatusCard>
-            {/*TODO uncomment when fixed as this is currently braking*/}
+              Error
+            </StatusCard>
             {/*<Flyout.Wrapper>*/}
               {/*<Flyout.Toggle>*/}
               {/*Click me*/}
@@ -205,21 +204,21 @@ class App extends Component {
             <Section size="md">
               <Table stackAt="max-md" data={tableData} />
             </Section>
-            <Pagination.Wrapper ariaLabel="Pagination Test Override">
+            <Pagination.Wrapper>
               <Pagination.Item>
-                <Pagination.Link ariaLabel="Page Test Override Disabled" to="/" previous disabled>Prev</Pagination.Link>
+                <Pagination.Link aria-label="Disabled Page Link" to="/" previous disabled>Prev</Pagination.Link>
               </Pagination.Item>
               <Pagination.Item>
-                <Pagination.Link ariaLabel="Page Test Override 1" to="/" >1</Pagination.Link>
+                <Pagination.Link ariaLabel="Page Link 1" to="/" >1</Pagination.Link>
               </Pagination.Item>
               <Pagination.Item>
-                <Pagination.Link ariaLabel="Page Test Override 2" to="/" isActive>2</Pagination.Link>
+                <Pagination.Link to="/" isActive>2</Pagination.Link>
               </Pagination.Item>
               <Pagination.Item>
-                <Pagination.Link ariaLabel="Page Test Override 3" to="/">3</Pagination.Link>
+                <Pagination.Link to="/">3</Pagination.Link>
               </Pagination.Item>
               <Pagination.Item>
-                <Pagination.Link ariaLabel="Page Test Next Link" to="/" next>Next</Pagination.Link>
+                <Pagination.Link to="/" next>Next</Pagination.Link>
               </Pagination.Item>
             </Pagination.Wrapper>
           </SiteWrap>

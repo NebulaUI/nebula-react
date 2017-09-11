@@ -55,7 +55,7 @@ class PaginationLink extends Component {
         previous ? 'c-pagination__link--previous' : '',
         next ? 'c-pagination__link--next' : '',
         { 'is-active': isActive }),
-        'aria-label': ariaLabel && 'Page',
+        'aria-label': ariaLabel,
         ...onClickProps,
         ...rest
       },

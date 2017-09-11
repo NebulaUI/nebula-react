@@ -34,14 +34,24 @@ describe('<Pagination.Link />', () => {
 
   it('renders with attributes', () => {
     const $ = shallow(
-      <Pagination.Link {...defaultProps} style={{ position: 'relative' }} ariaHidden="true">
+      <Pagination.Link {...defaultProps} style={{ position: 'relative' }}>
         _
       </Pagination.Link>
     )
     expect($.prop('style')).toEqual({
       position: 'relative'
     })
-    expect($.prop('ariaHidden')).toBe('true')
+  })
+
+  it('renders the aria-label attr with a default value', () => {
+    const $ = mount(<Pagination.Link {...defaultProps} aria-label="Test">_</Pagination.Link>)
+    expect($.prop('aria-label')).toBe('Test')
+  })
+
+  it('renders the aria-label with a prop passed in as an override', () => {
+    const $ = mount(<Pagination.Link {...defaultProps} aria-label="Test" ariaLabel="Test Override">_</Pagination.Link>)
+    expect($.prop('aria-label')).toBe('Test')
+    expect($.prop('ariaLabel')).toBe('Test Override')
   })
 
   it('allows an isActive prop to be passed', () => {
