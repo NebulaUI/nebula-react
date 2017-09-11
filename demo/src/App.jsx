@@ -6,15 +6,8 @@ import {
   Card,
   SiteWrap,
   Section,
-  BareList,
-  InlineList,
-  MatrixList,
-  UniformedList,
-  Flyout,
-  Form,
   Modal,
   Table,
-  StatusCard,
 } from 'nebula-react'
 
 const tableData = {
@@ -75,80 +68,41 @@ class App extends Component {
     const { isModalOpen } = this.state
     return (
       <div>
-        <Modal.Wrapper ariaLabel="my modal" closeModal={this.closeModal} isOpen={isModalOpen}>
-          <Modal.Content>
-            <Modal.Close>
-              <Modal.Dismiss>Close</Modal.Dismiss>
-            </Modal.Close>
-            <p>This is modal content</p>
-            <p>This is modal content</p>
-            <p>This is modal content</p>
-            <p>This is modal content</p>
-            <p>This is modal content</p>
-            <p>ITCSS and BEMIT based Sass/CSS framework that is ultra exensible
-              and scales to any project size.</p>
-            <Modal.Close>
-              <Button size="sm" theme="alpha">Close me</Button>
-            </Modal.Close>
-          </Modal.Content>
-        </Modal.Wrapper>
         <Section size="md">
           <SiteWrap padding>
             <h1>Nebula React</h1>
             <Button size="md" theme="alpha" onClick={this.openModal}>
               Open Modal
             </Button>
-            <h3>Button Dropdowns</h3>
-            <ButtonDropdown.Wrapper togglePosition="left">
-              <Button node="a" to="/" size="md" theme="alpha" className="c-btn--full">
-                Click to go to link
-              </Button>
-              <ButtonDropdown.Toggle />
-              <ButtonDropdown.Content>
-                <Card>
-                  <ul className="o-bare-list">
-                    <li className="o-bare-list__item">Option 1</li>
-                    <li className="o-bare-list__item">Option 2</li>
-                    <li className="o-bare-list__item">Option 3</li>
-                  </ul>
-                </Card>
-              </ButtonDropdown.Content>
-            </ButtonDropdown.Wrapper>
-            <ButtonDropdown.Wrapper togglePosition="right">
-              <Button node="a" to="/" size="lg" theme="alpha" className="c-btn--full">
-                Click to go to link
-              </Button>
-              <ButtonDropdown.Toggle />
-              <ButtonDropdown.Content>
-                <Card>
-                  <ul className="o-bare-list">
-                    <li className="o-bare-list__item">Option 1</li>
-                    <li className="o-bare-list__item">Option 2</li>
-                    <li className="o-bare-list__item">Option 3</li>
-                  </ul>
-                </Card>
-              </ButtonDropdown.Content>
-            </ButtonDropdown.Wrapper>
-            <ButtonDropdown.Wrapper togglePosition="right">
-              <Button node="a" to="/" size="sm" theme="alpha" className="c-btn--full">
-                Click to go to link
-              </Button>
-              <ButtonDropdown.Toggle />
-              <ButtonDropdown.Content>
-                <Card>
-                  <ul className="o-bare-list">
-                    <li className="o-bare-list__item">Option 1</li>
-                    <li className="o-bare-list__item">Option 2</li>
-                    <li className="o-bare-list__item">Option 3</li>
-                  </ul>
-                </Card>
-              </ButtonDropdown.Content>
-            </ButtonDropdown.Wrapper>
             <Section size="md">
               <Table stackAt="max-md" data={tableData} />
             </Section>
           </SiteWrap>
         </Section>
+        {
+          isModalOpen && (
+            <Modal.Wrapper ariaLabel="my modal" closeModal={this.closeModal}>
+              <Modal.Overlay />
+              <Modal.Body>
+                <Modal.Content>
+                  <Modal.Close>
+                    <Modal.Dismiss>Close</Modal.Dismiss>
+                  </Modal.Close>
+                  <p>This is modal content</p>
+                  <p>This is modal content</p>
+                  <p>This is modal content</p>
+                  <p>This is modal content</p>
+                  <p>This is modal content</p>
+                  <p>ITCSS and BEMIT based Sass/CSS framework that is ultra exensible
+                    and scales to any project size.</p>
+                  <Modal.Close>
+                    <Button size="sm" theme="alpha">Close me</Button>
+                  </Modal.Close>
+                </Modal.Content>
+              </Modal.Body>
+            </Modal.Wrapper>
+          )
+        }
       </div>
     )
   }

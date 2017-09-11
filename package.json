@@ -29,6 +29,7 @@
     "lib"
   ],
   "dependencies": {
+    "focus-trap-react": "^3.0.3",
     "nebula-components": "^0.1.1",
     "nebula-css": "^2.6.2",
     "no-scroll": "^2.1.0"

@@ -4,7 +4,7 @@ import { shallow } from 'enzyme'
 import { Foldable } from '../'
 
 const defaultContext = {
-  isOpen: true,
+  isFoldableOpen: true,
   foldableId: '123'
 }
 
@@ -39,7 +39,7 @@ describe('<Foldable.Body />', () => {
   it('renders with aria-hidden set to false when expanded', () => {
     const context = {
       ...defaultContext,
-      isOpen: true
+      isFoldableOpen: true
     }
     const $ = shallow(<Foldable.Body isOpen>_</Foldable.Body>, { context })
     expect($.prop('aria-hidden')).toBe(false)
@@ -48,10 +48,28 @@ describe('<Foldable.Body />', () => {
   it('renders with aria-hidden set to true when collapsed', () => {
     const context = {
       ...defaultContext,
-      isOpen: false
+      isFoldableOpen: false
     }
     const $ = shallow(<Foldable.Body>_</Foldable.Body>, { context })
     expect($.prop('aria-hidden')).toBe(true)
+  })
+
+  it('doesnt render children when collapsed', () => {
+    const context = {
+      ...defaultContext,
+      isFoldableOpen: false
+    }
+    const $ = shallow(<Foldable.Body>test child</Foldable.Body>, { context })
+    expect($.contains('test child')).toBe(false)
+  })
+
+  it('renders children when open', () => {
+    const context = {
+      ...defaultContext,
+      isFoldableOpen: true
+    }
+    const $ = shallow(<Foldable.Body>test child</Foldable.Body>, { context })
+    expect($.contains('test child')).toBe(true)
   })
 
   it('renders with an id passed via context', () => {

@@ -1771,6 +1771,18 @@ flat-cache@^1.2.1:
     graceful-fs "^4.1.2"
     write "^0.2.1"
 
+focus-trap-react@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/focus-trap-react/-/focus-trap-react-3.0.3.tgz#96f934fba39dae9b80a5d2b4839a919c0bc4fa7e"
+  dependencies:
+    focus-trap "^2.0.1"
+
+focus-trap@^2.0.1:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/focus-trap/-/focus-trap-2.3.0.tgz#07c91964867d346315f4f5f8df88bf96455316e2"
+  dependencies:
+    tabbable "^1.0.3"
+
 for-in@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/for-in/-/for-in-1.0.2.tgz#81068d295a8142ec0ac726c6e2200c30fb6d5e80"
@@ -3904,6 +3916,10 @@ supports-color@^3.1.2, supports-color@^3.2.3:
 symbol-tree@^3.2.1:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.2.tgz#ae27db38f660a7ae2e1c3b7d1bc290819b8519e6"
+
+tabbable@^1.0.3:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/tabbable/-/tabbable-1.0.8.tgz#08f0a4b9cea4f8ba3cd0185726fb0fb82a49d41f"
 
 table@^3.7.8:
   version "3.8.3"

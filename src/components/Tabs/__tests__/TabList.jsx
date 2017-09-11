@@ -88,14 +88,14 @@ describe('<Tabs.TabList />', () => {
     $.find(Tabs.Tab).at(1).simulate('keydown', { keyCode: 39 })
     expect($.state('activeId')).toBe('test-3')
     $.find(Tabs.Tab).at(2).simulate('keydown', { keyCode: 39 })
-    expect($.state('activeId')).toBe('test-3')
+    expect($.state('activeId')).toBe('test-1')
 
     $.find(Tabs.Tab).at(2).simulate('keydown', { keyCode: 37 })
     expect($.state('activeId')).toBe('test-2')
     $.find(Tabs.Tab).at(1).simulate('keydown', { keyCode: 37 })
     expect($.state('activeId')).toBe('test-1')
     $.find(Tabs.Tab).at(0).simulate('keydown', { keyCode: 37 })
-    expect($.state('activeId')).toBe('test-1')
+    expect($.state('activeId')).toBe('test-3')
   })
 
   it('activates the corresponding tab when clicked', () => {

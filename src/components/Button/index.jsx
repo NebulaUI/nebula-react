@@ -19,11 +19,8 @@ const Button = ({
   const enhancedClassName = classNames(
     'c-btn',
     className,
-    { 'c-btn--alpha': theme === 'alpha' },
-    { 'c-btn--beta': theme === 'beta' },
-    { 'c-btn--sm': size === 'sm' },
-    { 'c-btn--md': size === 'md' },
-    { 'c-btn--lg': size === 'lg' },
+    theme ? `c-btn--${theme}` : '',
+    size ? `c-btn--${size}` : '',
     { 'c-btn--full': fullWidth }
   )
 
@@ -40,7 +37,7 @@ const Button = ({
   }
 
   return E(
-    type === 'link' ? 'a' : (node || 'button'),
+    to ? 'a' : (node || 'button'),
     {
       type,
       href: to,
@@ -53,7 +50,7 @@ const Button = ({
 
 Button.propTypes = {
   node: T.string,
-  type: T.oneOf(['submit', 'reset', 'menu', 'link']),
+  type: T.oneOf(['submit', 'reset', 'menu']),
   to: T.string,
   fullWidth: T.bool,
   size: T.oneOf(['sm', 'md', 'lg']),
