@@ -16,9 +16,9 @@ describe('<Foldable.Header />', () => {
     expect($.hasClass('c-foldable__header something else')).toBe(true)
   })
 
-  it('renders a defined node type', () => {
+  it('renders a defined tag type', () => {
     const $ = shallow(
-      <Foldable.Header node="article">_</Foldable.Header>
+      <Foldable.Header tag="article">_</Foldable.Header>
     , { context: defaultContext })
     expect($.type()).toBe('article')
   })

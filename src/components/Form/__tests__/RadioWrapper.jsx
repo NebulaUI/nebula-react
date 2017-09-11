@@ -17,8 +17,8 @@ describe('<Form.RadioWrapper id="radio-1" name="radio-group" />', () => {
     expect($.contains('Test container children')).toBe(true)
   })
 
-  it('renders a defined node type', () => {
-    const $ = shallow(<Form.RadioWrapper node="article" />)
+  it('renders a defined tag type', () => {
+    const $ = shallow(<Form.RadioWrapper tag="article" />)
     expect($.type()).toBe('article')
   })
 

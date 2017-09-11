@@ -3,9 +3,9 @@ import T from 'prop-types'
 
 import { classNames, buildClassName } from '../../utils/'
 
-const BareListWrapper = ({ node, spacing, className, children, ...rest }) =>
+const BareListWrapper = ({ tag, spacing, className, children, ...rest }) =>
   E(
-    node || 'ul',
+    tag || 'ul',
     {
       className: classNames(
         'o-bare-list',
@@ -20,7 +20,7 @@ const BareListWrapper = ({ node, spacing, className, children, ...rest }) =>
   )
 
 BareListWrapper.propTypes = {
-  node: T.string,
+  tag: T.string,
   spacing: T.oneOfType([
     T.string,
     T.array

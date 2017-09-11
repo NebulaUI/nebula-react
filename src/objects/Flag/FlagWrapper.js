@@ -4,7 +4,7 @@ import T from 'prop-types'
 import { classNames } from '../../utils/'
 
 const FlagWrapper = ({
- node,
+ tag,
  breakpoint,
  gutter,
  reverse,
@@ -14,7 +14,7 @@ const FlagWrapper = ({
   ...rest
 }) =>
   E(
-    node || 'div',
+    tag || 'div',
     {
       className: classNames(
         breakpoint ? `o-flag@${breakpoint}` : 'o-flag',
@@ -29,7 +29,7 @@ const FlagWrapper = ({
   )
 
 FlagWrapper.propTypes = {
-  node: T.string,
+  tag: T.string,
   breakpoint: T.string,
   gutter: T.string,
   reverse: T.bool,

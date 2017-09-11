@@ -23,7 +23,7 @@ class TabsTab extends Component {
   }
 
   render() {
-    const { node, children, target, activateTab, isActive, className, ...rest } = this.props
+    const { tag, children, target, activateTab, isActive, className, ...rest } = this.props
     const handleKeyDown = (e) => {
       if (e.keyCode === 37 || e.keyCode === 38) {
         e.preventDefault()
@@ -42,7 +42,7 @@ class TabsTab extends Component {
       }
     }
     return E(
-      node || 'button',
+      tag || 'button',
       {
         onClick: handleClick,
         ref: (n) => { this.node = n },
@@ -67,7 +67,7 @@ TabsTab.contextTypes = {
 }
 
 TabsTab.propTypes = {
-  node: T.string,
+  tag: T.string,
   children: T.node.isRequired,
   isActive: T.bool,
   className: T.string,

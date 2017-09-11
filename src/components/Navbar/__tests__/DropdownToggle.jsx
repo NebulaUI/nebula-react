@@ -23,8 +23,8 @@ describe('<Navbar.Dropdown.Toggle />', () => {
     expect($.hasClass('c-navbar__dropdown-toggle test')).toBe(true)
   })
 
-  it('renders a defined node type', () => {
-    const $ = shallow(<Navbar.Dropdown.Toggle node="article">_</Navbar.Dropdown.Toggle>)
+  it('renders a defined tag type', () => {
+    const $ = shallow(<Navbar.Dropdown.Toggle tag="article">_</Navbar.Dropdown.Toggle>)
     expect($.type()).toBe('article')
   })
 

@@ -2,13 +2,13 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 import { classNames } from '../../utils/'
 
-const TabsPanel = ({ node, children, className, id, ...rest }, { activeTabId, activeTabLabel }) => {
+const TabsPanel = ({ tag, children, className, id, ...rest }, { activeTabId, activeTabLabel }) => {
   if (id !== activeTabId) {
     return null
   }
 
   return E(
-    node || 'div',
+    tag || 'div',
     {
       className: classNames('c-tabs__panel', className),
       role: 'tabpanel',
@@ -25,7 +25,7 @@ TabsPanel.contextTypes = {
 }
 
 TabsPanel.propTypes = {
-  node: T.string,
+  tag: T.string,
   id: T.oneOfType([T.string, T.number]).isRequired,
   className: T.string,
   children: T.node

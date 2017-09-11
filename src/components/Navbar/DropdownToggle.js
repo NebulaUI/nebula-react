@@ -33,9 +33,9 @@ class NavbarDropdownToggle extends Component {
     })
 
   render() {
-    const { node, children, className, ...rest } = this.props
+    const { tag, children, className, ...rest } = this.props
     return E(
-      node || 'button',
+      tag || 'button',
       {
         onClick: this.handleClick,
         ref: (n) => { this.button = n },
@@ -52,7 +52,7 @@ class NavbarDropdownToggle extends Component {
 
 NavbarDropdownToggle.propTypes = {
   className: T.string,
-  node: T.string,
+  tag: T.string,
   children: T.node.isRequired
 }
 

@@ -3,9 +3,9 @@ import T from 'prop-types'
 
 import { classNames, buildClassName } from '../../utils/'
 
-const InlineListWrapper = ({ node, spacing, className, children, ...rest }) =>
+const InlineListWrapper = ({ tag, spacing, className, children, ...rest }) =>
   E(
-    node || 'ul',
+    tag || 'ul',
     {
       className: classNames(
         'o-inline-list',
@@ -20,7 +20,7 @@ const InlineListWrapper = ({ node, spacing, className, children, ...rest }) =>
   )
 
 InlineListWrapper.propTypes = {
-  node: T.string,
+  tag: T.string,
   spacing: T.oneOfType([
     T.string,
     T.array

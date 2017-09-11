@@ -30,8 +30,8 @@ describe('<Navbar.ContentWrapper />', () => {
     expect($.prop('ariaHidden')).toBe('true')
   })
 
-  it('renders a defined node type', () => {
-    const $ = shallow(<Navbar.ContentWrapper node="article">_</Navbar.ContentWrapper>)
+  it('renders a defined tag type', () => {
+    const $ = shallow(<Navbar.ContentWrapper tag="article">_</Navbar.ContentWrapper>)
     expect($.type()).toBe('article')
   })
 

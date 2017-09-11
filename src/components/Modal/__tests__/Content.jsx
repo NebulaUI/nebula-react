@@ -9,8 +9,8 @@ describe('<Modal.Content />', () => {
     expect($.type()).toBe('div')
   })
 
-  it('renders a defined node type', () => {
-    const $ = shallow(<Modal.Content node="article">_</Modal.Content>)
+  it('renders a defined tag type', () => {
+    const $ = shallow(<Modal.Content tag="article">_</Modal.Content>)
     expect($.type()).toBe('article')
   })
 

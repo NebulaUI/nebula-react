@@ -9,8 +9,8 @@ describe('<StatusCard />', () => {
     expect($.type()).toBe('div')
   })
 
-  it('renders a defined node type', () => {
-    const $ = shallow(<StatusCard node="article">_</StatusCard>)
+  it('renders a defined tag type', () => {
+    const $ = shallow(<StatusCard tag="article">_</StatusCard>)
     expect($.type()).toBe('article')
   })
 

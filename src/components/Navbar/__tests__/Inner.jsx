@@ -30,8 +30,8 @@ describe('<Navbar.Inner />', () => {
     expect($.prop('ariaHidden')).toBe('true')
   })
 
-  it('renders a defined node type', () => {
-    const $ = shallow(<Navbar.Inner node="article">_</Navbar.Inner>)
+  it('renders a defined tag type', () => {
+    const $ = shallow(<Navbar.Inner tag="article">_</Navbar.Inner>)
     expect($.type()).toBe('article')
   })
 

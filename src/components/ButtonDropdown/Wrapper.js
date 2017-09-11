@@ -84,7 +84,7 @@ class ButtonDropdownWrapper extends Component {
   render() {
     const {
       defaultOpen, disabled, isOpen, onButtonDropdownChange,
-      node,
+      tag,
       className,
       children,
       togglePosition,
@@ -93,7 +93,7 @@ class ButtonDropdownWrapper extends Component {
       ...rest
     } = this.props
     const FlyoutComponent = E(
-      node || 'div',
+      tag || 'div',
       {
         className: classNames(
           'c-btn-dropdown',
@@ -121,7 +121,7 @@ class ButtonDropdownWrapper extends Component {
 }
 
 ButtonDropdownWrapper.propTypes = {
-  node: T.string,
+  tag: T.string,
   className: T.string,
   children: T.node.isRequired,
   fullWidth: T.bool,

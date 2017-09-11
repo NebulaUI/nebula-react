@@ -2,9 +2,9 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 import { classNames } from '../../utils/'
 
-const NavbarContent = ({ node, right, keepAtTop, children, className, ...rest }) =>
+const NavbarContent = ({ tag, right, keepAtTop, children, className, ...rest }) =>
   E(
-    node || 'ul',
+    tag || 'ul',
     {
       className: classNames(
         'c-navbar__content', className,
@@ -18,7 +18,7 @@ const NavbarContent = ({ node, right, keepAtTop, children, className, ...rest })
 
 NavbarContent.propTypes = {
   children: T.node.isRequired,
-  node: T.string,
+  tag: T.string,
   right: T.bool,
   keepAtTop: T.bool,
   className: T.string

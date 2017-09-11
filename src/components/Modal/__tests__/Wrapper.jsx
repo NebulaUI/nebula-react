@@ -14,10 +14,10 @@ describe('<Modal.Wrapper />', () => {
     expect($.type()).toBe('div')
   })
 
-  it('renders a defined node type', () => {
+  it('renders a defined tag type', () => {
     const props = {
       ...defaultProps,
-      node: 'article'
+      tag: 'article'
     }
     const $ = shallow(<Modal.Wrapper {...props}>_</Modal.Wrapper>)
     expect($.type()).toBe('article')
@@ -40,7 +40,7 @@ describe('<Modal.Wrapper />', () => {
   it('renders with attributes', () => {
     const props = {
       ...defaultProps,
-      node: 'article',
+      tag: 'article',
       style: { position: 'relative' },
       ariaHidden: true
     }

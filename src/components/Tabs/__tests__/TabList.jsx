@@ -35,9 +35,9 @@ describe('<Tabs.TabList />', () => {
     expect($.prop('ariaHidden')).toBe('true')
   })
 
-  it('renders a defined node type', () => {
+  it('renders a defined tag type', () => {
     const context = defaultContext
-    const $ = shallow(<Tabs.TabList node="article">_</Tabs.TabList>, { context })
+    const $ = shallow(<Tabs.TabList tag="article">_</Tabs.TabList>, { context })
     expect($.type()).toBe('article')
   })
 

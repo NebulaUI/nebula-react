@@ -3,7 +3,7 @@ import T from 'prop-types'
 import { classNames } from '../../utils/'
 
 const ButtonDropdownToggle = ({
-  node,
+  tag,
   className,
   children,
   ...rest
@@ -13,7 +13,7 @@ const ButtonDropdownToggle = ({
   buttonDropdownDisabled
 }) => (
   E(
-    node || 'button',
+    tag || 'button',
     {
       className: classNames('c-btn-dropdown__toggle', className),
       onClick: handleButtonDropdownToggle,
@@ -30,7 +30,7 @@ ButtonDropdownToggle.contextTypes = {
 }
 
 ButtonDropdownToggle.propTypes = {
-  node: T.string,
+  tag: T.string,
   className: T.string,
   children: T.node
 }

@@ -8,7 +8,7 @@ class NavbarToggleWrapper extends Component {
   }
 
   render() {
-    const { handleToggle, node, className, callback, children, ...rest } = this.props
+    const { handleToggle, tag, className, callback, children, ...rest } = this.props
     const onClickProps = callback
       ? {
         onClick: this.handleClick
@@ -16,7 +16,7 @@ class NavbarToggleWrapper extends Component {
         onClick: handleToggle
       }
     return E(
-      node || 'button',
+      tag || 'button',
       {
         className: classNames('c-navbar__toggle', className),
         ...onClickProps,
@@ -29,7 +29,7 @@ class NavbarToggleWrapper extends Component {
 
 NavbarToggleWrapper.propTypes = {
   handleToggle: T.func,
-  node: T.string,
+  tag: T.string,
   callback: T.func,
   children: T.node,
   className: T.string
