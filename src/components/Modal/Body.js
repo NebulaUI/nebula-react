@@ -11,12 +11,16 @@ const ModalBody = ({
   ...rest
 }, {
   modalClickOutsideDeactivates,
-  modalIsFullyMounted
+  modalIsFullyMounted,
+  modalWidth
 }) =>
   E(
     tag || 'div',
     {
       className: classNames('c-modal__body', className),
+      style: {
+        width: modalWidth
+      },
       ...rest
     },
     modalIsFullyMounted && E(
@@ -29,12 +33,14 @@ const ModalBody = ({
   )
 
 ModalBody.contextTypes = {
-  modalClickOutsideDeactivates: T.bool.isRequired,
-  modalIsFullyMounted: T.bool.isRequired
+  modalClickOutsideDeactivates: T.bool,
+  modalIsFullyMounted: T.bool.isRequired,
+  modalWidth: T.number
 }
 
 ModalBody.propTypes = {
   children: T.node.isRequired,
+  className: T.string,
   tag: T.string
 }
 

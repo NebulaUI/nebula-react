@@ -1,7 +1,7 @@
 import React, { cloneElement } from 'react'
 import T from 'prop-types'
 
-const ModalClose = ({ className, children, ...rest }, { closeModal }) => {
+const ModalClose = ({ children, ...rest }, { closeModal }) => {
   const enhancedChildren = React.Children.map(children, child =>
     cloneElement(child, {
       onClick: closeModal
@@ -15,8 +15,7 @@ ModalClose.contextTypes = {
 }
 
 ModalClose.propTypes = {
-  children: T.element,
-  className: T.string
+  children: T.element
 }
 
 export default ModalClose

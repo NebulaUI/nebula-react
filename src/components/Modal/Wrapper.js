@@ -14,7 +14,8 @@ class ModalWrapper extends Component {
     closeModal: this.props.closeModal,
     handleModalOverlayMount: this.handleOverlayMount,
     modalClickOutsideDeactivates: this.state.clickOutsideDeactivates,
-    modalIsFullyMounted: this.state.isFullyMounted
+    modalIsFullyMounted: this.state.isFullyMounted,
+    modalWidth: this.props.width
   })
 
   componentDidMount() {
@@ -37,9 +38,9 @@ class ModalWrapper extends Component {
     noScroll.off()
   }
 
-  handleOverlayMount = () =>
+  handleOverlayMount = clickOutsideDeactivates =>
     this.setState({
-      clickOutsideDeactivates: true
+      clickOutsideDeactivates
     })
 
   handleKeyUp = (e) => {
@@ -50,14 +51,19 @@ class ModalWrapper extends Component {
 
   render() {
     const {
-      timeout,
-      tag, closeModal, className, ariaLabel, children, ...rest
+      timeout, width,
+      tag, alignTop, closeModal, className, ariaLabel, children, ...rest
     } = this.props
 
     return E(
       tag || 'div',
       {
-        className: classNames('c-modal', { 'is-open': this.state.isFullyMounted }, className),
+        className: classNames(
+          'c-modal',
+          { 'is-open': this.state.isFullyMounted },
+          { 'c-modal--align-top': alignTop },
+          className
+        ),
         role: 'dialog',
         'aria-label': ariaLabel,
         ...rest
@@ -70,8 +76,9 @@ class ModalWrapper extends Component {
 ModalWrapper.childContextTypes = {
   closeModal: T.func.isRequired,
   handleModalOverlayMount: T.func.isRequired,
-  modalClickOutsideDeactivates: T.bool.isRequired,
-  modalIsFullyMounted: T.bool.isRequired
+  modalClickOutsideDeactivates: T.bool,
+  modalIsFullyMounted: T.bool.isRequired,
+  modalWidth: T.number
 }
 
 ModalWrapper.propTypes = {
@@ -80,7 +87,9 @@ ModalWrapper.propTypes = {
   ariaLabel: T.string.isRequired,
   closeModal: T.func.isRequired,
   children: T.node.isRequired,
-  timeout: T.number
+  timeout: T.number,
+  alignTop: T.bool,
+  width: T.number
 }
 
 export default ModalWrapper

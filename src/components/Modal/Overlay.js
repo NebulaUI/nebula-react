@@ -5,17 +5,20 @@ import { classNames } from '../../utils/'
 
 class ModalOverlay extends Component {
   componentDidMount() {
-    this.context.handleModalOverlayMount()
+    this.context.handleModalOverlayMount(this.props.clickToClose)
   }
 
   render() {
-    const { className, node, ...rest } = this.props
+    const {
+      clickToClose,
+      className, tag, ...rest
+    } = this.props
     return E(
-      node || 'button',
+      tag || 'button',
       {
         className: classNames('c-modal__overlay', className),
         'aria-hidden': true,
-        onClick: this.context.closeModal,
+        onClick: this.props.clickToClose && this.context.closeModal,
         tabIndex: -1,
         ...rest
       }
@@ -25,7 +28,8 @@ class ModalOverlay extends Component {
 
 ModalOverlay.propTypes = {
   className: T.string,
-  node: T.string
+  clickToClose: T.bool,
+  tag: T.string
 }
 
 ModalOverlay.contextTypes = {

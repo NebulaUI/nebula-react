@@ -2,8 +2,6 @@ import React, { Component, cloneElement, createElement as E } from 'react'
 import T from 'prop-types'
 import { classNames, removeFalsy } from '../../utils'
 
-import Tab from './Tab'
-
 class TabsTabList extends Component {
   componentDidMount() {
     if (!this.context.activeTabId) {

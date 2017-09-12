@@ -14,8 +14,8 @@ describe('<Modal.Overlay />', () => {
     expect($.type()).toBe('button')
   })
 
-  it('renders a defined node type', () => {
-    const $ = shallow(<Modal.Overlay node="article" />, { context: defaultContext })
+  it('renders a defined tag', () => {
+    const $ = shallow(<Modal.Overlay tag="article" />, { context: defaultContext })
     expect($.type()).toBe('article')
   })
 
@@ -41,11 +41,24 @@ describe('<Modal.Overlay />', () => {
       ...defaultContext,
       closeModal: mockCloseModal
     }
-    const $ = shallow(<Modal.Overlay />, { context })
+    const $ = shallow(<Modal.Overlay clickToClose />, { context })
     expect(mockCloseModal).not.toHaveBeenCalled()
 
     $.simulate('click')
     expect(mockCloseModal).toHaveBeenCalled()
+  })
+
+  it('doesnt close the modal when clicked', () => {
+    const mockCloseModal = jest.fn()
+    const context = {
+      ...defaultContext,
+      closeModal: mockCloseModal
+    }
+    const $ = shallow(<Modal.Overlay />, { context })
+    expect(mockCloseModal).not.toHaveBeenCalled()
+
+    $.simulate('click')
+    expect(mockCloseModal).not.toHaveBeenCalled()
   })
 
   it('calls "handleModalOverlayMount() when mounted', () => {
@@ -54,7 +67,7 @@ describe('<Modal.Overlay />', () => {
       ...defaultContext,
       handleModalOverlayMount: mockHandleModalOverlayMount
     }
-    mount(<Modal.Overlay />, { context })
-    expect(mockHandleModalOverlayMount).toHaveBeenCalled()
+    mount(<Modal.Overlay clickToClose />, { context })
+    expect(mockHandleModalOverlayMount).toHaveBeenCalledWith(true)
   })
 })
