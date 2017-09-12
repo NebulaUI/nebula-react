@@ -79,7 +79,7 @@ describe('<Modal.Wrapper />', () => {
     }
     const $ = mount(
       <Modal.Wrapper {...props}>
-        <Modal.Overlay />
+        <Modal.Overlay clickToClose />
         <Modal.Content>
           <Modal.Close>
             <Modal.Dismiss />
@@ -143,5 +143,32 @@ describe('<Modal.Wrapper />', () => {
     })
     document.dispatchEvent(event2)
     expect(mockCloseModal).toHaveBeenCalledTimes(1)
+  })
+
+  it('renders at a defined width', () => {
+    const props = {
+      ...defaultProps,
+      width: 100
+    }
+    const $ = mount(
+      <Modal.Wrapper {...props}>
+        <Modal.Overlay clickToClose />
+        <Modal.Body>_</Modal.Body>
+      </Modal.Wrapper>
+    )
+    expect($.find(Modal.Body).html()).toMatch(/style="width: 100px;"/)
+  })
+
+  it('can be aligned to the top of the viewport', () => {
+    const props = {
+      ...defaultProps,
+      alignTop: true
+    }
+    const $ = shallow(
+      <Modal.Wrapper {...props}>
+        _
+      </Modal.Wrapper>
+    )
+    expect($.hasClass('c-modal--align-top')).toBe(true)
   })
 })
