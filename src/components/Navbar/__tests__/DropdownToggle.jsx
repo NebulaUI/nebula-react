@@ -18,7 +18,7 @@ describe('<Navbar.Dropdown.Toggle />', () => {
     expect($.contains(<child />)).toBe(true)
   })
 
-  it('renders with appropriate classNames', () => {
+  it.only('renders with appropriate classNames', () => {
     const $ = shallow(<Navbar.Dropdown.Toggle className="test">_</Navbar.Dropdown.Toggle>)
     expect($.childAt(0).hasClass('c-navbar__dropdown-toggle test')).toBe(true)
   })
@@ -50,7 +50,7 @@ describe('<Navbar.Dropdown.Toggle />', () => {
     expect($.hasClass('c-navbar__dropdown-toggle is-open')).toBe(false)
   })
 
-  it.only('can be opened and closed', () => {
+  it('can be opened and closed', () => {
     const $ = shallow(<Navbar.Dropdown.Toggle>_</Navbar.Dropdown.Toggle>)
     const wrapper = $.childAt(0)
     expect(wrapper.hasClass('is-open')).toBe(false)
@@ -58,7 +58,6 @@ describe('<Navbar.Dropdown.Toggle />', () => {
     wrapper.simulate('click')
     console.log(wrapper.prop('className'))
     expect(wrapper.hasClass('is-open')).toBe(true)
-
   })
 
   it('adds a click handler to the window when mounted and removes it when it unmounts', () => {
