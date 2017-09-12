@@ -3,19 +3,23 @@ import { shallow } from 'enzyme'
 
 import { StatusCard } from '../'
 
+const defaultProps = {
+  status: 'success'
+}
+
 describe('<StatusCard />', () => {
   it('renders a "div" by default', () => {
-    const $ = shallow(<StatusCard>_</StatusCard>)
+    const $ = shallow(<StatusCard {...defaultProps}>_</StatusCard>)
     expect($.type()).toBe('div')
   })
 
   it('renders a defined tag type', () => {
-    const $ = shallow(<StatusCard tag="article">_</StatusCard>)
+    const $ = shallow(<StatusCard tag="article" {...defaultProps}>_</StatusCard>)
     expect($.type()).toBe('article')
   })
 
   it('renders with the correct default className', () => {
-    const $ = shallow(<StatusCard>_</StatusCard>)
+    const $ = shallow(<StatusCard {...defaultProps}>_</StatusCard>)
     expect($.hasClass('c-status-card')).toBe(true)
   })
 
@@ -42,13 +46,13 @@ describe('<StatusCard />', () => {
   })
 
   it('renders children', () => {
-    const $ = shallow(<StatusCard>test child</StatusCard>)
+    const $ = shallow(<StatusCard {...defaultProps}>test child</StatusCard>)
     expect($.contains('test child')).toBe(true)
   })
 
   it('renders with attributes', () => {
     const $ = shallow(
-      <StatusCard style={{ position: 'relative' }} ariaHidden="true">
+      <StatusCard {...defaultProps} style={{ position: 'relative' }} ariaHidden="true">
         _
       </StatusCard>
     )
