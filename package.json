@@ -82,7 +82,6 @@
     "coveragePathIgnorePatterns": [
       "/node_modules",
       "<rootDir>/index.js",
-      "<rootDir>/utils/window.js",
       "<rootDir>/utils/randomId.js"
     ]
   }

@@ -4,7 +4,6 @@ import buildClassName from './buildClassName'
 import randomId from './randomId'
 import sortArray from './sortArray'
 import objectWithoutKey from './objectWithoutKey'
-import { addEListener, removeEListener } from './window'
 
 export {
   buildClassName,
@@ -12,7 +11,5 @@ export {
   removeFalsy,
   randomId,
   sortArray,
-  objectWithoutKey,
-  addEListener,
-  removeEListener
+  objectWithoutKey
 }
