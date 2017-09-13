@@ -26,5 +26,7 @@ describe('<ClickOutside />', () => {
       target: 'foo'
     })
     expect(mockOnClickOutside).toHaveBeenCalledTimes(1)
+
+    $.unmount()
   })
 })

@@ -8,6 +8,7 @@ const NavbarInner = ({ tag, children, className, ...rest }) =>
     tag || 'nav',
     {
       className: classNames('c-navbar__wrap', className),
+      role: 'navigation',
       ...rest
     },
     children

@@ -20,6 +20,8 @@ class NavbarOverlay extends Component {
       tag || 'button',
       {
         className: classNames('c-navbar__overlay', className),
+        'aria-hidden': true,
+        tabIndex: 0,
         ...onClickProps,
         ...rest
       },

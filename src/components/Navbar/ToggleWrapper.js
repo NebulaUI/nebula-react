@@ -19,6 +19,8 @@ class NavbarToggleWrapper extends Component {
       tag || 'button',
       {
         className: classNames('c-navbar__toggle', className),
+        'aria-hidden': true,
+        tabIndex: 0,
         ...onClickProps,
         ...rest
       },

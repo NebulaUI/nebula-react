@@ -50,10 +50,12 @@ describe('<Navbar.Dropdown.Wrapper />', () => {
       </Navbar.Dropdown.Wrapper>
     )
     expect($.hasClass('is-open')).toBe(false)
+    expect($.html()).toMatch(/aria-expanded="false"/)
 
     $.find(Navbar.Dropdown.Toggle).simulate('click')
     expect($.hasClass('c-navbar__item')).toBe(true)
     expect($.hasClass('is-open')).toBe(true)
+    expect($.html()).toMatch(/aria-expanded="true"/)
   })
 
   it('can be closed by clicking outside', () => {
@@ -88,5 +90,22 @@ describe('<Navbar.Dropdown.Wrapper />', () => {
 
     simulant.fire(document, 'click')
     expect($.hasClass('is-open')).toBe(true)
+  })
+
+  it('does not render DropdownContent when closed', () => {
+    const $ = mount(
+      <Navbar.Dropdown.Wrapper>
+        <Navbar.Dropdown.Toggle>
+          _
+        </Navbar.Dropdown.Toggle>
+        <Navbar.Dropdown.Content>
+          _
+        </Navbar.Dropdown.Content>
+      </Navbar.Dropdown.Wrapper>
+    )
+    expect($.find(Navbar.Dropdown.Content)).toHaveLength(0)
+
+    $.find(Navbar.Dropdown.Toggle).simulate('click')
+    expect($.find(Navbar.Dropdown.Content)).toHaveLength(1)
   })
 })

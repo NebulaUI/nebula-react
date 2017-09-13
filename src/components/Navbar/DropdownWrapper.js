@@ -1,8 +1,9 @@
-import { Component, createElement as E } from 'react'
+import React, { Component, createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils'
 import { ClickOutside } from '../../'
+import DropdownContent from './DropdownContent'
 
 class NavbarDropdownWrapper extends Component {
   state = { isOpen: false }
@@ -14,16 +15,26 @@ class NavbarDropdownWrapper extends Component {
 
   render() {
     const { clickOutsideToClose, tag, children, className, ...rest } = this.props
+    const { isOpen } = this.state
+    const enhancedChildren = React.Children.map(children, (child) => {
+      if (child.type === DropdownContent) {
+        return isOpen ? child : null
+      }
+
+      return child
+    })
     const Comp = E(
       tag || 'li',
       {
         className: classNames(
           'c-navbar__item', className,
-          { 'is-open': this.state.isOpen }
+          { 'is-open': isOpen }
         ),
+        'aria-haspopup': true,
+        'aria-expanded': isOpen,
         ...rest
       },
-      children
+      enhancedChildren
     )
     return clickOutsideToClose
     ? E(

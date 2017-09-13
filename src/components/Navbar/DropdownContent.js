@@ -1,20 +1,41 @@
-import { createElement as E } from 'react'
+import { Component, createElement as E } from 'react'
 import T from 'prop-types'
 import { classNames } from '../../utils/'
 
-const NavbarDropdownContent = ({ tag, southWest, children, className, ...rest }) =>
-  E(
-    tag || 'ul',
-    {
-      className: classNames(
-        'c-navbar__dropdown',
-        { 'c-navbar__dropdown--south-west': southWest },
-        className
-      ),
-      ...rest
-    },
-    children
-  )
+class NavbarDropdownContent extends Component {
+  state = {
+    isOpen: false
+  }
+
+  componentDidMount() {
+    this.animateOpening()
+  }
+
+  animateOpening = () => {
+    setTimeout(() => {
+      this.setState({
+        isOpen: true
+      })
+    }, 0)
+  }
+
+  render() {
+    const { tag, southWest, children, className, ...rest } = this.props
+    return E(
+      tag || 'ul',
+      {
+        className: classNames(
+          'c-navbar__dropdown',
+          { 'is-open': this.state.isOpen },
+          { 'c-navbar__dropdown--south-west': southWest },
+          className
+        ),
+        ...rest
+      },
+      children
+    )
+  }
+}
 
 NavbarDropdownContent.propTypes = {
   className: T.string,
