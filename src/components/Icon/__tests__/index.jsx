@@ -7,22 +7,27 @@ const defaultProps = {
   icon: {
     id: 'T',
     viewBox: 'T'
-  }
+  },
+  fill: '000000'
 }
 
 describe('<Icon />', () => {
-  it('renders with verticalAlign, width and height attributes and default className', () => {
+  it('renders with verticalAlign, width, height, fill and stroke attributes and default className', () => {
     const props = {
       ...defaultProps,
       width: '20px',
       height: '50px',
-      verticalAlign: 'sub'
+      verticalAlign: 'sub',
+      fill: '000000',
+      stroke: 'ff0000'
     }
     const $ = shallow(<Icon {...props} />)
     expect($.find('svg').prop('style')).toEqual({
       width: '20px',
       height: '50px',
-      verticalAlign: 'sub'
+      verticalAlign: 'sub',
+      fill: '000000',
+      stroke: 'ff0000'
     })
     expect($.hasClass('c-icon')).toBe(true)
     expect($.find('svg').hasClass('c-icon__svg')).toBe(true)
