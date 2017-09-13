@@ -3,37 +3,43 @@ import { shallow } from 'enzyme'
 
 import { Navbar } from '../'
 
+const defaultContext = {
+  handleToggle: jest.fn()
+}
+
 describe('<Navbar.Toggle.Wrapper />', () => {
   it('renders children', () => {
     const $ = shallow(
       <Navbar.Toggle.Wrapper>
         Toggle.Wrapper text
       </Navbar.Toggle.Wrapper>
-    )
+    , { context: defaultContext })
     expect($.contains('Toggle.Wrapper text')).toBe(true)
   })
 
   it('renders with appropriate classNames', () => {
-    const $ = shallow(<Navbar.Toggle.Wrapper className="test">Test</Navbar.Toggle.Wrapper>)
+    const $ = shallow(
+      <Navbar.Toggle.Wrapper className="test" />
+    , { context: defaultContext })
     expect($.hasClass('c-navbar__toggle test')).toBe(true)
   })
 
   it('renders a defined tag type', () => {
-    const $ = shallow(<Navbar.Toggle.Wrapper tag="article">_</Navbar.Toggle.Wrapper>)
+    const $ = shallow(
+      <Navbar.Toggle.Wrapper tag="article" />
+    , { context: defaultContext })
     expect($.type()).toBe('article')
   })
 
   it('renders a button by default', () => {
-    const $ = shallow(<Navbar.Toggle.Wrapper>-</Navbar.Toggle.Wrapper>)
+    const $ = shallow(<Navbar.Toggle.Wrapper />, { context: defaultContext })
     expect($.type()).toBe('button')
   })
 
   it('renders with attributes', () => {
     const $ = shallow(
-      <Navbar.Toggle.Wrapper style={{ position: 'relative' }} ariaHidden="true">
-        _
-      </Navbar.Toggle.Wrapper>
-    )
+      <Navbar.Toggle.Wrapper style={{ position: 'relative' }} ariaHidden="true" />
+    , { context: defaultContext })
     expect($.prop('style')).toEqual({
       position: 'relative'
     })
@@ -42,7 +48,10 @@ describe('<Navbar.Toggle.Wrapper />', () => {
 
   it('calls handleToggle.Wrapper when clicked', () => {
     const handleToggleWrapperMock = jest.fn()
-    const $ = shallow(<Navbar.Toggle.Wrapper handleToggle={handleToggleWrapperMock} />)
+    const context = {
+      handleToggle: handleToggleWrapperMock
+    }
+    const $ = shallow(<Navbar.Toggle.Wrapper />, { context })
     expect(handleToggleWrapperMock).not.toHaveBeenCalled()
 
     $.simulate('click')
@@ -52,7 +61,10 @@ describe('<Navbar.Toggle.Wrapper />', () => {
   it('takes a callback that is called with the event and component instance when clicked', () => {
     const mockCallback = jest.fn()
     const mockEvent = 'test'
-    const $ = shallow(<Navbar.Toggle.Wrapper callback={mockCallback}>Test</Navbar.Toggle.Wrapper>)
+    const context = {
+      handleToggle: mockCallback
+    }
+    const $ = shallow(<Navbar.Toggle.Wrapper onClick={mockCallback} />, { context })
     expect(mockCallback).not.toHaveBeenCalled()
 
     $.simulate('click', mockEvent)
@@ -61,7 +73,7 @@ describe('<Navbar.Toggle.Wrapper />', () => {
 
   it('does not attempt to call a callback when clicked if no callback is passed', () => {
     const mockCallback = jest.fn()
-    const $ = shallow(<Navbar.Toggle.Wrapper>Test</Navbar.Toggle.Wrapper>)
+    const $ = shallow(<Navbar.Toggle.Wrapper />, { context: defaultContext })
     expect(mockCallback).not.toHaveBeenCalled()
 
     $.simulate('click')

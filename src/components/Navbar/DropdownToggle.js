@@ -1,59 +1,33 @@
-import { Component, createElement as E } from 'react'
+import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils'
-import { ClickOutside } from '../../'
 
-class NavbarDropdownToggle extends Component {
-  constructor() {
-    super()
-
-    this.state = {
-      isOpen: false
-    }
-  }
-
-  handleClick = () =>
-    this.setState({
-      isOpen: !this.state.isOpen
-    })
-
-
-  handleClickOutside = () => {
-    this.setState({ isOpen: false })
-  }
-
-  render() {
-    const { tag, children, className, ...rest } = this.props
-    const Comp = E(
-      tag || 'button',
-      {
-        onClick: this.handleClick,
-        className: classNames(
-          'c-navbar__dropdown-toggle', className,
-          { 'is-open': this.state.isOpen }
-        ),
-        ...rest
-      },
-      children
-    )
-    return this.context.navbarClickOutsideToClose
-      ? E(
-        ClickOutside,
-        { onClickOutside: this.handleClickOutside },
-        Comp
-      ) : Comp
-  }
-}
+const NavbarDropdownToggle = ({
+  tag,
+  children,
+  className,
+  ...rest
+}, {
+  navbarDropdownToggleOpen
+}) =>
+  E(
+    tag || 'button',
+    {
+      onClick: navbarDropdownToggleOpen,
+      className: classNames('c-navbar__dropdown-toggle', className),
+      ...rest
+    },
+    children
+  )
 
 NavbarDropdownToggle.contextTypes = {
-  navbarClickOutsideToClose: T.bool
+  navbarDropdownToggleOpen: T.func.isRequired
 }
 
 NavbarDropdownToggle.propTypes = {
   className: T.string,
   tag: T.string,
-  clickOutsideToClose: T.bool,
   children: T.node.isRequired
 }
 

@@ -1,5 +1,7 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
+import simulant from 'jsdom-simulant'
+
 import { Flyout } from '../'
 
 const defaultProps = {
@@ -97,10 +99,7 @@ describe('<Flyout.Wrapper />', () => {
 
     $.find(Flyout.Toggle).simulate('click')
     expect($.hasClass('is-open')).toBe(true)
-
-    const evt = document.createEvent('HTMLEvents')
-    evt.initEvent('click', false, true)
-    window.dispatchEvent(evt)
+    simulant.fire(document, 'click')
 
     expect($.hasClass('is-open')).toBe(false)
   })
@@ -189,9 +188,7 @@ describe('<Flyout.Wrapper />', () => {
     $.find(Flyout.Toggle).simulate('click')
     expect(mockOnFlyoutChange).toHaveBeenCalledWith(true)
 
-    const evt = document.createEvent('HTMLEvents')
-    evt.initEvent('click', false, true)
-    window.dispatchEvent(evt)
+    simulant.fire(document, 'click')
     expect(mockOnFlyoutChange).toHaveBeenCalledTimes(2)
   })
 })
