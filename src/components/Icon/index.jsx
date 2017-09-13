@@ -12,6 +12,8 @@ const Icon = ({
   verticalAlign,
   className,
   children,
+  fill,
+  stroke,
   icon: { id, viewBox }
 }) =>
   E(
@@ -26,7 +28,7 @@ const Icon = ({
         viewBox,
         className: classNames('c-icon__svg', { 'c-icon__svg--left': iconLeft }, { 'c-icon__svg--right': iconRight }),
         role: 'presentation',
-        style: { width, height, verticalAlign }
+        style: { width, height, verticalAlign, fill, stroke }
       },
       E(
         'use',
@@ -49,7 +51,9 @@ Icon.propTypes = {
   iconRight: T.bool,
   verticalAlign: T.string,
   className: T.string,
-  children: T.node
+  children: T.node,
+  fill: T.string.isRequired,
+  stroke: T.string
 }
 
 export { Icon }
