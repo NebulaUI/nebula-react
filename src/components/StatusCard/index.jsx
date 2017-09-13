@@ -22,7 +22,7 @@ StatusCard.propTypes = {
     'info',
     'warning',
     'error'
-  ]),
+  ]).isRequired,
   children: T.node.isRequired
 }
 
