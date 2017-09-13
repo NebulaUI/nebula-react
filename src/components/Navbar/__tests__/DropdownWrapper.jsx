@@ -1,5 +1,6 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
+import simulant from 'jsdom-simulant'
 
 import { Navbar } from '../'
 
@@ -38,5 +39,73 @@ describe('<Navbar.Dropdown.Wrapper />', () => {
       position: 'relative'
     })
     expect($.prop('ariaHidden')).toBe('true')
+  })
+
+  it('can be opened and closed', () => {
+    const $ = mount(
+      <Navbar.Dropdown.Wrapper>
+        <Navbar.Dropdown.Toggle>
+          _
+        </Navbar.Dropdown.Toggle>
+      </Navbar.Dropdown.Wrapper>
+    )
+    expect($.hasClass('is-open')).toBe(false)
+    expect($.html()).toMatch(/aria-expanded="false"/)
+
+    $.find(Navbar.Dropdown.Toggle).simulate('click')
+    expect($.hasClass('c-navbar__item')).toBe(true)
+    expect($.hasClass('is-open')).toBe(true)
+    expect($.html()).toMatch(/aria-expanded="true"/)
+  })
+
+  it('can be closed by clicking outside', () => {
+    const $ = mount(
+      <Navbar.Dropdown.Wrapper clickOutsideToClose>
+        <Navbar.Dropdown.Toggle>
+          _
+        </Navbar.Dropdown.Toggle>
+      </Navbar.Dropdown.Wrapper>
+    )
+    expect($.hasClass('is-open')).toBe(false)
+
+    $.find(Navbar.Dropdown.Toggle).simulate('click')
+    expect($.hasClass('is-open')).toBe(true)
+
+    simulant.fire(document, 'click')
+    expect($.hasClass('is-open')).toBe(false)
+  })
+
+  it('cannot be closed by clicking outside', () => {
+    const $ = mount(
+      <Navbar.Dropdown.Wrapper>
+        <Navbar.Dropdown.Toggle>
+          _
+        </Navbar.Dropdown.Toggle>
+      </Navbar.Dropdown.Wrapper>
+    )
+    expect($.hasClass('is-open')).toBe(false)
+
+    $.find(Navbar.Dropdown.Toggle).simulate('click')
+    expect($.hasClass('is-open')).toBe(true)
+
+    simulant.fire(document, 'click')
+    expect($.hasClass('is-open')).toBe(true)
+  })
+
+  it('does not render DropdownContent when closed', () => {
+    const $ = mount(
+      <Navbar.Dropdown.Wrapper>
+        <Navbar.Dropdown.Toggle>
+          _
+        </Navbar.Dropdown.Toggle>
+        <Navbar.Dropdown.Content>
+          _
+        </Navbar.Dropdown.Content>
+      </Navbar.Dropdown.Wrapper>
+    )
+    expect($.find(Navbar.Dropdown.Content)).toHaveLength(0)
+
+    $.find(Navbar.Dropdown.Toggle).simulate('click')
+    expect($.find(Navbar.Dropdown.Content)).toHaveLength(1)
   })
 })

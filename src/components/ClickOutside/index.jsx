@@ -1,14 +1,13 @@
 import React, { cloneElement } from 'react'
 import T from 'prop-types'
-import { addEListener, removeEListener } from '../../utils'
 
 class ClickOutside extends React.Component {
   componentDidMount() {
-    addEListener('click', this.handleWindowClick)
+    document.addEventListener('click', this.handleWindowClick)
   }
 
   componentWillUnmount() {
-    removeEListener('click', this.handleWindowClick)
+    document.removeEventListener('click', this.handleWindowClick)
   }
 
   handleWindowClick = (e) => {

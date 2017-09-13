@@ -4,21 +4,24 @@ import { classNames } from '../../utils/'
 
 class NavbarOverlay extends Component {
   handleClick = (e) => {
-    this.props.callback(e, this)
+    this.props.onClick(e, this)
   }
 
   render() {
-    const { close, tag, className, callback, children, ...rest } = this.props
-    const onClickProps = callback
+    const { tag, className, onClick, children, ...rest } = this.props
+    const onClickProps = onClick
       ? {
         onClick: this.handleClick
       } : {
-        onClick: close
+        onClick: this.context.close
       }
+
     return E(
       tag || 'button',
       {
         className: classNames('c-navbar__overlay', className),
+        'aria-hidden': true,
+        tabIndex: 0,
         ...onClickProps,
         ...rest
       },
@@ -27,10 +30,13 @@ class NavbarOverlay extends Component {
   }
 }
 
+NavbarOverlay.contextTypes = {
+  close: T.func.isRequired
+}
+
 NavbarOverlay.propTypes = {
-  close: T.func,
   tag: T.string,
-  callback: T.func,
+  onClick: T.func,
   children: T.node,
   className: T.string
 }

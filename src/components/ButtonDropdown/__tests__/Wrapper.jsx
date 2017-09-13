@@ -1,5 +1,6 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
+import simulant from 'jsdom-simulant'
 
 import { ButtonDropdown } from '../'
 
@@ -115,9 +116,7 @@ describe('<ButtonDropdown.Wrapper />', () => {
     $.find(ButtonDropdown.Toggle).simulate('click')
     expect($.hasClass('is-open')).toBe(true)
 
-    const evt = document.createEvent('HTMLEvents')
-    evt.initEvent('click', false, true)
-    window.dispatchEvent(evt)
+    simulant.fire(document, 'click')
 
     expect($.hasClass('is-open')).toBe(false)
   })
@@ -172,9 +171,7 @@ describe('<ButtonDropdown.Wrapper />', () => {
     $.find(ButtonDropdown.Toggle).simulate('click')
     expect(mockOnButtonDropdownChange).toHaveBeenCalledWith(true)
 
-    const evt = document.createEvent('HTMLEvents')
-    evt.initEvent('click', false, true)
-    window.dispatchEvent(evt)
+    simulant.fire(document, 'click')
     expect(mockOnButtonDropdownChange).toHaveBeenCalledTimes(2)
   })
 

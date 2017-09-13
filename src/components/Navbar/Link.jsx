@@ -4,7 +4,7 @@ import { classNames } from '../../utils/'
 
 class NavbarLink extends Component {
   handleClick = (e) => {
-    this.props.callback(e, this)
+    this.props.onClick(e, this)
   }
 
   render() {
@@ -14,12 +14,12 @@ class NavbarLink extends Component {
       tag,
       className,
       activeClassName = 'is-active',
-      callback,
+      onClick,
       children,
       ...rest
     } = this.props
 
-    const onClickProps = callback
+    const onClickProps = onClick
       ? {
         onClick: this.handleClick
       } : {}
@@ -61,7 +61,7 @@ NavbarLink.propTypes = {
   to: T.string.isRequired,
   tag: T.string,
   className: T.string,
-  callback: T.func,
+  onClick: T.func,
   children: T.node.isRequired
 }
 

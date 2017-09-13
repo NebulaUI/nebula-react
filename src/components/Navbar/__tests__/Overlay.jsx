@@ -3,37 +3,39 @@ import { shallow } from 'enzyme'
 
 import { Navbar } from '../'
 
+const defaultContext = {
+  close: jest.fn()
+}
+
 describe('<Navbar.Overlay />', () => {
   it('renders children', () => {
     const $ = shallow(
       <Navbar.Overlay>
         Overlay text
       </Navbar.Overlay>
-    )
+    , { context: defaultContext })
     expect($.contains('Overlay text')).toBe(true)
   })
 
   it('renders with appropriate classNames', () => {
-    const $ = shallow(<Navbar.Overlay className="test">Test</Navbar.Overlay>)
+    const $ = shallow(<Navbar.Overlay className="test" />, { context: defaultContext })
     expect($.hasClass('c-navbar__overlay test')).toBe(true)
   })
 
   it('renders a defined tag type', () => {
-    const $ = shallow(<Navbar.Overlay tag="article" />)
+    const $ = shallow(<Navbar.Overlay tag="article" />, { context: defaultContext })
     expect($.type()).toBe('article')
   })
 
   it('renders a button by default', () => {
-    const $ = shallow(<Navbar.Overlay />)
+    const $ = shallow(<Navbar.Overlay />, { context: defaultContext })
     expect($.type()).toBe('button')
   })
 
   it('renders with attributes', () => {
     const $ = shallow(
-      <Navbar.Overlay style={{ position: 'relative' }} ariaHidden="true">
-        _
-      </Navbar.Overlay>
-    )
+      <Navbar.Overlay style={{ position: 'relative' }} ariaHidden="true" />
+      , { context: defaultContext })
     expect($.prop('style')).toEqual({
       position: 'relative'
     })
@@ -42,7 +44,10 @@ describe('<Navbar.Overlay />', () => {
 
   it('calls handleToggle when clicked', () => {
     const closeMock = jest.fn()
-    const $ = shallow(<Navbar.Overlay close={closeMock} />)
+    const context = {
+      close: closeMock
+    }
+    const $ = shallow(<Navbar.Overlay />, { context })
     expect(closeMock).not.toHaveBeenCalled()
 
     $.simulate('click')
@@ -52,20 +57,13 @@ describe('<Navbar.Overlay />', () => {
   it('takes a callback that is called with the event and component instance when clicked', () => {
     const mockCallback = jest.fn()
     const mockEvent = 'test'
-    const $ = shallow(<Navbar.Overlay callback={mockCallback}>Test</Navbar.Overlay>)
+    const context = {
+      close: mockCallback
+    }
+    const $ = shallow(<Navbar.Overlay onClick={mockCallback} />, { context })
     expect(mockCallback).not.toHaveBeenCalled()
 
     $.simulate('click', mockEvent)
     expect(mockCallback).toHaveBeenCalledWith(mockEvent, $.instance())
-  })
-
-  it('does not attempt to call a callback when clicked if no callback is passed', () => {
-    const mockCallback = jest.fn()
-    const $ = shallow(<Navbar.Overlay>Test</Navbar.Overlay>)
-    expect(mockCallback).not.toHaveBeenCalled()
-
-    $.simulate('click')
-
-    expect(mockCallback).not.toHaveBeenCalled()
   })
 })

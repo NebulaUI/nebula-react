@@ -1,30 +1,20 @@
-import React, { createElement as E } from 'react'
+import { createElement as E } from 'react'
 import T from 'prop-types'
-import { classNames, removeFalsy } from '../../utils/'
+import { classNames } from '../../utils/'
 
-import ToggleWrapper from './ToggleWrapper'
 
-const NavbarInner = ({ tag, handleToggle, children, className, ...rest }) => {
-  const enhancedChildren = React.Children.map(removeFalsy(children), (child) => {
-    if (child.type === ToggleWrapper) {
-      return React.cloneElement(child, {
-        handleToggle
-      })
-    }
-    return child
-  })
-  return E(
+const NavbarInner = ({ tag, children, className, ...rest }) =>
+  E(
     tag || 'nav',
     {
       className: classNames('c-navbar__wrap', className),
+      role: 'navigation',
       ...rest
     },
-    enhancedChildren
+    children
   )
-}
 
 NavbarInner.propTypes = {
-  handleToggle: T.func,
   tag: T.string,
   children: T.node.isRequired,
   className: T.string

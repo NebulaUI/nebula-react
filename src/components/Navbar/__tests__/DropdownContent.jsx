@@ -1,5 +1,5 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 
 import { Navbar } from '../'
 
@@ -45,5 +45,19 @@ describe('<Navbar.Dropdown.Content />', () => {
       position: 'relative'
     })
     expect($.prop('ariaHidden')).toBe('true')
+  })
+
+  it('renders closed on initial mount', () => {
+    const $ = mount(<Navbar.Dropdown.Content>_</Navbar.Dropdown.Content>)
+    expect($.hasClass('is-open')).toBe(false)
+  })
+
+  it('renders open just after mounting allowing for CSS animation', () => {
+    jest.useFakeTimers()
+    const $ = mount(<Navbar.Dropdown.Content>_</Navbar.Dropdown.Content>)
+    expect($.hasClass('is-open')).toBe(false)
+
+    jest.runAllTimers()
+    expect($.hasClass('is-open')).toBe(true)
   })
 })

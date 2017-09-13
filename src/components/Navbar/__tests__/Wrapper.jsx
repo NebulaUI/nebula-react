@@ -1,5 +1,5 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 
 import { Navbar } from '../'
 
@@ -52,18 +52,20 @@ describe('<Navbar.Wrapper />', () => {
   })
 
   it('can be opened and closed', () => {
-    const $ = shallow(
+    const $ = mount(
       <Navbar.Wrapper>
         <Navbar.Overlay>_</Navbar.Overlay>
-        <Navbar.Inner>_</Navbar.Inner>
+        <Navbar.Inner>
+          <Navbar.Toggle.Wrapper />
+        </Navbar.Inner>
       </Navbar.Wrapper>
     )
     expect($.hasClass('is-open')).toBe(false)
 
-    $.find(Navbar.Inner).prop('handleToggle')()
+    $.find(Navbar.Toggle.Wrapper).simulate('click')
     expect($.hasClass('is-open')).toBe(true)
 
-    $.find(Navbar.Overlay).prop('close')()
+    $.find(Navbar.Overlay).simulate('click')
     expect($.hasClass('is-open')).toBe(false)
   })
 })

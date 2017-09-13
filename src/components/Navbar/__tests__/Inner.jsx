@@ -39,14 +39,4 @@ describe('<Navbar.Inner />', () => {
     const $ = shallow(<Navbar.Inner>-</Navbar.Inner>)
     expect($.type()).toBe('nav')
   })
-
-  it('passes handleToggle to appropriate children', () => {
-    const handleToggle = jest.fn()
-    const $ = shallow(
-      <Navbar.Inner handleToggle={handleToggle}>
-        <Navbar.Toggle.Wrapper>_</Navbar.Toggle.Wrapper>
-      </Navbar.Inner>
-    )
-    expect($.find(Navbar.Toggle.Wrapper).prop('handleToggle')).toBe(handleToggle)
-  })
 })

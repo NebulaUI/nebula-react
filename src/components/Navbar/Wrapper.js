@@ -1,9 +1,7 @@
-import React, { Component, createElement as E } from 'react'
+import { Component, createElement as E } from 'react'
 import T from 'prop-types'
 
-import { classNames, removeFalsy } from '../../utils/'
-import Overlay from './Overlay'
-import Inner from './Inner'
+import { classNames } from '../../utils/'
 
 class NavbarWrapper extends Component {
   constructor() {
@@ -13,6 +11,11 @@ class NavbarWrapper extends Component {
       isOpen: false
     }
   }
+
+  getChildContext = (() => ({
+    handleToggle: this.handleToggle,
+    close: this.close
+  }))
 
   handleToggle = () => {
     this.setState({
@@ -27,31 +30,11 @@ class NavbarWrapper extends Component {
   }
 
   render() {
-    const {
-      handleToggle,
-      close,
-      state: { isOpen },
-      props: { tag, children, className, sticky, ...rest }
-    } = this
-    const enhancedChildren = React.Children.map(removeFalsy(children), (child) => {
-      if (child.type === Overlay) {
-        return React.cloneElement(child, {
-          close
-        })
-      }
-
-      if (child.type === Inner) {
-        return React.cloneElement(child, {
-          handleToggle
-        })
-      }
-
-      return child
-    })
+    const { tag, children, className, sticky, ...rest } = this.props
     return E(
       tag || 'header',
       {
-        className: classNames('c-navbar', { 'is-open': isOpen }),
+        className: classNames('c-navbar', { 'is-open': this.state.isOpen }),
         ...rest
       },
       E(
@@ -62,10 +45,15 @@ class NavbarWrapper extends Component {
             { 'is-sticky': sticky }
           )
         },
-        enhancedChildren
+        children
       )
     )
   }
+}
+
+NavbarWrapper.childContextTypes = {
+  handleToggle: T.func.isRequired,
+  close: T.func.isRequired
 }
 
 NavbarWrapper.propTypes = {
