@@ -48,7 +48,7 @@ describe('<Navbar.Link />', () => {
   it('takes a callback that is called with the event and component instance when clicked', () => {
     const mockCallback = jest.fn()
     const mockEvent = 'test'
-    const $ = shallow(<Navbar.Link to="/" callback={mockCallback}>Test</Navbar.Link>)
+    const $ = shallow(<Navbar.Link to="/" onClick={mockCallback}>Test</Navbar.Link>)
     expect(mockCallback).not.toHaveBeenCalled()
 
     $.simulate('click', mockEvent)
