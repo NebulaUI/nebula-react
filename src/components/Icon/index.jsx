@@ -56,7 +56,7 @@ Icon.propTypes = {
   tag: T.string,
   width: T.string,
   height: T.string,
-  iconPosition: T.oneOf(['left', 'right']).isRequired,
+  iconPosition: T.oneOf(['left', 'right']),
   verticalAlign: T.string,
   className: T.string,
   children: T.node,

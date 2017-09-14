@@ -59,7 +59,7 @@ LoadingIcon.propTypes = {
   fill: T.string,
   tag: T.string,
   size: T.number,
-  iconPosition: T.oneOf(['left', 'right']).isRequired,
+  iconPosition: T.oneOf(['left', 'right']),
   verticalAlign: T.string,
   className: T.string,
   children: T.node
