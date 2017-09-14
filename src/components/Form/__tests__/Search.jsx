@@ -2,46 +2,52 @@ import React from 'react'
 import { shallow, mount } from 'enzyme'
 
 import { Form } from '../'
+import { randomId } from '../../../utils/'
+
+jest.mock('../../../utils/randomId')
 
 const defaultProps = {
   submitPosition: 'left'
 }
 
-describe('<Form.Search />', () => {
-  it('renders with appropriate classNames', () => {
-    const $ = shallow(<Form.Search {...defaultProps} className="test" />)
-    expect($.find(Form.SearchWrapper).hasClass('c-search test'))
-  })
+beforeEach(() => {
+  randomId.mockImplementation(() => '_')
+})
 
+describe('<Form.Search />', () => {
   it('can be configured with the submit button to the left', () => {
     const $ = mount(<Form.Search submitPosition="left" />)
-    expect($.find(Form.SearchWrapper).prop('submitPosition')).toBe('left')
     expect($.find(Form.SearchWrapper).hasClass('c-search--submit-left')).toBe(true)
   })
 
   it('can be configured with the submit button to the right', () => {
     const $ = mount(<Form.Search submitPosition="right" />)
-    expect($.find(Form.SearchWrapper).prop('submitPosition')).toBe('right')
     expect($.find(Form.SearchWrapper).hasClass('c-search--submit-right')).toBe(true)
   })
 
   it('renders small', () => {
-    const $ = mount(<Form.Search {...defaultProps} small />)
-    expect($.prop('small')).toBe(true)
+    const props = {
+      ...defaultProps,
+      small: true
+    }
+    const $ = mount(<Form.Search {...props} />)
     expect($.find(Form.SearchInput).hasClass('c-text-input--sm'))
   })
 
   it('takes attributes', () => {
-    const $ = shallow(<Form.Search {...defaultProps} placeholder="test" style={{ position: 'relative' }} />)
-    expect($.prop('placeholder')).toBe('test')
+    const props = {
+      ...defaultProps,
+      style: { position: 'relative' }
+    }
+    const $ = shallow(<Form.Search {...props} />)
     expect($.prop('style')).toEqual({
       position: 'relative'
     })
   })
 
-  it('renders with type "search" by default', () => {
-    const $ = shallow(<Form.Search {...defaultProps} type="search" />)
-    expect($.prop('type')).toBe('search')
+  it('renders with type "search"', () => {
+    const $ = mount(<Form.Search {...defaultProps} />)
+    expect($.find(Form.SearchInput).html()).toMatch(/type="search"/)
   })
 
   it('takes a onChange handler that is called when the search input changes', () => {
@@ -92,5 +98,54 @@ describe('<Form.Search />', () => {
 
     const $ = mount(<Form.Search {...props} />)
     expect($.find(Form.SearchInput).prop('value')).toBe('test-value')
+  })
+
+  it('can render with a label', () => {
+    const props = {
+      ...defaultProps,
+      label: 'Test label'
+    }
+    const $ = mount(<Form.Search {...props} />)
+    expect($.find(Form.Label).exists()).toBe(true)
+    expect($.html()).toMatch(/<form role="search">/)
+    expect($.find(Form.SearchWrapper).html()).toMatch('<div class="c-search')
+  })
+
+  it('can render without a label', () => {
+    const props = {
+      ...defaultProps,
+      label: undefined
+    }
+    const $ = mount(<Form.Search {...props} />)
+    expect($.find(Form.Label).exists()).toBe(false)
+    expect($.find(Form.SearchWrapper).html()).toMatch('<form role="search" class="c-search')
+  })
+
+  it('generates a random ID that is passed to the label and the input', () => {
+    randomId.mockImplementation(() => 'test-id')
+    const props = {
+      ...defaultProps,
+      label: '_'
+    }
+    const $ = mount(<Form.Search {...props} />)
+    expect($.find(Form.Label).prop('htmlFor')).toBe('test-id')
+    expect($.find(Form.SearchInput).prop('id')).toBe('test-id')
+  })
+
+  it('takes a user defined id that is passed to label and the input', () => {
+    const props = {
+      ...defaultProps,
+      label: '_',
+      id: 'hello'
+    }
+    const $ = mount(<Form.Search {...props} />)
+    expect($.find(Form.Label).prop('htmlFor')).toBe('hello')
+    expect($.find(Form.SearchInput).prop('id')).toBe('hello')
+  })
+
+  it('renders the input and submit in that order', () => {
+    const $ = mount(<Form.Search {...defaultProps} />)
+    expect($.find(Form.SearchWrapper).childAt(0).type()).toBe(Form.SearchInput)
+    expect($.find(Form.SearchWrapper).childAt(1).type()).toBe(Form.SearchSubmit)
   })
 })
