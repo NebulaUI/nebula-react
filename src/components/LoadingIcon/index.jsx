@@ -58,7 +58,7 @@ const LoadingIcon = ({
 LoadingIcon.propTypes = {
   fill: T.string,
   tag: T.string,
-  size: T.number,
+  size: T.string,
   iconPosition: T.oneOf(['left', 'right']),
   verticalAlign: T.string,
   className: T.string,

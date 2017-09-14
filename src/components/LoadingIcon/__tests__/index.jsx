@@ -31,12 +31,12 @@ describe('<LoadingIcon />', () => {
   it('renders with a width and height matching the size', () => {
     const props = {
       ...defaultProps,
-      size: 100
+      size: '100px'
     }
     const $ = mount(<LoadingIcon {...props} />)
     expect($.find(Icon).prop('icon')().props.style).toMatchObject({
-      width: 100,
-      height: 100
+      width: '100px',
+      height: '100px'
     })
   })
 
