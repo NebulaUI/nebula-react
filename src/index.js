@@ -10,13 +10,14 @@ import { UniformedList } from './objects/UniformedList/'
 import { Button } from './components/Button/'
 import { ButtonDropdown } from './components/ButtonDropdown/'
 import { Card } from './components/Card/'
+import { ClickOutside } from './components/ClickOutside/'
 import { Flyout } from './components/Flyout/'
 import { Foldable } from './components/Foldable/'
 import { Form } from './components/Form/'
-import { ClickOutside } from './components/ClickOutside/'
+import { Icon } from './components/Icon/'
+import { LoadingIcon } from './components/LoadingIcon/'
 import { Modal } from './components/Modal/'
 import { Pagination } from './components/Pagination/'
-import { Icon } from './components/Icon/'
 import { Navbar } from './components/Navbar/'
 import { StatusCard } from './components/StatusCard/'
 import { Tabs } from './components/Tabs/'
@@ -34,6 +35,7 @@ export {
   Grid,
   Icon,
   InlineList,
+  LoadingIcon,
   MatrixList,
   Modal,
   Navbar,

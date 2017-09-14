@@ -1,14 +1,14 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 
 import { Icon } from '../'
 
 const defaultProps = {
+  iconPosition: 'left',
   icon: {
     id: 'T',
     viewBox: 'T'
-  },
-  fill: '000000'
+  }
 }
 
 describe('<Icon />', () => {
@@ -45,7 +45,7 @@ describe('<Icon />', () => {
   it('renders with icon to the left of children', () => {
     const props = {
       ...defaultProps,
-      iconLeft: true
+      iconPosition: 'left'
     }
     const $ = shallow(<Icon {...props}>Test</Icon>)
     expect($.childAt(0).hasClass('c-icon__svg c-icon__svg--left')).toBe(true)
@@ -56,7 +56,7 @@ describe('<Icon />', () => {
   it('renders with icon to the right of children', () => {
     const props = {
       ...defaultProps,
-      iconRight: true
+      iconPosition: 'right'
     }
     const $ = shallow(<Icon {...props}>Test</Icon>)
     expect($.childAt(0).hasClass('c-icon__text')).toBe(true)
@@ -80,5 +80,15 @@ describe('<Icon />', () => {
     const $ = shallow(<Icon {...props} />)
     expect($.find('svg').prop('viewBox')).toBe('0 0 438.549 438.549')
     expect($.find('use').prop('xlinkHref')).toBe('#Test-id')
+  })
+
+  it('renders icons wrapped up as React functional components', () => {
+    const icon = () => <svg id="foo" />
+    const props = {
+      ...defaultProps,
+      icon
+    }
+    const $ = mount(<Icon {...props} />)
+    expect($.find('svg').prop('id')).toBe('foo')
   })
 })

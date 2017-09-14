@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 
 import {
-  Card,
+  LoadingIcon,
   SiteWrap,
   Section,
   Pagination,
-  Table,
+  Button
 } from 'nebula-react'
 
 const tableData = {
@@ -47,9 +47,6 @@ class App extends Component {
       <div>
         <Section size="md">
           <SiteWrap padding>
-            <Section size="md">
-              <Table stackAt="max-md" data={tableData} />
-            </Section>
             <Pagination.Wrapper>
               <Pagination.Item>
                 <Pagination.Link aria-label="Disabled Page Link" to="/" previous disabled>Prev</Pagination.Link>
@@ -67,6 +64,11 @@ class App extends Component {
                 <Pagination.Link to="/" next>Next</Pagination.Link>
               </Pagination.Item>
             </Pagination.Wrapper>
+            <Button size="md" theme="alpha">
+              <LoadingIcon fill="white" iconPosition="left">
+                Loading data
+              </LoadingIcon>
+            </Button>
           </SiteWrap>
         </Section>
       </div>

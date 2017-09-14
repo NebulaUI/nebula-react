@@ -14,6 +14,12 @@ const common = {
     rules: [
       { test: /\.jsx?$/, exclude: /node_modules/, use: 'babel-loader' },
       {
+        test: /\.svg$/,
+        use: [{
+          loader: 'svg-sprite-loader',
+        }],
+      },
+      {
         test: /\.s?css$/,
         exclude: /node_modules/,
         use: [{
