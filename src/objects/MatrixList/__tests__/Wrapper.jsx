@@ -10,9 +10,9 @@ describe('<MatrixList.Wrapper />', () => {
   })
 
   it('takes a list of sizes', () => {
-    const spacing = ['sm', 'md@sm']
+    const spacing = ['md', 'md@sm']
     const $ = shallow(<MatrixList.Wrapper spacing={spacing} />)
-    expect($.hasClass('o-matrix-list o-matrix-list-sm o-matrix-list-md@sm')).toBe(true)
+    expect($.hasClass('o-matrix-list o-matrix-list-md o-matrix-list-md@sm')).toBe(true)
   })
 
   it('renders children', () => {

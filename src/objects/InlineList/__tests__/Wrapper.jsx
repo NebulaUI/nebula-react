@@ -10,9 +10,9 @@ describe('<InlineList.Wrapper />', () => {
   })
 
   it('takes a list of sizes', () => {
-    const spacing = ['sm', 'md@sm']
+    const spacing = ['md', 'md@sm']
     const $ = shallow(<InlineList.Wrapper spacing={spacing} />)
-    expect($.hasClass('o-inline-list o-inline-list--spaced-sm o-inline-list--spaced-md@sm')).toBe(true)
+    expect($.hasClass('o-inline-list o-inline-list--spaced-md o-inline-list--spaced-md@sm')).toBe(true)
   })
 
   it('renders children', () => {

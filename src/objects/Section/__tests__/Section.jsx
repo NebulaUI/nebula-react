@@ -5,8 +5,8 @@ import { Section } from '../'
 
 describe('<Section />', () => {
   it('takes a single size', () => {
-    const $ = shallow(<Section size="lg" />)
-    expect($.hasClass('o-section-lg')).toBe(true)
+    const $ = shallow(<Section size="md" />)
+    expect($.hasClass('o-section-md')).toBe(true)
   })
 
   it('takes a list of sizes', () => {
