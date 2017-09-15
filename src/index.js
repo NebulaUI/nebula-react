@@ -19,6 +19,7 @@ import { LoadingIcon } from './components/LoadingIcon/'
 import { Modal } from './components/Modal/'
 import { Pagination } from './components/Pagination/'
 import { Navbar } from './components/Navbar/'
+import { Pill } from './components/Pill/'
 import { StatusCard } from './components/StatusCard/'
 import { Tabs } from './components/Tabs/'
 
@@ -39,6 +40,7 @@ export {
   MatrixList,
   Modal,
   Navbar,
+  Pill,
   Pagination,
   Section,
   SiteWrap,
