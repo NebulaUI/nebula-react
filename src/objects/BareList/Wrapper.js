@@ -2,7 +2,7 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames, buildClassName, buildBreakpointValues } from '../../utils/'
-import { SPACING } from './constants'
+import { LIST_SPACING } from '../../constants'
 
 const BareListWrapper = ({ tag, spacing, className, children, ...rest }) =>
   E(
@@ -20,16 +20,16 @@ const BareListWrapper = ({ tag, spacing, className, children, ...rest }) =>
     children
   )
 
-const sizes = buildBreakpointValues(SPACING)
+const spacing = buildBreakpointValues(LIST_SPACING)
 
-const propTypeSizes = T.oneOfType([
-  T.oneOf(sizes),
-  T.arrayOf(T.oneOf(sizes))
+const propTypeSpacing = T.oneOfType([
+  T.oneOf(spacing),
+  T.arrayOf(T.oneOf(spacing))
 ])
 
 BareListWrapper.propTypes = {
   tag: T.string,
-  spacing: propTypeSizes,
+  spacing: propTypeSpacing,
   className: T.string,
   children: T.node
 }

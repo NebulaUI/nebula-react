@@ -1,7 +1,8 @@
 import { createElement as E } from 'react'
 import T from 'prop-types'
 
-import { classNames, buildClassName } from '../../utils/'
+import { classNames, buildClassName, buildBreakpointValues } from '../../utils/'
+import { LIST_SPACING } from '../../constants'
 
 const InlineListWrapper = ({ tag, spacing, className, children, ...rest }) =>
   E(
@@ -19,12 +20,16 @@ const InlineListWrapper = ({ tag, spacing, className, children, ...rest }) =>
     children
   )
 
+const spacing = buildBreakpointValues(LIST_SPACING)
+
+const propTypeSpacing = T.oneOfType([
+  T.oneOf(spacing),
+  T.arrayOf(T.oneOf(spacing))
+])
+
 InlineListWrapper.propTypes = {
   tag: T.string,
-  spacing: T.oneOfType([
-    T.string,
-    T.array
-  ]),
+  spacing: propTypeSpacing,
   className: T.string,
   children: T.node
 }
