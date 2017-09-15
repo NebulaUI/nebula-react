@@ -10,4 +10,4 @@ const buildBreakpointValues = values => ([
   ...buildBreakpoints(values)
 ])
 
-export { buildBreakpointValues }
+export default buildBreakpointValues

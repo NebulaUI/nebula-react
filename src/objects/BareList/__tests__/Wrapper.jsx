@@ -10,9 +10,9 @@ describe('<BareList.Wrapper />', () => {
   })
 
   it('takes a list of sizes', () => {
-    const spacing = ['sm', 'md@sm']
+    const spacing = ['md', 'md@sm']
     const $ = shallow(<BareList.Wrapper spacing={spacing} />)
-    expect($.hasClass('o-bare-list o-bare-list--spaced-sm o-bare-list--spaced-md@sm')).toBe(true)
+    expect($.hasClass('o-bare-list o-bare-list--spaced-md o-bare-list--spaced-md@sm')).toBe(true)
   })
 
   it('renders children', () => {

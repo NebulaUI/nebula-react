@@ -2,8 +2,7 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { FRACTIONS } from './constants'
-import { classNames, buildClassName } from '../../utils/'
-import { buildBreakpointValues } from './utils'
+import { classNames, buildClassName, buildBreakpointValues } from '../../utils/'
 
 const GridItem = ({
   tag,

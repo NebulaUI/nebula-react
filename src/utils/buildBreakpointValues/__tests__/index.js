@@ -1,4 +1,4 @@
-import { buildBreakpointValues } from '../utils'
+import buildBreakpointValues from '../'
 
 describe('buildBreakpointValues', () => {
   it('builds out a string of values and associated breakpionts', () => {
