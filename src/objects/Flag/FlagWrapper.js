@@ -30,10 +30,10 @@ const FlagWrapper = ({
 
 FlagWrapper.propTypes = {
   tag: T.string,
-  breakpoint: T.string,
-  gutter: T.string,
+  breakpoint: T.oneOf(['foo', 'sm', 'md', 'lg']),
+  gutter: T.oneOf(['md']),
   reverse: T.bool,
-  align: T.string,
+  align: T.oneOf(['top', 'bottom']),
   children: T.node,
   className: T.string
 }

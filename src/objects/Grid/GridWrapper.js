@@ -33,11 +33,24 @@ const GridWrapper = ({
     children
   )
 
+const gutterSizes = ['sm', 'md', 'lg']
+const breakpoints = ['xs', 'sm', 'md', 'lg']
+
+const buildGutterBreakpoints = () =>
+breakpoints.map(bp =>
+  gutterSizes.map(gt => `${gt}@${bp}`))
+    .reduce((item, acc) => acc.concat(item, []))
+
+const buildGutterValues = () => ([
+  ...gutterSizes,
+  ...buildGutterBreakpoints()
+])
+
 GridWrapper.propTypes = {
   tag: T.string,
   gutter: T.oneOfType([
-    T.string,
-    T.array
+    T.oneOf(gutterSizes),
+    T.arrayOf(T.oneOf(buildGutterValues()))
   ]),
   matrix: T.bool,
   equalHeight: T.bool,
