@@ -1,7 +1,9 @@
 import { createElement as E } from 'react'
 import T from 'prop-types'
 
+import { GUTTER_SIZES } from './constants'
 import { classNames, buildClassName } from '../../utils/'
+import { buildBreakpointValues } from './utils'
 
 const GridWrapper = ({
   tag,
@@ -33,29 +35,20 @@ const GridWrapper = ({
     children
   )
 
-const gutterSizes = ['sm', 'md', 'lg']
-const breakpoints = ['xs', 'sm', 'md', 'lg']
+const gutterSizes = buildBreakpointValues(GUTTER_SIZES)
 
-const buildGutterBreakpoints = () =>
-breakpoints.map(bp =>
-  gutterSizes.map(gt => `${gt}@${bp}`))
-    .reduce((item, acc) => acc.concat(item, []))
-
-const buildGutterValues = () => ([
-  ...gutterSizes,
-  ...buildGutterBreakpoints()
+const propTypeGutter = T.oneOfType([
+  T.oneOf(gutterSizes),
+  T.arrayOf(T.oneOf(gutterSizes))
 ])
 
 GridWrapper.propTypes = {
   tag: T.string,
-  gutter: T.oneOfType([
-    T.oneOf(gutterSizes),
-    T.arrayOf(T.oneOf(buildGutterValues()))
-  ]),
+  gutter: propTypeGutter,
   matrix: T.bool,
   equalHeight: T.bool,
   reverse: T.bool,
-  align: T.string,
+  align: T.oneOf(['center', 'bottom']),
   className: T.string,
   children: T.node
 }
