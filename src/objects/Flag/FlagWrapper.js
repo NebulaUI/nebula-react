@@ -2,7 +2,7 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
-import { BREAKPOINTS } from '../../constants'
+import { BREAKPOINTS, FLAG_GUTTERS, FLAG_ALIGNMENT } from '../../constants'
 
 const FlagWrapper = ({
  tag,
@@ -32,9 +32,9 @@ const FlagWrapper = ({
 FlagWrapper.propTypes = {
   tag: T.string,
   breakpoint: T.oneOf(BREAKPOINTS),
-  gutter: T.oneOf(['md']),
+  gutter: T.oneOf(FLAG_GUTTERS),
   reverse: T.bool,
-  align: T.oneOf(['top', 'bottom']),
+  align: T.oneOf(FLAG_ALIGNMENT),
   children: T.node,
   className: T.string
 }
