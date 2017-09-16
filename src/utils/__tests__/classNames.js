@@ -1,4 +1,4 @@
-import classNames from '../'
+import classNames from '../classNames'
 
 describe('classNames', () => {
   it('concatenates strings', () => {

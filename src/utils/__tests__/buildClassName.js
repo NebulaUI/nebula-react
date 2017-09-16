@@ -1,4 +1,4 @@
-import buildClassName from '../'
+import buildClassName from '../buildClassName'
 
 describe('buildClassName', () => {
   it('takes two strings and joins them', () => {

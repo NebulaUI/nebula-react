@@ -1,4 +1,4 @@
-import removeFalsy from '../'
+import removeFalsy from '../removeFalsy'
 
 describe('removeFalsy', () => {
   it('removes falsy values from arrays', () => {

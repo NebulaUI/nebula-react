@@ -5,4 +5,3 @@ const removeFalsy = a => (
 )
 
 export default removeFalsy
-
