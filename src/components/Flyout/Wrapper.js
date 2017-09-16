@@ -2,7 +2,6 @@ import { Component, createElement as E } from 'react'
 import T from 'prop-types'
 
 import { ClickOutside } from '../../'
-import { DIRECTIONS } from './constants'
 import { classNames } from '../../utils'
 
 class FlyoutWrapper extends Component {

@@ -2,7 +2,7 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames, buildClassName, buildBreakpointValues } from '../../utils/'
-import * as constants from './constants'
+import { SECTION_SIZES as SIZES } from '../../constants'
 
 const Section = ({ tag, size, className, children, ...rest }) =>
   E(
@@ -17,7 +17,7 @@ const Section = ({ tag, size, className, children, ...rest }) =>
     children
   )
 
-const sizes = buildBreakpointValues(constants.SPACING)
+const sizes = buildBreakpointValues(SIZES)
 
 const propTypeSizes = T.oneOfType([
   T.oneOf(sizes),
@@ -31,4 +31,4 @@ Section.propTypes = {
   children: T.node
 }
 
-export { Section, constants }
+export { Section }

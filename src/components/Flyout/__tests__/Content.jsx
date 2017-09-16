@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { Flyout } from '../'
-import { DIRECTIONS } from '../constants'
+import { FLYOUT_DIRECTIONS as DIRECTIONS } from '../../../constants'
 
 const defaultProps = {
   direction: DIRECTIONS[0]

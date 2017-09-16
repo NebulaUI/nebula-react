@@ -2,7 +2,7 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames, appendUnit } from '../../utils/'
-import { DIRECTIONS } from './constants'
+import { FLYOUT_DIRECTIONS as DIRECTIONS } from '../../constants'
 
 // eslint-disable-next-line react/prefer-stateless-function
 const FlyoutContent = ({
