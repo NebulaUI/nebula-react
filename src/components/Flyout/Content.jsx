@@ -19,7 +19,7 @@ const FlyoutContent = ({
     tag || 'div',
     {
       className: classNames('c-flyout__content', flyoutDirection ? `c-flyout__content--${flyoutDirection}` : '', className),
-      style: { width: appendUnit(flyoutWidth, 'px') },
+      style: { width: flyoutWidth && appendUnit(flyoutWidth, 'px') },
       ...rest
     },
     isFlyoutOpen && children

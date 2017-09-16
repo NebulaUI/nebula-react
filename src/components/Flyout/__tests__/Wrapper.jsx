@@ -191,5 +191,19 @@ describe('<Flyout.Wrapper />', () => {
     simulant.fire(document, 'click')
     expect(mockOnFlyoutChange).toHaveBeenCalledTimes(2)
   })
+
+  it('renders with a width', () => {
+    const props = {
+      ...defaultProps,
+      width: '500px'
+    }
+    const $ = mount(
+      <Flyout.Wrapper {...props}>
+        <Flyout.Content>Child content</Flyout.Content>
+      </Flyout.Wrapper>
+    )
+
+    expect($.find(Flyout.Content).html()).toMatch(/style="width: 500px;"/)
+  })
 })
 
