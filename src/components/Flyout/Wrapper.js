@@ -2,7 +2,7 @@ import { Component, createElement as E } from 'react'
 import T from 'prop-types'
 
 import { ClickOutside } from '../../'
-
+import { DIRECTIONS } from './constants'
 import { classNames } from '../../utils'
 
 class FlyoutWrapper extends Component {
@@ -122,7 +122,7 @@ FlyoutWrapper.propTypes = {
   defaultOpen: T.oneOf(['open', 'closed']),
   disabled: T.bool,
   width: T.oneOfType([T.string, T.number]),
-  direction: T.oneOf(['nw', 'ne', 'sw', 'se']).isRequired
+  direction: T.oneOf(DIRECTIONS).isRequired
 }
 
 FlyoutWrapper.childContextTypes = {
@@ -130,7 +130,7 @@ FlyoutWrapper.childContextTypes = {
   isFlyoutOpen: T.bool.isRequired,
   flyoutDisabled: T.bool,
   flyoutWidth: T.oneOfType([T.string, T.number]),
-  flyoutDirection: T.oneOf(['nw', 'ne', 'sw', 'se']).isRequired
+  flyoutDirection: T.oneOf(DIRECTIONS).isRequired
 }
 
 export default FlyoutWrapper

@@ -2,6 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { Flyout } from '../'
+import { DIRECTIONS } from '../constants'
 
 describe('<Flyout.Content />', () => {
   it('renders a "div" by default', () => {
@@ -32,9 +33,9 @@ describe('<Flyout.Content />', () => {
   })
 
   it('renders with a set direction', () => {
-    const context = { flyoutDirection: 'nw' }
+    const context = { flyoutDirection: DIRECTIONS[1] }
     const $ = shallow(<Flyout.Content isOpen>Test child</Flyout.Content>, { context })
-    expect($.hasClass('c-flyout__content c-flyout__content--nw')).toBe(true)
+    expect($.hasClass(`c-flyout__content c-flyout__content--${DIRECTIONS[1]}`)).toBe(true)
   })
 
   it('renders with attributes', () => {

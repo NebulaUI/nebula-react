@@ -3,9 +3,10 @@ import { shallow, mount } from 'enzyme'
 import simulant from 'jsdom-simulant'
 
 import { Flyout } from '../'
+import { DIRECTIONS } from '../constants'
 
 const defaultProps = {
-  direction: 'nw'
+  direction: DIRECTIONS[0]
 }
 
 describe('<Flyout.Wrapper />', () => {
@@ -45,13 +46,13 @@ describe('<Flyout.Wrapper />', () => {
 
   it('takes a direction passing it to <Flyout.Content />', () => {
     const $ = mount(
-      <Flyout.Wrapper direction="sw">
+      <Flyout.Wrapper direction={DIRECTIONS[1]}>
         <Flyout.Toggle><button /></Flyout.Toggle>
         <Flyout.Content>Child content</Flyout.Content>
       </Flyout.Wrapper>
     )
 
-    expect($.find(Flyout.Content).hasClass('c-flyout__content--sw'))
+    expect($.find(Flyout.Content).hasClass(`c-flyout__content--${DIRECTIONS[1]}`))
   })
 
   it('renders the correct aria-expanded prop', () => {

@@ -2,6 +2,7 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames, appendUnit } from '../../utils/'
+import { DIRECTIONS } from './constants'
 
 // eslint-disable-next-line react/prefer-stateless-function
 const FlyoutContent = ({
@@ -27,7 +28,7 @@ const FlyoutContent = ({
 
 FlyoutContent.contextTypes = {
   isFlyoutOpen: T.bool,
-  flyoutDirection: T.oneOf(['nw', 'ne', 'sw', 'se']),
+  flyoutDirection: T.oneOf(DIRECTIONS),
   flyoutWidth: T.oneOfType([T.string, T.number])
 }
 
