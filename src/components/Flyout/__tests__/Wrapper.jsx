@@ -5,9 +5,7 @@ import simulant from 'jsdom-simulant'
 import { Flyout } from '../'
 import { DIRECTIONS } from '../constants'
 
-const defaultProps = {
-  direction: DIRECTIONS[0]
-}
+const defaultProps = {}
 
 describe('<Flyout.Wrapper />', () => {
   it('renders a "div" by default', () => {
@@ -44,17 +42,6 @@ describe('<Flyout.Wrapper />', () => {
     expect($.prop('ariaHidden')).toBe('true')
   })
 
-  it('takes a direction passing it to <Flyout.Content />', () => {
-    const $ = mount(
-      <Flyout.Wrapper direction={DIRECTIONS[1]}>
-        <Flyout.Toggle><button /></Flyout.Toggle>
-        <Flyout.Content>Child content</Flyout.Content>
-      </Flyout.Wrapper>
-    )
-
-    expect($.find(Flyout.Content).hasClass(`c-flyout__content--${DIRECTIONS[1]}`))
-  })
-
   it('renders the correct aria-expanded prop', () => {
     const $ = shallow(<Flyout.Wrapper {...defaultProps}>_</Flyout.Wrapper>)
     expect($.prop('aria-expanded')).toBe(false)
@@ -70,7 +57,7 @@ describe('<Flyout.Wrapper />', () => {
     const $ = mount(
       <Flyout.Wrapper {...defaultProps}>
         <Flyout.Toggle>{ Button }</Flyout.Toggle>
-        <Flyout.Content>
+        <Flyout.Content direction={DIRECTIONS[0]}>
           Child content
           <Flyout.Toggle><button /></Flyout.Toggle>
         </Flyout.Content>
@@ -92,7 +79,7 @@ describe('<Flyout.Wrapper />', () => {
     const $ = mount(
       <Flyout.Wrapper clickOutsideToClose {...defaultProps}>
         <Flyout.Toggle>{ Button }</Flyout.Toggle>
-        <Flyout.Content>Child content</Flyout.Content>
+        <Flyout.Content direction={DIRECTIONS[0]}>Child content</Flyout.Content>
       </Flyout.Wrapper>
     )
 
@@ -118,7 +105,7 @@ describe('<Flyout.Wrapper />', () => {
     const $ = mount(
       <Flyout.Wrapper {...props}>
         <Flyout.Toggle><button /></Flyout.Toggle>
-        <Flyout.Content>Child content</Flyout.Content>
+        <Flyout.Content direction={DIRECTIONS[0]}>Child content</Flyout.Content>
       </Flyout.Wrapper>
     )
     expect($.hasClass('is-open')).toBe(true)
@@ -136,7 +123,7 @@ describe('<Flyout.Wrapper />', () => {
     const $ = mount(
       <Flyout.Wrapper {...props}>
         <Flyout.Toggle><button /></Flyout.Toggle>
-        <Flyout.Content>Child content</Flyout.Content>
+        <Flyout.Content direction={DIRECTIONS[0]}>Child content</Flyout.Content>
       </Flyout.Wrapper>
     )
     expect($.hasClass('is-open')).toBe(false)
@@ -181,7 +168,7 @@ describe('<Flyout.Wrapper />', () => {
     const $ = mount(
       <Flyout.Wrapper {...props}>
         <Flyout.Toggle><button /></Flyout.Toggle>
-        <Flyout.Content>Child content</Flyout.Content>
+        <Flyout.Content direction={DIRECTIONS[0]}>Child content</Flyout.Content>
       </Flyout.Wrapper>
     )
     expect(mockOnFlyoutChange).not.toHaveBeenCalled()
@@ -191,20 +178,6 @@ describe('<Flyout.Wrapper />', () => {
 
     simulant.fire(document, 'click')
     expect(mockOnFlyoutChange).toHaveBeenCalledTimes(2)
-  })
-
-  it('renders with a width', () => {
-    const props = {
-      ...defaultProps,
-      width: '500px'
-    }
-    const $ = mount(
-      <Flyout.Wrapper {...props}>
-        <Flyout.Content>Child content</Flyout.Content>
-      </Flyout.Wrapper>
-    )
-
-    expect($.find(Flyout.Content).html()).toMatch(/style="width: 500px;"/)
   })
 })
 

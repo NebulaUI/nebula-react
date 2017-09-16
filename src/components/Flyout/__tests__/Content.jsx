@@ -4,43 +4,60 @@ import { shallow } from 'enzyme'
 import { Flyout } from '../'
 import { DIRECTIONS } from '../constants'
 
+const defaultProps = {
+  direction: DIRECTIONS[0]
+}
+
 describe('<Flyout.Content />', () => {
   it('renders a "div" by default', () => {
-    const $ = shallow(<Flyout.Content>_</Flyout.Content>)
+    const $ = shallow(<Flyout.Content {...defaultProps}>_</Flyout.Content>)
     expect($.type()).toBe('div')
   })
 
   it('renders a defined tag type', () => {
-    const $ = shallow(<Flyout.Content tag="article">_</Flyout.Content>)
+    const props = {
+      ...defaultProps,
+      tag: 'article'
+    }
+    const $ = shallow(<Flyout.Content {...props}>_</Flyout.Content>)
     expect($.type()).toBe('article')
   })
 
   it('renders with appropriate classNames', () => {
-    const $ = shallow(<Flyout.Content className="test">_</Flyout.Content>)
-    expect($.hasClass('c-flyout__content test')).toBe(true)
+    const props = {
+      ...defaultProps,
+      className: 'test'
+    }
+    const $ = shallow(<Flyout.Content {...props}>_</Flyout.Content>)
+    expect($.hasClass('c-flyout__content')).toBe(true)
+    expect($.hasClass('test')).toBe(true)
   })
 
   it('renders children when open', () => {
     const context = { isFlyoutOpen: true }
-    const $ = shallow(<Flyout.Content isOpen>Test child</Flyout.Content>, { context })
+    const $ = shallow(<Flyout.Content {...defaultProps}>Test child</Flyout.Content>, { context })
     expect($.contains('Test child')).toBe(true)
   })
 
   it('does not render children when closed', () => {
     const context = { isFlyoutOpen: false }
-    const $ = shallow(<Flyout.Content isOpen>Test child</Flyout.Content>, { context })
+    const $ = shallow(<Flyout.Content {...defaultProps}>Test child</Flyout.Content>, { context })
     expect($.contains('Test child')).toBe(false)
   })
 
   it('renders with a set direction', () => {
-    const context = { flyoutDirection: DIRECTIONS[1] }
-    const $ = shallow(<Flyout.Content isOpen>Test child</Flyout.Content>, { context })
+    const props = {
+      ...defaultProps,
+      direction: DIRECTIONS[1]
+    }
+    const $ = shallow(<Flyout.Content {...props}>Test child</Flyout.Content>)
     expect($.hasClass(`c-flyout__content c-flyout__content--${DIRECTIONS[1]}`)).toBe(true)
   })
 
   it('renders with attributes', () => {
     const $ = shallow(
       <Flyout.Content
+        {...defaultProps}
         style={{ position: 'relative' }}
         ariaHidden="true"
       >

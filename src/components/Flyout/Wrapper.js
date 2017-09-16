@@ -18,9 +18,7 @@ class FlyoutWrapper extends Component {
   getChildContext = () => ({
     handleFlyoutToggle: this.handleToggle,
     isFlyoutOpen: this.isOpen(),
-    flyoutDirection: this.props.direction,
-    flyoutDisabled: this.props.disabled,
-    flyoutWidth: this.props.width
+    flyoutDisabled: this.props.disabled
   })
 
   handleToggle = (e) => { // eslint-disable-line consistent-return
@@ -87,7 +85,7 @@ class FlyoutWrapper extends Component {
 
   render() {
     const {
-      defaultOpen, isOpen, onFlyoutChange, width,
+      defaultOpen, isOpen, onFlyoutChange,
       tag, className, children, clickOutsideToClose, ...rest
     } = this.props
     const FlyoutComponent = E(
@@ -120,17 +118,13 @@ FlyoutWrapper.propTypes = {
   isOpen: T.oneOf(['open', 'closed']),
   clickOutsideToClose: T.bool,
   defaultOpen: T.oneOf(['open', 'closed']),
-  disabled: T.bool,
-  width: T.oneOfType([T.string, T.number]),
-  direction: T.oneOf(DIRECTIONS).isRequired
+  disabled: T.bool
 }
 
 FlyoutWrapper.childContextTypes = {
   handleFlyoutToggle: T.func.isRequired,
   isFlyoutOpen: T.bool.isRequired,
-  flyoutDisabled: T.bool,
-  flyoutWidth: T.oneOfType([T.string, T.number]),
-  flyoutDirection: T.oneOf(DIRECTIONS).isRequired
+  flyoutDisabled: T.bool
 }
 
 export default FlyoutWrapper

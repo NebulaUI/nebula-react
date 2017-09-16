@@ -6,36 +6,36 @@ import { DIRECTIONS } from './constants'
 
 // eslint-disable-next-line react/prefer-stateless-function
 const FlyoutContent = ({
+  width,
+  direction,
   tag,
   className,
   children,
   ...rest
 },
 {
-  isFlyoutOpen,
-  flyoutDirection,
-  flyoutWidth
+  isFlyoutOpen
 }) =>
   E(
     tag || 'div',
     {
-      className: classNames('c-flyout__content', flyoutDirection ? `c-flyout__content--${flyoutDirection}` : '', className),
-      style: { width: flyoutWidth && appendUnit(flyoutWidth, 'px') },
+      className: classNames('c-flyout__content', direction ? `c-flyout__content--${direction}` : '', className),
+      style: { width: width && appendUnit(width, 'px') },
       ...rest
     },
     isFlyoutOpen && children
   )
 
 FlyoutContent.contextTypes = {
-  isFlyoutOpen: T.bool,
-  flyoutDirection: T.oneOf(DIRECTIONS),
-  flyoutWidth: T.oneOfType([T.string, T.number])
+  isFlyoutOpen: T.bool
 }
 
 FlyoutContent.propTypes = {
   tag: T.string,
   className: T.string,
-  children: T.node.isRequired
+  children: T.node.isRequired,
+  width: T.oneOfType([T.string, T.number]),
+  direction: T.oneOf(DIRECTIONS).isRequired
 }
 
 export default FlyoutContent
