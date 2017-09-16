@@ -4,6 +4,7 @@ import buildClassName from './buildClassName'
 import randomId from './randomId'
 import objectWithoutKey from './objectWithoutKey'
 import buildBreakpointValues from './buildBreakpointValues'
+import appendUnit from './appendUnit'
 
 export {
   buildClassName,
@@ -11,5 +12,6 @@ export {
   removeFalsy,
   randomId,
   objectWithoutKey,
-  buildBreakpointValues
+  buildBreakpointValues,
+  appendUnit
 }
