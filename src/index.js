@@ -22,8 +22,10 @@ import { Navbar } from './components/Navbar/'
 import { Pill } from './components/Pill/'
 import { StatusCard } from './components/StatusCard/'
 import { Tabs } from './components/Tabs/'
+import * as constants from './constants'
 
 export {
+  constants,
   BareList,
   Button,
   ButtonDropdown,
