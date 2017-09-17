@@ -11,6 +11,9 @@ const GRID_FRACTIONS = ['1/1', '1/2', '1/3', '2/3', '1/4', '2/4', '3/4', '1/5', 
 const SECTION_SIZES = ['sm', 'md']
 const FLYOUT_DIRECTIONS = ['nw', 'ne', 'sw', 'se']
 
+const BUTTON_SIZES = ['sm', 'md', 'lg']
+const BUTTON_THEMES = ['alpha', 'beta']
+
 export {
   BREAKPOINTS,
   LIST_SPACING,
@@ -18,5 +21,7 @@ export {
   FLAG_GUTTERS,
   FLYOUT_DIRECTIONS,
   GRID_GUTTERS,
-  GRID_FRACTIONS
+  GRID_FRACTIONS,
+  BUTTON_SIZES,
+  BUTTON_THEMES
 }
