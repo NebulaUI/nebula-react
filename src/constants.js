@@ -14,6 +14,8 @@ const FLYOUT_DIRECTIONS = ['nw', 'ne', 'sw', 'se']
 const BUTTON_SIZES = ['sm', 'md', 'lg']
 const BUTTON_THEMES = ['alpha', 'beta']
 
+const STATUSES = ['success', 'info', 'warning', 'error']
+
 export {
   BREAKPOINTS,
   LIST_SPACING,
@@ -23,5 +25,6 @@ export {
   GRID_GUTTERS,
   GRID_FRACTIONS,
   BUTTON_SIZES,
-  BUTTON_THEMES
+  BUTTON_THEMES,
+  STATUSES
 }
