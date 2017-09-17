@@ -1,6 +1,8 @@
 import { Component, createElement as E } from 'react'
 import T from 'prop-types'
+
 import { classNames, randomId } from '../../utils/'
+import { MAX_BREAKPOINTS } from '../../constants'
 
 class FoldableWrapper extends Component {
   constructor(props) {
@@ -78,7 +80,7 @@ FoldableWrapper.childContextTypes = {
 }
 
 FoldableWrapper.propTypes = {
-  breakpoint: T.oneOf(['max-lg', 'max-md', 'max-sm', 'max-xs']),
+  breakpoint: T.oneOf(MAX_BREAKPOINTS),
   bordered: T.bool,
   tag: T.string,
   defaultOpen: T.oneOf(['open', 'closed']),
