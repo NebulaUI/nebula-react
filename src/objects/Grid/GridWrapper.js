@@ -1,7 +1,7 @@
 import { createElement as E } from 'react'
 import T from 'prop-types'
 
-import { GUTTER_SIZES } from './constants'
+import { GRID_GUTTERS } from '../../constants'
 import { classNames, buildClassName, buildBreakpointValues } from '../../utils/'
 
 const GridWrapper = ({
@@ -34,7 +34,7 @@ const GridWrapper = ({
     children
   )
 
-const gutterSizes = buildBreakpointValues(GUTTER_SIZES)
+const gutterSizes = buildBreakpointValues(GRID_GUTTERS)
 
 const propTypeGutter = T.oneOfType([
   T.oneOf(gutterSizes),

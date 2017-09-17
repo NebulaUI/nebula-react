@@ -1,7 +1,7 @@
 import { createElement as E } from 'react'
 import T from 'prop-types'
 
-import { FRACTIONS } from './constants'
+import { GRID_FRACTIONS } from '../../constants'
 import { classNames, buildClassName, buildBreakpointValues } from '../../utils/'
 
 const GridItem = ({
@@ -34,7 +34,7 @@ const GridItem = ({
     children
   )
 
-const fractions = buildBreakpointValues(FRACTIONS)
+const fractions = buildBreakpointValues(GRID_FRACTIONS)
 
 const propTypeFraction = T.oneOfType([
   T.oneOf(fractions),
