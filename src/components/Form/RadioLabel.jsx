@@ -2,10 +2,12 @@ import React from 'react'
 import T from 'prop-types'
 import { classNames } from '../../utils/'
 
+import { NAMESPACE } from '../../constants'
+
 const RadioLabel = ({ className, children, htmlFor, ...rest }) => (
   <label
     htmlFor={htmlFor}
-    className={classNames('c-form-input__label c-form-input__label--radio', className)}
+    className={classNames(`${NAMESPACE}c-form-input__label ${NAMESPACE}c-form-input__label--radio`, className)}
     {...rest}
   >
     {children}

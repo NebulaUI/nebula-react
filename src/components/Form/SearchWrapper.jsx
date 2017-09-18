@@ -2,9 +2,9 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
-import { BLOCK_TAGS } from '../../constants'
+import { NAMESPACE, BLOCK_TAGS } from '../../constants'
 
-const initial = 'c-search'
+const initial = `${NAMESPACE}c-search`
 
 const SearchWrapper = ({
   id,

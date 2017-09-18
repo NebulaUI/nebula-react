@@ -2,6 +2,8 @@ import React from 'react'
 import T from 'prop-types'
 import { classNames } from '../../utils/'
 
+import { NAMESPACE } from '../../constants'
+
 import { Form } from './'
 
 const SearchInput = ({
@@ -17,7 +19,7 @@ const SearchInput = ({
   <Form.TextInput
     type="search"
     id={id}
-    className={classNames('c-search__input', { 'c-text-input--sm': small }, className)}
+    className={classNames(`${NAMESPACE}c-search__input`, { [`${NAMESPACE}c-text-input--sm`]: small }, className)}
     placeholder={placeholder}
     onChange={onChange}
     defaultValue={defaultValue}

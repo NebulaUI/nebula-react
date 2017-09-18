@@ -4,6 +4,8 @@ import { shallow, mount } from 'enzyme'
 import { Form } from '../'
 import { randomId } from '../../../utils/'
 
+import { NAMESPACE } from '../../../constants'
+
 jest.mock('../../../utils/randomId')
 
 const defaultProps = {
@@ -17,12 +19,12 @@ beforeEach(() => {
 describe('<Form.Search />', () => {
   it('can be configured with the submit button to the left', () => {
     const $ = mount(<Form.Search submitPosition="left" />)
-    expect($.find(Form.SearchWrapper).hasClass('c-search--submit-left')).toBe(true)
+    expect($.find(Form.SearchWrapper).hasClass(`${NAMESPACE}c-search--submit-left`)).toBe(true)
   })
 
   it('can be configured with the submit button to the right', () => {
     const $ = mount(<Form.Search submitPosition="right" />)
-    expect($.find(Form.SearchWrapper).hasClass('c-search--submit-right')).toBe(true)
+    expect($.find(Form.SearchWrapper).hasClass(`${NAMESPACE}c-search--submit-right`)).toBe(true)
   })
 
   it('renders small', () => {
@@ -31,7 +33,7 @@ describe('<Form.Search />', () => {
       small: true
     }
     const $ = mount(<Form.Search {...props} />)
-    expect($.find(Form.SearchInput).hasClass('c-text-input--sm'))
+    expect($.find(Form.SearchInput).hasClass(`${NAMESPACE}c-text-input--sm`))
   })
 
   it('takes attributes', () => {

@@ -7,7 +7,6 @@ import SearchInput from './SearchInput'
 import Label from './Label'
 import { randomId } from '../../utils/'
 
-
 const Search = ({
   id = randomId(),
   action,

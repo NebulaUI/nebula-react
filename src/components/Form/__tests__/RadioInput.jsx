@@ -1,12 +1,14 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
+
 import { Form } from '../'
 
 describe('<Form.RadioInput />', () => {
   it('renders the appropriate classNames and type', () => {
     const $ = shallow(<Form.RadioInput id="test-radio-1" name="test-radio-group" className="test" />)
-    expect($.hasClass('c-form-input__input test')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-form-input__input ${NAMESPACE}test`)).toBe(true)
     expect($.prop('type')).toBe('radio')
   })
 

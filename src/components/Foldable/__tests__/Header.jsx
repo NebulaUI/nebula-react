@@ -1,6 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
+
 import { Foldable } from '../'
 
 const defaultContext = {
@@ -13,7 +15,7 @@ describe('<Foldable.Header />', () => {
     const $ = shallow(
       <Foldable.Header className="something else">_</Foldable.Header>
     , { context: defaultContext })
-    expect($.hasClass('c-foldable__header something else')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-foldable__header ${NAMESPACE}something else`)).toBe(true)
   })
 
   it('renders a defined tag type', () => {
@@ -47,10 +49,10 @@ describe('<Foldable.Header />', () => {
 
   it('renders with padding', () => {
     const $ = shallow(<Foldable.Header padding>_</Foldable.Header>, { context: defaultContext })
-    expect($.hasClass('c-foldable__header c-foldable__header--padding')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-foldable__header ${NAMESPACE}c-foldable__header--padding`)).toBe(true)
 
     const $$ = shallow(<Foldable.Header>_</Foldable.Header>, { context: defaultContext })
-    expect($$.hasClass('c-foldable__header c-foldable__header--padding')).toBe(false)
+    expect($$.hasClass(`${NAMESPACE}c-foldable__header ${NAMESPACE}c-foldable__header--padding`)).toBe(false)
   })
 
   it('renders toggle button that calls callback when clicked', () => {
@@ -61,7 +63,7 @@ describe('<Foldable.Header />', () => {
     }
     const $ = shallow(<Foldable.Header>_</Foldable.Header>, { context })
     expect(toggleOpenMock).toHaveBeenCalledTimes(0)
-    expect($.childAt(0).hasClass('c-foldable__toggle')).toBe(true)
+    expect($.childAt(0).hasClass(`${NAMESPACE}c-foldable__toggle`)).toBe(true)
 
     $.childAt(0).simulate('click')
     expect(toggleOpenMock).toHaveBeenCalledTimes(1)

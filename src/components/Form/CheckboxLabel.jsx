@@ -2,10 +2,12 @@ import React from 'react'
 import T from 'prop-types'
 import { classNames } from '../../utils/'
 
+import { NAMESPACE } from '../../constants'
+
 const CheckboxLabel = ({ className, children, htmlFor, ...rest }) => (
   <label
     htmlFor={htmlFor}
-    className={classNames('c-form-input__label c-form-input__label--checkbox', className)}
+    className={classNames(`${NAMESPACE}c-form-input__label ${NAMESPACE}c-form-input__label--checkbox`, className)}
     {...rest}
   >
     {children}

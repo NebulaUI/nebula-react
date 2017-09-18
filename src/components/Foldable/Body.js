@@ -2,13 +2,13 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
-import { BLOCK_TAGS } from '../../constants'
+import { NAMESPACE, BLOCK_TAGS } from '../../constants'
 
 const FoldableBody = ({ tag, className, children, ...rest }, { isFoldableOpen, foldableId }) =>
   E(
     tag || 'div',
     {
-      className: classNames('c-foldable__body', className),
+      className: classNames(`${NAMESPACE}c-foldable__body`, className),
       id: foldableId,
       'aria-hidden': !isFoldableOpen,
       ...rest

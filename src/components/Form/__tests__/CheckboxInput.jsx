@@ -1,12 +1,14 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
+
 import { Form } from '../'
 
 describe('<Form.CheckboxInput />', () => {
   it('renders the appropriate classNames and type', () => {
     const $ = shallow(<Form.CheckboxInput id="test-checkbox-1" className="test" />)
-    expect($.hasClass('c-form-input__input test')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-form-input__input ${NAMESPACE}test`)).toBe(true)
     expect($.prop('type')).toBe('checkbox')
   })
 

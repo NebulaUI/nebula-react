@@ -2,6 +2,8 @@ import React from 'react'
 import T from 'prop-types'
 import { classNames } from '../../utils/'
 
+import { NAMESPACE } from '../../constants'
+
 const CheckboxInput = ({
   className,
   defaultChecked,
@@ -13,7 +15,7 @@ const CheckboxInput = ({
 }) => (
   <input
     type="checkbox"
-    className={classNames('c-form-input__input', className)}
+    className={classNames(`${NAMESPACE}c-form-input__input`, className)}
     id={id}
     onChange={onChange}
     checked={checked}

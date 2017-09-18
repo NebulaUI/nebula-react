@@ -2,7 +2,7 @@ import { Component, createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames, randomId } from '../../utils/'
-import { MAX_BREAKPOINTS, BLOCK_TAGS } from '../../constants'
+import { NAMESPACE, MAX_BREAKPOINTS, BLOCK_TAGS } from '../../constants'
 
 class FoldableWrapper extends Component {
   constructor(props) {
@@ -59,9 +59,9 @@ class FoldableWrapper extends Component {
       tag || 'div',
       {
         className: classNames(
-          breakpoint ? `c-foldable@${breakpoint}` : 'c-foldable',
-          { 'c-foldable--bordered': bordered },
-          { 'is-open': this.isOpen() },
+          breakpoint ? `${NAMESPACE}c-foldable@${breakpoint}` : `${NAMESPACE}c-foldable`,
+          { [`${NAMESPACE}c-foldable--bordered`]: bordered },
+          { [`${NAMESPACE}is-open`]: this.isOpen() },
           className
         ),
         'aria-expanded': this.isOpen(),

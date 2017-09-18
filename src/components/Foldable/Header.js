@@ -1,7 +1,7 @@
 import { createElement as E } from 'react'
 import T from 'prop-types'
 import { classNames } from '../../utils/'
-import { BLOCK_TAGS } from '../../constants'
+import { NAMESPACE, BLOCK_TAGS } from '../../constants'
 
 const FoldableHeader = ({
   padding,
@@ -18,8 +18,8 @@ const FoldableHeader = ({
     tag || 'div',
     {
       className: classNames(
-        'c-foldable__header',
-        { 'c-foldable__header--padding': padding },
+        `${NAMESPACE}c-foldable__header`,
+        { [`${NAMESPACE}c-foldable__header--padding`]: padding },
         className
       ),
       ...rest
@@ -27,7 +27,7 @@ const FoldableHeader = ({
     E(
       'button',
       {
-        className: 'c-foldable__toggle',
+        className: `${NAMESPACE}c-foldable__toggle`,
         onClick: toggleFoldableOpen,
         'aria-controls': foldableId,
         disabled: foldableDisabled

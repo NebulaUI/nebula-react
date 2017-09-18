@@ -1,12 +1,14 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
+
 import { Form } from '../'
 
 describe('<Form.RadioWrapper id="radio-1" name="radio-group" />', () => {
   it('renders the appropriate classNames', () => {
     const $ = shallow(<Form.RadioWrapper className="test" />)
-    expect($.hasClass('c-form-input test')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-form-input ${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders children', () => {

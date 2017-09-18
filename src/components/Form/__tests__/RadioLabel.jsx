@@ -1,12 +1,14 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
+
 import { Form } from '../'
 
 describe('<Form.RadioLabel />', () => {
   it('renders with appropriate classNames', () => {
     const $ = shallow(<Form.RadioLabel className="test" htmlFor="radio-1" />)
-    expect($.hasClass('c-form-input__label c-form-input__label--radio test')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-form-input__label ${NAMESPACE}c-form-input__label--radio ${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders with a htmlFor prop', () => {

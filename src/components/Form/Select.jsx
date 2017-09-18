@@ -2,9 +2,11 @@ import React from 'react'
 import T from 'prop-types'
 import classNames from '../../utils/classNames'
 
+import { NAMESPACE } from '../../constants'
+
 const Select = ({ className, small, onChange, value, children, ...rest }) => (
   <select
-    className={classNames('c-select', { 'c-select--sm': small }, className)}
+    className={classNames(`${NAMESPACE}c-select`, { [`${NAMESPACE}c-select--sm`]: small }, className)}
     onChange={onChange}
     value={value}
     {...rest}
