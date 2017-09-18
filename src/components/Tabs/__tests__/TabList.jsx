@@ -28,6 +28,16 @@ describe('<Tabs.TabList />', () => {
     expect($.children().hasClass('c-tabs__list')).toBe(true)
   })
 
+  it('renders with tab items spread evenly', () => {
+    const $ = shallow(
+      <Tabs.TabList className="test" spreadItems>
+        <Tabs.Tab target="_">_</Tabs.Tab>
+      </Tabs.TabList>
+      , { context: defaultContext })
+    expect($.childAt(0).hasClass('c-tabs__list')).toBe(true)
+    expect($.childAt(0).hasClass('c-tabs__list--spread-items')).toBe(true)
+  })
+
   it('renders with attributes', () => {
     const $ = shallow(
       <Tabs.TabList style={{ position: 'relative' }} ariaHidden="true">

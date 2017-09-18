@@ -73,7 +73,9 @@ class TabsTabList extends Component {
   }
 
   render() {
-    const { tag, children, className, ...rest } = this.props
+    const {
+      spreadItems, tag, children, className, ...rest
+    } = this.props
     const { activeTabId } = this.context
     const enhancedChildren = React.Children.map(removeFalsy(children), (child, index) =>
       cloneElement(child, {
@@ -85,13 +87,19 @@ class TabsTabList extends Component {
     return E(
       tag || 'div',
       {
-        className: classNames('c-tabs__list-wrapper', className),
+        className: classNames(
+          'c-tabs__list-wrapper',
+          className
+        ),
         ...rest
       },
       E(
         'div',
         {
-          className: 'c-tabs__list',
+          className: classNames(
+            'c-tabs__list',
+            { 'c-tabs__list--spread-items': spreadItems }
+          ),
           role: 'tablist'
         },
         enhancedChildren
@@ -107,6 +115,7 @@ TabsTabList.contextTypes = {
 
 TabsTabList.propTypes = {
   tag: T.oneOf(BLOCK_TAGS),
+  spreadItems: T.bool,
   className: T.string,
   children: T.node.isRequired
 }
