@@ -1,6 +1,8 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
+
 import { Modal } from '../'
 
 const defaultProps = {
@@ -45,7 +47,7 @@ describe('<Modal.Wrapper />', () => {
       className: 'test'
     }
     const $ = shallow(<Modal.Wrapper {...props}>_</Modal.Wrapper>)
-    expect($.hasClass('c-modal test')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-modal ${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders children', () => {
@@ -89,19 +91,19 @@ describe('<Modal.Wrapper />', () => {
     )
     expect(mockClose).toHaveBeenCalledTimes(0)
 
-    $.find('.c-modal__overlay').simulate('click')
+    $.find(`.${NAMESPACE}c-modal__overlay`).simulate('click')
     expect(mockClose).toHaveBeenCalledTimes(1)
 
-    $.find('.c-modal__dismiss').simulate('click')
+    $.find(`.${NAMESPACE}c-modal__dismiss`).simulate('click')
     expect(mockClose).toHaveBeenCalledTimes(2)
   })
 
   it('add is-open className when fully mounted', () => {
     const $ = mount(<Modal.Wrapper {...defaultProps}>_</Modal.Wrapper>)
-    expect($.hasClass('is-open')).toBe(false)
+    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(false)
 
     jest.runAllTimers()
-    expect($.hasClass('is-open')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(true)
   })
 
   it('closes the modal after a defined timeout', () => {
@@ -169,6 +171,6 @@ describe('<Modal.Wrapper />', () => {
         _
       </Modal.Wrapper>
     )
-    expect($.hasClass('c-modal--align-top')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-modal--align-top`)).toBe(true)
   })
 })

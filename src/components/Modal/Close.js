@@ -4,7 +4,8 @@ import T from 'prop-types'
 const ModalClose = ({ children, ...rest }, { closeModal }) => {
   const enhancedChildren = React.Children.map(children, child =>
     cloneElement(child, {
-      onClick: closeModal
+      onClick: closeModal,
+      ...rest
     })
   )[0]
   return enhancedChildren

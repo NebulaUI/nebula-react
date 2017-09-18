@@ -3,7 +3,7 @@ import T from 'prop-types'
 import FocusTrap from 'focus-trap-react'
 
 import { classNames } from '../../utils/'
-import { BLOCK_TAGS } from '../../constants'
+import { NAMESPACE, BLOCK_TAGS } from '../../constants'
 
 const ModalBody = ({
   tag,
@@ -18,7 +18,7 @@ const ModalBody = ({
   E(
     tag || 'div',
     {
-      className: classNames('c-modal__body', className),
+      className: classNames(`${NAMESPACE}c-modal__body`, className),
       style: {
         width: modalWidth
       },

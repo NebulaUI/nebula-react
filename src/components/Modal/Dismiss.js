@@ -2,14 +2,14 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils'
-import { ALL_TAGS } from '../../constants'
+import { NAMESPACE, ALL_TAGS } from '../../constants'
 
 const ModalDismiss = ({ tag, className, children, ...rest }) =>
   E(
     tag || 'button',
     {
       title: 'close',
-      className: classNames('c-modal__dismiss', className),
+      className: classNames(`${NAMESPACE}c-modal__dismiss`, className),
       ...rest
     },
     children

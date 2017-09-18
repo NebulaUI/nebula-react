@@ -2,7 +2,7 @@ import React, { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
-import { ALL_TAGS } from '../../constants'
+import { NAMESPACE, ALL_TAGS } from '../../constants'
 
 const Icon = ({
   tag,
@@ -16,7 +16,7 @@ const Icon = ({
   stroke,
   icon
 }) => {
-  const enhancedChildren = E('span', { className: 'c-icon__text', style: { verticalAlign } }, children)
+  const enhancedChildren = E('span', { className: `${NAMESPACE}c-icon__text`, style: { verticalAlign } }, children)
   const enhancedChildrenIconLeft = children && iconPosition === 'left' && enhancedChildren
   const enhancedChildrenIconRight = children && iconPosition === 'right' && enhancedChildren
   const buildIcon = () => E(
@@ -26,7 +26,7 @@ const Icon = ({
   const buildIconWithUseTag = () => (
     <svg
       viewBox={icon.viewBox}
-      className={classNames('c-icon__svg', { 'c-icon__svg--left': iconPosition === 'left' }, { 'c-icon__svg--right': iconPosition === 'right' })}
+      className={classNames(`${NAMESPACE}c-icon__svg`, { [`${NAMESPACE}c-icon__svg--left`]: iconPosition === 'left' }, { [`${NAMESPACE}c-icon__svg--right`]: iconPosition === 'right' })}
       role="presentation"
       style={{ width, height, verticalAlign, fill, stroke }}
     >
@@ -36,7 +36,7 @@ const Icon = ({
   return E(
     tag || 'div',
     {
-      className: classNames('c-icon', className)
+      className: classNames(`${NAMESPACE}c-icon`, className)
     },
     enhancedChildrenIconRight,
     typeof icon === 'function'

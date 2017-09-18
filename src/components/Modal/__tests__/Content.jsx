@@ -1,6 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
+
 import { Modal } from '../'
 
 describe('<Modal.Content />', () => {
@@ -16,7 +18,7 @@ describe('<Modal.Content />', () => {
 
   it('renders with appropriate classNames', () => {
     const $ = shallow(<Modal.Content className="test">_</Modal.Content>)
-    expect($.hasClass('c-modal__content test')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-modal__content ${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders children', () => {

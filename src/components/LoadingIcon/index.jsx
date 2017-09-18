@@ -2,7 +2,7 @@ import React from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
-import { ALL_TAGS } from '../../constants'
+import { NAMESPACE, ALL_TAGS } from '../../constants'
 import { Icon } from '../Icon'
 
 const buildIcon = (fill, size, position) => () => (
@@ -11,7 +11,7 @@ const buildIcon = (fill, size, position) => () => (
     id="loader"
     x="0"
     y="0"
-    className={classNames('c-icon__svg', { 'c-icon__svg--left': position === 'left' }, { 'c-icon__svg--right': position === 'right' })}
+    className={classNames(`${NAMESPACE}c-icon__svg`, { [`${NAMESPACE}c-icon__svg--left`]: position === 'left' }, { [`${NAMESPACE}c-icon__svg--right`]: position === 'right' })}
     style={{
       width: size,
       height: size,

@@ -1,12 +1,14 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
+
 import { Form } from '../'
 
 describe('<Form.Textarea />', () => {
   it('renders with appropriate classNames', () => {
     const $ = shallow(<Form.Textarea className="test" />)
-    expect($.hasClass('c-text-input c-text-input--textarea test')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-text-input ${NAMESPACE}c-text-input--textarea ${NAMESPACE}test`)).toBe(true)
   })
 
   it('takes attributes', () => {

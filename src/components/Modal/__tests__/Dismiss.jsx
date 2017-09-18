@@ -1,6 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
+
 import { Modal } from '../'
 
 describe('<Modal.Dismiss />', () => {
@@ -31,11 +33,11 @@ describe('<Modal.Dismiss />', () => {
 
   it('renders with the correct default className', () => {
     const $ = shallow(<Modal.Dismiss />)
-    expect($.hasClass('c-modal__dismiss')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-modal__dismiss`)).toBe(true)
   })
 
   it('renders with the defined className', () => {
     const $ = shallow(<Modal.Dismiss className="test" />)
-    expect($.hasClass('c-modal__dismiss test')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-modal__dismiss ${NAMESPACE}test`)).toBe(true)
   })
 })

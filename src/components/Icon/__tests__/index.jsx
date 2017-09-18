@@ -1,6 +1,8 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
+
 import { Icon } from '../'
 
 const defaultProps = {
@@ -29,8 +31,8 @@ describe('<Icon />', () => {
       fill: '000000',
       stroke: 'ff0000'
     })
-    expect($.hasClass('c-icon')).toBe(true)
-    expect($.find('svg').hasClass('c-icon__svg')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-icon`)).toBe(true)
+    expect($.find('svg').hasClass(`${NAMESPACE}c-icon__svg`)).toBe(true)
   })
 
   it('renders with a defined className', () => {
@@ -39,7 +41,7 @@ describe('<Icon />', () => {
       className: 'test'
     }
     const $ = shallow(<Icon {...props} />)
-    expect($.hasClass('c-icon test')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-icon ${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders with icon to the left of children', () => {
@@ -48,8 +50,8 @@ describe('<Icon />', () => {
       iconPosition: 'left'
     }
     const $ = shallow(<Icon {...props}>Test</Icon>)
-    expect($.childAt(0).hasClass('c-icon__svg c-icon__svg--left')).toBe(true)
-    expect($.childAt(1).hasClass('c-icon__text')).toBe(true)
+    expect($.childAt(0).hasClass(`${NAMESPACE}c-icon__svg c-icon__svg--left`)).toBe(true)
+    expect($.childAt(1).hasClass(`${NAMESPACE}c-icon__text`)).toBe(true)
     expect($.childAt(1).text()).toBe('Test')
   })
 
@@ -59,9 +61,9 @@ describe('<Icon />', () => {
       iconPosition: 'right'
     }
     const $ = shallow(<Icon {...props}>Test</Icon>)
-    expect($.childAt(0).hasClass('c-icon__text')).toBe(true)
+    expect($.childAt(0).hasClass(`${NAMESPACE}c-icon__text`)).toBe(true)
     expect($.childAt(0).text()).toBe('Test')
-    expect($.childAt(1).hasClass('c-icon__svg c-icon__svg--right')).toBe(true)
+    expect($.childAt(1).hasClass(`${NAMESPACE}c-icon__svg ${NAMESPACE}c-icon__svg--right`)).toBe(true)
   })
 
   it('renders with appropriate role', () => {

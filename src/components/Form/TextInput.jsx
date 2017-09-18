@@ -2,6 +2,8 @@ import React from 'react'
 import T from 'prop-types'
 import { randomId, classNames } from '../../utils/'
 
+import { NAMESPACE } from '../../constants'
+
 const TextInput = ({
   id = randomId(),
   type = 'text',
@@ -14,7 +16,7 @@ const TextInput = ({
     <input
       id={id}
       type={type}
-      className={classNames('c-text-input', { 'c-text-input--sm': small }, className)}
+      className={classNames(`${NAMESPACE}c-text-input`, { [`${NAMESPACE}c-text-input--sm`]: small }, className)}
       onChange={onChange}
       defaultValue={defaultValue}
       value={value}

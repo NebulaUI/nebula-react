@@ -1,6 +1,8 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
+
 import { LoadingIcon } from '../'
 import { Icon } from '../../Icon'
 
@@ -47,7 +49,7 @@ describe('<LoadingIcon />', () => {
     }
     const $ = mount(<LoadingIcon {...props}>Loading...</LoadingIcon>)
     expect($.find(Icon).childAt(1).text()).toBe('Loading...')
-    expect($.find(Icon).prop('icon')().props.className).toBe('c-icon__svg c-icon__svg--left')
+    expect($.find(Icon).prop('icon')().props.className).toBe(`${NAMESPACE}c-icon__svg ${NAMESPACE}c-icon__svg--left`)
   })
 
   it('renders with the icon to the right', () => {
@@ -57,7 +59,7 @@ describe('<LoadingIcon />', () => {
     }
     const $ = mount(<LoadingIcon {...props}>Loading...</LoadingIcon>)
     expect($.find(Icon).childAt(0).text()).toBe('Loading...')
-    expect($.find(Icon).prop('icon')().props.className).toBe('c-icon__svg c-icon__svg--right')
+    expect($.find(Icon).prop('icon')().props.className).toBe(`${NAMESPACE}c-icon__svg ${NAMESPACE}c-icon__svg--right`)
   })
 
   it('renders with an additional className', () => {
@@ -66,8 +68,8 @@ describe('<LoadingIcon />', () => {
       className: 'test'
     }
     const $ = mount(<LoadingIcon {...props} />)
-    expect($.find(Icon).hasClass('c-icon')).toBe(true)
-    expect($.find(Icon).hasClass('test')).toBe(true)
+    expect($.find(Icon).hasClass(`${NAMESPACE}c-icon`)).toBe(true)
+    expect($.find(Icon).hasClass(`${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders with a user defined tag', () => {

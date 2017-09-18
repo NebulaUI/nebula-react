@@ -2,7 +2,7 @@ import { Component, createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
-import { ALL_TAGS } from '../../constants'
+import { NAMESPACE, ALL_TAGS } from '../../constants'
 
 class ModalOverlay extends Component {
   componentDidMount() {
@@ -17,7 +17,7 @@ class ModalOverlay extends Component {
     return E(
       tag || 'button',
       {
-        className: classNames('c-modal__overlay', className),
+        className: classNames(`${NAMESPACE}c-modal__overlay`, className),
         'aria-hidden': true,
         onClick: this.props.clickToClose && this.context.closeModal,
         tabIndex: -1,

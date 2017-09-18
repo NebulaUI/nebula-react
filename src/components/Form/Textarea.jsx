@@ -2,9 +2,11 @@ import React from 'react'
 import T from 'prop-types'
 import classNames from '../../utils/classNames'
 
+import { NAMESPACE } from '../../constants'
+
 const Textarea = ({ className, ...rest }) => (
   <textarea
-    className={classNames('c-text-input c-text-input--textarea', className)}
+    className={classNames(`${NAMESPACE}c-text-input ${NAMESPACE}c-text-input--textarea`, className)}
     {...rest}
   />
 )

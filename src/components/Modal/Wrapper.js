@@ -3,7 +3,7 @@ import T from 'prop-types'
 import noScroll from 'no-scroll'
 
 import { classNames } from '../../utils/'
-import { BLOCK_TAGS } from '../../constants'
+import { NAMESPACE, BLOCK_TAGS } from '../../constants'
 
 class ModalWrapper extends Component {
   state = {
@@ -60,9 +60,9 @@ class ModalWrapper extends Component {
       tag || 'div',
       {
         className: classNames(
-          'c-modal',
-          { 'is-open': this.state.isFullyMounted },
-          { 'c-modal--align-top': alignTop },
+          `${NAMESPACE}c-modal`,
+          { [`${NAMESPACE}is-open`]: this.state.isFullyMounted },
+          { [`${NAMESPACE}c-modal--align-top`]: alignTop },
           className
         ),
         role: 'dialog',

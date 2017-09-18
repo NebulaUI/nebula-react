@@ -1,6 +1,9 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import FocusTrap from 'focus-trap-react'
+
+import { NAMESPACE } from '../../../constants'
+
 import { Modal } from '../'
 
 const defaultContext = {
@@ -21,7 +24,7 @@ describe('<Modal.Body />', () => {
 
   it('renders with appropriate classNames', () => {
     const $ = shallow(<Modal.Body className="test">_</Modal.Body>, { context: defaultContext })
-    expect($.hasClass('c-modal__body test')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-modal__body ${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders with attributes', () => {
