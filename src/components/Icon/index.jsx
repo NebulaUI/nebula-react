@@ -23,6 +23,7 @@ const Icon = ({
     icon,
     {},
   )
+
   const buildIconWithUseTag = () => (
     <svg
       viewBox={icon.viewBox}

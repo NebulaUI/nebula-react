@@ -13,7 +13,7 @@ const FoldableBody = ({ tag, className, children, ...rest }, { isFoldableOpen, f
       'aria-hidden': !isFoldableOpen,
       ...rest
     },
-    isFoldableOpen && children
+    children
   )
 
 FoldableBody.contextTypes = {
