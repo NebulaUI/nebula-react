@@ -1,6 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
+
 import { ButtonDropdown } from '../'
 
 const defaultContext = {
@@ -22,7 +24,7 @@ describe('<ButtonDropdown.Toggle />', () => {
     const $ = shallow(
       <ButtonDropdown.Toggle className="test" />
       , { context: defaultContext })
-    expect($.hasClass('c-btn-dropdown__toggle test')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-btn-dropdown__toggle ${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders a defined tag type', () => {
@@ -51,7 +53,7 @@ describe('<ButtonDropdown.Toggle />', () => {
 
   it('renders closed on the initial render', () => {
     const $ = shallow(<ButtonDropdown.Toggle />, { context: defaultContext })
-    expect($.hasClass('c-btn-dropdown__toggle is-open')).toBe(false)
+    expect($.hasClass(`${NAMESPACE}c-btn-dropdown__toggle ${NAMESPACE}is-open`)).toBe(false)
   })
 
   it('calls handleToggle when clicked', () => {

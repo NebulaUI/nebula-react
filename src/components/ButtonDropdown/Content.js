@@ -2,7 +2,7 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
-import { ALL_TAGS } from '../../constants'
+import { NAMESPACE, ALL_TAGS } from '../../constants'
 
 const ButtonDropdownContent = ({
  tag,
@@ -16,7 +16,7 @@ const ButtonDropdownContent = ({
     ? E(
         tag || 'div',
       {
-        className: classNames('c-btn-dropdown__content', className),
+        className: classNames(`${NAMESPACE}c-btn-dropdown__content`, className),
         ...rest
       },
       children

@@ -2,6 +2,8 @@ import React from 'react'
 import { shallow, mount } from 'enzyme'
 import simulant from 'jsdom-simulant'
 
+import { NAMESPACE } from '../../../constants'
+
 import { ButtonDropdown } from '../'
 
 const defaultProps = {
@@ -20,28 +22,28 @@ describe('<ButtonDropdown.Wrapper />', () => {
 
   it('renders with appropriate classNames', () => {
     const $ = shallow(<ButtonDropdown.Wrapper {...defaultProps} className="test">_</ButtonDropdown.Wrapper>)
-    expect($.hasClass('c-btn-dropdown c-btn-dropdown--toggle-left test')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-btn-dropdown ${NAMESPACE}c-btn-dropdown--toggle-left ${NAMESPACE}test`)).toBe(true)
   })
 
   it('can be configured with a left direction', () => {
     const $ = shallow(
       <ButtonDropdown.Wrapper togglePosition="left">_</ButtonDropdown.Wrapper>
     )
-    expect($.hasClass('c-btn-dropdown--toggle-left')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-btn-dropdown--toggle-left`)).toBe(true)
   })
 
   it('can be configured with a right direction', () => {
     const $ = shallow(
       <ButtonDropdown.Wrapper togglePosition="right">_</ButtonDropdown.Wrapper>
     )
-    expect($.hasClass('c-btn-dropdown--toggle-right')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-btn-dropdown--toggle-right`)).toBe(true)
   })
 
   it('can be configured to full width', () => {
     const $ = shallow(
       <ButtonDropdown.Wrapper {...defaultProps} fullWidth>_</ButtonDropdown.Wrapper>
     )
-    expect($.hasClass('c-btn-dropdown--full')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-btn-dropdown--full`)).toBe(true)
   })
 
   it('renders a defined tag type', () => {
@@ -68,7 +70,7 @@ describe('<ButtonDropdown.Wrapper />', () => {
 
   it('renders closed on the initial render', () => {
     const $ = shallow(<ButtonDropdown.Wrapper {...defaultProps}>_</ButtonDropdown.Wrapper>)
-    expect($.hasClass('is-open')).toBe(false)
+    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(false)
   })
 
   it('renders the correct aria-expanded prop', () => {
@@ -93,12 +95,12 @@ describe('<ButtonDropdown.Wrapper />', () => {
       </ButtonDropdown.Wrapper>
     )
 
-    expect($.hasClass('is-open')).toBe(false)
+    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(false)
     $.find(ButtonDropdown.Toggle).childAt(0).simulate('click')
-    expect($.hasClass('is-open')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(true)
 
     $.find(ButtonDropdown.Content).find(ButtonDropdown.Close).simulate('click')
-    expect($.hasClass('is-open')).toBe(false)
+    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(false)
     expect($.find(ButtonDropdown.Toggle).childAt(0).node === document.activeElement).toBe(true)
   })
 
@@ -111,14 +113,14 @@ describe('<ButtonDropdown.Wrapper />', () => {
       </ButtonDropdown.Wrapper>
     )
 
-    expect($.hasClass('is-open')).toBe(false)
+    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(false)
 
     $.find(ButtonDropdown.Toggle).simulate('click')
-    expect($.hasClass('is-open')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(true)
 
     simulant.fire(document, 'click')
 
-    expect($.hasClass('is-open')).toBe(false)
+    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(false)
   })
 
   it('can be rendered open on the initial mount', () => {
@@ -131,10 +133,10 @@ describe('<ButtonDropdown.Wrapper />', () => {
         <ButtonDropdown.Toggle />
       </ButtonDropdown.Wrapper>
     )
-    expect($.hasClass('is-open')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(true)
 
     $.find(ButtonDropdown.Toggle).simulate('click')
-    expect($.hasClass('is-open')).toBe(false)
+    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(false)
   })
 
   it('can be externally controlled', () => {
@@ -143,13 +145,13 @@ describe('<ButtonDropdown.Wrapper />', () => {
       isOpen: 'open'
     }
     const $ = shallow(<ButtonDropdown.Wrapper {...props}>_</ButtonDropdown.Wrapper>)
-    expect($.hasClass('is-open')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(true)
 
     $.setProps({
       isOpen: 'closed'
     })
 
-    expect($.hasClass('is-open')).toBe(false)
+    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(false)
   })
 
   it('calls an optional callback prop when a change event occurs', () => {
@@ -215,6 +217,6 @@ describe('<ButtonDropdown.Wrapper />', () => {
       </ButtonDropdown.Wrapper>
     )
 
-    expect($.hasClass('is-open')).toBe(false)
+    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(false)
   })
 })

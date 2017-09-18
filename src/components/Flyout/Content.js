@@ -2,7 +2,7 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames, appendUnit } from '../../utils/'
-import { FLYOUT_DIRECTIONS, BLOCK_TAGS } from '../../constants'
+import { NAMESPACE, FLYOUT_DIRECTIONS, BLOCK_TAGS } from '../../constants'
 
 // eslint-disable-next-line react/prefer-stateless-function
 const FlyoutContent = ({
@@ -19,7 +19,7 @@ const FlyoutContent = ({
   E(
     tag || 'div',
     {
-      className: classNames('c-flyout__content', `c-flyout__content--${direction}`, className),
+      className: classNames(`${NAMESPACE}c-flyout__content`, `${NAMESPACE}c-flyout__content--${direction}`, className),
       style: { width: width && appendUnit(width, 'px') },
       ...rest
     },

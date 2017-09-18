@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { Flyout } from '../'
-import { FLYOUT_DIRECTIONS as DIRECTIONS } from '../../../constants'
+import { NAMESPACE, FLYOUT_DIRECTIONS as DIRECTIONS } from '../../../constants'
 
 const defaultProps = {
   direction: DIRECTIONS[0]
@@ -26,11 +26,11 @@ describe('<Flyout.Content />', () => {
   it('renders with appropriate classNames', () => {
     const props = {
       ...defaultProps,
-      className: 'test'
+      className: `${NAMESPACE}test`
     }
     const $ = shallow(<Flyout.Content {...props}>_</Flyout.Content>)
-    expect($.hasClass('c-flyout__content')).toBe(true)
-    expect($.hasClass('test')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-flyout__content`)).toBe(true)
+    expect($.hasClass(`${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders children when open', () => {
@@ -51,7 +51,7 @@ describe('<Flyout.Content />', () => {
       direction: DIRECTIONS[1]
     }
     const $ = shallow(<Flyout.Content {...props}>Test child</Flyout.Content>)
-    expect($.hasClass(`c-flyout__content c-flyout__content--${DIRECTIONS[1]}`)).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-flyout__content ${NAMESPACE}c-flyout__content--${DIRECTIONS[1]}`)).toBe(true)
   })
 
   it('renders with attributes', () => {

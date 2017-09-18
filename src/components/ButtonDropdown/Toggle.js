@@ -2,7 +2,7 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
-import { ALL_TAGS } from '../../constants'
+import { NAMESPACE, ALL_TAGS } from '../../constants'
 
 
 const ButtonDropdownToggle = ({
@@ -18,7 +18,7 @@ const ButtonDropdownToggle = ({
   E(
     tag || 'button',
     {
-      className: classNames('c-btn-dropdown__toggle', className),
+      className: classNames(`${NAMESPACE}c-btn-dropdown__toggle`, className),
       onClick: handleButtonDropdownToggle,
       disabled: buttonDropdownDisabled,
       ...rest

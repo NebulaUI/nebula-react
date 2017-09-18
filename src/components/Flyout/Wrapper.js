@@ -3,7 +3,7 @@ import T from 'prop-types'
 
 import { ClickOutside } from '../../'
 import { classNames } from '../../utils'
-import { BLOCK_TAGS } from '../../constants'
+import { NAMESPACE, BLOCK_TAGS } from '../../constants'
 
 class FlyoutWrapper extends Component {
   constructor(props) {
@@ -91,7 +91,7 @@ class FlyoutWrapper extends Component {
     const FlyoutComponent = E(
       tag || 'div',
       {
-        className: classNames('c-flyout', { 'is-open': this.isOpen() }, className),
+        className: classNames(`${NAMESPACE}c-flyout`, { [`${NAMESPACE}is-open`]: this.isOpen() }, className),
         'aria-haspopup': true,
         'aria-expanded': this.isOpen(),
         ...rest

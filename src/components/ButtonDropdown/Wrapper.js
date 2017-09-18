@@ -3,7 +3,8 @@ import T from 'prop-types'
 
 import { ClickOutside } from '../../'
 import { classNames } from '../../utils/'
-import { BLOCK_TAGS } from '../../constants'
+
+import { NAMESPACE, BLOCK_TAGS } from '../../constants'
 
 class ButtonDropdownWrapper extends Component {
   constructor(props) {
@@ -97,10 +98,10 @@ class ButtonDropdownWrapper extends Component {
       tag || 'div',
       {
         className: classNames(
-          'c-btn-dropdown',
-          `c-btn-dropdown--toggle-${togglePosition}`,
-          { 'c-btn-dropdown--full': fullWidth },
-          { 'is-open': this.isOpen() },
+          `${NAMESPACE}c-btn-dropdown`,
+          `${NAMESPACE}c-btn-dropdown--toggle-${togglePosition}`,
+          { [`${NAMESPACE}c-btn-dropdown--full`]: fullWidth },
+          { [`${NAMESPACE}is-open`]: this.isOpen() },
           className
         ),
         'aria-haspopup': true,

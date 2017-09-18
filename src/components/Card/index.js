@@ -2,13 +2,13 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
-import { BLOCK_TAGS } from '../../constants'
+import { NAMESPACE, BLOCK_TAGS } from '../../constants'
 
 const Card = ({ tag, className, children, ...rest }) =>
   E(
     tag || 'div',
     {
-      className: classNames('c-card', className),
+      className: classNames(`${NAMESPACE}c-card`, className),
       ...rest
     },
     children
