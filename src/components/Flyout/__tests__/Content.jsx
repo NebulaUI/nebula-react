@@ -69,4 +69,19 @@ describe('<Flyout.Content />', () => {
     })
     expect($.prop('ariaHidden')).toBe('true')
   })
+
+  it('renders with a width', () => {
+    const props = {
+      ...defaultProps,
+      width: 200
+    }
+    const $ = shallow(
+      <Flyout.Content {...props}>
+        _
+      </Flyout.Content>
+    )
+    expect($.prop('style')).toEqual({
+      width: '200px'
+    })
+  })
 })

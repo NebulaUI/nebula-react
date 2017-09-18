@@ -22,6 +22,7 @@ import { Navbar } from './components/Navbar/'
 import { Pill } from './components/Pill/'
 import { StatusCard } from './components/StatusCard/'
 import { Tabs } from './components/Tabs/'
+import { UIList } from './components/UIList/'
 import * as constants from './constants'
 
 export {
@@ -48,5 +49,6 @@ export {
   SiteWrap,
   StatusCard,
   Tabs,
+  UIList,
   UniformedList
 }

@@ -4,7 +4,8 @@ import {
   SiteWrap,
   Section,
   Pagination,
-  Pill
+  Pill,
+  UIList,
 } from 'nebula-react'
 
 const tableData = {
@@ -69,6 +70,13 @@ class App extends Component {
                 <Pagination.Link to="/" next>Next</Pagination.Link>
               </Pagination.Item>
             </Pagination.Wrapper>
+            <UIList.Wrapper spacing="md">
+              <UIList.Item>Item 1</UIList.Item>
+              <UIList.Item>Item 2</UIList.Item>
+              <UIList.Item>Item 3</UIList.Item>
+              <UIList.Item>Item 4</UIList.Item>
+              <UIList.Item>Item 5</UIList.Item>
+            </UIList.Wrapper>
           </SiteWrap>
         </Section>
       </div>

@@ -19,7 +19,7 @@ const FlyoutContent = ({
   E(
     tag || 'div',
     {
-      className: classNames('c-flyout__content', direction ? `c-flyout__content--${direction}` : '', className),
+      className: classNames('c-flyout__content', `c-flyout__content--${direction}`, className),
       style: { width: width && appendUnit(width, 'px') },
       ...rest
     },
