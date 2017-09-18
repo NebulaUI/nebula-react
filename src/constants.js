@@ -1,3 +1,5 @@
+const NAMESPACE = ''
+
 const BREAKPOINTS = ['xs', 'sm', 'md', 'lg']
 const MAX_BREAKPOINTS = BREAKPOINTS.map(bp => `max-${bp}`)
 
@@ -40,6 +42,7 @@ const BUTTON_THEMES = ['alpha', 'beta']
 const STATUSES = ['success', 'info', 'warning', 'error']
 
 export {
+  NAMESPACE,
   BLOCK_TAGS,
   INLINE_TAGS,
   ALL_TAGS,

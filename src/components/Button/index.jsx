@@ -2,7 +2,7 @@ import React, { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
-import { BUTTON_SIZES, BUTTON_THEMES, ALL_TAGS } from '../../constants'
+import { NAMESPACE, BUTTON_SIZES, BUTTON_THEMES, ALL_TAGS } from '../../constants'
 
 const Button = ({
   tag,
@@ -18,11 +18,11 @@ const Button = ({
 }) => {
   const ComponentOverride = component
   const enhancedClassName = classNames(
-    'c-btn',
+    `${NAMESPACE}c-btn`,
     className,
-    theme ? `c-btn--${theme}` : '',
-    size ? `c-btn--${size}` : '',
-    { 'c-btn--full': fullWidth }
+    theme ? `${NAMESPACE}c-btn--${theme}` : '',
+    size ? `${NAMESPACE}c-btn--${size}` : '',
+    { [`${NAMESPACE}c-btn--full`]: fullWidth }
   )
 
   if (ComponentOverride) {

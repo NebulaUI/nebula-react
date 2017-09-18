@@ -1,12 +1,14 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
+
 import { Button } from '../'
 
 describe('<Button />', () => {
   it('passes in an optional className', () => {
     const $ = shallow(<Button className="test">_</Button>)
-    expect($.hasClass('c-btn test')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-btn ${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders a defined tag type', () => {
@@ -38,17 +40,17 @@ describe('<Button />', () => {
 
   it('renders with a size', () => {
     const $ = shallow(<Button size="md">_</Button>)
-    expect($.hasClass('c-btn c-btn--md')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-btn ${NAMESPACE}c-btn--md`)).toBe(true)
   })
 
   it('renders with a theme', () => {
     const $ = shallow(<Button theme="alpha">_</Button>)
-    expect($.hasClass('c-btn c-btn--alpha')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-btn ${NAMESPACE}c-btn--alpha`)).toBe(true)
   })
 
   it('renders full width', () => {
     const $ = shallow(<Button fullWidth>_</Button>)
-    expect($.hasClass('c-btn c-btn--full')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-btn ${NAMESPACE}c-btn--full`)).toBe(true)
   })
 
   it('renders with a type', () => {
@@ -61,7 +63,7 @@ describe('<Button />', () => {
     const $ = shallow(<Button to="/test" theme="alpha" size="sm" component={RRLink}>_</Button>)
     expect($.type()).toBe(RRLink)
     expect($.prop('to')).toBe('/test')
-    expect($.hasClass('c-btn c-btn--alpha c-btn--sm')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-btn ${NAMESPACE}c-btn--alpha ${NAMESPACE}c-btn--sm`)).toBe(true)
   })
 
   it('renders a link when passed a "to" prop', () => {
