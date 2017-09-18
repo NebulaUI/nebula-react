@@ -2,7 +2,7 @@ import React from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
-
+import { ALL_TAGS } from '../../constants'
 import { Icon } from '../Icon'
 
 const buildIcon = (fill, size, position) => () => (
@@ -57,7 +57,7 @@ const LoadingIcon = ({
 
 LoadingIcon.propTypes = {
   fill: T.string,
-  tag: T.string,
+  tag: T.oneOf(ALL_TAGS),
   size: T.string,
   iconPosition: T.oneOf(['left', 'right']),
   verticalAlign: T.string,

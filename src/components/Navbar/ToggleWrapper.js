@@ -1,6 +1,8 @@
 import { Component, createElement as E } from 'react'
 import T from 'prop-types'
+
 import { classNames } from '../../utils/'
+import { ALL_TAGS } from '../../constants'
 
 class NavbarToggleWrapper extends Component {
   handleClick = (e) => {
@@ -34,7 +36,7 @@ NavbarToggleWrapper.contextTypes = {
 }
 
 NavbarToggleWrapper.propTypes = {
-  tag: T.string,
+  tag: T.oneOf(ALL_TAGS),
   onClick: T.func,
   children: T.node,
   className: T.string

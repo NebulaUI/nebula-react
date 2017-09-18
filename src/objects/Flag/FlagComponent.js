@@ -2,6 +2,7 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
+import { BLOCK_TAGS } from '../../constants'
 
 const FlagComponent = ({ tag, nowrap, children, className, ...rest }) =>
   E(
@@ -18,7 +19,7 @@ const FlagComponent = ({ tag, nowrap, children, className, ...rest }) =>
   )
 
 FlagComponent.propTypes = {
-  tag: T.string,
+  tag: T.oneOf(BLOCK_TAGS),
   nowrap: T.bool,
   children: T.node,
   className: T.string

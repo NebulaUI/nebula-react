@@ -1,8 +1,10 @@
 import React, { Component, createElement as E } from 'react'
 import T from 'prop-types'
-import { classNames } from '../../utils/'
 
-const initial = 'c-pill'
+import { classNames } from '../../utils/'
+import { ALL_TAGS } from '../../constants'
+
+const initialClassName = 'c-pill'
 
 class Pill extends Component {
   componentDidMount() {
@@ -31,9 +33,9 @@ class Pill extends Component {
     } = this.props
 
     const buildClassName = () =>
-      classNames(initial, className,
-        status ? `${initial}--${status}` : '',
-        { [`${initial}--border`]: !status },
+      classNames(initialClassName, className,
+        status ? `${initialClassName}--${status}` : '',
+        { [`${initialClassName}--border`]: !status },
         { 'is-active': !status && isActive })
 
     const onClickProps = onClick
@@ -70,7 +72,7 @@ class Pill extends Component {
 
 Pill.propTypes = {
   to: T.string,
-  tag: T.string,
+  tag: T.oneOf(ALL_TAGS),
   status: T.oneOf([
     'success',
     'info',

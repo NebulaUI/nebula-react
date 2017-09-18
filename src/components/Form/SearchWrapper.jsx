@@ -1,6 +1,8 @@
 import { createElement as E } from 'react'
 import T from 'prop-types'
+
 import { classNames } from '../../utils/'
+import { BLOCK_TAGS } from '../../constants'
 
 const initial = 'c-search'
 
@@ -43,7 +45,7 @@ SearchWrapper.propTypes = {
   action: T.string,
   method: T.string,
   className: T.string,
-  tag: T.string,
+  tag: T.oneOf(BLOCK_TAGS),
   children: T.node,
   submitPosition: T.oneOf(['left', 'right']).isRequired,
   onSubmit: T.func

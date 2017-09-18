@@ -2,6 +2,7 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils'
+import { ALL_TAGS } from '../../constants'
 
 const NavbarDropdownToggle = ({
   tag,
@@ -27,7 +28,7 @@ NavbarDropdownToggle.contextTypes = {
 
 NavbarDropdownToggle.propTypes = {
   className: T.string,
-  tag: T.string,
+  tag: T.oneOf(ALL_TAGS),
   children: T.node.isRequired
 }
 

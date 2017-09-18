@@ -1,6 +1,8 @@
 import { Component, createElement as E } from 'react'
 import T from 'prop-types'
+
 import { classNames } from '../../utils'
+import { BLOCK_TAGS } from '../../constants'
 
 class TabsWrapper extends Component {
   constructor(props) {
@@ -59,7 +61,7 @@ TabsWrapper.childContextTypes = {
 }
 
 TabsWrapper.propTypes = {
-  tag: T.string,
+  tag: T.oneOf(BLOCK_TAGS),
   children: T.node.isRequired,
   className: T.string,
   onTabChange: T.func,

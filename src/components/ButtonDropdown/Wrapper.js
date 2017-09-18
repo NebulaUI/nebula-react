@@ -3,6 +3,7 @@ import T from 'prop-types'
 
 import { ClickOutside } from '../../'
 import { classNames } from '../../utils/'
+import { BLOCK_TAGS } from '../../constants'
 
 class ButtonDropdownWrapper extends Component {
   constructor(props) {
@@ -121,7 +122,7 @@ class ButtonDropdownWrapper extends Component {
 }
 
 ButtonDropdownWrapper.propTypes = {
-  tag: T.string,
+  tag: T.oneOf(BLOCK_TAGS),
   className: T.string,
   children: T.node.isRequired,
   fullWidth: T.bool,

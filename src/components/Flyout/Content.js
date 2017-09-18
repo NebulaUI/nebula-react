@@ -2,7 +2,7 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames, appendUnit } from '../../utils/'
-import { FLYOUT_DIRECTIONS as DIRECTIONS } from '../../constants'
+import { FLYOUT_DIRECTIONS, BLOCK_TAGS } from '../../constants'
 
 // eslint-disable-next-line react/prefer-stateless-function
 const FlyoutContent = ({
@@ -31,11 +31,11 @@ FlyoutContent.contextTypes = {
 }
 
 FlyoutContent.propTypes = {
-  tag: T.string,
+  tag: T.oneOf(BLOCK_TAGS),
   className: T.string,
   children: T.node.isRequired,
   width: T.oneOfType([T.string, T.number]),
-  direction: T.oneOf(DIRECTIONS).isRequired
+  direction: T.oneOf(FLYOUT_DIRECTIONS).isRequired
 }
 
 export default FlyoutContent

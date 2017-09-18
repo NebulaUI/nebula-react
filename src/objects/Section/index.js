@@ -2,7 +2,7 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames, buildClassName, buildBreakpointValues } from '../../utils/'
-import { SECTION_SIZES as SIZES } from '../../constants'
+import { SECTION_SIZES, BLOCK_TAGS } from '../../constants'
 
 const Section = ({ tag, size, className, children, ...rest }) =>
   E(
@@ -17,7 +17,7 @@ const Section = ({ tag, size, className, children, ...rest }) =>
     children
   )
 
-const sizes = buildBreakpointValues(SIZES)
+const sizes = buildBreakpointValues(SECTION_SIZES)
 
 const propTypeSizes = T.oneOfType([
   T.oneOf(sizes),
@@ -25,7 +25,7 @@ const propTypeSizes = T.oneOfType([
 ])
 
 Section.propTypes = {
-  tag: T.string,
+  tag: T.oneOf(BLOCK_TAGS),
   size: propTypeSizes,
   className: T.string,
   children: T.node

@@ -2,7 +2,7 @@ import React, { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
-import { BUTTON_SIZES, BUTTON_THEMES } from '../../constants'
+import { BUTTON_SIZES, BUTTON_THEMES, ALL_TAGS } from '../../constants'
 
 const Button = ({
   tag,
@@ -50,7 +50,7 @@ const Button = ({
 }
 
 Button.propTypes = {
-  tag: T.string,
+  tag: T.oneOf(ALL_TAGS),
   type: T.oneOf(['submit', 'reset', 'menu']),
   to: T.string,
   fullWidth: T.bool,

@@ -1,6 +1,8 @@
 import { createElement as E } from 'react'
 import T from 'prop-types'
+
 import { classNames } from '../../utils'
+import { ALL_TAGS } from '../../constants'
 
 const NavbarToggleBars = ({ tag, children, className, ...rest }) =>
   E(
@@ -14,7 +16,7 @@ const NavbarToggleBars = ({ tag, children, className, ...rest }) =>
 
 NavbarToggleBars.propTypes = {
   children: T.node,
-  tag: T.string,
+  tag: T.oneOf(ALL_TAGS),
   className: T.string
 }
 

@@ -1,6 +1,8 @@
 import { createElement as E } from 'react'
 import T from 'prop-types'
+
 import { classNames } from '../../utils/'
+import { BLOCK_TAGS } from '../../constants'
 
 const NavbarContentWrapper = ({ tag, children, className, ...rest }) =>
   E(
@@ -14,7 +16,7 @@ const NavbarContentWrapper = ({ tag, children, className, ...rest }) =>
 
 NavbarContentWrapper.propTypes = {
   handleToggle: T.func,
-  tag: T.string,
+  tag: T.oneOf(BLOCK_TAGS),
   children: T.node.isRequired,
   className: T.string
 }

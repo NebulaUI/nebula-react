@@ -2,7 +2,7 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames, buildClassName, buildBreakpointValues } from '../../utils/'
-import { LIST_SPACING } from '../../constants'
+import { LIST_SPACING, BLOCK_TAGS } from '../../constants'
 
 const MatrixListWrapper = ({ tag, spacing, className, children, ...rest }) =>
   E(
@@ -28,7 +28,7 @@ const propTypeSpacing = T.oneOfType([
 ])
 
 MatrixListWrapper.propTypes = {
-  tag: T.string,
+  tag: T.oneOf(BLOCK_TAGS),
   spacing: propTypeSpacing,
   className: T.string,
   children: T.node

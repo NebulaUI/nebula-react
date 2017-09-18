@@ -3,6 +3,7 @@ import T from 'prop-types'
 import FocusTrap from 'focus-trap-react'
 
 import { classNames } from '../../utils/'
+import { BLOCK_TAGS } from '../../constants'
 
 const ModalBody = ({
   tag,
@@ -41,7 +42,7 @@ ModalBody.contextTypes = {
 ModalBody.propTypes = {
   children: T.node.isRequired,
   className: T.string,
-  tag: T.string
+  tag: T.oneOf(BLOCK_TAGS)
 }
 
 export default ModalBody

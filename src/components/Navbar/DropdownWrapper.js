@@ -2,6 +2,7 @@ import React, { Component, createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils'
+import { BLOCK_TAGS } from '../../constants'
 import { ClickOutside } from '../../'
 import DropdownContent from './DropdownContent'
 
@@ -52,7 +53,7 @@ NavbarDropdownWrapper.childContextTypes = {
 
 NavbarDropdownWrapper.propTypes = {
   className: T.string,
-  tag: T.string,
+  tag: T.oneOf(BLOCK_TAGS),
   clickOutsideToClose: T.bool,
   children: T.node.isRequired
 }

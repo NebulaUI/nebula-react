@@ -2,6 +2,7 @@ import React, { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
+import { ALL_TAGS } from '../../constants'
 
 const Icon = ({
   tag,
@@ -53,7 +54,7 @@ Icon.propTypes = {
     }),
     T.func
   ]).isRequired,
-  tag: T.string,
+  tag: T.oneOf(ALL_TAGS),
   width: T.string,
   height: T.string,
   iconPosition: T.oneOf(['left', 'right']),

@@ -1,7 +1,7 @@
 import { createElement as E } from 'react'
 import T from 'prop-types'
 
-import { GRID_GUTTERS } from '../../constants'
+import { GRID_GUTTERS, BLOCK_TAGS } from '../../constants'
 import { classNames, buildClassName, buildBreakpointValues } from '../../utils/'
 
 const GridWrapper = ({
@@ -42,7 +42,7 @@ const propTypeGutter = T.oneOfType([
 ])
 
 GridWrapper.propTypes = {
-  tag: T.string,
+  tag: T.oneOf(BLOCK_TAGS),
   gutter: propTypeGutter,
   matrix: T.bool,
   equalHeight: T.bool,

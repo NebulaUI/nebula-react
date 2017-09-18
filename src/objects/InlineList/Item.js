@@ -2,6 +2,7 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
+import { BLOCK_TAGS } from '../../constants'
 
 const InlineListItem = ({ tag, className, children, ...rest }) =>
   E(
@@ -11,7 +12,7 @@ const InlineListItem = ({ tag, className, children, ...rest }) =>
   )
 
 InlineListItem.propTypes = {
-  tag: T.string,
+  tag: T.oneOf(BLOCK_TAGS),
   className: T.string,
   children: T.node
 }

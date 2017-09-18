@@ -1,6 +1,8 @@
 import { createElement as E } from 'react'
 import T from 'prop-types'
+
 import { classNames } from '../../utils/'
+import { BLOCK_TAGS } from '../../constants'
 
 const TabsPanel = ({ tag, children, className, id, ...rest }, { activeTabId, activeTabLabel }) => {
   if (id !== activeTabId) {
@@ -25,7 +27,7 @@ TabsPanel.contextTypes = {
 }
 
 TabsPanel.propTypes = {
-  tag: T.string,
+  tag: T.oneOf(BLOCK_TAGS),
   id: T.oneOfType([T.string, T.number]).isRequired,
   className: T.string,
   children: T.node

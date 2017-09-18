@@ -1,6 +1,8 @@
 import React, { Component, cloneElement, createElement as E } from 'react'
 import T from 'prop-types'
+
 import { classNames, removeFalsy } from '../../utils'
+import { BLOCK_TAGS } from '../../constants'
 
 class TabsTabList extends Component {
   componentDidMount() {
@@ -104,7 +106,7 @@ TabsTabList.contextTypes = {
 }
 
 TabsTabList.propTypes = {
-  tag: T.string,
+  tag: T.oneOf(BLOCK_TAGS),
   className: T.string,
   children: T.node.isRequired
 }

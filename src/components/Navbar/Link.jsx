@@ -1,6 +1,8 @@
 import React, { Component, createElement as E } from 'react'
 import T from 'prop-types'
+
 import { classNames } from '../../utils/'
+import { ALL_TAGS } from '../../constants'
 
 class NavbarLink extends Component {
   handleClick = (e) => {
@@ -59,7 +61,7 @@ NavbarLink.propTypes = {
   ]),
   activeClassName: T.string,
   to: T.string.isRequired,
-  tag: T.string,
+  tag: T.oneOf(ALL_TAGS),
   className: T.string,
   onClick: T.func,
   children: T.node.isRequired

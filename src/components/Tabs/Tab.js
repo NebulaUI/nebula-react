@@ -1,6 +1,8 @@
 import { Component, createElement as E } from 'react'
 import T from 'prop-types'
+
 import { classNames } from '../../utils'
+import { ALL_TAGS } from '../../constants'
 
 class TabsTab extends Component {
   componentDidMount() {
@@ -41,6 +43,7 @@ class TabsTab extends Component {
         activateTab()
       }
     }
+
     return E(
       tag || 'button',
       {
@@ -67,7 +70,7 @@ TabsTab.contextTypes = {
 }
 
 TabsTab.propTypes = {
-  tag: T.string,
+  tag: T.oneOf(ALL_TAGS),
   children: T.node.isRequired,
   isActive: T.bool,
   className: T.string,

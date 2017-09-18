@@ -2,7 +2,7 @@ import { Component, createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames, randomId } from '../../utils/'
-import { MAX_BREAKPOINTS } from '../../constants'
+import { MAX_BREAKPOINTS, BLOCK_TAGS } from '../../constants'
 
 class FoldableWrapper extends Component {
   constructor(props) {
@@ -82,7 +82,7 @@ FoldableWrapper.childContextTypes = {
 FoldableWrapper.propTypes = {
   breakpoint: T.oneOf(MAX_BREAKPOINTS),
   bordered: T.bool,
-  tag: T.string,
+  tag: T.oneOf(BLOCK_TAGS),
   defaultOpen: T.oneOf(['open', 'closed']),
   open: T.oneOf(['open', 'closed']),
   onFoldableChange: T.func,

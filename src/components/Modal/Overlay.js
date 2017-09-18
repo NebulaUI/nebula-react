@@ -2,6 +2,7 @@ import { Component, createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
+import { ALL_TAGS } from '../../constants'
 
 class ModalOverlay extends Component {
   componentDidMount() {
@@ -29,7 +30,7 @@ class ModalOverlay extends Component {
 ModalOverlay.propTypes = {
   className: T.string,
   clickToClose: T.bool,
-  tag: T.string
+  tag: T.oneOf(ALL_TAGS)
 }
 
 ModalOverlay.contextTypes = {

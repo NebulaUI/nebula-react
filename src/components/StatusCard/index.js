@@ -2,7 +2,7 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
-import { STATUSES } from '../../constants'
+import { STATUSES, BLOCK_TAGS } from '../../constants'
 
 const initial = 'c-status-card'
 
@@ -17,7 +17,7 @@ const StatusCard = ({ tag, status, children, ...rest }) =>
   )
 
 StatusCard.propTypes = {
-  tag: T.string,
+  tag: T.oneOf(BLOCK_TAGS),
   status: T.oneOf(STATUSES).isRequired,
   children: T.node.isRequired
 }

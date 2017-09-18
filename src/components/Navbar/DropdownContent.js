@@ -1,6 +1,8 @@
 import { Component, createElement as E } from 'react'
 import T from 'prop-types'
+
 import { classNames } from '../../utils/'
+import { BLOCK_TAGS } from '../../constants'
 
 class NavbarDropdownContent extends Component {
   state = {
@@ -40,7 +42,7 @@ class NavbarDropdownContent extends Component {
 NavbarDropdownContent.propTypes = {
   className: T.string,
   southWest: T.bool,
-  tag: T.string,
+  tag: T.oneOf(BLOCK_TAGS),
   children: T.node.isRequired
 }
 

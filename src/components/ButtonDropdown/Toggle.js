@@ -1,6 +1,9 @@
 import { createElement as E } from 'react'
 import T from 'prop-types'
+
 import { classNames } from '../../utils/'
+import { ALL_TAGS } from '../../constants'
+
 
 const ButtonDropdownToggle = ({
   tag,
@@ -30,7 +33,7 @@ ButtonDropdownToggle.contextTypes = {
 }
 
 ButtonDropdownToggle.propTypes = {
-  tag: T.string,
+  tag: T.oneOf(ALL_TAGS),
   className: T.string,
   children: T.node
 }

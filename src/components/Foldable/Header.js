@@ -1,6 +1,7 @@
 import { createElement as E } from 'react'
 import T from 'prop-types'
 import { classNames } from '../../utils/'
+import { BLOCK_TAGS } from '../../constants'
 
 const FoldableHeader = ({
   padding,
@@ -42,7 +43,7 @@ FoldableHeader.contextTypes = {
 }
 
 FoldableHeader.propTypes = {
-  tag: T.string,
+  tag: T.oneOf(BLOCK_TAGS),
   className: T.string,
   children: T.node.isRequired
 }

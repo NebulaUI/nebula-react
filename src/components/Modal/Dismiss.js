@@ -2,6 +2,7 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils'
+import { ALL_TAGS } from '../../constants'
 
 const ModalDismiss = ({ tag, className, children, ...rest }) =>
   E(
@@ -16,6 +17,7 @@ const ModalDismiss = ({ tag, className, children, ...rest }) =>
 
 ModalDismiss.propTypes = {
   children: T.node,
+  tag: T.oneOf(ALL_TAGS),
   className: T.string
 }
 

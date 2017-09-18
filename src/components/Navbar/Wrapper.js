@@ -2,6 +2,7 @@ import { Component, createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
+import { BLOCK_TAGS } from '../../constants'
 
 class NavbarWrapper extends Component {
   constructor() {
@@ -58,7 +59,7 @@ NavbarWrapper.childContextTypes = {
 
 NavbarWrapper.propTypes = {
   children: T.node.isRequired,
-  tag: T.string,
+  tag: T.oneOf(BLOCK_TAGS),
   sticky: T.bool,
   className: T.string
 }

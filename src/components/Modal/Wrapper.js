@@ -3,6 +3,7 @@ import T from 'prop-types'
 import noScroll from 'no-scroll'
 
 import { classNames } from '../../utils/'
+import { BLOCK_TAGS } from '../../constants'
 
 class ModalWrapper extends Component {
   state = {
@@ -82,7 +83,7 @@ ModalWrapper.childContextTypes = {
 }
 
 ModalWrapper.propTypes = {
-  tag: T.string,
+  tag: T.oneOf(BLOCK_TAGS),
   className: T.string,
   ariaLabel: T.string.isRequired,
   closeModal: T.func.isRequired,

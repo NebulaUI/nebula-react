@@ -1,7 +1,7 @@
 import { createElement as E } from 'react'
 import T from 'prop-types'
 
-import { GRID_FRACTIONS } from '../../constants'
+import { GRID_FRACTIONS, BLOCK_TAGS } from '../../constants'
 import { classNames, buildClassName, buildBreakpointValues } from '../../utils/'
 
 const GridItem = ({
@@ -42,7 +42,7 @@ const propTypeFraction = T.oneOfType([
 ])
 
 GridItem.propTypes = {
-  tag: T.string,
+  tag: T.oneOf(BLOCK_TAGS),
   width: propTypeFraction,
   push: propTypeFraction,
   pull: propTypeFraction,

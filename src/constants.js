@@ -1,6 +1,24 @@
 const BREAKPOINTS = ['xs', 'sm', 'md', 'lg']
 const MAX_BREAKPOINTS = BREAKPOINTS.map(bp => `max-${bp}`)
 
+const BLOCK_TAGS = [
+  'address', 'article', 'aside', 'blockquote', 'canvas', 'dd', 'div', 'dl', 'dt',
+  'fieldset', 'figcaption', 'figure', 'footer', 'form', 'h1', 'h2', 'h3', 'h4',
+  'h5', 'h6', 'header', 'hgroup', 'hr', 'li', 'main', 'nav', 'noscript', 'ol',
+  'output', 'p', 'pre', 'section', 'table', 'tfoot', 'ul', 'video'
+]
+
+const INLINE_TAGS = [
+  'a', 'b', 'big', 'i', 'small', 'tt', 'abbr', 'acronym', 'cite', 'code', 'dfn',
+  'em', 'kbd', 'strong', 'samp', 'time', 'var', 'bdo', 'br', 'img', 'map', 'object',
+  'q', 'script', 'span', 'sub', 'sup', 'button', 'input', 'label', 'select', 'textatea'
+]
+
+const ALL_TAGS = [
+  ...BLOCK_TAGS,
+  ...INLINE_TAGS
+]
+
 const LIST_SPACING = ['md']
 
 const FLAG_GUTTERS = ['md']
@@ -22,6 +40,9 @@ const BUTTON_THEMES = ['alpha', 'beta']
 const STATUSES = ['success', 'info', 'warning', 'error']
 
 export {
+  BLOCK_TAGS,
+  INLINE_TAGS,
+  ALL_TAGS,
   BREAKPOINTS,
   MAX_BREAKPOINTS,
   LIST_SPACING,

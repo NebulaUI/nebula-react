@@ -1,6 +1,8 @@
 import { createElement as E } from 'react'
 import T from 'prop-types'
+
 import { classNames } from '../../utils/'
+import { BLOCK_TAGS } from '../../constants'
 
 const FoldableBody = ({ tag, className, children, ...rest }, { isFoldableOpen, foldableId }) =>
   E(
@@ -20,7 +22,7 @@ FoldableBody.contextTypes = {
 }
 
 FoldableBody.propTypes = {
-  tag: T.string,
+  tag: T.oneOf(BLOCK_TAGS),
   className: T.string,
   children: T.node.isRequired
 }

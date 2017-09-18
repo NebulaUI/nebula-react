@@ -1,6 +1,8 @@
 import React, { createElement as E, Component } from 'react'
 import T from 'prop-types'
+
 import { classNames } from '../../utils/'
+import { ALL_TAGS } from '../../constants'
 
 class PaginationLink extends Component {
   handleClick = (e) => {
@@ -72,7 +74,7 @@ PaginationLink.propTypes = {
   isActive: T.bool,
   activeClassName: T.string,
   to: T.string.isRequired,
-  tag: T.string,
+  tag: T.oneOf(ALL_TAGS),
   className: T.string,
   callback: T.func,
   children: T.node.isRequired,

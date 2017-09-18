@@ -3,6 +3,7 @@ import T from 'prop-types'
 
 import { ClickOutside } from '../../'
 import { classNames } from '../../utils'
+import { BLOCK_TAGS } from '../../constants'
 
 class FlyoutWrapper extends Component {
   constructor(props) {
@@ -110,7 +111,7 @@ class FlyoutWrapper extends Component {
 }
 
 FlyoutWrapper.propTypes = {
-  tag: T.string,
+  tag: T.oneOf(BLOCK_TAGS),
   className: T.string,
   children: T.node.isRequired,
   onFlyoutChange: T.func,

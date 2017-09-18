@@ -1,6 +1,8 @@
 import { createElement as E } from 'react'
 import T from 'prop-types'
+
 import { classNames } from '../../utils/'
+import { BLOCK_TAGS } from '../../constants'
 
 const NavbarContent = ({ tag, right, keepAtTop, children, className, ...rest }) =>
   E(
@@ -18,7 +20,7 @@ const NavbarContent = ({ tag, right, keepAtTop, children, className, ...rest }) 
 
 NavbarContent.propTypes = {
   children: T.node.isRequired,
-  tag: T.string,
+  tag: T.oneOf(BLOCK_TAGS),
   right: T.bool,
   keepAtTop: T.bool,
   className: T.string

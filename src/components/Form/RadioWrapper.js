@@ -4,17 +4,20 @@ import T from 'prop-types'
 import { classNames } from '../../utils/'
 import { BLOCK_TAGS } from '../../constants'
 
-const BareListItem = ({ tag, className, children, ...rest }) =>
+const RadioWrapper = ({ tag, className, children, ...rest }) =>
   E(
-    tag || 'li',
-    { className: classNames('o-bare-list__item', className), ...rest },
+    tag || 'div',
+    {
+      className: classNames('c-form-input', className),
+      ...rest
+    },
     children
   )
 
-BareListItem.propTypes = {
+RadioWrapper.propTypes = {
   tag: T.oneOf(BLOCK_TAGS),
   className: T.string,
   children: T.node
 }
 
-export default BareListItem
+export default RadioWrapper
