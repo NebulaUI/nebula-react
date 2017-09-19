@@ -1,18 +1,20 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
+
 import { MatrixList } from '../'
 
 describe('<MatrixList.Wrapper />', () => {
   it('takes a single spacing value', () => {
     const $ = shallow(<MatrixList.Wrapper spacing="md" />)
-    expect($.hasClass('o-matrix-list o-matrix-list-md')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}o-matrix-list ${NAMESPACE}o-matrix-list-md`)).toBe(true)
   })
 
   it('takes a list of sizes', () => {
     const spacing = ['md', 'md@sm']
     const $ = shallow(<MatrixList.Wrapper spacing={spacing} />)
-    expect($.hasClass('o-matrix-list o-matrix-list-md o-matrix-list-md@sm')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}o-matrix-list ${NAMESPACE}o-matrix-list-md ${NAMESPACE}o-matrix-list-md@sm`)).toBe(true)
   })
 
   it('renders children', () => {
@@ -36,7 +38,7 @@ describe('<MatrixList.Wrapper />', () => {
 
   it('renders the user defined className', () => {
     const $ = shallow(<MatrixList.Wrapper className="test" />)
-    expect($.hasClass('o-matrix-list test')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}o-matrix-list ${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders with attributes', () => {

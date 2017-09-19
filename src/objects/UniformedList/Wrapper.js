@@ -2,7 +2,7 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames, buildClassName } from '../../utils/'
-import { BREAKPOINTS, BLOCK_TAGS } from '../../constants'
+import { NAMESPACE, BREAKPOINTS, BLOCK_TAGS } from '../../constants'
 
 const UniformedListWrapper = ({ tag, breakpoint, className, children, ...rest }) =>
   E(
@@ -10,8 +10,8 @@ const UniformedListWrapper = ({ tag, breakpoint, className, children, ...rest })
     {
       className: classNames(
         breakpoint
-          ? buildClassName('o-bare-list o-uniformed-list@', breakpoint)
-          : 'o-uniformed-list',
+          ? buildClassName(`${NAMESPACE}o-bare-list ${NAMESPACE}o-uniformed-list@`, breakpoint)
+          : `${NAMESPACE}o-uniformed-list`,
         className
       ),
       ...rest

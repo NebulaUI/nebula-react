@@ -2,16 +2,16 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames, buildClassName, buildBreakpointValues } from '../../utils/'
-import { LIST_SPACING, BLOCK_TAGS } from '../../constants'
+import { NAMESPACE, LIST_SPACING, BLOCK_TAGS } from '../../constants'
 
 const MatrixListWrapper = ({ tag, spacing, className, children, ...rest }) =>
   E(
     tag || 'ul',
     {
       className: classNames(
-        'o-matrix-list',
+        `${NAMESPACE}o-matrix-list`,
         spacing
-          ? buildClassName('o-matrix-list-', spacing)
+          ? buildClassName(`${NAMESPACE}o-matrix-list-`, spacing)
           : null,
         className
       ),

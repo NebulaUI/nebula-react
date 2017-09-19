@@ -2,12 +2,12 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
-import { BLOCK_TAGS } from '../../constants'
+import { NAMESPACE, BLOCK_TAGS } from '../../constants'
 
 const MatrixListItem = ({ tag, className, children, ...rest }) =>
   E(
     tag || 'li',
-    { className: classNames('o-matrix-list__item', className), ...rest },
+    { className: classNames(`${NAMESPACE}o-matrix-list__item`, className), ...rest },
     children
   )
 

@@ -2,14 +2,14 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames, buildClassName, buildBreakpointValues } from '../../utils/'
-import { SECTION_SIZES, BLOCK_TAGS } from '../../constants'
+import { NAMESPACE, SECTION_SIZES, BLOCK_TAGS } from '../../constants'
 
 const Section = ({ tag, size, className, children, ...rest }) =>
   E(
     tag || 'section',
     {
       className: classNames(
-        size && buildClassName('o-section-', size),
+        size && buildClassName(`${NAMESPACE}o-section-`, size),
         className
       ),
       ...rest

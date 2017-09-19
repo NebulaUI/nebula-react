@@ -1,6 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
+
 import { UniformedList } from '../'
 
 describe('<UniformedList.Item />', () => {
@@ -25,7 +27,7 @@ describe('<UniformedList.Item />', () => {
 
   it('renders the user defined className', () => {
     const $ = shallow(<UniformedList.Item className="test" />)
-    expect($.hasClass('o-uniformed-list__item test')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}o-uniformed-list__item ${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders with attributes', () => {

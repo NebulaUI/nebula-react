@@ -1,18 +1,20 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
+
 import { Section } from '../'
 
 describe('<Section />', () => {
   it('takes a single size', () => {
     const $ = shallow(<Section size="md" />)
-    expect($.hasClass('o-section-md')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}o-section-md`)).toBe(true)
   })
 
   it('takes a list of sizes', () => {
     const sizes = ['sm', 'md@sm']
     const $ = shallow(<Section size={sizes} />)
-    expect($.hasClass('o-section-sm o-section-md@sm')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}o-section-sm ${NAMESPACE}o-section-md@sm`)).toBe(true)
   })
 
   it('renders children', () => {
@@ -36,7 +38,7 @@ describe('<Section />', () => {
 
   it('renders the user defined className', () => {
     const $ = shallow(<Section className="test" />)
-    expect($.hasClass('test')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders with attributes', () => {

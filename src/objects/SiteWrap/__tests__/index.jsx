@@ -1,17 +1,19 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
+
 import { SiteWrap } from '../'
 
 describe('<SiteWrap />', () => {
   it('renders with padding', () => {
     const $ = shallow(<SiteWrap padding />)
-    expect($.hasClass('o-site-wrap o-site-wrap--padding')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}o-site-wrap ${NAMESPACE}o-site-wrap--padding`)).toBe(true)
   })
 
   it('renders the user defined className', () => {
     const $ = shallow(<SiteWrap className="test" />)
-    expect($.hasClass('o-site-wrap test')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}o-site-wrap ${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders with attributes', () => {

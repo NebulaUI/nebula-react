@@ -1,12 +1,14 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
+
 import { UniformedList } from '../'
 
 describe('<UniformedList.Wrapper />', () => {
   it('takes a single breakpoint', () => {
     const $ = shallow(<UniformedList.Wrapper breakpoint="md" />)
-    expect($.hasClass('o-bare-list o-uniformed-list@md')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}o-bare-list ${NAMESPACE}o-uniformed-list@md`)).toBe(true)
   })
 
   it('renders children', () => {
@@ -30,7 +32,7 @@ describe('<UniformedList.Wrapper />', () => {
 
   it('renders the user defined className', () => {
     const $ = shallow(<UniformedList.Wrapper className="test" />)
-    expect($.hasClass('o-uniformed-list test')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}o-uniformed-list ${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders with attributes', () => {

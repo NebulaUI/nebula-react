@@ -1,18 +1,20 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
+
 import { InlineList } from '../'
 
 describe('<InlineList.Wrapper />', () => {
   it('takes a single spacing value', () => {
     const $ = shallow(<InlineList.Wrapper spacing="md" />)
-    expect($.hasClass('o-inline-list o-inline-list--spaced-md')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}o-inline-list ${NAMESPACE}o-inline-list--spaced-md`)).toBe(true)
   })
 
   it('takes a list of sizes', () => {
     const spacing = ['md', 'md@sm']
     const $ = shallow(<InlineList.Wrapper spacing={spacing} />)
-    expect($.hasClass('o-inline-list o-inline-list--spaced-md o-inline-list--spaced-md@sm')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}o-inline-list ${NAMESPACE}o-inline-list--spaced-md ${NAMESPACE}o-inline-list--spaced-md@sm`)).toBe(true)
   })
 
   it('renders children', () => {
@@ -36,7 +38,7 @@ describe('<InlineList.Wrapper />', () => {
 
   it('renders with the default className', () => {
     const $ = shallow(<InlineList.Wrapper />)
-    expect($.hasClass('o-inline-list')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}o-inline-list`)).toBe(true)
   })
 
   it('renders with attributes', () => {
@@ -53,6 +55,6 @@ describe('<InlineList.Wrapper />', () => {
 
   it('renders the user defined className', () => {
     const $ = shallow(<InlineList.Wrapper className="test" />)
-    expect($.hasClass('o-inline-list test')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}o-inline-list ${NAMESPACE}test`)).toBe(true)
   })
 })

@@ -2,12 +2,12 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
-import { BLOCK_TAGS } from '../../constants'
+import { NAMESPACE, BLOCK_TAGS } from '../../constants'
 
 const UniformedListItem = ({ tag, className, children, ...rest }) =>
   E(
     tag || 'li',
-    { className: classNames('o-uniformed-list__item', className), ...rest },
+    { className: classNames(`${NAMESPACE}o-uniformed-list__item`, className), ...rest },
     children
   )
 

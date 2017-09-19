@@ -1,6 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
+
 import { MatrixList } from '../'
 
 describe('<MatrixList.Item />', () => {
@@ -25,7 +27,7 @@ describe('<MatrixList.Item />', () => {
 
   it('renders the user defined className', () => {
     const $ = shallow(<MatrixList.Item className="test" />)
-    expect($.hasClass('o-matrix-list__item test')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}o-matrix-list__item ${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders with attributes', () => {

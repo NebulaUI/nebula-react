@@ -2,16 +2,16 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames, buildClassName, buildBreakpointValues } from '../../utils/'
-import { LIST_SPACING, BLOCK_TAGS } from '../../constants'
+import { NAMESPACE, LIST_SPACING, BLOCK_TAGS } from '../../constants'
 
 const InlineListWrapper = ({ tag, spacing, className, children, ...rest }) =>
   E(
     tag || 'ul',
     {
       className: classNames(
-        'o-inline-list',
+        `${NAMESPACE}o-inline-list`,
         spacing
-          ? buildClassName('o-inline-list--spaced-', spacing)
+          ? buildClassName(`${NAMESPACE}o-inline-list--spaced-`, spacing)
           : null,
         className
       ),
