@@ -52,7 +52,7 @@ class Pill extends Component {
           className={buildClassName()}
           {...rest}
         >
-          {children}
+          { children }
         </ComponentOverride>
       )
     }
