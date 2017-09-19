@@ -1,6 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
+
 import { Flag } from '../'
 
 describe('<Flag.Component />', () => {
@@ -15,12 +17,12 @@ describe('<Flag.Component />', () => {
 
   it('renders without wrapping whitespace', () => {
     const $ = shallow(<Flag.Component nowrap />)
-    expect($.hasClass('o-flag__component o-flag__component--nowrap')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}o-flag__component ${NAMESPACE}o-flag__component--nowrap`)).toBe(true)
   })
 
   it('takes a defined className', () => {
     const $ = shallow(<Flag.Component className="test" />)
-    expect($.hasClass('o-flag__component test')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}o-flag__component ${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders with attributes', () => {

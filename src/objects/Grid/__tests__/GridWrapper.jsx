@@ -1,6 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
+
 import { Grid } from '../'
 
 describe('<Grid.Wrapper />', () => {
@@ -15,7 +17,7 @@ describe('<Grid.Wrapper />', () => {
 
   it('takes a defined className', () => {
     const $ = shallow(<Grid.Wrapper className="test" />)
-    expect($.hasClass('o-grid test')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}o-grid ${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders with attributes', () => {
@@ -42,37 +44,37 @@ describe('<Grid.Wrapper />', () => {
 
   it('takes a single gutter size', () => {
     const $ = shallow(<Grid.Wrapper gutter="md" />)
-    expect($.hasClass('o-grid o-grid--gutter-md')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}o-grid ${NAMESPACE}o-grid--gutter-md`)).toBe(true)
   })
 
 
   it('takes an array of gutter sizes', () => {
     const $ = shallow(<Grid.Wrapper gutter={['md@sm', 'lg@md']} />)
-    expect($.hasClass('o-grid o-grid--gutter-md@sm o-grid--gutter-lg@md')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}o-grid ${NAMESPACE}o-grid--gutter-md@sm ${NAMESPACE}o-grid--gutter-lg@md`)).toBe(true)
   })
 
   it('renders a matrix', () => {
     const $ = shallow(<Grid.Wrapper matrix />)
-    expect($.hasClass('o-grid o-grid--matrix')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}o-grid ${NAMESPACE}o-grid--matrix`)).toBe(true)
   })
 
   it('renders equal height items', () => {
     const $ = shallow(<Grid.Wrapper equalHeight />)
-    expect($.hasClass('o-grid o-grid--equal-height')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}o-grid ${NAMESPACE}o-grid--equal-height`)).toBe(true)
   })
 
   it('renders items in reverse order', () => {
     const $ = shallow(<Grid.Wrapper reverse />)
-    expect($.hasClass('o-grid o-grid--reverse')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}o-grid ${NAMESPACE}o-grid--reverse`)).toBe(true)
   })
 
   it('renders items vertically aligned to the center', () => {
     const $ = shallow(<Grid.Wrapper align="center" />)
-    expect($.hasClass('o-grid o-grid--center')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}o-grid ${NAMESPACE}o-grid--center`)).toBe(true)
   })
 
   it('renders items vertically aligned to the bottom', () => {
     const $ = shallow(<Grid.Wrapper align="bottom" />)
-    expect($.hasClass('o-grid o-grid--bottom')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}o-grid ${NAMESPACE}o-grid--bottom`)).toBe(true)
   })
 })

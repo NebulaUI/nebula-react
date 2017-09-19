@@ -2,16 +2,16 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames, buildClassName, buildBreakpointValues } from '../../utils/'
-import { LIST_SPACING, BLOCK_TAGS } from '../../constants'
+import { NAMESPACE, LIST_SPACING, BLOCK_TAGS } from '../../constants'
 
 const BareListWrapper = ({ tag, spacing, className, children, ...rest }) =>
   E(
     tag || 'ul',
     {
       className: classNames(
-        'o-bare-list',
+        `${NAMESPACE}o-bare-list`,
         spacing
-          ? buildClassName('o-bare-list--spaced-', spacing)
+          ? buildClassName(`${NAMESPACE}o-bare-list--spaced-`, spacing)
           : null,
         className
       ),

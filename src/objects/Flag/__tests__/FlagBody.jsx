@@ -1,6 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
+
 import { Flag } from '../'
 
 describe('<Flag.Body />', () => {
@@ -15,7 +17,7 @@ describe('<Flag.Body />', () => {
 
   it('takes a defined className', () => {
     const $ = shallow(<Flag.Body className="test" />)
-    expect($.hasClass('o-flag__body test')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}o-flag__body ${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders with attributes', () => {

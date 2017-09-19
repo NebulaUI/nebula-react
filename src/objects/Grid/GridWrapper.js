@@ -1,7 +1,7 @@
 import { createElement as E } from 'react'
 import T from 'prop-types'
 
-import { GRID_GUTTERS, BLOCK_TAGS } from '../../constants'
+import { NAMESPACE, GRID_GUTTERS, BLOCK_TAGS } from '../../constants'
 import { classNames, buildClassName, buildBreakpointValues } from '../../utils/'
 
 const GridWrapper = ({
@@ -19,14 +19,14 @@ const GridWrapper = ({
     tag || 'div',
     {
       className: classNames(
-        'o-grid',
+        `${NAMESPACE}o-grid`,
         gutter
-          ? buildClassName('o-grid--gutter-', gutter)
+          ? buildClassName(`${NAMESPACE}o-grid--gutter-`, gutter)
           : null,
-        { 'o-grid--matrix': matrix },
-        { 'o-grid--equal-height': equalHeight },
-        { 'o-grid--reverse': reverse },
-        align ? `o-grid--${align}` : null,
+        { [`${NAMESPACE}o-grid--matrix`]: matrix },
+        { [`${NAMESPACE}o-grid--equal-height`]: equalHeight },
+        { [`${NAMESPACE}o-grid--reverse`]: reverse },
+        align ? `${NAMESPACE}o-grid--${align}` : null,
         className
       ),
       ...rest

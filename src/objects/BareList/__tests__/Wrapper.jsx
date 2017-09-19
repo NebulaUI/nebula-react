@@ -1,18 +1,20 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
+
 import { BareList } from '../'
 
 describe('<BareList.Wrapper />', () => {
   it('takes a single spacing value', () => {
     const $ = shallow(<BareList.Wrapper spacing="md" />)
-    expect($.hasClass('o-bare-list o-bare-list--spaced-md')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}o-bare-list ${NAMESPACE}o-bare-list--spaced-md`)).toBe(true)
   })
 
   it('takes a list of sizes', () => {
     const spacing = ['md', 'md@sm']
     const $ = shallow(<BareList.Wrapper spacing={spacing} />)
-    expect($.hasClass('o-bare-list o-bare-list--spaced-md o-bare-list--spaced-md@sm')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}o-bare-list ${NAMESPACE}o-bare-list--spaced-md ${NAMESPACE}o-bare-list--spaced-md@sm`)).toBe(true)
   })
 
   it('renders children', () => {
@@ -36,7 +38,7 @@ describe('<BareList.Wrapper />', () => {
 
   it('renders with the default className', () => {
     const $ = shallow(<BareList.Wrapper />)
-    expect($.hasClass('o-bare-list')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}o-bare-list`)).toBe(true)
   })
 
   it('renders with attributes', () => {
@@ -53,6 +55,6 @@ describe('<BareList.Wrapper />', () => {
 
   it('renders the user defined className', () => {
     const $ = shallow(<BareList.Wrapper className="test" />)
-    expect($.hasClass('o-bare-list test')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}o-bare-list ${NAMESPACE}test`)).toBe(true)
   })
 })

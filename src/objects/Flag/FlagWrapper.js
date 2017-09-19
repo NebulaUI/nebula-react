@@ -2,7 +2,7 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
-import { BREAKPOINTS, FLAG_GUTTERS, BLOCK_TAGS } from '../../constants'
+import { NAMESPACE, BREAKPOINTS, FLAG_GUTTERS, BLOCK_TAGS } from '../../constants'
 
 const FlagWrapper = ({
  tag,
@@ -18,10 +18,10 @@ const FlagWrapper = ({
     tag || 'div',
     {
       className: classNames(
-        breakpoint ? `o-flag@${breakpoint}` : 'o-flag',
-        gutter ? `o-flag--gutter-${gutter}` : null,
-        align ? `o-flag--${align}` : null,
-        { 'o-flag--reverse': reverse },
+        breakpoint ? `${NAMESPACE}o-flag@${breakpoint}` : 'o-flag',
+        gutter ? `${NAMESPACE}o-flag--gutter-${gutter}` : null,
+        align ? `${NAMESPACE}o-flag--${align}` : null,
+        { [`${NAMESPACE}o-flag--reverse`]: reverse },
         className
       ),
       ...rest

@@ -1,6 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
+
 import { BareList } from '../'
 
 describe('<BareList.Item />', () => {
@@ -25,12 +27,12 @@ describe('<BareList.Item />', () => {
 
   it('renders with the default className', () => {
     const $ = shallow(<BareList.Item />)
-    expect($.hasClass('o-bare-list__item')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}o-bare-list__item`)).toBe(true)
   })
 
   it('renders the user defined className', () => {
     const $ = shallow(<BareList.Item className="test" />)
-    expect($.hasClass('o-bare-list__item test')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}o-bare-list__item ${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders with attributes', () => {

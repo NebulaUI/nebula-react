@@ -2,13 +2,13 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
-import { BLOCK_TAGS } from '../../constants'
+import { NAMESPACE, BLOCK_TAGS } from '../../constants'
 
 
 const FlagBody = ({ tag, children, className, ...rest }) =>
   E(
     tag || 'div',
-    { className: classNames('o-flag__body', className), ...rest },
+    { className: classNames(`${NAMESPACE}o-flag__body`, className), ...rest },
     children
   )
 

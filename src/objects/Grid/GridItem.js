@@ -1,7 +1,7 @@
 import { createElement as E } from 'react'
 import T from 'prop-types'
 
-import { GRID_FRACTIONS, BLOCK_TAGS } from '../../constants'
+import { NAMESPACE, GRID_FRACTIONS, BLOCK_TAGS } from '../../constants'
 import { classNames, buildClassName, buildBreakpointValues } from '../../utils/'
 
 const GridItem = ({
@@ -17,15 +17,15 @@ const GridItem = ({
     tag || 'div',
     {
       className: classNames(
-        'o-grid__item',
+        `${NAMESPACE}o-grid__item`,
         width
-          ? buildClassName('u-', width)
+          ? buildClassName(`${NAMESPACE}u-`, width)
           : null,
         push
-          ? buildClassName('u-push-', push)
+          ? buildClassName(`${NAMESPACE}u-push-`, push)
           : null,
         pull
-          ? buildClassName('u-pull-', pull)
+          ? buildClassName(`${NAMESPACE}u-pull-`, pull)
           : null,
         className
       ),
