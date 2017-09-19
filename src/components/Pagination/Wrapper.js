@@ -2,7 +2,7 @@ import { createElement as E, Component } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
-import { BLOCK_TAGS } from '../../constants'
+import { NAMESPACE, BLOCK_TAGS } from '../../constants'
 
 class PaginationWrapper extends Component {
   render() {
@@ -19,7 +19,7 @@ class PaginationWrapper extends Component {
         E(
           tag || 'ul',
           {
-            className: classNames('c-pagination', className),
+            className: classNames(`${NAMESPACE}c-pagination`, className),
             ...rest
           },
           children

@@ -2,7 +2,7 @@ import React, { Component, createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
-import { ALL_TAGS } from '../../constants'
+import { NAMESPACE, ALL_TAGS } from '../../constants'
 
 class NavbarLink extends Component {
   handleClick = (e) => {
@@ -15,7 +15,7 @@ class NavbarLink extends Component {
       component,
       tag,
       className,
-      activeClassName = 'is-active',
+      activeClassName = `${NAMESPACE}is-active`,
       onClick,
       children,
       ...rest
@@ -32,7 +32,7 @@ class NavbarLink extends Component {
       return (
         <ComponentOverride
           to={to}
-          className={classNames('c-navbar__link', className)}
+          className={classNames(`${NAMESPACE}c-navbar__link`, className)}
           activeClassName={activeClassName}
           {...rest}
         >
@@ -45,7 +45,7 @@ class NavbarLink extends Component {
       tag || 'a',
       {
         href: to,
-        className: classNames('c-navbar__link', className),
+        className: classNames(`${NAMESPACE}c-navbar__link`, className),
         ...onClickProps,
         ...rest
       },

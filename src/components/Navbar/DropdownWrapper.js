@@ -2,7 +2,7 @@ import React, { Component, createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils'
-import { BLOCK_TAGS } from '../../constants'
+import { NAMESPACE, BLOCK_TAGS } from '../../constants'
 import { ClickOutside } from '../../'
 import DropdownContent from './DropdownContent'
 
@@ -28,8 +28,8 @@ class NavbarDropdownWrapper extends Component {
       tag || 'li',
       {
         className: classNames(
-          'c-navbar__item', className,
-          { 'is-open': isOpen }
+          `${NAMESPACE}c-navbar__item`, className,
+          { [`${NAMESPACE}is-open`]: isOpen }
         ),
         'aria-haspopup': true,
         'aria-expanded': isOpen,

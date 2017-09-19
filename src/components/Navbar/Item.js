@@ -2,15 +2,15 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
-import { BLOCK_TAGS } from '../../constants'
+import { NAMESPACE, BLOCK_TAGS } from '../../constants'
 
 const NavbarItem = ({ tag, resetLineHeight, children, className, ...rest }) =>
   E(
     tag || 'li',
     {
       className: classNames(
-        'c-navbar__item', className,
-        { 'c-navbar__item--reset-line-height': resetLineHeight },
+        `${NAMESPACE}c-navbar__item`, className,
+        { [`${NAMESPACE}c-navbar__item--reset-line-height`]: resetLineHeight },
       ),
       ...rest
     },

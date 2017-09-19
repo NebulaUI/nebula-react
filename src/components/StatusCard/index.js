@@ -2,9 +2,9 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
-import { STATUSES, BLOCK_TAGS } from '../../constants'
+import { NAMESPACE, STATUSES, BLOCK_TAGS } from '../../constants'
 
-const initial = 'c-status-card'
+const initial = `${NAMESPACE}c-status-card`
 
 const StatusCard = ({ tag, status, children, ...rest }) =>
   E(

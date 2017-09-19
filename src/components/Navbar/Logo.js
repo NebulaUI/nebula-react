@@ -2,7 +2,7 @@ import { Component, createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
-import { ALL_TAGS } from '../../constants'
+import { NAMESPACE, ALL_TAGS } from '../../constants'
 
 class NavbarLogo extends Component {
   handleClick = (e) => {
@@ -19,7 +19,7 @@ class NavbarLogo extends Component {
       tag || 'a',
       {
         href: to,
-        className: classNames('c-navbar__logo', className),
+        className: classNames(`${NAMESPACE}c-navbar__logo`, className),
         style: {
           width
         },

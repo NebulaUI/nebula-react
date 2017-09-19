@@ -1,6 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
+
 import { UIList } from '../index'
 
 const defaultProps = {
@@ -14,7 +16,7 @@ describe('<UIList.Wrapper />', () => {
       spacing: 'md'
     }
     const $ = shallow(<UIList.Wrapper {...props}>_</UIList.Wrapper>)
-    expect($.hasClass('c-ui-list c-ui-list--spaced-md')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-ui-list ${NAMESPACE}c-ui-list--spaced-md`)).toBe(true)
   })
 
   it('takes a list of spacing values', () => {
@@ -24,7 +26,7 @@ describe('<UIList.Wrapper />', () => {
       spacing
     }
     const $ = shallow(<UIList.Wrapper {...props}>_</UIList.Wrapper>)
-    expect($.hasClass('c-ui-list c-ui-list--spaced-md c-ui-list--spaced-md@sm')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-ui-list ${NAMESPACE}c-ui-list--spaced-md ${NAMESPACE}c-ui-list--spaced-md@sm`)).toBe(true)
   })
 
   it('renders without taking a spacing value', () => {
@@ -34,7 +36,7 @@ describe('<UIList.Wrapper />', () => {
       spacing
     }
     const $ = shallow(<UIList.Wrapper {...props}>_</UIList.Wrapper>)
-    expect($.hasClass('c-ui-list--spaced')).toBe(false)
+    expect($.hasClass(`${NAMESPACE}c-ui-list--spaced`)).toBe(false)
   })
 
   it('renders children', () => {
@@ -62,7 +64,7 @@ describe('<UIList.Wrapper />', () => {
 
   it('renders with the default className', () => {
     const $ = shallow(<UIList.Wrapper {...defaultProps}>_</UIList.Wrapper>)
-    expect($.hasClass('c-ui-list')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-ui-list`)).toBe(true)
   })
 
   it('renders with attributes', () => {
@@ -84,7 +86,7 @@ describe('<UIList.Wrapper />', () => {
       className: 'test'
     }
     const $ = shallow(<UIList.Wrapper {...props}>_</UIList.Wrapper>)
-    expect($.hasClass('c-ui-list')).toBe(true)
-    expect($.hasClass('test')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-ui-list`)).toBe(true)
+    expect($.hasClass(`${NAMESPACE}test`)).toBe(true)
   })
 })

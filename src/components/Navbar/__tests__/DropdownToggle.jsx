@@ -1,6 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
+
 import { Navbar } from '../'
 
 const defaultContext = {
@@ -22,7 +24,7 @@ describe('<Navbar.Dropdown.Toggle />', () => {
     const $ = shallow(
       <Navbar.Dropdown.Toggle className="test">_</Navbar.Dropdown.Toggle>
     , { context: defaultContext })
-    expect($.hasClass('c-navbar__dropdown-toggle test')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-navbar__dropdown-toggle ${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders a defined tag type', () => {

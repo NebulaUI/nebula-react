@@ -2,7 +2,7 @@ import { Component, createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
-import { BLOCK_TAGS } from '../../constants'
+import { NAMESPACE, BLOCK_TAGS } from '../../constants'
 
 class NavbarDropdownContent extends Component {
   state = {
@@ -27,9 +27,9 @@ class NavbarDropdownContent extends Component {
       tag || 'ul',
       {
         className: classNames(
-          'c-navbar__dropdown',
-          { 'is-open': this.state.isOpen },
-          { 'c-navbar__dropdown--south-west': southWest },
+          `${NAMESPACE}c-navbar__dropdown`,
+          { [`${NAMESPACE}is-open`]: this.state.isOpen },
+          { [`${NAMESPACE}c-navbar__dropdown--south-west`]: southWest },
           className
         ),
         ...rest

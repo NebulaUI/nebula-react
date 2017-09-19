@@ -1,6 +1,8 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
+
 import { Pagination } from '../'
 
 const defaultProps = {
@@ -19,7 +21,7 @@ describe('<Pagination.Link />', () => {
 
   it('renders with appropriate classNames', () => {
     const $ = shallow(<Pagination.Link {...defaultProps} className="test">Test</Pagination.Link>)
-    expect($.hasClass('c-pagination__link test')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-pagination__link ${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders a defined tag type', () => {
@@ -95,7 +97,7 @@ describe('<Pagination.Link />', () => {
           _
         </Pagination.Link>
       )
-      expect($.hasClass('c-pagination__link--previous')).toBe(true)
+      expect($.hasClass(`${NAMESPACE}c-pagination__link--previous`)).toBe(true)
     })
     it('renders the next link', () => {
       const $ = shallow(
@@ -103,7 +105,7 @@ describe('<Pagination.Link />', () => {
           _
         </Pagination.Link>
       )
-      expect($.hasClass('c-pagination__link--next')).toBe(true)
+      expect($.hasClass(`${NAMESPACE}c-pagination__link--next`)).toBe(true)
     })
   })
 
@@ -130,8 +132,8 @@ describe('<Pagination.Link />', () => {
           {...defaultProps}
         >Nebula</Pagination.Link>
       )
-      expect($.find(RRPaginationLink).hasClass('c-pagination__link test')).toBe(true)
-      expect($.find(RRPaginationLink).prop('activeClassName')).toBe('is-test')
+      expect($.find(RRPaginationLink).hasClass(`${NAMESPACE}c-pagination__link ${NAMESPACE}test`)).toBe(true)
+      expect($.find(RRPaginationLink).prop('activeClassName')).toBe(`${NAMESPACE}is-test`)
       expect($.find(RRPaginationLink).prop('to')).toBe('/')
     })
 
@@ -142,7 +144,7 @@ describe('<Pagination.Link />', () => {
           {...defaultProps}
         >Nebula</Pagination.Link>
       )
-      expect($.find(RRPaginationLink).prop('activeClassName')).toBe('is-active')
+      expect($.find(RRPaginationLink).prop('activeClassName')).toBe(`${NAMESPACE}is-active`)
     })
 
     it('renders with attributes', () => {

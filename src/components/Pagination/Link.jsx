@@ -2,7 +2,7 @@ import React, { createElement as E, Component } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
-import { ALL_TAGS } from '../../constants'
+import { NAMESPACE, ALL_TAGS } from '../../constants'
 
 class PaginationLink extends Component {
   handleClick = (e) => {
@@ -16,7 +16,7 @@ class PaginationLink extends Component {
       tag,
       className,
       isActive,
-      activeClassName = 'is-active',
+      activeClassName = `${NAMESPACE}is-active`,
       callback,
       children,
       previous,
@@ -36,7 +36,7 @@ class PaginationLink extends Component {
       return (
         <ComponentOverride
           to={to}
-          className={classNames('c-pagination__link', className)}
+          className={classNames(`${NAMESPACE}c-pagination__link`, className)}
           activeClassName={activeClassName}
           previous={previous}
           next={next}
@@ -53,10 +53,10 @@ class PaginationLink extends Component {
       {
         href: to,
         className: classNames(
-        'c-pagination__link', className,
-        previous ? 'c-pagination__link--previous' : '',
-        next ? 'c-pagination__link--next' : '',
-        { 'is-active': isActive }),
+        `${NAMESPACE}c-pagination__link`, className,
+        previous ? `${NAMESPACE}c-pagination__link--previous` : '',
+        next ? `${NAMESPACE}c-pagination__link--next` : '',
+        { [`${NAMESPACE}is-active`]: isActive }),
         'aria-label': ariaLabel,
         ...onClickProps,
         ...rest

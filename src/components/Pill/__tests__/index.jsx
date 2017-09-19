@@ -1,12 +1,14 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
+
 import { Pill } from '../'
 
 describe('<Pill />', () => {
   it('renders with the correct default className', () => {
     const $ = shallow(<Pill>_</Pill>)
-    expect($.hasClass('c-pill')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-pill`)).toBe(true)
   })
 
   it('renders a "button" by default', () => {
@@ -26,7 +28,7 @@ describe('<Pill />', () => {
 
   it('renders with a border', () => {
     const $ = shallow(<Pill border>_</Pill>)
-    expect($.hasClass('c-pill--border')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-pill--border`)).toBe(true)
   })
 
   it('renders children', () => {
@@ -66,22 +68,22 @@ describe('<Pill />', () => {
   describe('status styling', () => {
     it('renders with success', () => {
       const $ = shallow(<Pill status="success">_</Pill>)
-      expect($.hasClass('c-pill--success')).toBe(true)
+      expect($.hasClass(`${NAMESPACE}c-pill--success`)).toBe(true)
     })
 
     it('renders with info', () => {
       const $ = shallow(<Pill status="info">_</Pill>)
-      expect($.hasClass('c-pill--info')).toBe(true)
+      expect($.hasClass(`${NAMESPACE}c-pill--info`)).toBe(true)
     })
 
     it('renders with warning', () => {
       const $ = shallow(<Pill status="warning">_</Pill>)
-      expect($.hasClass('c-pill--warning')).toBe(true)
+      expect($.hasClass(`${NAMESPACE}c-pill--warning`)).toBe(true)
     })
 
     it('renders with error', () => {
       const $ = shallow(<Pill status="error">_</Pill>)
-      expect($.hasClass('c-pill--error')).toBe(true)
+      expect($.hasClass(`${NAMESPACE}c-pill--error`)).toBe(true)
     })
   })
 
@@ -124,8 +126,8 @@ describe('<Pill />', () => {
           to="/test"
         >Nebula</Pill>
       )
-      expect($.find(RRPill).hasClass('c-pill test')).toBe(true)
-      expect($.find(RRPill).prop('activeClassName')).toBe('is-test')
+      expect($.find(RRPill).hasClass(`${NAMESPACE}c-pill ${NAMESPACE}test`)).toBe(true)
+      expect($.find(RRPill).prop('activeClassName')).toBe(`${NAMESPACE}is-test`)
       expect($.find(RRPill).prop('to')).toBe('/test')
     })
 

@@ -2,16 +2,16 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
-import { BLOCK_TAGS } from '../../constants'
+import { NAMESPACE, BLOCK_TAGS } from '../../constants'
 
 const NavbarContent = ({ tag, right, keepAtTop, children, className, ...rest }) =>
   E(
     tag || 'ul',
     {
       className: classNames(
-        'c-navbar__content', className,
-        { 'c-navbar__content--right': right },
-        { 'c-navbar__content--keep-at-top': keepAtTop }
+        `${NAMESPACE}c-navbar__content`, className,
+        { [`${NAMESPACE}c-navbar__content--right`]: right },
+        { [`${NAMESPACE}c-navbar__content--keep-at-top`]: keepAtTop }
       ),
       ...rest
     },

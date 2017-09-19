@@ -2,12 +2,12 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/index'
-import { BLOCK_TAGS } from '../../constants'
+import { NAMESPACE, BLOCK_TAGS } from '../../constants'
 
 const UIListItem = ({ tag, className, children, ...rest }) =>
   E(
     tag || 'li',
-    { className: classNames('c-ui-list__item', className), ...rest },
+    { className: classNames(`${NAMESPACE}c-ui-list__item`, className), ...rest },
     children
   )
 

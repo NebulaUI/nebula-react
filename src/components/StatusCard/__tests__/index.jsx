@@ -1,6 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
+
 import { StatusCard } from '../'
 
 const defaultProps = {
@@ -20,28 +22,28 @@ describe('<StatusCard />', () => {
 
   it('renders with the correct default className', () => {
     const $ = shallow(<StatusCard {...defaultProps}>_</StatusCard>)
-    expect($.hasClass('c-status-card')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-status-card`)).toBe(true)
   })
 
   describe('status styling', () => {
     it('renders with success', () => {
       const $ = shallow(<StatusCard status="success">_</StatusCard>)
-      expect($.hasClass('c-status-card c-status-card--success')).toBe(true)
+      expect($.hasClass(`${NAMESPACE}c-status-card ${NAMESPACE}c-status-card--success`)).toBe(true)
     })
 
     it('renders with info', () => {
       const $ = shallow(<StatusCard status="info">_</StatusCard>)
-      expect($.hasClass('c-status-card c-status-card--info')).toBe(true)
+      expect($.hasClass(`${NAMESPACE}c-status-card ${NAMESPACE}c-status-card--info`)).toBe(true)
     })
 
     it('renders with warning', () => {
       const $ = shallow(<StatusCard status="warning">_</StatusCard>)
-      expect($.hasClass('c-status-card c-status-card--warning')).toBe(true)
+      expect($.hasClass(`${NAMESPACE}c-status-card ${NAMESPACE}c-status-card--warning`)).toBe(true)
     })
 
     it('renders with error', () => {
       const $ = shallow(<StatusCard status="error">_</StatusCard>)
-      expect($.hasClass('c-status-card c-status-card--error')).toBe(true)
+      expect($.hasClass(`${NAMESPACE}c-status-card ${NAMESPACE}c-status-card--error`)).toBe(true)
     })
   })
 

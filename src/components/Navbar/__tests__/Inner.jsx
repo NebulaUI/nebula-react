@@ -1,6 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
+
 import { Navbar } from '../'
 
 describe('<Navbar.Inner />', () => {
@@ -15,7 +17,7 @@ describe('<Navbar.Inner />', () => {
 
   it('renders with appropriate classNames', () => {
     const $ = shallow(<Navbar.Inner className="test">_</Navbar.Inner>)
-    expect($.hasClass('c-navbar__wrap test')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-navbar__wrap ${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders with attributes', () => {

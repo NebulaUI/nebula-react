@@ -2,9 +2,9 @@ import React, { Component, createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
-import { ALL_TAGS } from '../../constants'
+import { NAMESPACE, ALL_TAGS } from '../../constants'
 
-const initialClassName = 'c-pill'
+const initialClassName = `${NAMESPACE}c-pill`
 
 class Pill extends Component {
   componentDidMount() {
@@ -36,7 +36,7 @@ class Pill extends Component {
       classNames(initialClassName, className,
         status ? `${initialClassName}--${status}` : '',
         { [`${initialClassName}--border`]: !status },
-        { 'is-active': !status && isActive })
+        { [`${NAMESPACE}is-active`]: !status && isActive })
 
     const onClickProps = onClick
     ? {

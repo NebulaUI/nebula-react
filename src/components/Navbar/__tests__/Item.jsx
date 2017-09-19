@@ -1,6 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
+
 import { Navbar } from '../'
 
 describe('<Navbar.Item />', () => {
@@ -25,8 +27,8 @@ describe('<Navbar.Item />', () => {
 
   it('renders with appropriate classNames', () => {
     const $ = shallow(<Navbar.Item className="test">_</Navbar.Item>)
-    expect($.hasClass('c-navbar__item test')).toBe(true)
-    expect($.hasClass('c-navbar__item--reset-line-height')).toBe(false)
+    expect($.hasClass(`${NAMESPACE}c-navbar__item ${NAMESPACE}test`)).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-navbar__item--reset-line-height`)).toBe(false)
   })
 
   it('renders with attributes', () => {
@@ -43,6 +45,6 @@ describe('<Navbar.Item />', () => {
 
   it('renders with line-height reset', () => {
     const $ = shallow(<Navbar.Item resetLineHeight>-</Navbar.Item>)
-    expect($.hasClass('c-navbar__item--reset-line-height')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-navbar__item--reset-line-height`)).toBe(true)
   })
 })

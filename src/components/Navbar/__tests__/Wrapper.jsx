@@ -1,6 +1,8 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
+
 import { Navbar } from '../'
 
 describe('<Navbar.Wrapper />', () => {
@@ -16,12 +18,12 @@ describe('<Navbar.Wrapper />', () => {
   it('renders with appropriate classNames', () => {
     const $ = shallow(<Navbar.Wrapper className="test">_</Navbar.Wrapper>)
     expect($.hasClass('c-navbar')).toBe(true)
-    expect($.children().hasClass('c-navbar__inner test')).toBe(true)
+    expect($.children().hasClass(`${NAMESPACE}c-navbar__inner ${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders sticky', () => {
     const $ = shallow(<Navbar.Wrapper sticky>_</Navbar.Wrapper>)
-    expect($.children().hasClass('is-sticky')).toBe(true)
+    expect($.children().hasClass(`${NAMESPACE}is-sticky`)).toBe(true)
   })
 
   it('renders a defined tag type', () => {
@@ -48,7 +50,7 @@ describe('<Navbar.Wrapper />', () => {
 
   it('renders closed on the initial render', () => {
     const $ = shallow(<Navbar.Wrapper>_</Navbar.Wrapper>)
-    expect($.hasClass('is-open')).toBe(false)
+    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(false)
   })
 
   it('can be opened and closed', () => {
@@ -60,12 +62,12 @@ describe('<Navbar.Wrapper />', () => {
         </Navbar.Inner>
       </Navbar.Wrapper>
     )
-    expect($.hasClass('is-open')).toBe(false)
+    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(false)
 
     $.find(Navbar.Toggle.Wrapper).simulate('click')
-    expect($.hasClass('is-open')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(true)
 
     $.find(Navbar.Overlay).simulate('click')
-    expect($.hasClass('is-open')).toBe(false)
+    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(false)
   })
 })

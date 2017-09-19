@@ -2,13 +2,13 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils'
-import { ALL_TAGS } from '../../constants'
+import { NAMESPACE, ALL_TAGS } from '../../constants'
 
 const NavbarToggleBars = ({ tag, children, className, ...rest }) =>
   E(
     tag || 'span',
     {
-      className: classNames('c-navbar__toggle-bars', className),
+      className: classNames(`${NAMESPACE}c-navbar__toggle-bars`, className),
       ...rest
     },
     children

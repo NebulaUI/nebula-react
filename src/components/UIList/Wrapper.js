@@ -2,16 +2,16 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames, buildClassName, buildBreakpointValues } from '../../utils/index'
-import { BLOCK_TAGS, LIST_SPACING } from '../../constants'
+import { NAMESPACE, BLOCK_TAGS, LIST_SPACING } from '../../constants'
 
 const UIListWrapper = ({ tag, spacing, className, children, ...rest }) =>
   E(
     tag || 'ul',
     {
       className: classNames(
-        'c-ui-list',
+        `${NAMESPACE}c-ui-list`,
         spacing
-          ? buildClassName('c-ui-list--spaced-', spacing)
+          ? buildClassName(`${NAMESPACE}c-ui-list--spaced-`, spacing)
           : null,
         className
       ),

@@ -2,13 +2,13 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
-import { BLOCK_TAGS } from '../../constants'
+import { NAMESPACE, BLOCK_TAGS } from '../../constants'
 
 const NavbarContentWrapper = ({ tag, children, className, ...rest }) =>
   E(
     tag || 'div',
     {
-      className: classNames('c-navbar__content-wrapper', className),
+      className: classNames(`${NAMESPACE}c-navbar__content-wrapper`, className),
       ...rest
     },
     children

@@ -1,12 +1,14 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
+
 import { Pagination } from '../'
 
 describe('<Pagination.Wrapper />', () => {
   it('passes in an optional className', () => {
     const $ = shallow(<Pagination.Wrapper className="test">_</Pagination.Wrapper>)
-    expect($.hasClass('test')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders with attributes', () => {

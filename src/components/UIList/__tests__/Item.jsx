@@ -1,6 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
+
 import { UIList } from '../index'
 
 describe('<UIList.Item />', () => {
@@ -25,12 +27,12 @@ describe('<UIList.Item />', () => {
 
   it('renders with the default className', () => {
     const $ = shallow(<UIList.Item />)
-    expect($.hasClass('c-ui-list__item')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-ui-list__item`)).toBe(true)
   })
 
   it('renders the user defined className', () => {
     const $ = shallow(<UIList.Item className="test" />)
-    expect($.hasClass('c-ui-list__item test')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-ui-list__item ${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders with attributes', () => {

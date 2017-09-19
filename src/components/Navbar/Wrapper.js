@@ -2,7 +2,7 @@ import { Component, createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
-import { BLOCK_TAGS } from '../../constants'
+import { NAMESPACE, BLOCK_TAGS } from '../../constants'
 
 class NavbarWrapper extends Component {
   constructor() {
@@ -35,15 +35,15 @@ class NavbarWrapper extends Component {
     return E(
       tag || 'header',
       {
-        className: classNames('c-navbar', { 'is-open': this.state.isOpen }),
+        className: classNames(`${NAMESPACE}c-navbar`, { [`${NAMESPACE}is-open`]: this.state.isOpen }),
         ...rest
       },
       E(
         'div',
         {
           className: classNames(
-            'c-navbar__inner', className,
-            { 'is-sticky': sticky }
+            `${NAMESPACE}c-navbar__inner`, className,
+            { [`${NAMESPACE}is-sticky`]: sticky }
           )
         },
         children

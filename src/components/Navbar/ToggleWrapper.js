@@ -2,7 +2,7 @@ import { Component, createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
-import { ALL_TAGS } from '../../constants'
+import { NAMESPACE, ALL_TAGS } from '../../constants'
 
 class NavbarToggleWrapper extends Component {
   handleClick = (e) => {
@@ -20,7 +20,7 @@ class NavbarToggleWrapper extends Component {
     return E(
       tag || 'button',
       {
-        className: classNames('c-navbar__toggle', className),
+        className: classNames(`${NAMESPACE}c-navbar__toggle`, className),
         'aria-hidden': true,
         tabIndex: 0,
         ...onClickProps,
