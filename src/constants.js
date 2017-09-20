@@ -21,7 +21,7 @@ const ALL_TAGS = [
   ...INLINE_TAGS
 ]
 
-const LIST_SPACING = ['md']
+const LIST_SPACING = ['sm', 'md']
 
 const FLAG_GUTTERS = ['md']
 
