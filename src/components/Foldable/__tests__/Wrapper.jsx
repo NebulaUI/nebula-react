@@ -2,13 +2,13 @@ import React from 'react'
 import { shallow, mount } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
-
 import { Foldable } from '../'
 
 describe('<Foldable.Wrapper />', () => {
   it('passes in an optional className', () => {
     const $ = shallow(<Foldable.Wrapper className="something else">_</Foldable.Wrapper>)
-    expect($.hasClass(`${NAMESPACE}c-foldable ${NAMESPACE}something else`)).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-foldable`)).toBe(true)
+    expect($.hasClass('something else')).toBe(true)
   })
 
   it('renders a defined tag type', () => {
@@ -54,12 +54,12 @@ describe('<Foldable.Wrapper />', () => {
 
   it('renders collapsed by default', () => {
     const $ = shallow(<Foldable.Wrapper breakpoint="max-lg">_</Foldable.Wrapper>)
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(false)
+    expect($.hasClass('is-open')).toBe(false)
   })
 
   it('renders expanded on initial mount', () => {
     const $ = shallow(<Foldable.Wrapper defaultOpen="open">_</Foldable.Wrapper>)
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(true)
+    expect($.hasClass('is-open')).toBe(true)
   })
 
   it('can be opened and closed', () => {
@@ -69,12 +69,12 @@ describe('<Foldable.Wrapper />', () => {
       </Foldable.Wrapper>
     )
 
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(false)
+    expect($.hasClass('is-open')).toBe(false)
     $.find(`.${NAMESPACE}c-foldable__toggle`).simulate('click')
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(true)
+    expect($.hasClass('is-open')).toBe(true)
 
     $.find(`.${NAMESPACE}c-foldable__toggle`).simulate('click')
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(false)
+    expect($.hasClass('is-open')).toBe(false)
   })
 
   it('can be controlled externally', () => {
@@ -89,16 +89,16 @@ describe('<Foldable.Wrapper />', () => {
     )
 
     expect(mockOnChange).not.toHaveBeenCalled()
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(true)
+    expect($.hasClass('is-open')).toBe(true)
 
     $.setProps({
       open: 'closed'
     })
     expect(mockOnChange).not.toHaveBeenCalled()
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(false)
+    expect($.hasClass('is-open')).toBe(false)
 
     $.find(`.${NAMESPACE}c-foldable__toggle`).simulate('click')
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(false)
+    expect($.hasClass('is-open')).toBe(false)
     expect(mockOnChange).toHaveBeenCalledWith('open')
 
     $.setProps({
@@ -106,7 +106,7 @@ describe('<Foldable.Wrapper />', () => {
     })
 
     $.find(`.${NAMESPACE}c-foldable__toggle`).simulate('click')
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(true)
+    expect($.hasClass('is-open')).toBe(true)
     expect(mockOnChange).toHaveBeenCalledWith('closed')
   })
 
@@ -120,7 +120,7 @@ describe('<Foldable.Wrapper />', () => {
       </Foldable.Wrapper>
     )
 
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(false)
+    expect($.hasClass('is-open')).toBe(false)
   })
 
   it('sets correct aria attributes', () => {

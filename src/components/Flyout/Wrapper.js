@@ -91,7 +91,7 @@ class FlyoutWrapper extends Component {
     const FlyoutComponent = E(
       tag || 'div',
       {
-        className: classNames(`${NAMESPACE}c-flyout`, { [`${NAMESPACE}is-open`]: this.isOpen() }, className),
+        className: classNames(`${NAMESPACE}c-flyout`, { 'is-open': this.isOpen() }, className),
         'aria-haspopup': true,
         'aria-expanded': this.isOpen(),
         ...rest

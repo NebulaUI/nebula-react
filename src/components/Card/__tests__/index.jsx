@@ -2,13 +2,13 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
-
 import { Card } from '../'
 
 describe('<Card />', () => {
   it('passes in an optional className override', () => {
     const $ = shallow(<Card className="something else" />)
-    expect($.hasClass(`${NAMESPACE}c-card ${NAMESPACE}something else`)).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-card`)).toBe(true)
+    expect($.hasClass('something else')).toBe(true)
   })
 
   it('renders a defined tag type', () => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import T from 'prop-types'
-import { classNames } from '../../utils/'
 
+import { classNames } from '../../utils/'
 import { NAMESPACE } from '../../constants'
 
 const CheckboxLabel = ({ className, children, htmlFor, ...rest }) => (
