@@ -2,7 +2,6 @@ import React from 'react'
 import { shallow, mount } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
-
 import { Pagination } from '../'
 
 const defaultProps = {
@@ -10,6 +9,12 @@ const defaultProps = {
 }
 
 describe('<Pagination.Link />', () => {
+  it('renders with appropriate classNames', () => {
+    const $ = shallow(<Pagination.Link {...defaultProps} className="test">Test</Pagination.Link>)
+    expect($.hasClass(`${NAMESPACE}c-pagination__link`)).toBe(true)
+    expect($.hasClass('test')).toBe(true)
+  })
+
   it('renders children', () => {
     const $ = shallow(
       <Pagination.Link {...defaultProps}>
@@ -17,11 +22,6 @@ describe('<Pagination.Link />', () => {
       </Pagination.Link>
     )
     expect($.contains('Link text')).toBe(true)
-  })
-
-  it('renders with appropriate classNames', () => {
-    const $ = shallow(<Pagination.Link {...defaultProps} className="test">Test</Pagination.Link>)
-    expect($.hasClass(`${NAMESPACE}c-pagination__link ${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders a defined tag type', () => {
@@ -132,8 +132,9 @@ describe('<Pagination.Link />', () => {
           {...defaultProps}
         >Nebula</Pagination.Link>
       )
-      expect($.find(RRPaginationLink).hasClass(`${NAMESPACE}c-pagination__link ${NAMESPACE}test`)).toBe(true)
-      expect($.find(RRPaginationLink).prop('activeClassName')).toBe(`${NAMESPACE}is-test`)
+      expect($.find(RRPaginationLink).hasClass(`${NAMESPACE}c-pagination__link`)).toBe(true)
+      expect($.find(RRPaginationLink).hasClass('test')).toBe(true)
+      expect($.find(RRPaginationLink).prop('activeClassName')).toBe('is-test')
       expect($.find(RRPaginationLink).prop('to')).toBe('/')
     })
 
@@ -144,7 +145,7 @@ describe('<Pagination.Link />', () => {
           {...defaultProps}
         >Nebula</Pagination.Link>
       )
-      expect($.find(RRPaginationLink).prop('activeClassName')).toBe(`${NAMESPACE}is-active`)
+      expect($.find(RRPaginationLink).prop('activeClassName')).toBe('is-active')
     })
 
     it('renders with attributes', () => {

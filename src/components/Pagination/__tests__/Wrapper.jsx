@@ -1,14 +1,12 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
 
-import { NAMESPACE } from '../../../constants'
-
 import { Pagination } from '../'
 
 describe('<Pagination.Wrapper />', () => {
-  it('passes in an optional className', () => {
+  it('renders with an optional className', () => {
     const $ = shallow(<Pagination.Wrapper className="test">_</Pagination.Wrapper>)
-    expect($.hasClass(`${NAMESPACE}test`)).toBe(true)
+    expect($.hasClass('test')).toBe(true)
   })
 
   it('renders with attributes', () => {
@@ -50,10 +48,5 @@ describe('<Pagination.Wrapper />', () => {
       </Pagination.Wrapper>
     )
     expect($.contains('Test')).toBe(true)
-  })
-
-  it('renders a nav by default', () => {
-    const $ = shallow(<Pagination.Wrapper>_</Pagination.Wrapper>)
-    expect($.type()).toBe('nav')
   })
 })

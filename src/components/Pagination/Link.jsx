@@ -16,7 +16,7 @@ class PaginationLink extends Component {
       tag,
       className,
       isActive,
-      activeClassName = `${NAMESPACE}is-active`,
+      activeClassName = 'is-active',
       callback,
       children,
       previous,
@@ -56,7 +56,7 @@ class PaginationLink extends Component {
         `${NAMESPACE}c-pagination__link`, className,
         previous ? `${NAMESPACE}c-pagination__link--previous` : '',
         next ? `${NAMESPACE}c-pagination__link--next` : '',
-        { [`${NAMESPACE}is-active`]: isActive }),
+        { 'is-active': isActive }),
         'aria-label': ariaLabel,
         ...onClickProps,
         ...rest

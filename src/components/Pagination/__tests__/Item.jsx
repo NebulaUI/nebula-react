@@ -2,10 +2,15 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
-
 import { Pagination } from '../'
 
 describe('<Pagination.Item />', () => {
+  it('renders with appropriate classNames', () => {
+    const $ = shallow(<Pagination.Item className="test">Test</Pagination.Item>)
+    expect($.hasClass(`${NAMESPACE}c-pagination__item`)).toBe(true)
+    expect($.hasClass('test')).toBe(true)
+  })
+
   it('renders children', () => {
     const $ = shallow(
       <Pagination.Item>
@@ -13,11 +18,6 @@ describe('<Pagination.Item />', () => {
       </Pagination.Item>
     )
     expect($.contains('Item text')).toBe(true)
-  })
-
-  it('renders with appropriate classNames', () => {
-    const $ = shallow(<Pagination.Item className="test">Test</Pagination.Item>)
-    expect($.hasClass(`${NAMESPACE}c-pagination__item ${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders a defined tag type', () => {
