@@ -2,10 +2,21 @@ import React from 'react'
 import { shallow, mount } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
-
 import { Navbar } from '../'
 
 describe('<Navbar.Dropdown.Content />', () => {
+  it('renders with appropriate classNames', () => {
+    const $ = shallow(<Navbar.Dropdown.Content className="test">_</Navbar.Dropdown.Content>)
+    expect($.hasClass(`${NAMESPACE}c-navbar__dropdown`)).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-navbar__dropdown--south-west`)).toBe(false)
+    expect($.hasClass('test')).toBe(true)
+  })
+
+  it('renders to the right hand side', () => {
+    const $ = shallow(<Navbar.Dropdown.Content southWest>-</Navbar.Dropdown.Content>)
+    expect($.hasClass(`${NAMESPACE}c-navbar__dropdown--south-west`)).toBe(true)
+  })
+
   it('renders children', () => {
     const child = <div />
     const $ = shallow(
@@ -14,17 +25,6 @@ describe('<Navbar.Dropdown.Content />', () => {
       </Navbar.Dropdown.Content>
     )
     expect($.contains(<child />)).toBe(true)
-  })
-
-  it('renders with appropriate classNames', () => {
-    const $ = shallow(<Navbar.Dropdown.Content className="test">_</Navbar.Dropdown.Content>)
-    expect($.hasClass(`${NAMESPACE}c-navbar__dropdown ${NAMESPACE}test`)).toBe(true)
-    expect($.hasClass(`${NAMESPACE}c-navbar__dropdown--south-west`)).toBe(false)
-  })
-
-  it('renders to the right hand side', () => {
-    const $ = shallow(<Navbar.Dropdown.Content southWest>-</Navbar.Dropdown.Content>)
-    expect($.hasClass(`${NAMESPACE}c-navbar__dropdown--south-west`)).toBe(true)
   })
 
   it('renders a defined tag type', () => {
@@ -51,15 +51,15 @@ describe('<Navbar.Dropdown.Content />', () => {
 
   it('renders closed on initial mount', () => {
     const $ = mount(<Navbar.Dropdown.Content>_</Navbar.Dropdown.Content>)
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(false)
+    expect($.hasClass('is-open')).toBe(false)
   })
 
   it('renders open just after mounting allowing for CSS animation', () => {
     jest.useFakeTimers()
     const $ = mount(<Navbar.Dropdown.Content>_</Navbar.Dropdown.Content>)
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(false)
+    expect($.hasClass('is-open')).toBe(false)
 
     jest.runAllTimers()
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(true)
+    expect($.hasClass('is-open')).toBe(true)
   })
 })

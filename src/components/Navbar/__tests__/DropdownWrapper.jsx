@@ -3,10 +3,15 @@ import { shallow, mount } from 'enzyme'
 import simulant from 'jsdom-simulant'
 
 import { NAMESPACE } from '../../../constants'
-
 import { Navbar } from '../'
 
 describe('<Navbar.Dropdown.Wrapper />', () => {
+  it('renders with appropriate classNames', () => {
+    const $ = shallow(<Navbar.Dropdown.Wrapper className="test">_</Navbar.Dropdown.Wrapper>)
+    expect($.hasClass(`${NAMESPACE}c-navbar__item`)).toBe(true)
+    expect($.hasClass('test')).toBe(true)
+  })
+
   it('renders children', () => {
     const $ = shallow(
       <Navbar.Dropdown.Wrapper>
@@ -14,11 +19,6 @@ describe('<Navbar.Dropdown.Wrapper />', () => {
       </Navbar.Dropdown.Wrapper>
     )
     expect($.contains('Dropdown.Wrapper text')).toBe(true)
-  })
-
-  it('renders with appropriate classNames', () => {
-    const $ = shallow(<Navbar.Dropdown.Wrapper className="test">_</Navbar.Dropdown.Wrapper>)
-    expect($.hasClass(`${NAMESPACE}c-navbar__item ${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders a defined tag type', () => {
@@ -51,12 +51,12 @@ describe('<Navbar.Dropdown.Wrapper />', () => {
         </Navbar.Dropdown.Toggle>
       </Navbar.Dropdown.Wrapper>
     )
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(false)
+    expect($.hasClass('is-open')).toBe(false)
     expect($.html()).toMatch(/aria-expanded="false"/)
 
     $.find(Navbar.Dropdown.Toggle).simulate('click')
     expect($.hasClass(`${NAMESPACE}c-navbar__item`)).toBe(true)
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(true)
+    expect($.hasClass('is-open')).toBe(true)
     expect($.html()).toMatch(/aria-expanded="true"/)
   })
 
@@ -68,13 +68,13 @@ describe('<Navbar.Dropdown.Wrapper />', () => {
         </Navbar.Dropdown.Toggle>
       </Navbar.Dropdown.Wrapper>
     )
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(false)
+    expect($.hasClass('is-open')).toBe(false)
 
     $.find(Navbar.Dropdown.Toggle).simulate('click')
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(true)
+    expect($.hasClass('is-open')).toBe(true)
 
     simulant.fire(document, 'click')
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(false)
+    expect($.hasClass('is-open')).toBe(false)
   })
 
   it('cannot be closed by clicking outside', () => {
@@ -85,13 +85,13 @@ describe('<Navbar.Dropdown.Wrapper />', () => {
         </Navbar.Dropdown.Toggle>
       </Navbar.Dropdown.Wrapper>
     )
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(false)
+    expect($.hasClass('is-open')).toBe(false)
 
     $.find(Navbar.Dropdown.Toggle).simulate('click')
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(true)
+    expect($.hasClass('is-open')).toBe(true)
 
     simulant.fire(document, 'click')
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(true)
+    expect($.hasClass('is-open')).toBe(true)
   })
 
   it('does not render DropdownContent when closed', () => {

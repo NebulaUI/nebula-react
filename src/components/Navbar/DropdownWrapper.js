@@ -29,7 +29,7 @@ class NavbarDropdownWrapper extends Component {
       {
         className: classNames(
           `${NAMESPACE}c-navbar__item`, className,
-          { [`${NAMESPACE}is-open`]: isOpen }
+          { 'is-open': isOpen }
         ),
         'aria-haspopup': true,
         'aria-expanded': isOpen,

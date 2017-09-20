@@ -2,10 +2,15 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
-
 import { Navbar } from '../'
 
 describe('<Navbar.Link />', () => {
+  it('renders with appropriate classNames', () => {
+    const $ = shallow(<Navbar.Link to="/" className="test">Test</Navbar.Link>)
+    expect($.hasClass(`${NAMESPACE}c-navbar__link`)).toBe(true)
+    expect($.hasClass('test')).toBe(true)
+  })
+
   it('renders children', () => {
     const $ = shallow(
       <Navbar.Link to="/">
@@ -13,11 +18,6 @@ describe('<Navbar.Link />', () => {
       </Navbar.Link>
     )
     expect($.contains('Link text')).toBe(true)
-  })
-
-  it('renders with appropriate classNames', () => {
-    const $ = shallow(<Navbar.Link to="/" className="test">Test</Navbar.Link>)
-    expect($.hasClass(`${NAMESPACE}c-navbar__link ${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders a defined tag type', () => {
@@ -86,8 +86,9 @@ describe('<Navbar.Link />', () => {
           to="/test"
         >Nebula</Navbar.Link>
       )
-      expect($.find(RRNavLink).hasClass(`${NAMESPACE}c-navbar__link ${NAMESPACE}test`)).toBe(true)
-      expect($.find(RRNavLink).prop('activeClassName')).toBe(`${NAMESPACE}is-test`)
+      expect($.find(RRNavLink).hasClass(`${NAMESPACE}c-navbar__link`)).toBe(true)
+      expect($.find(RRNavLink).hasClass('test')).toBe(true)
+      expect($.find(RRNavLink).prop('activeClassName')).toBe('is-test')
       expect($.find(RRNavLink).prop('to')).toBe('/test')
     })
 
@@ -98,7 +99,7 @@ describe('<Navbar.Link />', () => {
           to="/"
         >Nebula</Navbar.Link>
       )
-      expect($.find(RRNavLink).prop('activeClassName')).toBe(`${NAMESPACE}is-active`)
+      expect($.find(RRNavLink).prop('activeClassName')).toBe('is-active')
     })
 
     it('renders with attributes', () => {
