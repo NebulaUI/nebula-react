@@ -2,7 +2,6 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
-
 import { Form } from '../'
 
 describe('<Form.SearchSubmit />', () => {

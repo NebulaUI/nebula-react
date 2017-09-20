@@ -1,10 +1,9 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
 
-import { Form } from '../'
 import { randomId } from '../../../utils/'
-
 import { NAMESPACE } from '../../../constants'
+import { Form } from '../'
 
 jest.mock('../../../utils/randomId')
 
