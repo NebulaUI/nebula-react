@@ -15,6 +15,7 @@ import { Flyout } from './components/Flyout/'
 import { Foldable } from './components/Foldable/'
 import { Form } from './components/Form/'
 import { Icon } from './components/Icon/'
+import { LinkList } from './components/LinkList/'
 import { LoadingIcon } from './components/LoadingIcon/'
 import { Modal } from './components/Modal/'
 import { Pagination } from './components/Pagination/'
@@ -39,6 +40,7 @@ export {
   Grid,
   Icon,
   InlineList,
+  LinkList,
   LoadingIcon,
   MatrixList,
   Modal,

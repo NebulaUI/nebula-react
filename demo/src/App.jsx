@@ -6,6 +6,7 @@ import {
   Pagination,
   Pill,
   UIList,
+  LinkList,
 } from 'nebula-react'
 
 const tableData = {
@@ -77,6 +78,47 @@ class App extends Component {
               <UIList.Item>Item 4</UIList.Item>
               <UIList.Item>Item 5</UIList.Item>
             </UIList.Wrapper>
+            <h3>Link List with Divider</h3>
+            <LinkList.Wrapper spacing="md@md">
+              <LinkList.Item>
+                <LinkList.Group divider>
+                  <LinkList.Item>
+                    <LinkList.Link to="/" isActive>Item 1</LinkList.Link>
+                  </LinkList.Item>
+                  <LinkList.Item>
+                    <LinkList.Link to="/">Item 2</LinkList.Link>
+                  </LinkList.Item>
+                  <LinkList.Item>
+                    <LinkList.Link to="/">Item 3</LinkList.Link>
+                  </LinkList.Item>
+                </LinkList.Group>
+              </LinkList.Item>
+              <LinkList.Item>
+                <LinkList.Group>
+                  <LinkList.Item>
+                    <LinkList.Link to="/">Item 1</LinkList.Link>
+                  </LinkList.Item>
+                  <LinkList.Item>
+                    <LinkList.Link to="/">Item 2</LinkList.Link>
+                  </LinkList.Item>
+                  <LinkList.Item>
+                    <LinkList.Link to="/">Item 3</LinkList.Link>
+                  </LinkList.Item>
+                </LinkList.Group>
+              </LinkList.Item>
+            </LinkList.Wrapper>
+            <h3>Link List without Divider</h3>
+            <LinkList.Wrapper spacing="md">
+              <LinkList.Item>
+                <LinkList.Link to="/" isActive>Item 1</LinkList.Link>
+              </LinkList.Item>
+              <LinkList.Item>
+                <LinkList.Link to="/">Item 2</LinkList.Link>
+              </LinkList.Item>
+              <LinkList.Item>
+                <LinkList.Link to="/">Item 3</LinkList.Link>
+              </LinkList.Item>
+            </LinkList.Wrapper>
           </SiteWrap>
         </Section>
       </div>
