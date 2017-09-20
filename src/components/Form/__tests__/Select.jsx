@@ -2,7 +2,6 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
-
 import { Form } from '../'
 
 const defaultProps = {
@@ -16,7 +15,8 @@ describe('<Form.Select />', () => {
       className: 'test'
     }
     const $ = shallow(<Form.Select {...props} />)
-    expect($.hasClass(`${NAMESPACE}c-select ${NAMESPACE}test`)).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-select`)).toBe(true)
+    expect($.hasClass('test')).toBe(true)
   })
 
   it('renders children', () => {

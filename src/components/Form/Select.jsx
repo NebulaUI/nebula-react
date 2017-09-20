@@ -1,7 +1,7 @@
 import React from 'react'
 import T from 'prop-types'
-import classNames from '../../utils/classNames'
 
+import classNames from '../../utils/classNames'
 import { NAMESPACE } from '../../constants'
 
 const Select = ({ className, small, onChange, value, children, ...rest }) => (
