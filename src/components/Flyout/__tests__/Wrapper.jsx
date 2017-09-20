@@ -8,6 +8,11 @@ import { NAMESPACE, FLYOUT_DIRECTIONS as DIRECTIONS } from '../../../constants'
 const defaultProps = {}
 
 describe('<Flyout.Wrapper />', () => {
+  it('renders with appropriate classNames', () => {
+    const $ = shallow(<Flyout.Wrapper className="is-open" {...defaultProps}>_</Flyout.Wrapper>)
+    expect($.hasClass(`${NAMESPACE}c-flyout is-open`)).toBe(true)
+  })
+
   it('renders a "div" by default', () => {
     const $ = shallow(<Flyout.Wrapper {...defaultProps}>_</Flyout.Wrapper>)
     expect($.type()).toBe('div')
@@ -16,11 +21,6 @@ describe('<Flyout.Wrapper />', () => {
   it('renders a defined tag type', () => {
     const $ = shallow(<Flyout.Wrapper tag="article" {...defaultProps}>_</Flyout.Wrapper>)
     expect($.type()).toBe('article')
-  })
-
-  it('renders with appropriate classNames', () => {
-    const $ = shallow(<Flyout.Wrapper className="is-open" {...defaultProps}>_</Flyout.Wrapper>)
-    expect($.hasClass(`${NAMESPACE}c-flyout ${NAMESPACE}is-open`)).toBe(true)
   })
 
   it('renders children', () => {
@@ -64,13 +64,13 @@ describe('<Flyout.Wrapper />', () => {
       </Flyout.Wrapper>
     )
 
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(false)
+    expect($.hasClass('is-open')).toBe(false)
 
     $.find(Flyout.Toggle).simulate('click')
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(true)
+    expect($.hasClass('is-open')).toBe(true)
 
     $.find(Flyout.Content).find(Flyout.Toggle).simulate('click')
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(false)
+    expect($.hasClass('is-open')).toBe(false)
     expect($.find(Button).node === window.activeElement).toBe(true)
   })
 
@@ -83,13 +83,13 @@ describe('<Flyout.Wrapper />', () => {
       </Flyout.Wrapper>
     )
 
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(false)
+    expect($.hasClass('is-open')).toBe(false)
 
     $.find(Flyout.Toggle).simulate('click')
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(true)
+    expect($.hasClass('is-open')).toBe(true)
     simulant.fire(document, 'click')
 
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(false)
+    expect($.hasClass('is-open')).toBe(false)
   })
 
   it('renders closed by default', () => {
@@ -108,10 +108,10 @@ describe('<Flyout.Wrapper />', () => {
         <Flyout.Content direction={DIRECTIONS[0]}>Child content</Flyout.Content>
       </Flyout.Wrapper>
     )
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(true)
+    expect($.hasClass('is-open')).toBe(true)
 
     $.find(Flyout.Toggle).simulate('click')
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(false)
+    expect($.hasClass('is-open')).toBe(false)
   })
 
   it('can be closed open on the initial mount if disabled', () => {
@@ -126,10 +126,10 @@ describe('<Flyout.Wrapper />', () => {
         <Flyout.Content direction={DIRECTIONS[0]}>Child content</Flyout.Content>
       </Flyout.Wrapper>
     )
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(false)
+    expect($.hasClass('is-open')).toBe(false)
 
     $.find(Flyout.Toggle).simulate('click')
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(false)
+    expect($.hasClass('is-open')).toBe(false)
   })
 
   it('can be externally controlled', () => {
@@ -138,13 +138,13 @@ describe('<Flyout.Wrapper />', () => {
       isOpen: 'open'
     }
     const $ = shallow(<Flyout.Wrapper {...props}>_</Flyout.Wrapper>)
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(true)
+    expect($.hasClass('is-open')).toBe(true)
 
     $.setProps({
       isOpen: 'closed'
     })
 
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(false)
+    expect($.hasClass('is-open')).toBe(false)
   })
 
   it('can renders closed when disabled even if externally closed', () => {
@@ -154,7 +154,7 @@ describe('<Flyout.Wrapper />', () => {
       disabled: true
     }
     const $ = shallow(<Flyout.Wrapper {...props}>_</Flyout.Wrapper>)
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(false)
+    expect($.hasClass('is-open')).toBe(false)
   })
 
   it('calls an optional callback prop when a change event occurs', () => {

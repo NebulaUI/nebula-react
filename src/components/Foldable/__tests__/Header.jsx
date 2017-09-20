@@ -2,7 +2,6 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
-
 import { Foldable } from '../'
 
 const defaultContext = {
@@ -15,7 +14,8 @@ describe('<Foldable.Header />', () => {
     const $ = shallow(
       <Foldable.Header className="something else">_</Foldable.Header>
     , { context: defaultContext })
-    expect($.hasClass(`${NAMESPACE}c-foldable__header ${NAMESPACE}something else`)).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-foldable__header`)).toBe(true)
+    expect($.hasClass('something else')).toBe(true)
   })
 
   it('renders a defined tag type', () => {

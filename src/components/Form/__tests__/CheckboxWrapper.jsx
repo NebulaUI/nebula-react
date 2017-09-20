@@ -2,13 +2,13 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
-
 import { Form } from '../'
 
 describe('<Form.CheckboxWrapper />', () => {
   it('renders the appropriate classNames', () => {
     const $ = shallow(<Form.CheckboxWrapper className="test" />)
-    expect($.hasClass(`${NAMESPACE}c-form-input ${NAMESPACE}test`)).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-form-input`)).toBe(true)
+    expect($.hasClass('test')).toBe(true)
   })
 
   it('renders children', () => {

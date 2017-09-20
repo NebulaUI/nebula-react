@@ -9,6 +9,25 @@ const defaultProps = {
 }
 
 describe('<Flyout.Content />', () => {
+  it('renders with appropriate classNames', () => {
+    const props = {
+      ...defaultProps,
+      className: 'test'
+    }
+    const $ = shallow(<Flyout.Content {...props}>_</Flyout.Content>)
+    expect($.hasClass(`${NAMESPACE}c-flyout__content`)).toBe(true)
+    expect($.hasClass('test')).toBe(true)
+  })
+
+  it('renders with a set direction', () => {
+    const props = {
+      ...defaultProps,
+      direction: DIRECTIONS[1]
+    }
+    const $ = shallow(<Flyout.Content {...props}>Test child</Flyout.Content>)
+    expect($.hasClass(`${NAMESPACE}c-flyout__content ${NAMESPACE}c-flyout__content--${DIRECTIONS[1]}`)).toBe(true)
+  })
+
   it('renders a "div" by default', () => {
     const $ = shallow(<Flyout.Content {...defaultProps}>_</Flyout.Content>)
     expect($.type()).toBe('div')
@@ -23,15 +42,6 @@ describe('<Flyout.Content />', () => {
     expect($.type()).toBe('article')
   })
 
-  it('renders with appropriate classNames', () => {
-    const props = {
-      ...defaultProps,
-      className: `${NAMESPACE}test`
-    }
-    const $ = shallow(<Flyout.Content {...props}>_</Flyout.Content>)
-    expect($.hasClass(`${NAMESPACE}c-flyout__content`)).toBe(true)
-    expect($.hasClass(`${NAMESPACE}test`)).toBe(true)
-  })
 
   it('renders children when open', () => {
     const context = { isFlyoutOpen: true }
@@ -43,15 +53,6 @@ describe('<Flyout.Content />', () => {
     const context = { isFlyoutOpen: false }
     const $ = shallow(<Flyout.Content {...defaultProps}>Test child</Flyout.Content>, { context })
     expect($.contains('Test child')).toBe(false)
-  })
-
-  it('renders with a set direction', () => {
-    const props = {
-      ...defaultProps,
-      direction: DIRECTIONS[1]
-    }
-    const $ = shallow(<Flyout.Content {...props}>Test child</Flyout.Content>)
-    expect($.hasClass(`${NAMESPACE}c-flyout__content ${NAMESPACE}c-flyout__content--${DIRECTIONS[1]}`)).toBe(true)
   })
 
   it('renders with attributes', () => {

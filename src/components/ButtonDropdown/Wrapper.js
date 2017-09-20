@@ -3,7 +3,6 @@ import T from 'prop-types'
 
 import { ClickOutside } from '../../'
 import { classNames } from '../../utils/'
-
 import { NAMESPACE, BLOCK_TAGS } from '../../constants'
 
 class ButtonDropdownWrapper extends Component {
@@ -101,7 +100,7 @@ class ButtonDropdownWrapper extends Component {
           `${NAMESPACE}c-btn-dropdown`,
           `${NAMESPACE}c-btn-dropdown--toggle-${togglePosition}`,
           { [`${NAMESPACE}c-btn-dropdown--full`]: fullWidth },
-          { [`${NAMESPACE}is-open`]: this.isOpen() },
+          { 'is-open': this.isOpen() },
           className
         ),
         'aria-haspopup': true,

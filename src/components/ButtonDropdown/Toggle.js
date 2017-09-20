@@ -4,7 +4,6 @@ import T from 'prop-types'
 import { classNames } from '../../utils/'
 import { NAMESPACE, ALL_TAGS } from '../../constants'
 
-
 const ButtonDropdownToggle = ({
   tag,
   className,

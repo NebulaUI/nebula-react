@@ -2,13 +2,13 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
-
 import { Button } from '../'
 
 describe('<Button />', () => {
   it('passes in an optional className', () => {
     const $ = shallow(<Button className="test">_</Button>)
-    expect($.hasClass(`${NAMESPACE}c-btn ${NAMESPACE}test`)).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-btn`)).toBe(true)
+    expect($.hasClass('test')).toBe(true)
   })
 
   it('renders a defined tag type', () => {

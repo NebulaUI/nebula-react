@@ -61,7 +61,7 @@ class FoldableWrapper extends Component {
         className: classNames(
           breakpoint ? `${NAMESPACE}c-foldable@${breakpoint}` : `${NAMESPACE}c-foldable`,
           { [`${NAMESPACE}c-foldable--bordered`]: bordered },
-          { [`${NAMESPACE}is-open`]: this.isOpen() },
+          { 'is-open': this.isOpen() },
           className
         ),
         'aria-expanded': this.isOpen(),
