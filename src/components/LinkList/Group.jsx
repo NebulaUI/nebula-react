@@ -1,7 +1,7 @@
 import { createElement as E } from 'react'
 import T from 'prop-types'
-import { classNames } from '../../utils/'
 
+import { classNames } from '../../utils/'
 import { NAMESPACE, BLOCK_TAGS } from '../../constants'
 
 const LinkListGroup = ({ tag, divider, children, className, ...rest }) =>

@@ -14,6 +14,22 @@ describe('<LinkList.Link />', () => {
     expect($.hasClass(`${NAMESPACE}c-link-list__link`)).toBe(true)
   })
 
+  it('renders the user defined className', () => {
+    const $ = shallow(<LinkList.Link className="test" {...defaultProps}>_</LinkList.Link>)
+    expect($.hasClass(`${NAMESPACE}c-link-list__link`)).toBe(true)
+    expect($.hasClass('test')).toBe(true)
+  })
+
+  it('renders with a default activeClassName when active', () => {
+    const $ = shallow(<LinkList.Link {...defaultProps} isActive>_</LinkList.Link>)
+    expect($.hasClass(`${NAMESPACE}c-link-list__link is-active`)).toBe(true)
+  })
+
+  it('renders with a defined activeClassName when active', () => {
+    const $ = shallow(<LinkList.Link {...defaultProps} isActive activeClassName="foo">_</LinkList.Link>)
+    expect($.hasClass(`${NAMESPACE}c-link-list__link foo`)).toBe(true)
+  })
+
   it('renders a "a" by default', () => {
     const $ = shallow(<LinkList.Link {...defaultProps}>_</LinkList.Link>)
     expect($.type()).toBe('a')
@@ -38,17 +54,6 @@ describe('<LinkList.Link />', () => {
       position: 'relative'
     })
     expect($.prop('ariaHidden')).toBe('true')
-  })
-
-  it('renders with a default activeClassName when active', () => {
-    const $ = shallow(<LinkList.Link {...defaultProps} isActive>_</LinkList.Link>)
-    expect($.hasClass(`${NAMESPACE}c-link-list__link is-active`)).toBe(true)
-  })
-
-
-  it('renders with a defined activeClassName when active', () => {
-    const $ = shallow(<LinkList.Link {...defaultProps} isActive activeClassName="foo">_</LinkList.Link>)
-    expect($.hasClass(`${NAMESPACE}c-link-list__link foo`)).toBe(true)
   })
 
   it('takes a callback that is called with the event and component instance when clicked', () => {

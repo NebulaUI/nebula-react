@@ -2,10 +2,20 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
-
 import { LinkList } from '../'
 
 describe('<LinkList.Item />', () => {
+  it('renders with the default className', () => {
+    const $ = shallow(<LinkList.Item>_</LinkList.Item>)
+    expect($.hasClass(`${NAMESPACE}c-link-list__item`)).toBe(true)
+  })
+
+  it('renders the user defined className', () => {
+    const $ = shallow(<LinkList.Item className="test">_</LinkList.Item>)
+    expect($.hasClass(`${NAMESPACE}c-link-list__item`)).toBe(true)
+    expect($.hasClass('test')).toBe(true)
+  })
+
   it('renders children', () => {
     const $ = shallow(
       <LinkList.Item>
@@ -23,16 +33,6 @@ describe('<LinkList.Item />', () => {
   it('renders an li by default', () => {
     const $ = shallow(<LinkList.Item>_</LinkList.Item>)
     expect($.type()).toBe('li')
-  })
-
-  it('renders with the default className', () => {
-    const $ = shallow(<LinkList.Item>_</LinkList.Item>)
-    expect($.hasClass(`${NAMESPACE}c-link-list__item`)).toBe(true)
-  })
-
-  it('renders the user defined className', () => {
-    const $ = shallow(<LinkList.Item className="test">_</LinkList.Item>)
-    expect($.hasClass(`${NAMESPACE}c-link-list__item test`)).toBe(true)
   })
 
   it('renders with attributes', () => {

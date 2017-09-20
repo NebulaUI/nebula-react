@@ -1,8 +1,8 @@
 import React, { Component, createElement as E } from 'react'
 import T from 'prop-types'
-import { classNames } from '../../utils/'
 
-import { NAMESPACE, ALL_TAGS } from '../../constants'
+import { classNames } from '../../utils/'
+import { NAMESPACE } from '../../constants'
 
 class LinkListLink extends Component {
 
@@ -12,7 +12,6 @@ class LinkListLink extends Component {
 
   render() {
     const {
-      tag,
       to,
       className,
       isActive,
@@ -71,7 +70,6 @@ class LinkListLink extends Component {
 
 LinkListLink.propTypes = {
   to: T.string.isRequired,
-  tag: T.oneOf(ALL_TAGS),
   component: T.oneOfType([
     T.func,
     T.node
