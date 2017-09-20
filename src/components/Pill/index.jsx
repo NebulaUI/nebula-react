@@ -36,7 +36,7 @@ class Pill extends Component {
       classNames(initialClassName, className,
         status ? `${initialClassName}--${status}` : '',
         { [`${initialClassName}--border`]: !status },
-        { [`${NAMESPACE}is-active`]: !status && isActive })
+        { 'is-active': !status && isActive })
 
     const onClickProps = onClick
     ? {
