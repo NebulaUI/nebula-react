@@ -2,7 +2,6 @@ import React from 'react'
 import { shallow, mount } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
-
 import { Icon } from '../'
 
 const defaultProps = {
@@ -41,7 +40,8 @@ describe('<Icon />', () => {
       className: 'test'
     }
     const $ = shallow(<Icon {...props} />)
-    expect($.hasClass(`${NAMESPACE}c-icon ${NAMESPACE}test`)).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-icon`)).toBe(true)
+    expect($.hasClass('test')).toBe(true)
   })
 
   it('renders with icon to the left of children', () => {
