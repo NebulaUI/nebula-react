@@ -2,7 +2,6 @@ import React from 'react'
 import { shallow, mount } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
-
 import { Modal } from '../'
 
 const defaultProps = {
@@ -15,6 +14,16 @@ beforeEach(() => {
 })
 
 describe('<Modal.Wrapper />', () => {
+  it('renders with appropriate classNames', () => {
+    const props = {
+      ...defaultProps,
+      className: 'test'
+    }
+    const $ = shallow(<Modal.Wrapper {...props}>_</Modal.Wrapper>)
+    expect($.hasClass(`${NAMESPACE}c-modal`)).toBe(true)
+    expect($.hasClass('test')).toBe(true)
+  })
+
   it('prevents page scroll when mounted', () => {
     // eslint-disable-next-line no-underscore-dangle
     const getDocumentStyle = prop => document.documentElement.style._values[prop]
@@ -39,15 +48,6 @@ describe('<Modal.Wrapper />', () => {
     }
     const $ = shallow(<Modal.Wrapper {...props}>_</Modal.Wrapper>)
     expect($.type()).toBe('article')
-  })
-
-  it('renders with appropriate classNames', () => {
-    const props = {
-      ...defaultProps,
-      className: 'test'
-    }
-    const $ = shallow(<Modal.Wrapper {...props}>_</Modal.Wrapper>)
-    expect($.hasClass(`${NAMESPACE}c-modal ${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders children', () => {
@@ -100,10 +100,10 @@ describe('<Modal.Wrapper />', () => {
 
   it('add is-open className when fully mounted', () => {
     const $ = mount(<Modal.Wrapper {...defaultProps}>_</Modal.Wrapper>)
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(false)
+    expect($.hasClass('is-open')).toBe(false)
 
     jest.runAllTimers()
-    expect($.hasClass(`${NAMESPACE}is-open`)).toBe(true)
+    expect($.hasClass('is-open')).toBe(true)
   })
 
   it('closes the modal after a defined timeout', () => {

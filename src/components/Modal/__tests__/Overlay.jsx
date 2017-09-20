@@ -2,7 +2,6 @@ import React from 'react'
 import { shallow, mount } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
-
 import { Modal } from '../'
 
 const defaultContext = {
@@ -11,6 +10,12 @@ const defaultContext = {
 }
 
 describe('<Modal.Overlay />', () => {
+  it('renders with appropriate classNames', () => {
+    const $ = shallow(<Modal.Overlay className="test" />, { context: defaultContext })
+    expect($.hasClass(`${NAMESPACE}c-modal__overlay`)).toBe(true)
+    expect($.hasClass('test')).toBe(true)
+  })
+
   it('renders a "button" by default', () => {
     const $ = shallow(<Modal.Overlay />, { context: defaultContext })
     expect($.type()).toBe('button')
@@ -19,11 +24,6 @@ describe('<Modal.Overlay />', () => {
   it('renders a defined tag', () => {
     const $ = shallow(<Modal.Overlay tag="article" />, { context: defaultContext })
     expect($.type()).toBe('article')
-  })
-
-  it('renders with appropriate classNames', () => {
-    const $ = shallow(<Modal.Overlay className="test" />, { context: defaultContext })
-    expect($.hasClass(`${NAMESPACE}c-modal__overlay ${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders with attributes', () => {

@@ -2,10 +2,20 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
-
 import { Modal } from '../'
 
 describe('<Modal.Dismiss />', () => {
+  it('renders with the correct default className', () => {
+    const $ = shallow(<Modal.Dismiss />)
+    expect($.hasClass(`${NAMESPACE}c-modal__dismiss`)).toBe(true)
+  })
+
+  it('renders with the defined className', () => {
+    const $ = shallow(<Modal.Dismiss className="test" />)
+    expect($.hasClass(`${NAMESPACE}c-modal__dismiss`)).toBe(true)
+    expect($.hasClass('test')).toBe(true)
+  })
+
   it('renders a "button" by default', () => {
     const $ = shallow(<Modal.Dismiss />)
     expect($.type()).toBe('button')
@@ -29,15 +39,5 @@ describe('<Modal.Dismiss />', () => {
   it('renders children', () => {
     const $ = shallow(<Modal.Dismiss>test child</Modal.Dismiss>)
     expect($.contains('test child')).toBe(true)
-  })
-
-  it('renders with the correct default className', () => {
-    const $ = shallow(<Modal.Dismiss />)
-    expect($.hasClass(`${NAMESPACE}c-modal__dismiss`)).toBe(true)
-  })
-
-  it('renders with the defined className', () => {
-    const $ = shallow(<Modal.Dismiss className="test" />)
-    expect($.hasClass(`${NAMESPACE}c-modal__dismiss ${NAMESPACE}test`)).toBe(true)
   })
 })
