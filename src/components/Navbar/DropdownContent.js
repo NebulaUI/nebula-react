@@ -28,7 +28,7 @@ class NavbarDropdownContent extends Component {
       {
         className: classNames(
           `${NAMESPACE}c-navbar__dropdown`,
-          { [`${NAMESPACE}is-open`]: this.state.isOpen },
+          { 'is-open': this.state.isOpen },
           { [`${NAMESPACE}c-navbar__dropdown--south-west`]: southWest },
           className
         ),

@@ -35,7 +35,7 @@ class NavbarWrapper extends Component {
     return E(
       tag || 'header',
       {
-        className: classNames(`${NAMESPACE}c-navbar`, { [`${NAMESPACE}is-open`]: this.state.isOpen }),
+        className: classNames(`${NAMESPACE}c-navbar`, { 'is-open': this.state.isOpen }),
         ...rest
       },
       E(
@@ -43,7 +43,7 @@ class NavbarWrapper extends Component {
         {
           className: classNames(
             `${NAMESPACE}c-navbar__inner`, className,
-            { [`${NAMESPACE}is-sticky`]: sticky }
+            { 'is-sticky': sticky }
           )
         },
         children

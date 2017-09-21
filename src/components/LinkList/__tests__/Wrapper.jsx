@@ -2,7 +2,6 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
-
 import { LinkList } from '../'
 
 describe('<LinkList.Wrapper />', () => {
@@ -10,6 +9,12 @@ describe('<LinkList.Wrapper />', () => {
     const $ = shallow(<LinkList.Wrapper>_</LinkList.Wrapper>)
     expect($.hasClass(`${NAMESPACE}c-link-list`)).toBe(true)
     expect($.hasClass(`${NAMESPACE}c-link-list--spaced`)).toBe(false)
+  })
+
+  it('renders the user defined className', () => {
+    const $ = shallow(<LinkList.Wrapper className="test">_</LinkList.Wrapper>)
+    expect($.hasClass(`${NAMESPACE}c-link-list`)).toBe(true)
+    expect($.hasClass('test')).toBe(true)
   })
 
   it('takes a single spacing value', () => {
@@ -52,10 +57,5 @@ describe('<LinkList.Wrapper />', () => {
       position: 'relative'
     })
     expect($.prop('ariaHidden')).toBe('true')
-  })
-
-  it('renders the user defined className', () => {
-    const $ = shallow(<LinkList.Wrapper className="test">_</LinkList.Wrapper>)
-    expect($.hasClass(`${NAMESPACE}c-link-list ${NAMESPACE}test`)).toBe(true)
   })
 })

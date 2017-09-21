@@ -1,9 +1,8 @@
 import React from 'react'
 import T from 'prop-types'
+
 import { classNames } from '../../utils/'
-
 import { NAMESPACE } from '../../constants'
-
 import { Form } from './'
 
 const SearchInput = ({

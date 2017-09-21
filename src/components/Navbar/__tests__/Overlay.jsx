@@ -2,7 +2,6 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
-
 import { Navbar } from '../'
 
 const defaultContext = {
@@ -10,6 +9,12 @@ const defaultContext = {
 }
 
 describe('<Navbar.Overlay />', () => {
+  it('renders with appropriate classNames', () => {
+    const $ = shallow(<Navbar.Overlay className="test" />, { context: defaultContext })
+    expect($.hasClass(`${NAMESPACE}c-navbar__overlay`)).toBe(true)
+    expect($.hasClass('test')).toBe(true)
+  })
+
   it('renders children', () => {
     const $ = shallow(
       <Navbar.Overlay>
@@ -17,11 +22,6 @@ describe('<Navbar.Overlay />', () => {
       </Navbar.Overlay>
     , { context: defaultContext })
     expect($.contains('Overlay text')).toBe(true)
-  })
-
-  it('renders with appropriate classNames', () => {
-    const $ = shallow(<Navbar.Overlay className="test" />, { context: defaultContext })
-    expect($.hasClass(`${NAMESPACE}c-navbar__overlay ${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders a defined tag type', () => {

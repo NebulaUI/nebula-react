@@ -1,7 +1,7 @@
 import { createElement as E } from 'react'
 import T from 'prop-types'
-import { classNames, buildClassName, buildBreakpointValues } from '../../utils/'
 
+import { classNames, buildClassName, buildBreakpointValues } from '../../utils/'
 import { NAMESPACE, LIST_SPACING, BLOCK_TAGS } from '../../constants'
 
 const LinkListWrapper = ({ tag, spacing, className, children, ...rest }) =>

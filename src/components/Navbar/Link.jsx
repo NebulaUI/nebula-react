@@ -15,7 +15,7 @@ class NavbarLink extends Component {
       component,
       tag,
       className,
-      activeClassName = `${NAMESPACE}is-active`,
+      activeClassName = 'is-active',
       onClick,
       children,
       ...rest

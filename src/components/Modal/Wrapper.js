@@ -61,7 +61,7 @@ class ModalWrapper extends Component {
       {
         className: classNames(
           `${NAMESPACE}c-modal`,
-          { [`${NAMESPACE}is-open`]: this.state.isFullyMounted },
+          { 'is-open': this.state.isFullyMounted },
           { [`${NAMESPACE}c-modal--align-top`]: alignTop },
           className
         ),

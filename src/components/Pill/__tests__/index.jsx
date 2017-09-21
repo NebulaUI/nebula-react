@@ -2,13 +2,22 @@ import React from 'react'
 import { shallow, mount } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
-
 import { Pill } from '../'
 
 describe('<Pill />', () => {
-  it('renders with the correct default className', () => {
+  it('renders with the default className', () => {
     const $ = shallow(<Pill>_</Pill>)
     expect($.hasClass(`${NAMESPACE}c-pill`)).toBe(true)
+  })
+
+  it('renders with an optional className', () => {
+    const $ = shallow(<Pill className="test">_</Pill>)
+    expect($.hasClass('test')).toBe(true)
+  })
+
+  it('renders with a border', () => {
+    const $ = shallow(<Pill border>_</Pill>)
+    expect($.hasClass(`${NAMESPACE}c-pill--border`)).toBe(true)
   })
 
   it('renders a "button" by default', () => {
@@ -24,11 +33,6 @@ describe('<Pill />', () => {
   it('renders a link when passed a "to" prop', () => {
     const $ = shallow(<Pill to="/">_</Pill>)
     expect($.type()).toBe('a')
-  })
-
-  it('renders with a border', () => {
-    const $ = shallow(<Pill border>_</Pill>)
-    expect($.hasClass(`${NAMESPACE}c-pill--border`)).toBe(true)
   })
 
   it('renders children', () => {
@@ -126,8 +130,9 @@ describe('<Pill />', () => {
           to="/test"
         >Nebula</Pill>
       )
-      expect($.find(RRPill).hasClass(`${NAMESPACE}c-pill ${NAMESPACE}test`)).toBe(true)
-      expect($.find(RRPill).prop('activeClassName')).toBe(`${NAMESPACE}is-test`)
+      expect($.find(RRPill).hasClass(`${NAMESPACE}c-pill`)).toBe(true)
+      expect($.find(RRPill).hasClass('test')).toBe(true)
+      expect($.find(RRPill).prop('activeClassName')).toBe('is-test')
       expect($.find(RRPill).prop('to')).toBe('/test')
     })
 
