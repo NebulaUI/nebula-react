@@ -2,7 +2,7 @@ import { Component, createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils'
-import { BLOCK_TAGS } from '../../constants'
+import { NAMESPACE, BLOCK_TAGS } from '../../constants'
 
 class TabsWrapper extends Component {
   constructor(props) {
@@ -47,7 +47,7 @@ class TabsWrapper extends Component {
 
     return E(
       tag || 'div',
-      { className: classNames('c-tabs', className), ...rest },
+      { className: classNames(`${NAMESPACE}c-tabs`, className), ...rest },
       children
     )
   }

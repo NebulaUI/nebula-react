@@ -2,10 +2,19 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
-
 import { Flag } from '../'
 
 describe('<Flag.Body />', () => {
+  it('takes a default className', () => {
+    const $ = shallow(<Flag.Body />)
+    expect($.hasClass(`${NAMESPACE}o-flag__body`)).toBe(true)
+  })
+
+  it('takes a defined className', () => {
+    const $ = shallow(<Flag.Body className="test" />)
+    expect($.hasClass('test')).toBe(true)
+  })
+
   it('renders the children', () => {
     const $ = shallow(
       <Flag.Body>
@@ -13,11 +22,6 @@ describe('<Flag.Body />', () => {
       </Flag.Body>
     )
     expect($.contains(<div className="test" />)).toBe(true)
-  })
-
-  it('takes a defined className', () => {
-    const $ = shallow(<Flag.Body className="test" />)
-    expect($.hasClass(`${NAMESPACE}o-flag__body ${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders with attributes', () => {

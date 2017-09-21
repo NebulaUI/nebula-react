@@ -2,7 +2,7 @@ import { createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
-import { BLOCK_TAGS } from '../../constants'
+import { NAMESPACE, BLOCK_TAGS } from '../../constants'
 
 const TabsPanel = ({ tag, children, className, id, ...rest }, { activeTabId, activeTabLabel }) => {
   if (id !== activeTabId) {
@@ -12,7 +12,7 @@ const TabsPanel = ({ tag, children, className, id, ...rest }, { activeTabId, act
   return E(
     tag || 'div',
     {
-      className: classNames('c-tabs__panel', className),
+      className: classNames(`${NAMESPACE}c-tabs__panel`, className),
       role: 'tabpanel',
       'aria-labelledby': activeTabLabel,
       ...rest

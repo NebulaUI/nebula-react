@@ -2,10 +2,19 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
-
 import { BareList } from '../'
 
 describe('<BareList.Wrapper />', () => {
+  it('renders with the default className', () => {
+    const $ = shallow(<BareList.Wrapper />)
+    expect($.hasClass(`${NAMESPACE}o-bare-list`)).toBe(true)
+  })
+
+  it('renders the user defined className', () => {
+    const $ = shallow(<BareList.Wrapper className="test" />)
+    expect($.hasClass('test')).toBe(true)
+  })
+
   it('takes a single spacing value', () => {
     const $ = shallow(<BareList.Wrapper spacing="md" />)
     expect($.hasClass(`${NAMESPACE}o-bare-list ${NAMESPACE}o-bare-list--spaced-md`)).toBe(true)
@@ -34,11 +43,6 @@ describe('<BareList.Wrapper />', () => {
   it('renders a ul by default', () => {
     const $ = shallow(<BareList.Wrapper />)
     expect($.type()).toBe('ul')
-  })
-
-  it('renders with the default className', () => {
-    const $ = shallow(<BareList.Wrapper />)
-    expect($.hasClass(`${NAMESPACE}o-bare-list`)).toBe(true)
   })
 
   it('renders with attributes', () => {

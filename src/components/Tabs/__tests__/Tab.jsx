@@ -1,6 +1,7 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
 import { Tabs } from '../'
 
 const defaultProps = {
@@ -12,6 +13,38 @@ const defaultContext = {
 }
 
 describe('<Tabs.Tab />', () => {
+  it('takes a default className', () => {
+    const context = defaultContext
+    const $ = shallow(
+      <Tabs.Tab {...defaultProps}>_</Tabs.Tab>
+      , { context })
+    expect($.hasClass(`${NAMESPACE}c-tabs__tab`)).toBe(true)
+  })
+
+  it('takes an optional className', () => {
+    const context = defaultContext
+    const $ = shallow(
+      <Tabs.Tab className="test" {...defaultProps}>_</Tabs.Tab>
+      , { context })
+    expect($.hasClass('test')).toBe(true)
+  })
+
+  it('renders with an active className', () => {
+    const context = defaultContext
+    const $ = shallow(
+      <Tabs.Tab isActive {...defaultProps}>_</Tabs.Tab>
+      , { context })
+    expect($.hasClass(`${NAMESPACE}c-tabs__tab is-active`)).toBe(true)
+  })
+
+  it('renders a defined tag type', () => {
+    const context = defaultContext
+    const $ = shallow(
+      <Tabs.Tab tag="article" {...defaultProps}>_</Tabs.Tab>
+      , { context })
+    expect($.type()).toBe('article')
+  })
+
   it('renders children', () => {
     const context = defaultContext
     const $ = shallow(
@@ -20,22 +53,6 @@ describe('<Tabs.Tab />', () => {
       </Tabs.Tab>
     , { context })
     expect($.contains('My tab')).toBe(true)
-  })
-
-  it('takes a className', () => {
-    const context = defaultContext
-    const $ = shallow(
-      <Tabs.Tab className="test" {...defaultProps}>_</Tabs.Tab>
-    , { context })
-    expect($.hasClass('c-tabs__tab test')).toBe(true)
-  })
-
-  it('renders a defined tag type', () => {
-    const context = defaultContext
-    const $ = shallow(
-      <Tabs.Tab tag="article" {...defaultProps}>_</Tabs.Tab>
-    , { context })
-    expect($.type()).toBe('article')
   })
 
   it('renders a button by default', () => {
@@ -61,14 +78,6 @@ describe('<Tabs.Tab />', () => {
       position: 'relative'
     })
     expect($.prop('ariaHidden')).toBe('true')
-  })
-
-  it('renders with an active className', () => {
-    const context = defaultContext
-    const $ = shallow(
-      <Tabs.Tab isActive {...defaultProps}>_</Tabs.Tab>
-    , { context })
-    expect($.hasClass('c-tabs__tab is-active')).toBe(true)
   })
 
   it('activates the tab when clicked', () => {

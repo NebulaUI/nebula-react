@@ -2,17 +2,17 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
-
 import { Flag } from '../'
 
 describe('<FlagWrapper />', () => {
-  it('renders the children', () => {
-    const $ = shallow(
-      <Flag.Wrapper>
-        <div className="test" />
-      </Flag.Wrapper>
-    )
-    expect($.contains(<div className="test" />)).toBe(true)
+  it('takes a default className', () => {
+    const $ = shallow(<Flag.Wrapper />)
+    expect($.hasClass(`${NAMESPACE}o-flag`)).toBe(true)
+  })
+
+  it('takes a defined className', () => {
+    const $ = shallow(<Flag.Wrapper className="test" />)
+    expect($.hasClass('test')).toBe(true)
   })
 
   it('renders with a breakpoint', () => {
@@ -40,9 +40,13 @@ describe('<FlagWrapper />', () => {
     expect($.hasClass(`${NAMESPACE}o-flag ${NAMESPACE}o-flag--bottom`)).toBe(true)
   })
 
-  it('takes a defined className', () => {
-    const $ = shallow(<Flag.Wrapper className="test" />)
-    expect($.hasClass(`${NAMESPACE}o-flag ${NAMESPACE}test`)).toBe(true)
+  it('renders the children', () => {
+    const $ = shallow(
+      <Flag.Wrapper>
+        <div className="test" />
+      </Flag.Wrapper>
+    )
+    expect($.contains(<div className="test" />)).toBe(true)
   })
 
   it('renders with attributes', () => {

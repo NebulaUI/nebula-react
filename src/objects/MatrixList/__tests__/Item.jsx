@@ -2,10 +2,19 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
-
 import { MatrixList } from '../'
 
 describe('<MatrixList.Item />', () => {
+  it('renders the default className', () => {
+    const $ = shallow(<MatrixList.Item />)
+    expect($.hasClass(`${NAMESPACE}o-matrix-list__item`)).toBe(true)
+  })
+
+  it('renders the user defined className', () => {
+    const $ = shallow(<MatrixList.Item className="test" />)
+    expect($.hasClass('test')).toBe(true)
+  })
+
   it('renders children', () => {
     const $ = shallow(
       <MatrixList.Item>
@@ -23,11 +32,6 @@ describe('<MatrixList.Item />', () => {
   it('renders an li by default', () => {
     const $ = shallow(<MatrixList.Item />)
     expect($.type()).toBe('li')
-  })
-
-  it('renders the user defined className', () => {
-    const $ = shallow(<MatrixList.Item className="test" />)
-    expect($.hasClass(`${NAMESPACE}o-matrix-list__item ${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders with attributes', () => {

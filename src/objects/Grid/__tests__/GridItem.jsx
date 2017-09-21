@@ -2,10 +2,19 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
-
 import { Grid } from '../'
 
 describe('<Grid.Item />', () => {
+  it('takes a default className', () => {
+    const $ = shallow(<Grid.Item />)
+    expect($.hasClass(`${NAMESPACE}o-grid__item`)).toBe(true)
+  })
+
+  it('takes a defined className', () => {
+    const $ = shallow(<Grid.Item className="test" />)
+    expect($.hasClass('test')).toBe(true)
+  })
+
   it('renders the children', () => {
     const $ = shallow(
       <Grid.Item>
@@ -13,11 +22,6 @@ describe('<Grid.Item />', () => {
       </Grid.Item>
     )
     expect($.contains(<div className="test" />)).toBe(true)
-  })
-
-  it('takes a defined className', () => {
-    const $ = shallow(<Grid.Item className="test" />)
-    expect($.hasClass(`${NAMESPACE}o-grid__item ${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders with attributes', () => {
@@ -44,13 +48,13 @@ describe('<Grid.Item />', () => {
 
   it('takes a single width fraction', () => {
     const $ = shallow(<Grid.Item width="1/2" />)
-    expect($.hasClass(`${NAMESPACE}o-grid__item u-1/2`)).toBe(true)
+    expect($.hasClass(`${NAMESPACE}o-grid__item ${NAMESPACE}u-1/2`)).toBe(true)
   })
 
   it('takes a list of width fractions', () => {
     const fractions = ['1/2', '1/3@sm', '1/4@lg']
     const $ = shallow(<Grid.Item width={fractions} />)
-    expect($.hasClass(`${NAMESPACE}o-grid__item ${NAMESPACE}u-1/2 u-1/3@sm ${NAMESPACE}u-1/4@lg`)).toBe(true)
+    expect($.hasClass(`${NAMESPACE}o-grid__item ${NAMESPACE}u-1/2 ${NAMESPACE}u-1/3@sm ${NAMESPACE}u-1/4@lg`)).toBe(true)
   })
 
   it('takes a single push fraction', () => {

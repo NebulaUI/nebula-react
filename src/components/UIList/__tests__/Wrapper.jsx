@@ -2,7 +2,6 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
-
 import { UIList } from '../index'
 
 const defaultProps = {
@@ -10,6 +9,20 @@ const defaultProps = {
 }
 
 describe('<UIList.Wrapper />', () => {
+  it('renders with the default className', () => {
+    const $ = shallow(<UIList.Wrapper {...defaultProps}>_</UIList.Wrapper>)
+    expect($.hasClass(`${NAMESPACE}c-ui-list`)).toBe(true)
+  })
+
+  it('renders the user defined className', () => {
+    const props = {
+      ...defaultProps,
+      className: 'test'
+    }
+    const $ = shallow(<UIList.Wrapper {...props}>_</UIList.Wrapper>)
+    expect($.hasClass('test')).toBe(true)
+  })
+
   it('takes a single spacing value', () => {
     const props = {
       ...defaultProps,
@@ -62,11 +75,6 @@ describe('<UIList.Wrapper />', () => {
     expect($.type()).toBe('ul')
   })
 
-  it('renders with the default className', () => {
-    const $ = shallow(<UIList.Wrapper {...defaultProps}>_</UIList.Wrapper>)
-    expect($.hasClass(`${NAMESPACE}c-ui-list`)).toBe(true)
-  })
-
   it('renders with attributes', () => {
     const props = {
       ...defaultProps,
@@ -78,15 +86,5 @@ describe('<UIList.Wrapper />', () => {
       position: 'relative'
     })
     expect($.prop('ariaHidden')).toBe(true)
-  })
-
-  it('renders the user defined className', () => {
-    const props = {
-      ...defaultProps,
-      className: 'test'
-    }
-    const $ = shallow(<UIList.Wrapper {...props}>_</UIList.Wrapper>)
-    expect($.hasClass(`${NAMESPACE}c-ui-list`)).toBe(true)
-    expect($.hasClass(`${NAMESPACE}test`)).toBe(true)
   })
 })

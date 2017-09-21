@@ -2,10 +2,19 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
-
 import { MatrixList } from '../'
 
 describe('<MatrixList.Wrapper />', () => {
+  it('renders the default className', () => {
+    const $ = shallow(<MatrixList.Wrapper />)
+    expect($.hasClass(`${NAMESPACE}o-matrix-list`)).toBe(true)
+  })
+
+  it('renders the user defined className', () => {
+    const $ = shallow(<MatrixList.Wrapper className="test" />)
+    expect($.hasClass('test')).toBe(true)
+  })
+
   it('takes a single spacing value', () => {
     const $ = shallow(<MatrixList.Wrapper spacing="md" />)
     expect($.hasClass(`${NAMESPACE}o-matrix-list ${NAMESPACE}o-matrix-list-md`)).toBe(true)
@@ -34,11 +43,6 @@ describe('<MatrixList.Wrapper />', () => {
   it('renders a ul by default', () => {
     const $ = shallow(<MatrixList.Wrapper />)
     expect($.type()).toBe('ul')
-  })
-
-  it('renders the user defined className', () => {
-    const $ = shallow(<MatrixList.Wrapper className="test" />)
-    expect($.hasClass(`${NAMESPACE}o-matrix-list ${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders with attributes', () => {

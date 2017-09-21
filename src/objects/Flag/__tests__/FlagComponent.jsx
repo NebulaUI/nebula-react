@@ -2,10 +2,19 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
-
 import { Flag } from '../'
 
 describe('<Flag.Component />', () => {
+  it('takes a default className', () => {
+    const $ = shallow(<Flag.Component />)
+    expect($.hasClass(`${NAMESPACE}o-flag__component`)).toBe(true)
+  })
+
+  it('takes a defined className', () => {
+    const $ = shallow(<Flag.Component className="test" />)
+    expect($.hasClass('test')).toBe(true)
+  })
+
   it('renders the children', () => {
     const $ = shallow(
       <Flag.Component>
@@ -18,11 +27,6 @@ describe('<Flag.Component />', () => {
   it('renders without wrapping whitespace', () => {
     const $ = shallow(<Flag.Component nowrap />)
     expect($.hasClass(`${NAMESPACE}o-flag__component ${NAMESPACE}o-flag__component--nowrap`)).toBe(true)
-  })
-
-  it('takes a defined className', () => {
-    const $ = shallow(<Flag.Component className="test" />)
-    expect($.hasClass(`${NAMESPACE}o-flag__component ${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders with attributes', () => {

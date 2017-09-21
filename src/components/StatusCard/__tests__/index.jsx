@@ -2,7 +2,6 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
-
 import { StatusCard } from '../'
 
 const defaultProps = {
@@ -10,6 +9,16 @@ const defaultProps = {
 }
 
 describe('<StatusCard />', () => {
+  it('renders with the correct default className', () => {
+    const $ = shallow(<StatusCard {...defaultProps}>_</StatusCard>)
+    expect($.hasClass(`${NAMESPACE}c-status-card`)).toBe(true)
+  })
+
+  it('renders with an optional className', () => {
+    const $ = shallow(<StatusCard {...defaultProps} className="test">_</StatusCard>)
+    expect($.hasClass('test')).toBe(true)
+  })
+
   it('renders a "div" by default', () => {
     const $ = shallow(<StatusCard {...defaultProps}>_</StatusCard>)
     expect($.type()).toBe('div')
@@ -18,11 +27,6 @@ describe('<StatusCard />', () => {
   it('renders a defined tag type', () => {
     const $ = shallow(<StatusCard tag="article" {...defaultProps}>_</StatusCard>)
     expect($.type()).toBe('article')
-  })
-
-  it('renders with the correct default className', () => {
-    const $ = shallow(<StatusCard {...defaultProps}>_</StatusCard>)
-    expect($.hasClass(`${NAMESPACE}c-status-card`)).toBe(true)
   })
 
   describe('status styling', () => {

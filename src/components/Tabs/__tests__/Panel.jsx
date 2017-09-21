@@ -1,6 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
 import { Tabs } from '../'
 
 const defaultProps = {
@@ -13,6 +14,20 @@ const defaultContext = {
 }
 
 describe('<Tabs.Panel />', () => {
+  it('takes a default className', () => {
+    const $ = shallow(<Tabs.Panel {...defaultProps} />, { context: defaultContext })
+    expect($.hasClass(`${NAMESPACE}c-tabs__panel`)).toBe(true)
+  })
+
+  it('takes an optional className', () => {
+    const props = {
+      ...defaultProps,
+      className: 'test'
+    }
+    const $ = shallow(<Tabs.Panel {...props} />, { context: defaultContext })
+    expect($.hasClass('test')).toBe(true)
+  })
+
   it('renders children when active', () => {
     const context = {
       ...defaultContext,
@@ -45,15 +60,6 @@ describe('<Tabs.Panel />', () => {
       </Tabs.Panel>
       , { context })
     expect($.contains('My tab')).toBe(false)
-  })
-
-  it('takes a className', () => {
-    const props = {
-      ...defaultProps,
-      className: 'test'
-    }
-    const $ = shallow(<Tabs.Panel {...props} />, { context: defaultContext })
-    expect($.hasClass('c-tabs__panel test')).toBe(true)
   })
 
   it('renders with attributes', () => {

@@ -1,6 +1,7 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
 import { Tabs } from '../'
 
 const defaultContext = {
@@ -8,34 +9,44 @@ const defaultContext = {
 }
 
 describe('<Tabs.TabList />', () => {
+  it('renders with the default className', () => {
+    const $ = shallow(
+      <Tabs.TabList>
+        <Tabs.Tab target="_">_</Tabs.Tab>
+      </Tabs.TabList>
+      , { context: defaultContext })
+    expect($.hasClass(`${NAMESPACE}c-tabs__list-wrapper`)).toBe(true)
+    expect($.children().hasClass(`${NAMESPACE}c-tabs__list`)).toBe(true)
+  })
+
+  it('renders with an optional className', () => {
+    const $ = shallow(
+      <Tabs.TabList>
+        <Tabs.Tab target="_" className="test">_</Tabs.Tab>
+      </Tabs.TabList>
+      , { context: defaultContext })
+    expect($.hasClass(`${NAMESPACE}c-tabs__list-wrapper`)).toBe(true)
+    expect($.children().hasClass(`${NAMESPACE}c-tabs__list`)).toBe(true)
+  })
+
   it('renders the list-wrapper and the list', () => {
     const $ = shallow(
       <Tabs.TabList>
         <Tabs.Tab target="_">_</Tabs.Tab>
       </Tabs.TabList>
       , { context: defaultContext })
-    expect($.find('.c-tabs__list-wrapper')).toHaveLength(1)
-    expect($.find('.c-tabs__list')).toHaveLength(1)
-  })
-
-  it('renders with appropriate classNames', () => {
-    const $ = shallow(
-      <Tabs.TabList className="test">
-        <Tabs.Tab target="_">_</Tabs.Tab>
-      </Tabs.TabList>
-      , { context: defaultContext })
-    expect($.hasClass('c-tabs__list-wrapper test')).toBe(true)
-    expect($.children().hasClass('c-tabs__list')).toBe(true)
+    expect($.find(`.${NAMESPACE}c-tabs__list-wrapper`)).toHaveLength(1)
+    expect($.find(`.${NAMESPACE}c-tabs__list`)).toHaveLength(1)
   })
 
   it('renders with tab items spread evenly', () => {
     const $ = shallow(
-      <Tabs.TabList className="test" spreadItems>
+      <Tabs.TabList spreadItems>
         <Tabs.Tab target="_">_</Tabs.Tab>
       </Tabs.TabList>
       , { context: defaultContext })
-    expect($.childAt(0).hasClass('c-tabs__list')).toBe(true)
-    expect($.childAt(0).hasClass('c-tabs__list--spread-items')).toBe(true)
+    expect($.childAt(0).hasClass(`${NAMESPACE}c-tabs__list`)).toBe(true)
+    expect($.childAt(0).hasClass(`${NAMESPACE}c-tabs__list--spread-items`)).toBe(true)
   })
 
   it('renders with attributes', () => {

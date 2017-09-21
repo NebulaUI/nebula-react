@@ -6,11 +6,11 @@ import { NAMESPACE, STATUSES, BLOCK_TAGS } from '../../constants'
 
 const initial = `${NAMESPACE}c-status-card`
 
-const StatusCard = ({ tag, status, children, ...rest }) =>
+const StatusCard = ({ tag, status, className, children, ...rest }) =>
   E(
     tag || 'div',
     {
-      className: classNames(initial, `${initial}--${status}`),
+      className: classNames(initial, `${initial}--${status}`, className),
       ...rest
     },
     children
@@ -18,6 +18,7 @@ const StatusCard = ({ tag, status, children, ...rest }) =>
 
 StatusCard.propTypes = {
   tag: T.oneOf(BLOCK_TAGS),
+  className: T.string,
   status: T.oneOf(STATUSES).isRequired,
   children: T.node.isRequired
 }

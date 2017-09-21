@@ -2,7 +2,7 @@ import { Component, createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils'
-import { ALL_TAGS } from '../../constants'
+import { NAMESPACE, ALL_TAGS } from '../../constants'
 
 class TabsTab extends Component {
   componentDidMount() {
@@ -55,7 +55,7 @@ class TabsTab extends Component {
         'aria-controls': target,
         onKeyDown: handleKeyDown,
         className: classNames(
-          'c-tabs__tab', className,
+          `${NAMESPACE}c-tabs__tab`, className,
           { 'is-active': isActive }
         ),
         ...rest

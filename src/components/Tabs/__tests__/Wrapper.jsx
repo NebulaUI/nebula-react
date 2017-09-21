@@ -1,12 +1,18 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
 
+import { NAMESPACE } from '../../../constants'
 import { Tabs } from '../'
 
 describe('<Tabs.Wrapper />', () => {
+  it('renders a default className', () => {
+    const $ = shallow(<Tabs.Wrapper>_</Tabs.Wrapper>)
+    expect($.hasClass(`${NAMESPACE}c-tabs`)).toBe(true)
+  })
+
   it('passes in an optional className', () => {
     const $ = shallow(<Tabs.Wrapper className="test">_</Tabs.Wrapper>)
-    expect($.hasClass('c-tabs test')).toBe(true)
+    expect($.hasClass('test')).toBe(true)
   })
 
   it('renders with attributes', () => {

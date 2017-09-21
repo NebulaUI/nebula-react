@@ -2,10 +2,19 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
-
 import { UniformedList } from '../'
 
 describe('<UniformedList.Item />', () => {
+  it('renders the default className', () => {
+    const $ = shallow(<UniformedList.Item />)
+    expect($.hasClass(`${NAMESPACE}o-uniformed-list__item`)).toBe(true)
+  })
+
+  it('renders the user defined className', () => {
+    const $ = shallow(<UniformedList.Item className="test" />)
+    expect($.hasClass('test')).toBe(true)
+  })
+
   it('renders children', () => {
     const $ = shallow(
       <UniformedList.Item>
@@ -23,11 +32,6 @@ describe('<UniformedList.Item />', () => {
   it('renders an li by default', () => {
     const $ = shallow(<UniformedList.Item />)
     expect($.type()).toBe('li')
-  })
-
-  it('renders the user defined className', () => {
-    const $ = shallow(<UniformedList.Item className="test" />)
-    expect($.hasClass(`${NAMESPACE}o-uniformed-list__item ${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders with attributes', () => {

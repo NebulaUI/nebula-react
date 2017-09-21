@@ -2,10 +2,19 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
-
 import { InlineList } from '../'
 
 describe('<InlineList.Wrapper />', () => {
+  it('renders with the default className', () => {
+    const $ = shallow(<InlineList.Wrapper />)
+    expect($.hasClass(`${NAMESPACE}o-inline-list`)).toBe(true)
+  })
+
+  it('renders the user defined className', () => {
+    const $ = shallow(<InlineList.Wrapper className="test" />)
+    expect($.hasClass('test')).toBe(true)
+  })
+
   it('takes a single spacing value', () => {
     const $ = shallow(<InlineList.Wrapper spacing="md" />)
     expect($.hasClass(`${NAMESPACE}o-inline-list ${NAMESPACE}o-inline-list--spaced-md`)).toBe(true)
@@ -36,11 +45,6 @@ describe('<InlineList.Wrapper />', () => {
     expect($.type()).toBe('ul')
   })
 
-  it('renders with the default className', () => {
-    const $ = shallow(<InlineList.Wrapper />)
-    expect($.hasClass(`${NAMESPACE}o-inline-list`)).toBe(true)
-  })
-
   it('renders with attributes', () => {
     const $ = shallow(
       <InlineList.Wrapper style={{ position: 'relative' }} ariaHidden="true">
@@ -51,10 +55,5 @@ describe('<InlineList.Wrapper />', () => {
       position: 'relative'
     })
     expect($.prop('ariaHidden')).toBe('true')
-  })
-
-  it('renders the user defined className', () => {
-    const $ = shallow(<InlineList.Wrapper className="test" />)
-    expect($.hasClass(`${NAMESPACE}o-inline-list ${NAMESPACE}test`)).toBe(true)
   })
 })

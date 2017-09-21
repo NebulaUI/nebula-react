@@ -2,10 +2,19 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
-
 import { Grid } from '../'
 
 describe('<Grid.Wrapper />', () => {
+  it('takes a default className', () => {
+    const $ = shallow(<Grid.Wrapper />)
+    expect($.hasClass(`${NAMESPACE}o-grid`)).toBe(true)
+  })
+
+  it('takes a defined className', () => {
+    const $ = shallow(<Grid.Wrapper className="test" />)
+    expect($.hasClass('test')).toBe(true)
+  })
+
   it('renders the children', () => {
     const $ = shallow(
       <Grid.Wrapper>
@@ -15,38 +24,10 @@ describe('<Grid.Wrapper />', () => {
     expect($.contains(<div className="test" />)).toBe(true)
   })
 
-  it('takes a defined className', () => {
-    const $ = shallow(<Grid.Wrapper className="test" />)
-    expect($.hasClass(`${NAMESPACE}o-grid ${NAMESPACE}test`)).toBe(true)
-  })
-
-  it('renders with attributes', () => {
-    const $ = shallow(
-      <Grid.Wrapper style={{ position: 'relative' }} ariaHidden="true">
-        _
-      </Grid.Wrapper>
-    )
-    expect($.prop('style')).toEqual({
-      position: 'relative'
-    })
-    expect($.prop('ariaHidden')).toBe('true')
-  })
-
-  it('renders a defined tag type', () => {
-    const $ = shallow(<Grid.Wrapper tag="article" />)
-    expect($.type()).toBe('article')
-  })
-
-  it('renders a div by default', () => {
-    const $ = shallow(<Grid.Wrapper />)
-    expect($.type()).toBe('div')
-  })
-
   it('takes a single gutter size', () => {
     const $ = shallow(<Grid.Wrapper gutter="md" />)
     expect($.hasClass(`${NAMESPACE}o-grid ${NAMESPACE}o-grid--gutter-md`)).toBe(true)
   })
-
 
   it('takes an array of gutter sizes', () => {
     const $ = shallow(<Grid.Wrapper gutter={['md@sm', 'lg@md']} />)
@@ -76,5 +57,27 @@ describe('<Grid.Wrapper />', () => {
   it('renders items vertically aligned to the bottom', () => {
     const $ = shallow(<Grid.Wrapper align="bottom" />)
     expect($.hasClass(`${NAMESPACE}o-grid ${NAMESPACE}o-grid--bottom`)).toBe(true)
+  })
+
+  it('renders with attributes', () => {
+    const $ = shallow(
+      <Grid.Wrapper style={{ position: 'relative' }} ariaHidden="true">
+        _
+      </Grid.Wrapper>
+    )
+    expect($.prop('style')).toEqual({
+      position: 'relative'
+    })
+    expect($.prop('ariaHidden')).toBe('true')
+  })
+
+  it('renders a defined tag type', () => {
+    const $ = shallow(<Grid.Wrapper tag="article" />)
+    expect($.type()).toBe('article')
+  })
+
+  it('renders a div by default', () => {
+    const $ = shallow(<Grid.Wrapper />)
+    expect($.type()).toBe('div')
   })
 })

@@ -2,7 +2,7 @@ import React, { Component, cloneElement, createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames, removeFalsy } from '../../utils'
-import { BLOCK_TAGS } from '../../constants'
+import { NAMESPACE, BLOCK_TAGS } from '../../constants'
 
 class TabsTabList extends Component {
   componentDidMount() {
@@ -88,7 +88,7 @@ class TabsTabList extends Component {
       tag || 'div',
       {
         className: classNames(
-          'c-tabs__list-wrapper',
+          `${NAMESPACE}c-tabs__list-wrapper`,
           className
         ),
         ...rest
@@ -97,8 +97,8 @@ class TabsTabList extends Component {
         'div',
         {
           className: classNames(
-            'c-tabs__list',
-            { 'c-tabs__list--spread-items': spreadItems }
+            `${NAMESPACE}c-tabs__list`,
+            { [`${NAMESPACE}c-tabs__list--spread-items`]: spreadItems }
           ),
           role: 'tablist'
         },

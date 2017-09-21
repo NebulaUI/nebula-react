@@ -2,10 +2,14 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
-
 import { Section } from '../'
 
 describe('<Section />', () => {
+  it('renders the user defined className', () => {
+    const $ = shallow(<Section className="test" />)
+    expect($.hasClass('test')).toBe(true)
+  })
+
   it('takes a single size', () => {
     const $ = shallow(<Section size="md" />)
     expect($.hasClass(`${NAMESPACE}o-section-md`)).toBe(true)
@@ -34,11 +38,6 @@ describe('<Section />', () => {
   it('renders a div by default', () => {
     const $ = shallow(<Section />)
     expect($.type()).toBe('section')
-  })
-
-  it('renders the user defined className', () => {
-    const $ = shallow(<Section className="test" />)
-    expect($.hasClass(`${NAMESPACE}test`)).toBe(true)
   })
 
   it('renders with attributes', () => {
