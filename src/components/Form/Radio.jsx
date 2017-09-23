@@ -40,7 +40,7 @@ Radio.propTypes = {
   onChange: T.func,
   // eslint-disable-next-line react/forbid-prop-types
   value: T.any,
-  children: T.node.isRequired,
+  children: T.node,
   id: T.string,
   name: T.string.isRequired
 }

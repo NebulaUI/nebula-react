@@ -22,6 +22,7 @@ import { Pagination } from './components/Pagination/'
 import { Navbar } from './components/Navbar/'
 import { Pill } from './components/Pill/'
 import { StatusCard } from './components/StatusCard/'
+import { Table } from './components/Table/'
 import { Tabs } from './components/Tabs/'
 import { UIList } from './components/UIList/'
 import * as constants from './constants'
@@ -50,6 +51,7 @@ export {
   Section,
   SiteWrap,
   StatusCard,
+  Table,
   Tabs,
   UIList,
   UniformedList

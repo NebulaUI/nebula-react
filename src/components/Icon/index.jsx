@@ -14,7 +14,8 @@ const Icon = ({
   children,
   fill,
   stroke,
-  icon
+  icon,
+  ...rest
 }) => {
   const enhancedChildren = E('span', { className: `${NAMESPACE}c-icon__text`, style: { verticalAlign } }, children)
   const enhancedChildrenIconLeft = children && iconPosition === 'left' && enhancedChildren
@@ -37,7 +38,8 @@ const Icon = ({
   return E(
     tag || 'div',
     {
-      className: classNames(`${NAMESPACE}c-icon`, className)
+      className: classNames(`${NAMESPACE}c-icon`, className),
+      ...rest
     },
     enhancedChildrenIconRight,
     typeof icon === 'function'

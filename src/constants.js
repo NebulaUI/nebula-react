@@ -16,6 +16,9 @@ const INLINE_TAGS = [
   'q', 'script', 'span', 'sub', 'sup', 'button', 'input', 'label', 'select', 'textatea'
 ]
 
+const TABLE_COLLAPSE_BREAKPOINTS = ['max-sm', 'max-md']
+const TABLE_SPACING = ['sm', 'md']
+
 const ALL_TAGS = [
   ...BLOCK_TAGS,
   ...INLINE_TAGS
@@ -56,5 +59,7 @@ export {
   GRID_FRACTIONS,
   BUTTON_SIZES,
   BUTTON_THEMES,
-  STATUSES
+  STATUSES,
+  TABLE_COLLAPSE_BREAKPOINTS,
+  TABLE_SPACING
 }

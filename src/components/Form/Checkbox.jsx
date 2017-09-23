@@ -41,7 +41,7 @@ Checkbox.propTypes = {
   name: T.string,
   // eslint-disable-next-line react/forbid-prop-types
   value: T.any,
-  children: T.node.isRequired,
+  children: T.node,
   id: T.string
 }
 

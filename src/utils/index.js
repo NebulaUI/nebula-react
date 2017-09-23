@@ -4,6 +4,9 @@ import buildClassName from './buildClassName'
 import randomId from './randomId'
 import buildBreakpointValues from './buildBreakpointValues'
 import appendUnit from './appendUnit'
+import callMeOnce from './callMeOnce'
+import getDescendantValue from './getDescendantValue'
+import sortChildren from './sortChildren'
 
 export {
   buildClassName,
@@ -11,5 +14,8 @@ export {
   removeFalsy,
   randomId,
   buildBreakpointValues,
-  appendUnit
+  appendUnit,
+  callMeOnce,
+  getDescendantValue,
+  sortChildren
 }

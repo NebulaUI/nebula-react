@@ -23,14 +23,14 @@ describe('<Card />', () => {
 
   it('renders with attributes', () => {
     const $ = shallow(
-      <Card style={{ position: 'relative' }} ariaHidden="true">
+      <Card style={{ position: 'relative' }} ariaHidden>
         _
       </Card>
     )
     expect($.prop('style')).toEqual({
       position: 'relative'
     })
-    expect($.prop('ariaHidden')).toBe('true')
+    expect($.prop('ariaHidden')).toBe(true)
   })
 
   it('renders children', () => {

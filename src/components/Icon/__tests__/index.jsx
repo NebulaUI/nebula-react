@@ -93,4 +93,15 @@ describe('<Icon />', () => {
     const $ = mount(<Icon {...props} />)
     expect($.find('svg').prop('id')).toBe('foo')
   })
+
+  it('renders with attributes', () => {
+    const props = {
+      ...defaultProps,
+      ariaHidden: true
+    }
+    const $ = shallow(
+      <Icon {...props} />
+    )
+    expect($.prop('ariaHidden')).toBe(true)
+  })
 })
