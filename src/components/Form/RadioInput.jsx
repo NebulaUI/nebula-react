@@ -17,12 +17,7 @@ const RadioInput = ({
   <input
     type="radio"
     className={classNames(`${NAMESPACE}c-form-input__input`, className)}
-    id={id}
-    onChange={onChange}
-    checked={checked}
-    disabled={disabled}
-    name={name}
-    defaultChecked={defaultChecked}
+    {...{ id, onChange, checked, disabled, name, defaultChecked }}
     {...rest}
   />
 )

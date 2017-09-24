@@ -4,11 +4,10 @@ import T from 'prop-types'
 import classNames from '../../utils/classNames'
 import { NAMESPACE } from '../../constants'
 
-const Select = ({ className, small, onChange, value, children, ...rest }) => (
+const Select = ({ className, small, onChange, value, disabled, children, ...rest }) => (
   <select
     className={classNames(`${NAMESPACE}c-select`, { [`${NAMESPACE}c-select--sm`]: small }, className)}
-    onChange={onChange}
-    value={value}
+    {...{ onChange, value, disabled }}
     {...rest}
   >
     {children}
@@ -22,6 +21,7 @@ Select.propTypes = {
   value: T.any,
   children: T.node,
   onChange: T.func,
+  disabled: T.bool,
   small: T.bool
 }
 

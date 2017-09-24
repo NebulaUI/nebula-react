@@ -16,11 +16,7 @@ const CheckboxInput = ({
   <input
     type="checkbox"
     className={classNames(`${NAMESPACE}c-form-input__input`, className)}
-    id={id}
-    onChange={onChange}
-    checked={checked}
-    defaultChecked={defaultChecked}
-    disabled={disabled}
+    {...{ id, onChange, checked, defaultChecked, disabled }}
     {...rest}
   />
 )

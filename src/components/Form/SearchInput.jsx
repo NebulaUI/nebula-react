@@ -12,17 +12,14 @@ const SearchInput = ({
   placeholder = 'Search...',
   onChange,
   value,
+  disabled,
   defaultValue,
   ...rest
 }) => (
   <Form.TextInput
     type="search"
-    id={id}
     className={classNames(`${NAMESPACE}c-search__input`, { [`${NAMESPACE}c-text-input--sm`]: small }, className)}
-    placeholder={placeholder}
-    onChange={onChange}
-    defaultValue={defaultValue}
-    value={value}
+    {...{ id, disabled, placeholder, onChange, defaultValue, value }}
     {...rest}
   />
 )
@@ -32,6 +29,7 @@ SearchInput.propTypes = {
   className: T.string,
   small: T.bool,
   placeholder: T.string,
+  disabled: T.bool,
   onChange: T.func,
   defaultValue: T.oneOfType([T.number, T.string]),
   value: T.oneOfType([T.number, T.string])

@@ -12,14 +12,11 @@ const TextInput = ({
   onChange,
   value,
   defaultValue,
+  disabled,
   ...rest }) => (
     <input
-      id={id}
-      type={type}
       className={classNames(`${NAMESPACE}c-text-input`, { [`${NAMESPACE}c-text-input--sm`]: small }, className)}
-      onChange={onChange}
-      defaultValue={defaultValue}
-      value={value}
+      {...{ id, type, disabled, onChange, defaultValue, value }}
       {...rest}
     />
 )
@@ -32,6 +29,7 @@ TextInput.propTypes = {
     'text', 'password', 'email', 'number', 'search', 'url'
   ]),
   onChange: T.func,
+  disabled: T.bool,
   defaultValue: T.oneOfType([T.number, T.string]),
   value: T.oneOfType([T.number, T.string])
 }
