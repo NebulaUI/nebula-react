@@ -83,10 +83,10 @@ describe('<Tabs.Wrapper />', () => {
     expect($.find(Tabs.Tab).at(1).prop('isActive')).toBe(true)
   })
 
-  it('takes an onTabChange callback that gets called when a tab is changed', () => {
-    const mockOnTabChange = jest.fn()
+  it('takes an onChange callback that gets called when a tab is changed', () => {
+    const mockOnChange = jest.fn()
     const $ = mount(
-      <Tabs.Wrapper onTabChange={mockOnTabChange}>
+      <Tabs.Wrapper onChange={mockOnChange}>
         <Tabs.TabList>
           <Tabs.Tab target="foo">_</Tabs.Tab>
           <Tabs.Tab target="test-id">_</Tabs.Tab>
@@ -94,12 +94,12 @@ describe('<Tabs.Wrapper />', () => {
       </Tabs.Wrapper>
     )
 
-    expect(mockOnTabChange).not.toHaveBeenCalled()
+    expect(mockOnChange).not.toHaveBeenCalled()
 
     $.find(Tabs.Tab).at(1).simulate('click')
-    expect(mockOnTabChange).toHaveBeenCalledWith('test-id')
+    expect(mockOnChange).toHaveBeenCalledWith('test-id')
 
     $.find(Tabs.Tab).at(0).simulate('click')
-    expect(mockOnTabChange).toHaveBeenCalledWith('foo')
+    expect(mockOnChange).toHaveBeenCalledWith('foo')
   })
 })
