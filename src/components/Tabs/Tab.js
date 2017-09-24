@@ -25,7 +25,7 @@ class TabsTab extends Component {
   }
 
   render() {
-    const { tag, children, target, activateTab, isActive, className, ...rest } = this.props
+    const { tag, children, target, activateTab, isActive, activeClassName, className, ...rest } = this.props
     const handleKeyDown = (e) => {
       if (e.keyCode === 37 || e.keyCode === 38) {
         e.preventDefault()
@@ -56,13 +56,17 @@ class TabsTab extends Component {
         onKeyDown: handleKeyDown,
         className: classNames(
           `${NAMESPACE}c-tabs__tab`, className,
-          { 'is-active': isActive }
+          isActive ? activeClassName : ''
         ),
         ...rest
       },
       children
     )
   }
+}
+
+TabsTab.defaultProps = {
+  activeClassName: 'is-active'
 }
 
 TabsTab.contextTypes = {
@@ -74,6 +78,7 @@ TabsTab.propTypes = {
   children: T.node.isRequired,
   isActive: T.bool,
   className: T.string,
+  activeClassName: T.string,
   activateTab: T.func,
   target: T.oneOfType([T.string, T.number]).isRequired
 }

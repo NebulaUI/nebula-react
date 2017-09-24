@@ -37,6 +37,14 @@ describe('<Tabs.Tab />', () => {
     expect($.hasClass(`${NAMESPACE}c-tabs__tab is-active`)).toBe(true)
   })
 
+  it('renders with a defined active className', () => {
+    const context = defaultContext
+    const $ = shallow(
+      <Tabs.Tab isActive activeClassName="test-classname" {...defaultProps}>_</Tabs.Tab>
+      , { context })
+    expect($.hasClass(`${NAMESPACE}c-tabs__tab test-classname`)).toBe(true)
+  })
+
   it('renders a defined tag type', () => {
     const context = defaultContext
     const $ = shallow(
