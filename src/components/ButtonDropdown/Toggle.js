@@ -1,30 +1,43 @@
-import { createElement as E } from 'react'
+import { Component, createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
 import { NAMESPACE, ALL_TAGS } from '../../constants'
 
-const ButtonDropdownToggle = ({
-  tag,
-  className,
-  children,
-  ...rest
-},
-{
-  handleButtonDropdownToggle,
-  buttonDropdownDisabled
-}) => (
-  E(
-    tag || 'button',
-    {
-      className: classNames(`${NAMESPACE}c-btn-dropdown__toggle`, className),
-      onClick: handleButtonDropdownToggle,
-      disabled: buttonDropdownDisabled,
+class ButtonDropdownToggle extends Component {
+  render() {
+    const {
+      tag,
+      className,
+      children,
       ...rest
-    },
-    children
-  )
-)
+    } = this.props
+    const {
+      handleButtonDropdownToggle,
+      buttonDropdownDisabled
+    } = this.context
+
+    const handleClick = (e) => {
+      if (e.detail !== 0) {
+        this.button.blur()
+      }
+
+      handleButtonDropdownToggle(e)
+    }
+
+    return E(
+      tag || 'button',
+      {
+        className: classNames(`${NAMESPACE}c-btn-dropdown__toggle`, className),
+        onClick: handleClick,
+        disabled: buttonDropdownDisabled,
+        ref: (n) => { this.button = n },
+        ...rest
+      },
+      children
+    )
+  }
+}
 
 ButtonDropdownToggle.contextTypes = {
   handleButtonDropdownToggle: T.func.isRequired,

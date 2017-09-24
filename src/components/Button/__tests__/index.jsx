@@ -1,5 +1,5 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
 import { Button } from '../'
@@ -69,5 +69,17 @@ describe('<Button />', () => {
   it('renders a link when passed a "to" prop', () => {
     const $ = shallow(<Button to="/">_</Button>)
     expect($.type()).toBe('a')
+  })
+
+  it('calls handleClick when clicked, causing a blur event when a click and not keyboard input', () => {
+    const $ = mount(<Button>_</Button>)
+
+    const mockBlur = jest.fn()
+    $.instance().button.blur = mockBlur
+    $.simulate('click', { detail: 1 })
+    expect(mockBlur).toHaveBeenCalledTimes(1)
+
+    $.simulate('click', { detail: 0 })
+    expect(mockBlur).toHaveBeenCalledTimes(1)
   })
 })

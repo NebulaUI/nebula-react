@@ -59,6 +59,7 @@ FoldableHeader.contextTypes = {
 FoldableHeader.propTypes = {
   tag: T.oneOf(BLOCK_TAGS),
   className: T.string,
+  padding: T.bool,
   children: T.node.isRequired
 }
 

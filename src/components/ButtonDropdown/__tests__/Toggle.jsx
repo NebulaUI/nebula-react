@@ -1,5 +1,5 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
 import { ButtonDropdown } from '../'
@@ -56,18 +56,25 @@ describe('<ButtonDropdown.Toggle />', () => {
     expect($.hasClass(`${NAMESPACE}c-btn-dropdown__toggle is-open`)).toBe(false)
   })
 
-  it('calls handleToggle when clicked', () => {
+  it('calls handleToggle when clicked, causing a blur event when a click and not keyboard input', () => {
     const mockHandleToggle = jest.fn()
     const context = {
       handleButtonDropdownToggle: mockHandleToggle
     }
-    const $ = shallow(
+    const $ = mount(
       <ButtonDropdown.Toggle />
       , { context })
 
     expect(mockHandleToggle).toHaveBeenCalledTimes(0)
 
-    $.simulate('click')
+    const mockBlur = jest.fn()
+    $.instance().button.blur = mockBlur
+    $.simulate('click', { detail: 1 })
     expect(mockHandleToggle).toHaveBeenCalledTimes(1)
+    expect(mockBlur).toHaveBeenCalledTimes(1)
+
+    $.simulate('click', { detail: 0 })
+    expect(mockHandleToggle).toHaveBeenCalledTimes(2)
+    expect(mockBlur).toHaveBeenCalledTimes(1)
   })
 })

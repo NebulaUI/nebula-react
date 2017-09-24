@@ -1,52 +1,65 @@
-import React, { createElement as E } from 'react'
+import React, { Component, createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
 import { NAMESPACE, BUTTON_SIZES, BUTTON_THEMES, ALL_TAGS } from '../../constants'
 
-const Button = ({
-  tag,
-  component,
-  to,
-  fullWidth,
-  theme,
-  size,
-  type,
-  className,
-  children,
-  ...rest
-}) => {
-  const ComponentOverride = component
-  const enhancedClassName = classNames(
-    `${NAMESPACE}c-btn`,
-    className,
-    theme ? `${NAMESPACE}c-btn--${theme}` : '',
-    size ? `${NAMESPACE}c-btn--${size}` : '',
-    { [`${NAMESPACE}c-btn--full`]: fullWidth }
-  )
+class Button extends Component {
+  render() {
+    const {
+      tag,
+      component,
+      to,
+      fullWidth,
+      theme,
+      size,
+      type,
+      className,
+      children,
+      ...rest
+    } = this.props
 
-  if (ComponentOverride) {
-    return (
-      <ComponentOverride
-        to={to}
-        className={enhancedClassName}
-        {...rest}
-      >
-        {children}
-      </ComponentOverride>
+    const ComponentOverride = component
+    const enhancedClassName = classNames(
+      `${NAMESPACE}c-btn`,
+      className,
+      theme ? `${NAMESPACE}c-btn--${theme}` : '',
+      size ? `${NAMESPACE}c-btn--${size}` : '',
+      { [`${NAMESPACE}c-btn--full`]: fullWidth }
+    )
+
+    const handleClick = (e) => {
+      if (e.detail !== 0) {
+        this.button.blur()
+      }
+    }
+
+    if (ComponentOverride) {
+      return (
+        <ComponentOverride
+          to={to}
+          onClick={handleClick}
+          className={enhancedClassName}
+          {...rest}
+        >
+          {children}
+        </ComponentOverride>
+      )
+    }
+
+    return E(
+      to ? 'a' : (tag || 'button'),
+      {
+        onClick: handleClick,
+        type,
+        href: to,
+        className: enhancedClassName,
+        ref: (n) => { this.button = n },
+        ...rest
+      },
+      children
     )
   }
-
-  return E(
-    to ? 'a' : (tag || 'button'),
-    {
-      type,
-      href: to,
-      className: enhancedClassName,
-      ...rest
-    },
-    children
-  )
 }
 
 Button.propTypes = {
