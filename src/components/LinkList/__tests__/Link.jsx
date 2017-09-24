@@ -88,10 +88,12 @@ describe('<LinkList.Link />', () => {
       expect($.find(RRLinkList).contains('Nebula')).toBe(true)
     })
 
-    it('passes through "to", "className" and "isActive" props', () => {
+    it('passes through "to", "className" and "activeClassName" props', () => {
       const $ = shallow(
         <LinkList.Link
+          isActive
           className="test"
+          activeClassName="test-active-classname"
           component={RRLinkList}
           to="/test"
         >
@@ -99,8 +101,21 @@ describe('<LinkList.Link />', () => {
         </LinkList.Link>
       )
       expect($.find(RRLinkList).hasClass(`${NAMESPACE}c-link-list__link test`)).toBe(true)
-      expect($.find(RRLinkList).prop('activeClassName')).toBe('is-active')
+      expect($.find(RRLinkList).prop('activeClassName')).toBe('test-active-classname')
       expect($.find(RRLinkList).prop('to')).toBe('/test')
+    })
+
+    it('passes a default "activeClassName" prop', () => {
+      const $ = shallow(
+        <LinkList.Link
+          isActive
+          component={RRLinkList}
+          to="/test"
+        >
+          Nebula
+        </LinkList.Link>
+      )
+      expect($.find(RRLinkList).prop('activeClassName')).toBe('is-active')
     })
 
     it('renders with attributes', () => {

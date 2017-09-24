@@ -124,16 +124,28 @@ describe('<Pill />', () => {
     it('passes through "to", "className" and "activeClassName" props', () => {
       const $ = shallow(
         <Pill
+          isActive
           className="test"
-          activeClassName="is-test"
+          activeClassName="active-classname-test"
           component={RRPill}
           to="/test"
         >Nebula</Pill>
       )
       expect($.find(RRPill).hasClass(`${NAMESPACE}c-pill`)).toBe(true)
       expect($.find(RRPill).hasClass('test')).toBe(true)
-      expect($.find(RRPill).prop('activeClassName')).toBe('is-test')
+      expect($.find(RRPill).prop('activeClassName')).toBe('active-classname-test')
       expect($.find(RRPill).prop('to')).toBe('/test')
+    })
+
+    it('passes a default "activeClassName" prop', () => {
+      const $ = shallow(
+        <Pill
+          isActive
+          to="/"
+          component={RRPill}
+        >Nebula</Pill>
+      )
+      expect($.find(RRPill).prop('activeClassName')).toBe('is-active')
     })
 
     it('renders with attributes', () => {

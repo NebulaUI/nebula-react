@@ -31,7 +31,7 @@ class LinkListLink extends Component {
 
     const buildActiveClassName = () => (
       isActive
-        ? activeClassName || 'is-active'
+        ? activeClassName
         : ''
     )
 
@@ -66,6 +66,10 @@ class LinkListLink extends Component {
       children
     )
   }
+}
+
+LinkListLink.defaultProps = {
+  activeClassName: 'is-active'
 }
 
 LinkListLink.propTypes = {

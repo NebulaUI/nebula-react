@@ -29,14 +29,17 @@ class Pill extends Component {
       children,
       onClick,
       component,
+      activeClassName,
       ...rest
     } = this.props
 
     const buildClassName = () =>
-      classNames(initialClassName, className,
+      classNames(
+        initialClassName,
         status ? `${initialClassName}--${status}` : '',
         { [`${initialClassName}--border`]: !status },
-        { 'is-active': !status && isActive })
+        className,
+      )
 
     const onClickProps = onClick
     ? {
@@ -50,6 +53,7 @@ class Pill extends Component {
         <ComponentOverride
           to={to}
           className={buildClassName()}
+          activeClassName={!status && isActive ? activeClassName : null}
           {...rest}
         >
           { children }
@@ -70,6 +74,10 @@ class Pill extends Component {
   }
 }
 
+Pill.defaultProps = {
+  activeClassName: 'is-active'
+}
+
 Pill.propTypes = {
   to: T.string,
   tag: T.oneOf(ALL_TAGS),
@@ -85,6 +93,7 @@ Pill.propTypes = {
   ]),
   onClick: T.func,
   isActive: T.bool,
+  activeClassName: T.string,
   className: T.string,
   children: T.node.isRequired
 }

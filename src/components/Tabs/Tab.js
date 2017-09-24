@@ -25,7 +25,16 @@ class TabsTab extends Component {
   }
 
   render() {
-    const { tag, children, target, activateTab, isActive, activeClassName, className, ...rest } = this.props
+    const {
+      tag,
+      children,
+      target,
+      activateTab,
+      isActive,
+      activeClassName,
+      className,
+      ...rest
+    } = this.props
     const handleKeyDown = (e) => {
       if (e.keyCode === 37 || e.keyCode === 38) {
         e.preventDefault()
