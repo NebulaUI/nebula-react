@@ -22,8 +22,8 @@ class ButtonDropdownWrapper extends Component {
   })
 
   handleToggle = (e) => { // eslint-disable-line consistent-return
-    if (this.props.onButtonDropdownChange) {
-      this.props.onButtonDropdownChange(this.isOpen())
+    if (this.props.onChange) {
+      this.props.onChange(this.isOpen())
     }
 
     if (!this.isControlled()) {
@@ -36,8 +36,8 @@ class ButtonDropdownWrapper extends Component {
   }
 
   handleClickOutside = () => {
-    if (this.props.onButtonDropdownChange && this.isOpen()) {
-      this.props.onButtonDropdownChange(this.isOpen())
+    if (this.props.onChange && this.isOpen()) {
+      this.props.onChange(this.isOpen())
     }
     if (!this.isControlled() && this.isOpen()) {
       this.close()
@@ -84,7 +84,7 @@ class ButtonDropdownWrapper extends Component {
 
   render() {
     const {
-      defaultOpen, disabled, isOpen, onButtonDropdownChange,
+      defaultOpen, disabled, isOpen, onChange,
       tag,
       className,
       children,
@@ -131,7 +131,7 @@ ButtonDropdownWrapper.propTypes = {
   isOpen: T.oneOf(['open', 'closed']),
   clickOutsideToClose: T.bool,
   disabled: T.bool,
-  onButtonDropdownChange: T.func
+  onChange: T.func
 }
 
 ButtonDropdownWrapper.childContextTypes = {

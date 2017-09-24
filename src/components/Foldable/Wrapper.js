@@ -27,9 +27,9 @@ class FoldableWrapper extends Component {
   }
 
   toggleOpen = () => {
-    const { onFoldableChange, open } = this.props
-    if (onFoldableChange) {
-      onFoldableChange(open === 'open' ? 'closed' : 'open')
+    const { onChange, open } = this.props
+    if (onChange) {
+      onChange(open === 'open' ? 'closed' : 'open')
     }
 
     if (!this.isControlled()) {
@@ -52,7 +52,7 @@ class FoldableWrapper extends Component {
 
   render() {
     const {
-      defaultOpen, onFoldableChange, open, // eslint-disable-line no-unused-vars
+      defaultOpen, onChange, open, // eslint-disable-line no-unused-vars
       tag, breakpoint, bordered, children, className, ...rest
     } = this.props
     return E(
@@ -85,7 +85,7 @@ FoldableWrapper.propTypes = {
   tag: T.oneOf(BLOCK_TAGS),
   defaultOpen: T.oneOf(['open', 'closed']),
   open: T.oneOf(['open', 'closed']),
-  onFoldableChange: T.func,
+  onChange: T.func,
   children: T.node.isRequired,
   id: T.string,
   disabled: T.bool,

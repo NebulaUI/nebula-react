@@ -155,10 +155,10 @@ describe('<ButtonDropdown.Wrapper />', () => {
   })
 
   it('calls an optional callback prop when a change event occurs', () => {
-    const mockOnButtonDropdownChange = jest.fn()
+    const mockOnChange = jest.fn()
     const props = {
       ...defaultProps,
-      onButtonDropdownChange: mockOnButtonDropdownChange,
+      onChange: mockOnChange,
       clickOutsideToClose: true,
       isOpen: 'open'
     }
@@ -168,13 +168,13 @@ describe('<ButtonDropdown.Wrapper />', () => {
         <ButtonDropdown.Content>Child content</ButtonDropdown.Content>
       </ButtonDropdown.Wrapper>
     )
-    expect(mockOnButtonDropdownChange).not.toHaveBeenCalled()
+    expect(mockOnChange).not.toHaveBeenCalled()
 
     $.find(ButtonDropdown.Toggle).simulate('click')
-    expect(mockOnButtonDropdownChange).toHaveBeenCalledWith(true)
+    expect(mockOnChange).toHaveBeenCalledWith(true)
 
     simulant.fire(document, 'click')
-    expect(mockOnButtonDropdownChange).toHaveBeenCalledTimes(2)
+    expect(mockOnChange).toHaveBeenCalledTimes(2)
   })
 
   it('renders in a disabled state', () => {

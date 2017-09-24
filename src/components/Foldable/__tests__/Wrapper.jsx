@@ -81,7 +81,7 @@ describe('<Foldable.Wrapper />', () => {
     const mockOnChange = jest.fn()
     const $ = mount(
       <Foldable.Wrapper
-        onFoldableChange={mockOnChange}
+        onChange={mockOnChange}
         open="open"
       >
         <Foldable.Header>_</Foldable.Header>
