@@ -29,6 +29,12 @@ class LinkListLink extends Component {
 
     const ComponentOverride = component
 
+    const buildActiveClassName = () => (
+      isActive
+        ? activeClassName || 'is-active'
+        : ''
+    )
+
     if (ComponentOverride) {
       return (
         <ComponentOverride
@@ -37,19 +43,13 @@ class LinkListLink extends Component {
             `${NAMESPACE}c-link-list__link`,
             className,
           )}
-          activeClassName="is-active"
+          activeClassName={buildActiveClassName()}
           {...rest}
         >
           { children }
         </ComponentOverride>
       )
     }
-
-    const buildActiveClassName = () => (
-      isActive
-        ? activeClassName || 'is-active'
-        : ''
-    )
 
     return E(
       'a',
