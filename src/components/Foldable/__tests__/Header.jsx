@@ -1,5 +1,5 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
 import { Foldable } from '../'
@@ -55,18 +55,25 @@ describe('<Foldable.Header />', () => {
     expect($$.hasClass(`${NAMESPACE}c-foldable__header ${NAMESPACE}c-foldable__header--padding`)).toBe(false)
   })
 
-  it('renders toggle button that calls callback when clicked', () => {
+  it('renders toggle button that calls callback when clicked and the button to blur', () => {
     const toggleOpenMock = jest.fn()
     const context = {
       ...defaultContext,
       toggleFoldableOpen: toggleOpenMock
     }
-    const $ = shallow(<Foldable.Header>_</Foldable.Header>, { context })
+    const $ = mount(<Foldable.Header>_</Foldable.Header>, { context })
     expect(toggleOpenMock).toHaveBeenCalledTimes(0)
     expect($.childAt(0).hasClass(`${NAMESPACE}c-foldable__toggle`)).toBe(true)
 
-    $.childAt(0).simulate('click')
+    const mockBlur = jest.fn()
+    $.instance().button.blur = mockBlur
+    $.childAt(0).simulate('click', { detail: 1 })
     expect(toggleOpenMock).toHaveBeenCalledTimes(1)
+    expect(mockBlur).toHaveBeenCalledTimes(1)
+
+    $.childAt(0).simulate('click', { detail: 0 })
+    expect(toggleOpenMock).toHaveBeenCalledTimes(2)
+    expect(mockBlur).toHaveBeenCalledTimes(1)
   })
 
   it('maps foldableId to aria-controls on the button', () => {

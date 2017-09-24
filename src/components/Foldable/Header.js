@@ -1,41 +1,54 @@
-import { createElement as E } from 'react'
+import { Component, createElement as E } from 'react'
 import T from 'prop-types'
 
 import { classNames } from '../../utils/'
 import { NAMESPACE, BLOCK_TAGS } from '../../constants'
 
-const FoldableHeader = ({
-  padding,
-  tag,
-  className,
-  children,
-  ...rest
-}, {
-  toggleFoldableOpen,
-  foldableId,
-  foldableDisabled
-}) =>
-  E(
-    tag || 'div',
-    {
-      className: classNames(
-        `${NAMESPACE}c-foldable__header`,
-        { [`${NAMESPACE}c-foldable__header--padding`]: padding },
-        className
-      ),
+class FoldableHeader extends Component {
+  render() {
+    const {
+      padding,
+      tag,
+      className,
+      children,
       ...rest
-    },
-    E(
-      'button',
-      {
-        className: `${NAMESPACE}c-foldable__toggle`,
-        onClick: toggleFoldableOpen,
-        'aria-controls': foldableId,
-        disabled: foldableDisabled
+    } = this.props
+    const {
+      toggleFoldableOpen,
+      foldableId,
+      foldableDisabled
+    } = this.context
+    const handleClick = (e) => {
+      if (e.detail !== 0) {
+        this.button.blur()
       }
-    ),
-    children
-  )
+
+      toggleFoldableOpen()
+    }
+    return E(
+      tag || 'div',
+      {
+        className: classNames(
+          `${NAMESPACE}c-foldable__header`,
+          { [`${NAMESPACE}c-foldable__header--padding`]: padding },
+          className
+        ),
+        ...rest
+      },
+      E(
+        'button',
+        {
+          className: `${NAMESPACE}c-foldable__toggle`,
+          onClick: handleClick,
+          'aria-controls': foldableId,
+          disabled: foldableDisabled,
+          ref: (n) => { this.button = n }
+        }
+      ),
+      children
+    )
+  }
+}
 
 FoldableHeader.contextTypes = {
   toggleFoldableOpen: T.func.isRequired,
