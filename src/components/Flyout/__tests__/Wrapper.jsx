@@ -158,10 +158,10 @@ describe('<Flyout.Wrapper />', () => {
   })
 
   it('calls an optional callback prop when a change event occurs', () => {
-    const mockOnFlyoutChange = jest.fn()
+    const mockOnChange = jest.fn()
     const props = {
       ...defaultProps,
-      onFlyoutChange: mockOnFlyoutChange,
+      onChange: mockOnChange,
       clickOutsideToClose: true,
       isOpen: 'open'
     }
@@ -171,13 +171,13 @@ describe('<Flyout.Wrapper />', () => {
         <Flyout.Content direction={DIRECTIONS[0]}>Child content</Flyout.Content>
       </Flyout.Wrapper>
     )
-    expect(mockOnFlyoutChange).not.toHaveBeenCalled()
+    expect(mockOnChange).not.toHaveBeenCalled()
 
     $.find(Flyout.Toggle).simulate('click')
-    expect(mockOnFlyoutChange).toHaveBeenCalledWith(true)
+    expect(mockOnChange).toHaveBeenCalledWith(true)
 
     simulant.fire(document, 'click')
-    expect(mockOnFlyoutChange).toHaveBeenCalledTimes(2)
+    expect(mockOnChange).toHaveBeenCalledTimes(2)
   })
 })
 

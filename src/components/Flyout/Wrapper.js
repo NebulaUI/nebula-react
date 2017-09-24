@@ -22,8 +22,8 @@ class FlyoutWrapper extends Component {
   })
 
   handleToggle = (e) => { // eslint-disable-line consistent-return
-    if (this.props.onFlyoutChange) {
-      this.props.onFlyoutChange(this.isOpen())
+    if (this.props.onChange) {
+      this.props.onChange(this.isOpen())
     }
 
     if (!this.isControlled()) {
@@ -36,8 +36,8 @@ class FlyoutWrapper extends Component {
   }
 
   handleClickOutside = () => {
-    if (this.props.onFlyoutChange && this.isOpen()) {
-      this.props.onFlyoutChange(this.isOpen())
+    if (this.props.onChange && this.isOpen()) {
+      this.props.onChange(this.isOpen())
     }
     if (!this.isControlled() && this.isOpen()) {
       this.close()
@@ -85,7 +85,7 @@ class FlyoutWrapper extends Component {
 
   render() {
     const {
-      defaultOpen, isOpen, onFlyoutChange,
+      defaultOpen, isOpen, onChange,
       tag, className, children, clickOutsideToClose, ...rest
     } = this.props
     const FlyoutComponent = E(
@@ -114,7 +114,7 @@ FlyoutWrapper.propTypes = {
   tag: T.oneOf(BLOCK_TAGS),
   className: T.string,
   children: T.node.isRequired,
-  onFlyoutChange: T.func,
+  onChange: T.func,
   isOpen: T.oneOf(['open', 'closed']),
   clickOutsideToClose: T.bool,
   defaultOpen: T.oneOf(['open', 'closed']),
