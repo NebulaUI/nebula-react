@@ -43,7 +43,7 @@ class LinkListLink extends Component {
             `${NAMESPACE}c-link-list__link`,
             className,
           )}
-          activeClassName={buildActiveClassName()}
+          activeClassName={activeClassName}
           {...rest}
         >
           { children }
