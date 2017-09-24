@@ -1,6 +1,6 @@
 {
   "name": "nebula-react",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "React Components for Nebula CSS",
   "main": "lib/index.js",
   "repository": "git@github.com:rbrtsmith/nebula-react.git",
