@@ -9,7 +9,7 @@ const SearchInput = ({
   id,
   className,
   small,
-  placeholder = 'Search...',
+  placeholder = 'Search…',
   onChange,
   value,
   disabled,

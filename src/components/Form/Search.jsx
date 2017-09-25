@@ -17,24 +17,32 @@ const Search = ({
   onSubmit,
   onChange,
   value,
-  label,
+  children,
   required,
   disabled,
   ...rest
 }) => {
   const Input = (
     <SearchInput
-      {...{ small, onChange, defaultValue, value, disabled, required, id: label ? id : undefined }}
+      {...{
+        small,
+        onChange,
+        defaultValue,
+        value,
+        disabled,
+        required,
+        id: children ? id : undefined
+      }}
     />
   )
   const Submit = <SearchSubmit disabled={disabled} />
-  return label
+  return children
     ? (
       <form
         {...{ action, method, onSubmit, ...rest }}
         role="search"
       >
-        <Label htmlFor={id}>{ label }</Label>
+        <Label htmlFor={id}>{ children }</Label>
         <SearchWrapper tag="div" submitPosition={submitPosition}>
           { Input }
           { Submit }
@@ -57,7 +65,7 @@ Search.propTypes = {
   onChange: T.func,
   onSubmit: T.func,
   disabled: T.bool,
-  label: T.string,
+  children: T.node,
   required: T.bool,
   defaultValue: T.oneOfType([T.number, T.string]),
   value: T.oneOfType([T.number, T.string])

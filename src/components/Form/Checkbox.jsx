@@ -15,9 +15,10 @@ const Checkbox = ({
   value,
   children,
   defaultChecked,
+  tag,
   ...rest
 }) => (
-  <CheckboxWrapper {...rest}>
+  <CheckboxWrapper tag={tag} {...rest}>
     <CheckboxInput
       id={id}
       name={name}
@@ -28,7 +29,7 @@ const Checkbox = ({
       defaultChecked={defaultChecked}
     />
     <CheckboxLabel htmlFor={id}>
-      {children}
+      { children }
     </CheckboxLabel>
   </CheckboxWrapper>
 )
@@ -41,6 +42,7 @@ Checkbox.propTypes = {
   name: T.string,
   // eslint-disable-next-line react/forbid-prop-types
   value: T.any,
+  tag: T.string,
   children: T.node,
   id: T.string
 }

@@ -103,32 +103,23 @@ describe('<Form.Search />', () => {
 
   it('can render with a label', () => {
     const props = {
-      ...defaultProps,
-      label: 'Test label'
+      ...defaultProps
     }
-    const $ = mount(<Form.Search {...props} />)
-    expect($.find(Form.Label).exists()).toBe(true)
-    expect($.html()).toMatch(/<form role="search">/)
-    expect($.find(Form.SearchWrapper).html()).toMatch('<div class="c-search')
+    const $ = mount(<Form.Search {...props}>Test Label</Form.Search>)
+    expect($.find(Form.Label).text()).toBe('Test Label')
   })
 
   it('can render without a label', () => {
     const props = {
-      ...defaultProps,
-      label: undefined
+      ...defaultProps
     }
     const $ = mount(<Form.Search {...props} />)
     expect($.find(Form.Label).exists()).toBe(false)
-    expect($.find(Form.SearchWrapper).html()).toMatch('<form role="search" class="c-search')
   })
 
   it('generates a random ID that is passed to the label and the input', () => {
     randomId.mockImplementation(() => 'test-id')
-    const props = {
-      ...defaultProps,
-      label: '_'
-    }
-    const $ = mount(<Form.Search {...props} />)
+    const $ = mount(<Form.Search {...defaultProps}>Test</Form.Search>)
     expect($.find(Form.Label).prop('htmlFor')).toBe('test-id')
     expect($.find(Form.SearchInput).prop('id')).toBe('test-id')
   })
@@ -136,10 +127,9 @@ describe('<Form.Search />', () => {
   it('takes a user defined id that is passed to label and the input', () => {
     const props = {
       ...defaultProps,
-      label: '_',
       id: 'hello'
     }
-    const $ = mount(<Form.Search {...props} />)
+    const $ = mount(<Form.Search {...props}>Test</Form.Search>)
     expect($.find(Form.Label).prop('htmlFor')).toBe('hello')
     expect($.find(Form.SearchInput).prop('id')).toBe('hello')
   })

@@ -14,7 +14,7 @@ describe('<Form.SearchInput />', () => {
 
   it('renders with a default placeholder value', () => {
     const $ = shallow(<Form.SearchInput />)
-    expect($.prop('placeholder')).toBe('Search...')
+    expect($.prop('placeholder')).toBe('Search…')
   })
 
   it('renders with additional attributes', () => {
