@@ -45,15 +45,9 @@ describe('<Pagination.Link />', () => {
     })
   })
 
-  it('renders the aria-label attr with a default value', () => {
+  it('passes through "aria-label" attributte', () => {
     const $ = mount(<Pagination.Link {...defaultProps} aria-label="Test">_</Pagination.Link>)
     expect($.prop('aria-label')).toBe('Test')
-  })
-
-  it('renders the aria-label with a prop passed in as an override', () => {
-    const $ = mount(<Pagination.Link {...defaultProps} aria-label="Test" ariaLabel="Test Override">_</Pagination.Link>)
-    expect($.prop('aria-label')).toBe('Test')
-    expect($.prop('ariaLabel')).toBe('Test Override')
   })
 
   it('allows an isActive prop to be passed', () => {
@@ -154,7 +148,7 @@ describe('<Pagination.Link />', () => {
           component={RRPaginationLink}
           {...defaultProps}
           style={{ position: 'relative' }}
-          ariaHidden="true"
+          ariaHidden
         >
           _
         </Pagination.Link>
@@ -162,7 +156,31 @@ describe('<Pagination.Link />', () => {
       expect($.find(RRPaginationLink).prop('style')).toEqual({
         position: 'relative'
       })
-      expect($.find(RRPaginationLink).prop('ariaHidden')).toBe('true')
+      expect($.find(RRPaginationLink).prop('ariaHidden')).toBe(true)
+    })
+
+    it('prevents default click event when disabled', () => {
+      const mockPreventDefault = jest.fn()
+      const event = {
+        preventDefault: mockPreventDefault
+      }
+      const $ = shallow(<Pagination.Link to="/" disabled />)
+      expect(mockPreventDefault).not.toHaveBeenCalled()
+
+      $.simulate('click', event)
+      expect(mockPreventDefault).toHaveBeenCalled()
+    })
+
+    it('does not prevent default click event when disabled', () => {
+      const mockPreventDefault = jest.fn()
+      const event = {
+        preventDefault: mockPreventDefault
+      }
+      const $ = shallow(<Pagination.Link to="/" />)
+      expect(mockPreventDefault).not.toHaveBeenCalled()
+
+      $.simulate('click', event)
+      expect(mockPreventDefault).not.toHaveBeenCalled()
     })
   })
 })

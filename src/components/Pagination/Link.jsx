@@ -6,7 +6,11 @@ import { NAMESPACE, ALL_TAGS } from '../../constants'
 
 class PaginationLink extends Component {
   handleClick = (e) => {
-    this.props.callback(e, this)
+    if (this.props.disabled) {
+      return e.preventDefault()
+    }
+
+    return this.props.callback && this.props.callback(e, this)
   }
 
   render() {
@@ -20,15 +24,10 @@ class PaginationLink extends Component {
       callback,
       children,
       previous,
+      disabled,
       next,
-      ariaLabel,
       ...rest
     } = this.props
-
-    const onClickProps = callback
-      ? {
-        onClick: this.handleClick
-      } : {}
 
     const ComponentOverride = component
 
@@ -40,7 +39,9 @@ class PaginationLink extends Component {
           activeClassName={activeClassName}
           previous={previous}
           next={next}
-          ariaLabel={ariaLabel}
+          disabled={disabled}
+          onClick={this.handleClick}
+          aria-label={this.props['aria-label']}
           {...rest}
         >
           {children}
@@ -53,12 +54,14 @@ class PaginationLink extends Component {
       {
         href: to,
         className: classNames(
-        `${NAMESPACE}c-pagination__link`, className,
-        previous ? `${NAMESPACE}c-pagination__link--previous` : '',
-        next ? `${NAMESPACE}c-pagination__link--next` : '',
-        { 'is-active': isActive }),
-        'aria-label': ariaLabel,
-        ...onClickProps,
+          `${NAMESPACE}c-pagination__link`, className,
+          previous ? `${NAMESPACE}c-pagination__link--previous` : '',
+          next ? `${NAMESPACE}c-pagination__link--next` : '',
+          { 'is-active': isActive }
+        ),
+        'aria-label': this.props['aria-label'],
+        onClick: this.handleClick,
+        disabled,
         ...rest
       },
       children
@@ -77,10 +80,11 @@ PaginationLink.propTypes = {
   tag: T.oneOf(ALL_TAGS),
   className: T.string,
   callback: T.func,
-  children: T.node.isRequired,
+  children: T.node,
+  disabled: T.bool,
   previous: T.bool,
   next: T.bool,
-  ariaLabel: T.string
+  'aria-label': T.string
 }
 
 export default PaginationLink
