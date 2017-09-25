@@ -1,11 +1,11 @@
 import React from 'react'
 import T from 'prop-types'
 
-import { randomId, classNames } from '../../utils/'
+import { classNames } from '../../utils/'
 import { NAMESPACE } from '../../constants'
 
 const TextInput = ({
-  id = randomId(),
+  id,
   type = 'text',
   className,
   small,
