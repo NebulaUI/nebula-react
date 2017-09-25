@@ -8,8 +8,6 @@ const initial = `${NAMESPACE}c-search`
 
 const SearchWrapper = ({
   id,
-  action,
-  method,
   className,
   submitPosition,
   onSubmit,
@@ -30,8 +28,6 @@ const SearchWrapper = ({
       {
         id,
         role: 'search',
-        action,
-        method,
         onSubmit,
         className: classNameGroup,
         ...rest
@@ -42,8 +38,6 @@ const SearchWrapper = ({
 
 SearchWrapper.propTypes = {
   id: T.string,
-  action: T.string,
-  method: T.string,
   className: T.string,
   tag: T.oneOf(BLOCK_TAGS),
   children: T.node,
