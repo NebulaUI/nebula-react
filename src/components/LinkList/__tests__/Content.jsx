@@ -4,42 +4,42 @@ import { shallow } from 'enzyme'
 import { NAMESPACE } from '../../../constants'
 import { LinkList } from '../'
 
-describe('<LinkList.Item />', () => {
+describe('<LinkList.Content />', () => {
   it('renders with the default className', () => {
-    const $ = shallow(<LinkList.Item>_</LinkList.Item>)
-    expect($.hasClass(`${NAMESPACE}c-link-list__item`)).toBe(true)
+    const $ = shallow(<LinkList.Content>_</LinkList.Content>)
+    expect($.hasClass(`${NAMESPACE}c-link-list__content`)).toBe(true)
   })
 
   it('renders the user defined className', () => {
-    const $ = shallow(<LinkList.Item className="test">_</LinkList.Item>)
-    expect($.hasClass(`${NAMESPACE}c-link-list__item`)).toBe(true)
+    const $ = shallow(<LinkList.Content className="test">_</LinkList.Content>)
+    expect($.hasClass(`${NAMESPACE}c-link-list__content`)).toBe(true)
     expect($.hasClass('test')).toBe(true)
   })
 
   it('renders children', () => {
     const $ = shallow(
-      <LinkList.Item>
+      <LinkList.Content>
         <div className="child" />
-      </LinkList.Item>
+      </LinkList.Content>
     )
     expect($.contains(<div className="child" />)).toBe(true)
   })
 
   it('renders a defined tag type', () => {
-    const $ = shallow(<LinkList.Item tag="article">_</LinkList.Item>)
+    const $ = shallow(<LinkList.Content tag="article">_</LinkList.Content>)
     expect($.type()).toBe('article')
   })
 
-  it('renders an li by default', () => {
-    const $ = shallow(<LinkList.Item>_</LinkList.Item>)
-    expect($.type()).toBe('li')
+  it('renders an div by default', () => {
+    const $ = shallow(<LinkList.Content>_</LinkList.Content>)
+    expect($.type()).toBe('div')
   })
 
   it('renders with attributes', () => {
     const $ = shallow(
-      <LinkList.Item style={{ position: 'relative' }} ariaHidden>
+      <LinkList.Content style={{ position: 'relative' }} ariaHidden>
         _
-      </LinkList.Item>
+      </LinkList.Content>
     )
     expect($.prop('style')).toEqual({
       position: 'relative'
