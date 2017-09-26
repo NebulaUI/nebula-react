@@ -40,12 +40,8 @@ class PaginationLink extends Component {
             previous ? `${NAMESPACE}c-pagination__link--previous` : '',
             next ? `${NAMESPACE}c-pagination__link--next` : '',
           )}
-          activeClassName={activeClassName}
-          previous={previous}
-          next={next}
-          disabled={disabled}
           onClick={this.handleClick}
-          aria-label={this.props['aria-label']}
+          {...{ activeClassName, disabled }}
           {...rest}
         >
           {children}
@@ -63,7 +59,6 @@ class PaginationLink extends Component {
           next ? `${NAMESPACE}c-pagination__link--next` : '',
           isActive ? activeClassName : '',
         ),
-        'aria-label': this.props['aria-label'],
         onClick: this.handleClick,
         disabled,
         ...rest
@@ -87,8 +82,7 @@ PaginationLink.propTypes = {
   children: T.node,
   disabled: T.bool,
   previous: T.bool,
-  next: T.bool,
-  'aria-label': T.string
+  next: T.bool
 }
 
 export default PaginationLink

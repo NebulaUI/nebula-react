@@ -19,7 +19,7 @@ class PaginationWrapper extends Component {
         E(
           tag || 'ul',
           {
-            className: `${NAMESPACE}c-pagination`,
+            className: `${NAMESPACE}c-pagination`
           },
           children
         )
@@ -31,7 +31,7 @@ class PaginationWrapper extends Component {
 PaginationWrapper.propTypes = {
   tag: T.oneOf(BLOCK_TAGS),
   children: T.node.isRequired,
-  className: T.string,
+  className: T.string
 }
 
 export default PaginationWrapper

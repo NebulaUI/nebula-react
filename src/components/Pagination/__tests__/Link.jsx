@@ -45,11 +45,6 @@ describe('<Pagination.Link />', () => {
     })
   })
 
-  it('passes through "aria-label" attributte', () => {
-    const $ = mount(<Pagination.Link {...defaultProps} aria-label="Test">_</Pagination.Link>)
-    expect($.prop('aria-label')).toBe('Test')
-  })
-
   it('allows an isActive prop to be passed', () => {
     const $ = mount(<Pagination.Link {...defaultProps} isActive>_</Pagination.Link>)
     expect($.prop('isActive')).toBe(true)
