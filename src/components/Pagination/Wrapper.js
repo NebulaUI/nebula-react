@@ -20,7 +20,6 @@ class PaginationWrapper extends Component {
           tag || 'ul',
           {
             className: `${NAMESPACE}c-pagination`,
-            ...rest
           },
           children
         )
