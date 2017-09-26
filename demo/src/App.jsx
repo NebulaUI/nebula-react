@@ -5,6 +5,8 @@ import {
   Section,
   Pill,
   Table,
+  LinkList,
+  ProgressBar,
   Form,
 } from 'nebula-react'
 
@@ -13,6 +15,15 @@ const App = () => (
     <Section size="md">
       <SiteWrap padding>
         <Section size="md">
+          <SiteWrap padding>
+            <h3>Link List with Divider</h3>
+            <h3>Progress Bar</h3>
+            <Section size="md">
+              <ProgressBar.Wrapper>
+                <ProgressBar.Indicator animated percent="50" />
+              </ProgressBar.Wrapper>
+            </Section>
+          </SiteWrap>
           <Table.Wrapper>
             <Table.Container spacing="sm" sortedBy={{ index: 3, descending: false }} stackAt="max-sm" onChange={value => console.log(value)}>
               <Table.Header>

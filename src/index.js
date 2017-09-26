@@ -18,9 +18,10 @@ import { Icon } from './components/Icon/'
 import { LinkList } from './components/LinkList/'
 import { LoadingIcon } from './components/LoadingIcon/'
 import { Modal } from './components/Modal/'
-import { Pagination } from './components/Pagination/'
 import { Navbar } from './components/Navbar/'
+import { Pagination } from './components/Pagination/'
 import { Pill } from './components/Pill/'
+import { ProgressBar } from './components/ProgressBar/'
 import { StatusCard } from './components/StatusCard/'
 import { Table } from './components/Table/'
 import { Tabs } from './components/Tabs/'
@@ -46,8 +47,9 @@ export {
   MatrixList,
   Modal,
   Navbar,
-  Pill,
   Pagination,
+  Pill,
+  ProgressBar,
   Section,
   SiteWrap,
   StatusCard,
