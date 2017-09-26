@@ -1,5 +1,5 @@
 import React from 'react'
-import { shallow, mount } from 'enzyme'
+import { shallow } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
 import { Pill } from '../'
@@ -13,16 +13,12 @@ describe('<Pill />', () => {
   it('renders with an optional className', () => {
     const $ = shallow(<Pill className="test">_</Pill>)
     expect($.hasClass('test')).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-pill`)).toBe(true)
   })
 
-  it('renders with a border', () => {
-    const $ = shallow(<Pill border>_</Pill>)
-    expect($.hasClass(`${NAMESPACE}c-pill--border`)).toBe(true)
-  })
-
-  it('renders a "button" by default', () => {
+  it('renders a "div" by default', () => {
     const $ = shallow(<Pill>_</Pill>)
-    expect($.type()).toBe('button')
+    expect($.type()).toBe('div')
   })
 
   it('renders a defined tag type', () => {
@@ -50,23 +46,6 @@ describe('<Pill />', () => {
       position: 'relative'
     })
     expect($.prop('ariaHidden')).toBe('true')
-  })
-
-  it('warns the consumer when using both `isActive` and `status` props', () => {
-    const mockWarn = jest.fn()
-    window.console = { warn: mockWarn }
-    mount(<Pill isActive status="success">_</Pill>)
-    expect(mockWarn).toHaveBeenCalled()
-  })
-
-  it('doesnt warn the consumer when not using both `isActive` and `status` props', () => {
-    const mockWarn = jest.fn()
-    window.console = { warn: mockWarn }
-    mount(<Pill status="success">_</Pill>)
-    expect(mockWarn).not.toHaveBeenCalled()
-
-    mount(<Pill isActive>_</Pill>)
-    expect(mockWarn).not.toHaveBeenCalled()
   })
 
   describe('status styling', () => {
@@ -121,31 +100,29 @@ describe('<Pill />', () => {
       expect($.find(RRPill).contains('Nebula')).toBe(true)
     })
 
-    it('passes through "to", "className" and "activeClassName" props', () => {
+    it('passes through "to", "className" and props', () => {
       const $ = shallow(
         <Pill
-          isActive
           className="test"
-          activeClassName="active-classname-test"
           component={RRPill}
           to="/test"
         >Nebula</Pill>
       )
       expect($.find(RRPill).hasClass(`${NAMESPACE}c-pill`)).toBe(true)
       expect($.find(RRPill).hasClass('test')).toBe(true)
-      expect($.find(RRPill).prop('activeClassName')).toBe('active-classname-test')
       expect($.find(RRPill).prop('to')).toBe('/test')
     })
 
-    it('passes a default "activeClassName" prop', () => {
+    it('renders with the correct status', () => {
       const $ = shallow(
         <Pill
-          isActive
-          to="/"
+          status="success"
           component={RRPill}
+          to="/test"
         >Nebula</Pill>
       )
-      expect($.find(RRPill).prop('activeClassName')).toBe('is-active')
+      expect($.find(RRPill).hasClass(`${NAMESPACE}c-pill`)).toBe(true)
+      expect($.find(RRPill).hasClass(`${NAMESPACE}c-pill--success`)).toBe(true)
     })
 
     it('renders with attributes', () => {

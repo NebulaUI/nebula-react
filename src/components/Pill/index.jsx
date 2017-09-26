@@ -7,14 +7,6 @@ import { NAMESPACE, ALL_TAGS } from '../../constants'
 const initialClassName = `${NAMESPACE}c-pill`
 
 class Pill extends Component {
-  componentDidMount() {
-    const { status, isActive } = this.props
-    if (status && isActive) {
-      // eslint-disable-next-line no-console
-      console.warn('Cannot combine `status` and `isActive` props on <Pill />')
-    }
-  }
-
   handleClick = (e) => {
     this.props.onClick(e, this)
   }
@@ -29,17 +21,8 @@ class Pill extends Component {
       children,
       onClick,
       component,
-      activeClassName,
       ...rest
     } = this.props
-
-    const buildClassName = () =>
-      classNames(
-        initialClassName,
-        status ? `${initialClassName}--${status}` : '',
-        { [`${initialClassName}--border`]: !status },
-        className,
-      )
 
     const onClickProps = onClick
     ? {
@@ -52,8 +35,11 @@ class Pill extends Component {
       return (
         <ComponentOverride
           to={to}
-          className={buildClassName()}
-          activeClassName={!status && isActive ? activeClassName : null}
+          className={classNames(
+            initialClassName,
+            status ? `${initialClassName}--${status}` : '',
+            className
+          )}
           {...rest}
         >
           { children }
@@ -62,20 +48,21 @@ class Pill extends Component {
     }
 
     return E(
-      to ? 'a' : (tag || 'button'),
+      to ? 'a' : (tag || 'div'),
       {
         href: to,
-        className: buildClassName(),
+        className: classNames(
+          initialClassName,
+          status ? `${initialClassName}--${status}` : '',
+          { 'is-active': isActive },
+          className
+        ),
         ...onClickProps,
         ...rest
       },
       children
     )
   }
-}
-
-Pill.defaultProps = {
-  activeClassName: 'is-active'
 }
 
 Pill.propTypes = {
@@ -93,7 +80,6 @@ Pill.propTypes = {
   ]),
   onClick: T.func,
   isActive: T.bool,
-  activeClassName: T.string,
   className: T.string,
   children: T.node.isRequired
 }

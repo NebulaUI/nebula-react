@@ -15,7 +15,6 @@ const NavbarContentWrapper = ({ tag, children, className, ...rest }) =>
   )
 
 NavbarContentWrapper.propTypes = {
-  handleToggle: T.func,
   tag: T.oneOf(BLOCK_TAGS),
   children: T.node.isRequired,
   className: T.string
