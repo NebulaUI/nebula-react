@@ -10,7 +10,7 @@ class PaginationLink extends Component {
       return e.preventDefault()
     }
 
-    return this.props.callback && this.props.callback(e, this)
+    return this.props.onClick && this.props.onClick(e, this)
   }
 
   render() {
@@ -21,7 +21,7 @@ class PaginationLink extends Component {
       className,
       isActive,
       activeClassName = 'is-active',
-      callback,
+      onClick,
       children,
       previous,
       disabled,
@@ -78,7 +78,7 @@ PaginationLink.propTypes = {
   to: T.string.isRequired,
   tag: T.oneOf(ALL_TAGS),
   className: T.string,
-  callback: T.func,
+  onClick: T.func,
   children: T.node,
   disabled: T.bool,
   previous: T.bool,

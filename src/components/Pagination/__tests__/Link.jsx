@@ -50,11 +50,11 @@ describe('<Pagination.Link />', () => {
     expect($.prop('isActive')).toBe(true)
   })
 
-  it('takes a callback that is called with the event and component instance when clicked', () => {
+  it('takes a onClick callback that is called with the event and component instance when clicked', () => {
     const mockCallback = jest.fn()
     const mockEvent = 'test'
     const $ = shallow(
-      <Pagination.Link {...defaultProps} callback={mockCallback}>
+      <Pagination.Link {...defaultProps} onClick={mockCallback}>
         Test
       </Pagination.Link>
     )
@@ -62,16 +62,6 @@ describe('<Pagination.Link />', () => {
 
     $.simulate('click', mockEvent)
     expect(mockCallback).toHaveBeenCalledWith(mockEvent, $.instance())
-  })
-
-  it('does not attempt to call a callback when clicked if no callback is passed', () => {
-    const mockCallback = jest.fn()
-    const $ = shallow(<Pagination.Link {...defaultProps}>Test</Pagination.Link>)
-    expect(mockCallback).not.toHaveBeenCalled()
-
-    $.simulate('click')
-
-    expect(mockCallback).not.toHaveBeenCalled()
   })
 
   it('takes a "to" prop that renders as a href attribute', () => {
