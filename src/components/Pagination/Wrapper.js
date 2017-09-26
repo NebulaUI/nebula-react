@@ -19,7 +19,7 @@ class PaginationWrapper extends Component {
         E(
           tag || 'ul',
           {
-            className: classNames(`${NAMESPACE}c-pagination`, className),
+            className: `${NAMESPACE}c-pagination`,
             ...rest
           },
           children

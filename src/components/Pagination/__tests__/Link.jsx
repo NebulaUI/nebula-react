@@ -142,6 +142,30 @@ describe('<Pagination.Link />', () => {
       expect($.find(RRPaginationLink).prop('activeClassName')).toBe('is-active')
     })
 
+    it('can render as a previous link', () => {
+      const $ = shallow(
+        <Pagination.Link
+          previous
+          component={RRPaginationLink}
+          {...defaultProps}
+        >Nebula</Pagination.Link>
+      )
+      expect($.find(RRPaginationLink).hasClass(`${NAMESPACE}c-pagination__link`)).toBe(true)
+      expect($.find(RRPaginationLink).hasClass(`${NAMESPACE}c-pagination__link--previous`)).toBe(true)
+    })
+
+    it('can render as a next link', () => {
+      const $ = shallow(
+        <Pagination.Link
+          next
+          component={RRPaginationLink}
+          {...defaultProps}
+        >Nebula</Pagination.Link>
+      )
+      expect($.find(RRPaginationLink).hasClass(`${NAMESPACE}c-pagination__link`)).toBe(true)
+      expect($.find(RRPaginationLink).hasClass(`${NAMESPACE}c-pagination__link--next`)).toBe(true)
+    })
+
     it('renders with attributes', () => {
       const $ = shallow(
         <Pagination.Link

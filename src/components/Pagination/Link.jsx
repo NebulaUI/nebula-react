@@ -35,7 +35,11 @@ class PaginationLink extends Component {
       return (
         <ComponentOverride
           to={to}
-          className={classNames(`${NAMESPACE}c-pagination__link`, className)}
+          className={classNames(
+            `${NAMESPACE}c-pagination__link`, className,
+            previous ? `${NAMESPACE}c-pagination__link--previous` : '',
+            next ? `${NAMESPACE}c-pagination__link--next` : '',
+          )}
           activeClassName={activeClassName}
           previous={previous}
           next={next}
@@ -57,7 +61,7 @@ class PaginationLink extends Component {
           `${NAMESPACE}c-pagination__link`, className,
           previous ? `${NAMESPACE}c-pagination__link--previous` : '',
           next ? `${NAMESPACE}c-pagination__link--next` : '',
-          { 'is-active': isActive }
+          isActive ? activeClassName : '',
         ),
         'aria-label': this.props['aria-label'],
         onClick: this.handleClick,
