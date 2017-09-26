@@ -20,17 +20,6 @@ describe('<Pagination.Wrapper />', () => {
     })
   })
 
-  it('renders the aria-label attr with a default value', () => {
-    const $ = mount(<Pagination.Wrapper aria-label="Test">_</Pagination.Wrapper>)
-    expect($.prop('aria-label')).toBe('Test')
-  })
-
-  it('renders the aria-label with a prop passed in as an override', () => {
-    const $ = mount(<Pagination.Wrapper aria-label="Test" ariaLabel="Test Override">_</Pagination.Wrapper>)
-    expect($.prop('aria-label')).toBe('Test')
-    expect($.prop('ariaLabel')).toBe('Test Override')
-  })
-
   it('renders a defined tag type', () => {
     const $ = shallow(<Pagination.Wrapper tag="article">_</Pagination.Wrapper>)
     expect($.type()).toBe('article')
