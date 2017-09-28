@@ -15,7 +15,7 @@ const isDescending = (props, state, index) => {
     : true
 }
 
-class TableContainer extends Component {
+class TableWrapper extends Component {
   state = {
     sortedBy: {
       index: -1,
@@ -96,7 +96,7 @@ class TableContainer extends Component {
   }
 }
 
-TableContainer.childContextTypes = {
+TableWrapper.childContextTypes = {
   tableSortedBy: T.shape({
     index: T.number,
     descending: T.bool
@@ -108,7 +108,7 @@ TableContainer.childContextTypes = {
   tableColumnTitles: T.arrayOf(T.string).isRequired
 }
 
-TableContainer.propTypes = {
+TableWrapper.propTypes = {
   stackAt: T.oneOf(TABLE_COLLAPSE_BREAKPOINTS),
   className: T.string,
   children: T.node.isRequired,
@@ -122,4 +122,4 @@ TableContainer.propTypes = {
   })
 }
 
-export default TableContainer
+export default TableWrapper
