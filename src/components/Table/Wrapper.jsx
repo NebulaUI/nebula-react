@@ -35,11 +35,11 @@ class TableWrapper extends Component {
 
   sort = (index) => {
     const descending = isDescending(this.props, this.state, index)
-    if (this.props.onChange) {
+    if (this.props.onSortChange) {
       if (this.props.disableDefaultSorting) {
-        this.props.onChange({ index })
+        this.props.onSortChange({ index })
       } else {
-        this.props.onChange({ index, descending })
+        this.props.onSortChange({ index, descending })
       }
     }
 
@@ -74,7 +74,7 @@ class TableWrapper extends Component {
 
   render() {
     const {
-      sortedBy, onChange, disableDefaultSorting,
+      sortedBy, onSortChange, disableDefaultSorting,
       stackAt, className, children, noLabels, spacing, ...rest
     } = this.props
     const isSorted = this.state.sortedBy.index !== -1 || sortedBy
@@ -113,7 +113,7 @@ TableWrapper.propTypes = {
   className: T.string,
   children: T.node.isRequired,
   spacing: T.oneOf(TABLE_SPACING),
-  onChange: T.func,
+  onSortChange: T.func,
   noLabels: T.bool,
   disableDefaultSorting: T.bool,
   sortedBy: T.shape({

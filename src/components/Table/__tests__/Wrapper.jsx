@@ -154,12 +154,12 @@ describe('<Table.Wrapper />', () => {
     expect(getUserName($, 2)).toBe('Mike Darmid')
   })
 
-  it('calls an onchange callback when sorted', () => {
-    const mockOnChange = jest.fn()
+  it('calls an onSortChange callback when sorted', () => {
+    const mockOnSortChange = jest.fn()
     const getUserName = ($, index) => $.find(Table.Body).childAt(index).childAt(0).text()
     const clickSortButton = ($, index) => $.find(Table.HeaderRow).childAt(index).childAt(0).simulate('click')
     const $ = mount(
-      <Table.Wrapper onChange={mockOnChange}>
+      <Table.Wrapper onSortChange={mockOnSortChange}>
         <Table.Header>
           <Table.HeaderRow>
             <Table.HeaderCell>
@@ -191,7 +191,7 @@ describe('<Table.Wrapper />', () => {
       </Table.Wrapper>
     )
 
-    expect(mockOnChange).toHaveBeenCalledWith({
+    expect(mockOnSortChange).toHaveBeenCalledWith({
       index: 0,
       descending: true
     })
@@ -200,7 +200,7 @@ describe('<Table.Wrapper />', () => {
     expect(getUserName($, 2)).toBe('Elliot Hesp')
 
     clickSortButton($, 1)
-    expect(mockOnChange).toHaveBeenLastCalledWith({
+    expect(mockOnSortChange).toHaveBeenLastCalledWith({
       index: 1,
       descending: true
     })
@@ -209,7 +209,7 @@ describe('<Table.Wrapper />', () => {
     expect(getUserName($, 2)).toBe('Elliot Hesp')
 
     clickSortButton($, 1)
-    expect(mockOnChange).toHaveBeenLastCalledWith({
+    expect(mockOnSortChange).toHaveBeenLastCalledWith({
       index: 1,
       descending: false
     })
@@ -218,12 +218,12 @@ describe('<Table.Wrapper />', () => {
     expect(getUserName($, 0)).toBe('Elliot Hesp')
   })
 
-  it('allows sort events to be handled externally, clicking the sortbutton calling onChange sortfunction reading from sortedBy Prop rather than state', () => {
-    const mockOnChange = jest.fn()
+  it('allows sort events to be handled externally, clicking the sortbutton calling onSortChange sortfunction reading from sortedBy Prop rather than state', () => {
+    const mockOnSortChange = jest.fn()
     const clickSortButton = ($, index) => $.find(Table.HeaderRow).childAt(index).childAt(0).simulate('click')
     const getUserName = ($, index) => $.find(Table.Body).childAt(index).childAt(0).text()
     const $ = mount(
-      <Table.Wrapper onChange={mockOnChange} sortedBy={{ index: 1, descending: true }}>
+      <Table.Wrapper onSortChange={mockOnSortChange} sortedBy={{ index: 1, descending: true }}>
         <Table.Header>
           <Table.HeaderRow>
             <Table.HeaderCell>
@@ -267,7 +267,7 @@ describe('<Table.Wrapper />', () => {
     expect(getUserName($, 0)).toBe('Elliot Hesp')
 
     clickSortButton($, 1)
-    expect(mockOnChange).toHaveBeenLastCalledWith({
+    expect(mockOnSortChange).toHaveBeenLastCalledWith({
       index: 1,
       descending: true
     })
@@ -277,13 +277,13 @@ describe('<Table.Wrapper />', () => {
   })
 
   it('allows the sorting to be handled externally, clicking the sortbutton calling onChange', () => {
-    const mockOnChange = jest.fn()
+    const mockOnSortChange = jest.fn()
     const clickSortButton = ($, index) => $.find(Table.HeaderRow).childAt(index).childAt(0).simulate('click')
     const getUserName = ($, index) => $.find(Table.Body).childAt(index).childAt(0).text()
     const $ = mount(
       <Table.Wrapper
         disableDefaultSorting
-        onChange={mockOnChange}
+        onSortChange={mockOnSortChange}
       >
         <Table.Header>
           <Table.HeaderRow>
@@ -321,7 +321,7 @@ describe('<Table.Wrapper />', () => {
     expect(getUserName($, 2)).toBe('Mike Darmid')
 
     clickSortButton($, 1)
-    expect(mockOnChange).toHaveBeenLastCalledWith({
+    expect(mockOnSortChange).toHaveBeenLastCalledWith({
       index: 1
     })
     expect(getUserName($, 0)).toBe('Robert Smith')
@@ -329,7 +329,7 @@ describe('<Table.Wrapper />', () => {
     expect(getUserName($, 2)).toBe('Mike Darmid')
 
     clickSortButton($, 1)
-    expect(mockOnChange).toHaveBeenLastCalledWith({
+    expect(mockOnSortChange).toHaveBeenLastCalledWith({
       index: 1
     })
     expect(getUserName($, 0)).toBe('Robert Smith')

@@ -11,7 +11,7 @@ const TableHeader = ({ hoverRowHighlight, children, className, ...rest }, { tabl
       hoverRowHighlight ? `${NAMESPACE}c-table__header--hover-row-highlight` : '',
       className
     )}
-    aria-label={tableSortedBy.index !== -1 && 'Sorted by'}
+    {...tableSortedBy.index !== -1 ? { 'aria-label': 'Sorted by' } : {}}
     {...rest}
   >
     { children }
