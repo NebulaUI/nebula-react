@@ -25,6 +25,7 @@ import { ProgressBar } from './components/ProgressBar/'
 import { StatusCard } from './components/StatusCard/'
 import { Table } from './components/Table/'
 import { Tabs } from './components/Tabs/'
+import { Tooltip } from './components/Tooltip/'
 import { UIList } from './components/UIList/'
 import * as constants from './constants'
 
@@ -55,6 +56,8 @@ export {
   StatusCard,
   Table,
   Tabs,
+  Tooltip,
   UIList,
   UniformedList
 }
+

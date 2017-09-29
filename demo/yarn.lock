@@ -3384,9 +3384,15 @@ nebula-components@^0.1.0:
   dependencies:
     nebula-css "^2.5.0"
 
-nebula-css@^2.5.0, nebula-css@^2.6.1:
-  version "2.6.2"
-  resolved "https://registry.yarnpkg.com/nebula-css/-/nebula-css-2.6.2.tgz#bf9a1270dadc27bb0e3cc1809280f0d7995b2c68"
+nebula-components@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/nebula-components/-/nebula-components-0.3.0.tgz#4defcd55d2762d39d05579f9034a208726908866"
+  dependencies:
+    nebula-css "^2.7.1"
+
+nebula-css@^2.5.0, nebula-css@^2.6.1, nebula-css@^2.7.1:
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/nebula-css/-/nebula-css-2.7.1.tgz#4346d51e7df74e709a958521d773ecb23f61bb1c"
 
 nebula-react@^0.1.2:
   version "0.1.2"
