@@ -10,10 +10,6 @@ class TableBody extends Component {
       return true
     }
 
-    if (nextProps.hoverRowHighlight !== this.props.hoverRowHighlight) {
-      return true
-    }
-
     return nextContext.tableColumnTitles !== this.context.tableColumnTitles
   }
 
