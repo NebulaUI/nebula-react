@@ -6,7 +6,7 @@ import { NAMESPACE, BLOCK_TAGS } from '../../constants'
 
 const TooltipWrapper = ({ tag, className, children, ...rest }) =>
   E(
-    tag || 'span',
+    tag || 'div',
     {
       role: 'tooltip',
       className: classNames(`${NAMESPACE}c-tooltip`, className),

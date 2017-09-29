@@ -16,9 +16,9 @@ describe('<Tooltip.Wrapper />', () => {
     expect($.type()).toBe('article')
   })
 
-  it('renders a span by default', () => {
+  it('renders a div by default', () => {
     const $ = shallow(<Tooltip.Wrapper>_</Tooltip.Wrapper>)
-    expect($.type()).toBe('span')
+    expect($.type()).toBe('div')
   })
 
   it('renders with attributes', () => {

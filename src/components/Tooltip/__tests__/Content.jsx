@@ -29,6 +29,14 @@ describe('<Tooltip.Content />', () => {
     expect($.hasClass(`${NAMESPACE}c-tooltip__content--${DIRECTIONS[1]}`)).toBe(true)
   })
 
+  it('renders with a width', () => {
+    const props = {
+      ...defaultProps,
+    }
+    const $ = shallow(<Tooltip.Content width="300px" {...props}>Test child</Tooltip.Content>)
+    expect($.prop('style')).toEqual({ width: '300px' })
+  })
+
   it('renders a defined tag type', () => {
     const $ = shallow(<Tooltip.Content tag="article" {...defaultProps}>_</Tooltip.Content>)
     expect($.type()).toBe('article')
