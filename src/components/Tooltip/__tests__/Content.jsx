@@ -30,10 +30,7 @@ describe('<Tooltip.Content />', () => {
   })
 
   it('renders with a width', () => {
-    const props = {
-      ...defaultProps,
-    }
-    const $ = shallow(<Tooltip.Content width="300px" {...props}>Test child</Tooltip.Content>)
+    const $ = shallow(<Tooltip.Content width="300px" {...defaultProps}>Test child</Tooltip.Content>)
     expect($.prop('style')).toEqual({ width: '300px' })
   })
 
