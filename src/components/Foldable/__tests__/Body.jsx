@@ -1,5 +1,5 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
 import { Foldable } from '../'
@@ -71,5 +71,29 @@ describe('<Foldable.Body />', () => {
     }
     const $ = shallow(<Foldable.Body>_</Foldable.Body>, { context })
     expect($.prop('id')).toBe('test-id')
+  })
+
+  describe('transition', () => {
+    it('renders with the appropriate classNames', () => {
+      const $ = shallow(
+        <Foldable.Body transition className="something else">_</Foldable.Body>
+        , { context: defaultContext }
+      )
+      expect($.hasClass(`${NAMESPACE}c-foldable__body`)).toBe(true)
+      expect($.hasClass(`${NAMESPACE}c-foldable__body`)).toBe(true)
+    })
+
+    it('mounts with the correct height', () => {
+      const context = {
+        ...defaultContext,
+        isFoldableOpen: false
+      }
+      const $ = mount(
+        <Foldable.Body transition className="something else">_</Foldable.Body>
+        , { context }
+      )
+
+      expect($.html()).toMatch(/style="display: none; overflow: hidden;"/)
+    })
   })
 })
