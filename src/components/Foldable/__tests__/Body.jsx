@@ -4,6 +4,10 @@ import { shallow, mount } from 'enzyme'
 import { NAMESPACE } from '../../../constants'
 import { Foldable } from '../'
 
+import getHeight from '../../../utils/getHeight'
+
+jest.mock('../../../utils/getHeight')
+
 const defaultContext = {
   isFoldableOpen: true,
   foldableId: '123'
@@ -76,24 +80,159 @@ describe('<Foldable.Body />', () => {
   describe('transition', () => {
     it('renders with the appropriate classNames', () => {
       const $ = shallow(
-        <Foldable.Body transition className="something else">_</Foldable.Body>
+        <Foldable.Body transition>_</Foldable.Body>
         , { context: defaultContext }
       )
       expect($.hasClass(`${NAMESPACE}c-foldable__body`)).toBe(true)
       expect($.hasClass(`${NAMESPACE}c-foldable__body`)).toBe(true)
     })
 
-    it('mounts with the correct height', () => {
+    it('mounts with display none and overflow hidden if closed', () => {
       const context = {
         ...defaultContext,
         isFoldableOpen: false
       }
       const $ = mount(
-        <Foldable.Body transition className="something else">_</Foldable.Body>
+        <Foldable.Body transition>_</Foldable.Body>
         , { context }
       )
 
       expect($.html()).toMatch(/style="display: none; overflow: hidden;"/)
+    })
+
+    it('only executes transitions if component updates with a transition prop', () => {
+      const context = {
+        ...defaultContext,
+        isFoldableOpen: false
+      }
+      const $ = mount(
+        <Foldable.Body>_</Foldable.Body>
+        , { context }
+      )
+
+      const mockFn = jest.fn()
+
+      $.instance().executeTransitions = mockFn
+
+      expect(mockFn).not.toHaveBeenCalled()
+
+      $.setContext({
+        ...defaultContext,
+        isFoldableOpen: true
+      })
+      expect(mockFn).not.toHaveBeenCalled()
+    })
+
+    it('when mounted open it gets the height and applies as a style', () => {
+      getHeight.mockImplementation(() => '100')
+      jest.useFakeTimers()
+
+      const context = {
+        ...defaultContext,
+        isFoldableOpen: true
+      }
+      const $ = mount(
+        <Foldable.Body transition>
+          _
+        </Foldable.Body>
+        , { context }
+      )
+
+      expect($.html()).toMatch(/style="height: auto;"/)
+
+      jest.runAllTimers()
+      expect($.html()).toMatch(/style="height: 100px;"/)
+    })
+
+    it('can transition to open from initial closed position', () => {
+      jest.useFakeTimers()
+      getHeight.mockImplementation(() => '100')
+
+      const context = {
+        ...defaultContext,
+        isFoldableOpen: false
+      }
+      const $ = mount(
+        <Foldable.Body transition>
+          _
+        </Foldable.Body>
+        , { context }
+      )
+
+      expect($.html()).toMatch(/style="display: none; overflow: hidden;"/)
+      $.setContext({
+        ...defaultContext,
+        isFoldableOpen: true
+      })
+      expect($.html()).toMatch(/style="display: block; overflow: hidden; height: 0px;"/)
+
+      jest.runAllTimers()
+      expect($.html()).toMatch(/style="display: block; overflow: visible; height: 100px;"/)
+    })
+
+    it('can transition to closed from initial open position', () => {
+      jest.useFakeTimers()
+      getHeight.mockImplementation(() => '100')
+
+      const context = {
+        ...defaultContext,
+        isFoldableOpen: true
+      }
+      const $ = mount(
+        <Foldable.Body transition>
+          _
+        </Foldable.Body>
+        , { context }
+      )
+
+      expect($.html()).toMatch(/style="height: auto;"/)
+
+      jest.runAllTimers()
+      expect($.html()).toMatch(/style="height: 100px;"/)
+
+      $.setContext({
+        ...defaultContext,
+        isFoldableOpen: false
+      })
+      expect($.html()).toMatch(/style="height: 0px; overflow: hidden;"/)
+
+      jest.runAllTimers()
+      expect($.html()).toMatch(/style="height: 0px; overflow: hidden; display: none;"/)
+    })
+
+    it('can take a set transiion duration and handles opening before close duration has ended', () => {
+      jest.useFakeTimers()
+      getHeight.mockImplementation(() => '100')
+
+      const context = {
+        ...defaultContext,
+        isFoldableOpen: true
+      }
+      const $ = mount(
+        <Foldable.Body transition transitionDuration={1000}>
+          _
+        </Foldable.Body>
+        , { context }
+      )
+
+      expect($.html()).toMatch(/style="height: auto;"/)
+
+      jest.runAllTimers()
+      expect($.html()).toMatch(/style="height: 100px;"/)
+
+      $.setContext({
+        ...defaultContext,
+        isFoldableOpen: false
+      })
+      expect($.html()).toMatch(/style="height: 0px; overflow: hidden;"/)
+
+      jest.runTimersToTime(500)
+      $.setContext({
+        ...defaultContext,
+        isFoldableOpen: true
+      })
+
+      expect($.html()).toMatch(/style="height: 100px; overflow: hidden; display: block;"/)
     })
   })
 })

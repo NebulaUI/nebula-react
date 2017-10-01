@@ -7,6 +7,7 @@ import appendUnit from './appendUnit'
 import callMeOnce from './callMeOnce'
 import getDescendantValue from './getDescendantValue'
 import sortChildren from './sortChildren'
+import getHeight from './getHeight'
 
 export {
   buildClassName,
@@ -17,5 +18,6 @@ export {
   appendUnit,
   callMeOnce,
   getDescendantValue,
-  sortChildren
+  sortChildren,
+  getHeight
 }

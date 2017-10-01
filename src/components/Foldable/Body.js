@@ -1,7 +1,7 @@
 import { Component, createElement as E } from 'react'
 import T from 'prop-types'
 
-import { classNames } from '../../utils/'
+import { classNames, getHeight } from '../../utils/'
 import { NAMESPACE, BLOCK_TAGS } from '../../constants'
 
 class FoldableBody extends Component {
@@ -13,7 +13,7 @@ class FoldableBody extends Component {
 
   componentDidUpdate() {
     if (this.props.transition) {
-      this.doImperativeStuff()
+      this.executeTransitions()
     }
   }
 
@@ -23,16 +23,13 @@ class FoldableBody extends Component {
 
   setInitialStyles = () => {
     this.setStyles({ transition: `height ${this.props.transitionDuration}ms` })
-
     if (this.context.isFoldableOpen) {
       this.setStyles({ height: 'auto' })
-      this.setHeightAfterImmediateTimeout(this.getHeight())
+      this.setHeightAfterImmediateTimeout(getHeight(this.node))
     } else {
       this.setStyles({ display: 'none', overflow: 'hidden' })
     }
   }
-
-  getHeight = () => this.node.getBoundingClientRect().height
 
   setHeightAfterImmediateTimeout = height =>
     setTimeout(() => {
@@ -44,16 +41,16 @@ class FoldableBody extends Component {
   transitionOpen = () => {
     if (this.node.style.overflow === 'hidden') {
       const openBeforeClosingEnd = () => {
-        const tempHeight = this.getHeight()
+        const tempHeight = getHeight(this.node)
         this.setStyles({ height: 'auto' })
-        const height = this.getHeight()
+        const height = getHeight(this.node)
         this.setStyles({ height: `${tempHeight}px` })
         this.setHeightAfterImmediateTimeout(height)
       }
 
       const openAfterCloseEnd = () => {
         this.setStyles({ height: 'auto' })
-        const height = this.getHeight()
+        const height = getHeight(this.node)
         this.setStyles({ height: 0 })
         this.setHeightAfterImmediateTimeout(height)
       }
@@ -89,7 +86,7 @@ class FoldableBody extends Component {
     }, this.props.transitionDuration)
   }
 
-  doImperativeStuff = () => {
+  executeTransitions = () => {
     if (this.context.isFoldableOpen) {
       this.transitionOpen()
     } else {
