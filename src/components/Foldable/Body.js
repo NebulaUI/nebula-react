@@ -11,10 +11,19 @@ class FoldableBody extends Component {
     }
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     if (this.props.transition) {
-      this.executeTransitions()
+      if (prevProps.transition !== this.props.transition) {
+        return this.setInitialStyles()
+      }
+      return this.executeTransitions()
     }
+
+    if (prevProps.transition !== this.props.transition) {
+      return this.resetStyles()
+    }
+
+    return undefined
   }
 
   setStyles = (styles) => {
@@ -35,6 +44,13 @@ class FoldableBody extends Component {
     setTimeout(() => {
       this.setStyles({ height: `${height}px` })
     }, 0)
+
+  resetStyles = () => {
+    this.node.style.removeProperty('transition')
+    this.node.style.removeProperty('height')
+    this.node.style.removeProperty('display')
+    this.node.style.removeProperty('overflow')
+  }
 
   closing = false
 
@@ -70,14 +86,20 @@ class FoldableBody extends Component {
   handleTransitionOpenEnd = () => {
     setTimeout(() => {
       if (this.context.isFoldableOpen) {
-        this.setStyles({ overflow: 'visible' })
+        this.setStyles({ overflow: 'visible', height: 'auto' })
       }
     }, this.props.transitionDuration)
   }
 
   transitionClose = () => {
     this.closing = true
-    this.setStyles({ overflow: 'hidden', height: 0 })
+    const height = getHeight(this.node)
+    this.setStyles({ height: `${height}px` })
+
+    setTimeout(() => {
+      this.setStyles({ overflow: 'hidden', height: 0 })
+    }, 0)
+
     setTimeout(() => {
       if (!this.context.isFoldableOpen) {
         this.setStyles({ display: 'none' })
