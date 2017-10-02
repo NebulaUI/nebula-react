@@ -11,6 +11,7 @@ const FlyoutContent = ({
   tag,
   className,
   children,
+  transition,
   ...rest
 },
 {
@@ -19,7 +20,12 @@ const FlyoutContent = ({
   E(
     tag || 'div',
     {
-      className: classNames(`${NAMESPACE}c-flyout__content`, `${NAMESPACE}c-flyout__content--${direction}`, className),
+      className: classNames(
+        `${NAMESPACE}c-flyout__content`,
+        `${NAMESPACE}c-flyout__content--${direction}`,
+        { [`${NAMESPACE}c-flyout__content--transition`]: transition },
+        className
+      ),
       style: { width: width && appendUnit(width, 'px') },
       ...rest
     },
@@ -32,6 +38,7 @@ FlyoutContent.contextTypes = {
 
 FlyoutContent.propTypes = {
   tag: T.oneOf(BLOCK_TAGS),
+  transition: T.bool,
   className: T.string,
   children: T.node.isRequired,
   width: T.oneOfType([T.string, T.number]),

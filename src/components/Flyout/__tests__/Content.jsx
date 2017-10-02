@@ -16,6 +16,7 @@ describe('<Flyout.Content />', () => {
     }
     const $ = shallow(<Flyout.Content {...props}>_</Flyout.Content>)
     expect($.hasClass(`${NAMESPACE}c-flyout__content`)).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-flyout__content--transition`)).toBe(false)
     expect($.hasClass('test')).toBe(true)
   })
 
@@ -60,7 +61,7 @@ describe('<Flyout.Content />', () => {
       <Flyout.Content
         {...defaultProps}
         style={{ position: 'relative' }}
-        ariaHidden="true"
+        ariaHidden
       >
         _
       </Flyout.Content>
@@ -68,7 +69,7 @@ describe('<Flyout.Content />', () => {
     expect($.prop('style')).toEqual({
       position: 'relative'
     })
-    expect($.prop('ariaHidden')).toBe('true')
+    expect($.prop('ariaHidden')).toBe(true)
   })
 
   it('renders with a width', () => {
@@ -84,5 +85,19 @@ describe('<Flyout.Content />', () => {
     expect($.prop('style')).toEqual({
       width: '200px'
     })
+  })
+
+  it('renders with a transition', () => {
+    const props = {
+      ...defaultProps,
+      transition: true
+    }
+    const $ = shallow(
+      <Flyout.Content {...props}>
+        _
+      </Flyout.Content>
+    )
+    expect($.hasClass(`${NAMESPACE}c-flyout__content`)).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-flyout__content--transition`)).toBe(true)
   })
 })
