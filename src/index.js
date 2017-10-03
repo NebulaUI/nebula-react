@@ -11,6 +11,7 @@ import { Button } from './components/Button/'
 import { ButtonDropdown } from './components/ButtonDropdown/'
 import { Card } from './components/Card/'
 import { ClickOutside } from './components/ClickOutside/'
+import { FadeIn } from './components/FadeIn'
 import { Flyout } from './components/Flyout/'
 import { Foldable } from './components/Foldable/'
 import { Form } from './components/Form/'
@@ -35,6 +36,7 @@ export {
   Button,
   ButtonDropdown,
   Card,
+  FadeIn,
   Flag,
   Flyout,
   Form,

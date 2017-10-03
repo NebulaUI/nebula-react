@@ -2965,9 +2965,9 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
 
-nebula-components@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/nebula-components/-/nebula-components-0.3.0.tgz#4defcd55d2762d39d05579f9034a208726908866"
+nebula-components@^0.4.3:
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/nebula-components/-/nebula-components-0.4.3.tgz#fd90968148df9ae5213c8937b91149901693d009"
   dependencies:
     nebula-css "^2.7.1"
 

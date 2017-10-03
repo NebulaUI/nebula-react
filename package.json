@@ -30,7 +30,7 @@
   ],
   "dependencies": {
     "focus-trap-react": "^3.0.3",
-    "nebula-components": "^0.4.1",
+    "nebula-components": "^0.4.3",
     "nebula-css": "^2.7.1",
     "no-scroll": "^2.1.0"
   },
