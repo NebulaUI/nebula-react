@@ -5,8 +5,8 @@
     "lint": "eslint . --ext .js,.jsx"
   },
   "dependencies": {
-    "nebula-components": "^0.4.1",
-    "nebula-react": "^0.5.1",
+    "nebula-components": "^0.4.3",
+    "nebula-react": "^0.6.0",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
