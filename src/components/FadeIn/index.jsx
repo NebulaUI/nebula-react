@@ -20,9 +20,9 @@ class FadeIn extends Component {
     const { children, ...rest } = this.props
     return React.cloneElement(this.props.children, {
       className: classNames(
-        children.props.className,
-        ` ${NAMESPACE}c-fade-in`,
-        { [`${NAMESPACE}c-fade-in--has-mounted`]: this.state.hasMounted }
+        `${NAMESPACE}c-fade-in`,
+        { [`${NAMESPACE}c-fade-in--has-mounted`]: this.state.hasMounted },
+        children.props.className || '',
       ),
       ...rest
     })
