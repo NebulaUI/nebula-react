@@ -8,21 +8,24 @@ const ButtonDropdownContent = ({
  tag,
  className,
  children,
+  transition,
  ...rest
 }, {
   buttonDropdownOpen
-}) => (
-  buttonDropdownOpen
-    ? E(
-        tag || 'div',
-      {
-        className: classNames(`${NAMESPACE}c-btn-dropdown__content`, className),
-        ...rest
-      },
-      children
-    )
-    : null
-)
+}) =>
+  E(
+    tag || 'div',
+    {
+      className: classNames(
+        `${NAMESPACE}c-btn-dropdown__content`,
+        { [`${NAMESPACE}c-btn-dropdown__content--transition`]: transition },
+        className
+      ),
+      ...rest
+    },
+    buttonDropdownOpen && children
+  )
+
 
 ButtonDropdownContent.contextTypes = {
   buttonDropdownOpen: T.bool.isRequired
@@ -31,6 +34,7 @@ ButtonDropdownContent.contextTypes = {
 ButtonDropdownContent.propTypes = {
   tag: T.oneOf(ALL_TAGS),
   className: T.string,
+  transition: T.bool,
   children: T.node.isRequired
 }
 

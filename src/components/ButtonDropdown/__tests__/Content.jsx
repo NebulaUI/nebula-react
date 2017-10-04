@@ -9,23 +9,10 @@ const defaultContext = {
 }
 
 describe('<ButtonDropdown.Content />', () => {
-  it('renders children', () => {
-    const context = {
-      ...defaultContext,
-      buttonDropdownOpen: true
-    }
-    const child = <div />
-    const $ = shallow(
-      <ButtonDropdown.Content>
-        <child />
-      </ButtonDropdown.Content>
-    , { context })
-    expect($.contains(<child />)).toBe(true)
-  })
-
   it('renders with appropriate classNames', () => {
     const $ = shallow(<ButtonDropdown.Content className="test">_</ButtonDropdown.Content>, { context: defaultContext })
     expect($.hasClass(`${NAMESPACE}c-btn-dropdown__content`)).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-btn-dropdown__content--transition`)).toBe(false)
     expect($.hasClass('test')).toBe(true)
   })
 
@@ -53,9 +40,23 @@ describe('<ButtonDropdown.Content />', () => {
     expect($.prop('ariaHidden')).toBe('true')
   })
 
-  it('returns "null" when the buttonDropdown is closed', () => {
+  it('renders children when open', () => {
+    const context = { buttonDropdownOpen: true }
+    const $ = shallow(<ButtonDropdown.Content>Test child</ButtonDropdown.Content>, { context })
+    expect($.contains('Test child')).toBe(true)
+  })
+
+  it('does not render children when closed', () => {
     const context = { buttonDropdownOpen: false }
-    const $ = shallow(<ButtonDropdown.Content>_</ButtonDropdown.Content>, { context })
-    expect($.type()).toBeNull()
+    const $ = shallow(<ButtonDropdown.Content>Test child</ButtonDropdown.Content>, { context })
+    expect($.contains('Test child')).toBe(false)
+  })
+
+  it('renders with a transition', () => {
+    const $ = shallow(
+      <ButtonDropdown.Content transition>_</ButtonDropdown.Content>,
+      { context: defaultContext })
+    expect($.hasClass(`${NAMESPACE}c-btn-dropdown__content`)).toBe(true)
+    expect($.hasClass(`${NAMESPACE}c-btn-dropdown__content--transition`)).toBe(true)
   })
 })
