@@ -23,6 +23,7 @@ import { Navbar } from './components/Navbar/'
 import { Pagination } from './components/Pagination/'
 import { Pill } from './components/Pill/'
 import { ProgressBar } from './components/ProgressBar/'
+import { Scroll } from './components/Scroll/'
 import { StatusCard } from './components/StatusCard/'
 import { Table } from './components/Table/'
 import { Tabs } from './components/Tabs/'
@@ -53,6 +54,7 @@ export {
   Pagination,
   Pill,
   ProgressBar,
+  Scroll,
   Section,
   SiteWrap,
   StatusCard,
