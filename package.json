@@ -1,6 +1,6 @@
 {
   "name": "nebula-react",
-  "version": "0.6.2",
+  "version": "0.7.0",
   "description": "React Components for Nebula CSS",
   "main": "lib/index.js",
   "repository": "git@github.com:rbrtsmith/nebula-react.git",
@@ -30,7 +30,7 @@
   ],
   "dependencies": {
     "focus-trap-react": "^3.0.3",
-    "nebula-components": "^0.4.5",
+    "nebula-components": "^0.5.0",
     "nebula-css": "^2.7.1",
     "no-scroll": "^2.1.0"
   },
