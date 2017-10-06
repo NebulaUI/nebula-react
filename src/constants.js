@@ -38,6 +38,7 @@ const GRID_FRACTIONS = [
 
 const SECTION_SIZES = ['sm', 'md']
 const FLYOUT_DIRECTIONS = ['nw', 'ne', 'sw', 'se']
+const TOAST_POSITIONS = ['nw', 'ne', 'sw', 'se']
 const TOOLTIP_DIRECTIONS = ['north', 'south', 'east', 'west']
 
 const BUTTON_SIZES = ['sm', 'md', 'lg']
@@ -61,6 +62,7 @@ export {
   BUTTON_SIZES,
   BUTTON_THEMES,
   STATUSES,
+  TOAST_POSITIONS,
   TABLE_COLLAPSE_BREAKPOINTS,
   TABLE_SPACING,
   TOOLTIP_DIRECTIONS

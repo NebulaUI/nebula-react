@@ -27,6 +27,7 @@ import { Scroll } from './components/Scroll/'
 import { StatusCard } from './components/StatusCard/'
 import { Table } from './components/Table/'
 import { Tabs } from './components/Tabs/'
+import { Toast } from './components/Toast/'
 import { Tooltip } from './components/Tooltip/'
 import { UIList } from './components/UIList/'
 import * as constants from './constants'
@@ -60,6 +61,7 @@ export {
   StatusCard,
   Table,
   Tabs,
+  Toast,
   Tooltip,
   UIList,
   UniformedList

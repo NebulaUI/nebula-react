@@ -1,5 +1,5 @@
 import React from 'react'
-import { mount } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 
 import { NAMESPACE } from '../../../constants'
 import { FadeIn } from '../'
@@ -9,15 +9,23 @@ describe('<FadeIn />', () => {
     jest.useFakeTimers()
     const $ = mount(
       <FadeIn>
-        <div className="test">_</div>
+        <div />
       </FadeIn>
     )
 
-    expect($.hasClass('test')).toBe(true)
     expect($.hasClass(`${NAMESPACE}c-fade-in`)).toBe(true)
     expect($.hasClass(`${NAMESPACE}c-fade-in--has-mounted`)).toBe(false)
 
     jest.runAllTimers()
     expect($.hasClass(`${NAMESPACE}c-fade-in--has-mounted`)).toBe(true)
+  })
+
+  it('adds the child class once mounted', () => {
+    const $ = shallow(
+      <FadeIn>
+        <div className="test">_</div>
+      </FadeIn>
+    )
+    expect($.hasClass('test')).toBe(true)
   })
 })
