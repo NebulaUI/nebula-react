@@ -45,6 +45,7 @@ class ToastWrapper extends Component {
     const { toastItems } = this.state
     const enhancedChildren = children && React.Children.map(children, (child) => {
       if (child.type !== Item) {
+        // eslint-disable-next-line no-console
         return console.warn(`${child} is not a valid child of <Toast.Wrapper />`)
       }
 

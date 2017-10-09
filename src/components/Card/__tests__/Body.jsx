@@ -4,28 +4,26 @@ import { shallow } from 'enzyme'
 import { NAMESPACE } from '../../../constants'
 import { Card } from '../'
 
-describe('<Card />', () => {
+describe('<Card.Body />', () => {
   it('passes in an optional className override', () => {
-    const $ = shallow(<Card className="something else" />)
-    expect($.hasClass(`${NAMESPACE}c-card`)).toBe(true)
+    const $ = shallow(<Card.Body className="something else" />)
+    expect($.hasClass(`${NAMESPACE}c-card__body`)).toBe(true)
     expect($.hasClass('something else')).toBe(true)
   })
 
   it('renders a defined tag type', () => {
-    const $ = shallow(<Card tag="article">_</Card>)
+    const $ = shallow(<Card.Body tag="article" />)
     expect($.type()).toBe('article')
   })
 
   it('renders a div by default', () => {
-    const $ = shallow(<Card>-</Card>)
+    const $ = shallow(<Card.Body />)
     expect($.type()).toBe('div')
   })
 
   it('renders with attributes', () => {
     const $ = shallow(
-      <Card style={{ position: 'relative' }} ariaHidden>
-        _
-      </Card>
+      <Card.Body style={{ position: 'relative' }} ariaHidden />
     )
     expect($.prop('style')).toEqual({
       position: 'relative'
@@ -34,7 +32,7 @@ describe('<Card />', () => {
   })
 
   it('renders children', () => {
-    const $ = shallow(<Card>test child</Card>)
+    const $ = shallow(<Card.Body>test child</Card.Body>)
     expect($.contains('test child')).toBe(true)
   })
 })
