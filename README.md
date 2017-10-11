@@ -1,4 +1,4 @@
-# Nebula React ![Travis-ci](https://travis-ci.org/rbrtsmith/nebula-react.svg?branch=master) [![Coverage Status](https://coveralls.io/repos/github/rbrtsmith/nebula-react/badge.svg?branch=master)](https://coveralls.io/github/rbrtsmith/nebula-react?branch=master) [![npm version](https://badge.fury.io/js/nebula-react.svg)](https://badge.fury.io/js/nebula-react)
+# Nebula React ![Travis-ci](https://travis-ci.org/NebulaUI/nebula-react.svg?branch=master) [![Coverage Status](https://coveralls.io/repos/github/rbrtsmith/nebula-react/badge.svg?branch=master)](https://coveralls.io/github/rbrtsmith/nebula-react?branch=master) [![npm version](https://badge.fury.io/js/nebula-react.svg)](https://badge.fury.io/js/nebula-react)
 
 React Components for the Nebula Sass framework
 
